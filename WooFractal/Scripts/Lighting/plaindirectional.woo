@@ -1,0 +1,4 @@
+rule main {
+directionalLight(vec(1.0, 1.0, 1.0), vec(-0.7, 1.0, -0.6), 0.02, 1)
+background(vec(0.8,0.8,0.8))
+}

@@ -1,0 +1,7 @@
+rule main {
+directionalLight(vec(1.0, 0.8, 0.7), vec(-2.0, 0.8, -0.6), 0.01, 1)
+//pointLight(vec(100.0, 0.0, 0.0), vec(0, 20, 0)) // test comment
+//ambientLight(vec(0.2,0.2,0.3))
+//worldLight(vec(0.7, 0.8, 1.0), 4)
+background(vec(0.6,0.7,1))
+}

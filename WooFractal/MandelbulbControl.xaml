@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="WooFractal.MandelbulbControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="154" d:DesignWidth="351" xmlns:my="clr-namespace:WooFractal">
+    <Border BorderBrush="Black" BorderThickness="1" Height="154" Width="351">
+        <Grid Width="348" Background="White" Height="154">
+            <Button Content="^" Height="34" HorizontalAlignment="Left" Margin="4,6,0,0" Name="button1" VerticalAlignment="Top" Width="22" Click="button1_Click" />
+            <Label Content="Rotation" Height="24" HorizontalAlignment="Left" Margin="30,31,0,0" Name="label1" VerticalAlignment="Top" Width="193" />
+            <Label Content="Scale" Height="24" HorizontalAlignment="Left" Margin="30,92,0,0" Name="label4" VerticalAlignment="Top" Width="193" />
+            <Button Content="V" Height="34" HorizontalAlignment="Left" Margin="4,104,0,0" Name="button2" VerticalAlignment="Top" Width="22" Click="button2_Click" />
+            <Label Content="M A N D E L B U L B" Height="30" HorizontalAlignment="Left" Margin="30,0,0,0" Name="label5" VerticalAlignment="Top" Width="316" Background="Black" Foreground="White" FontWeight="ExtraBold" VerticalContentAlignment="Center" FontSize="14" HorizontalContentAlignment="Right" />
+            <Button Content="X" Height="34" HorizontalAlignment="Left" Margin="4,54,0,0" Name="button3" VerticalAlignment="Top" Width="22" Click="button3_Click" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="30,54,0,0" x:Name="wooSlider1" VerticalAlignment="Top" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="135,54,0,0" x:Name="wooSlider2" VerticalAlignment="Top" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="240,54,0,0" x:Name="wooSlider3" VerticalAlignment="Top" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="30,113,0,0" x:Name="wooSlider10" VerticalAlignment="Top" Width="310" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="34,4,0,0" Name="textBox1" VerticalAlignment="Top" Width="23" TextChanged="textBox1_TextChanged" />
+            <TextBlock Height="17" HorizontalAlignment="Left" Margin="63,6,0,0" Name="textBlock1" Text="Repeat(s)" VerticalAlignment="Top" Foreground="White" />
+        </Grid>
+    </Border>
+</UserControl>

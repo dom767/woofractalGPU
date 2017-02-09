@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="WooFractal.RenderControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="525" d:DesignWidth="348" Margin="0,10,0,0" xmlns:my="clr-namespace:WooFractal">
+    <Border BorderBrush="Black" BorderThickness="1">
+        <Grid Width="348" Height="525">
+            <my:WooSlider HorizontalAlignment="Left" Margin="12,57,0,0" x:Name="wooSlider1" VerticalAlignment="Top" Width="324" />
+            <Label Content="Minimum Distance" Height="24" HorizontalAlignment="Left" Margin="12,36,0,0" Name="label1" VerticalAlignment="Top" />
+            <Label Background="Black" Content="F R A C T A L   C O N T R O L S" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="348" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="12,109,0,0" x:Name="wooSlider2" VerticalAlignment="Top" Width="324" />
+            <Label Content="Distance Iterations" Height="24" HorizontalAlignment="Left" Margin="12,88,0,0" Name="label2" VerticalAlignment="Top" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="12,162,0,0" x:Name="wooSlider3" VerticalAlignment="Top" Width="324" />
+            <Label Content="Step Size" Height="24" HorizontalAlignment="Left" Margin="13,140,0,0" Name="label3" VerticalAlignment="Top" />
+            <Label Content="Distance Extents" Height="24" HorizontalAlignment="Left" Margin="13,193,0,0" Name="label4" VerticalAlignment="Top" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="12,213,0,0" x:Name="wooSlider4" VerticalAlignment="Top" Width="324" />
+            <Label Content="Fractal Iterations" Height="24" HorizontalAlignment="Left" Margin="13,244,0,0" Name="label6" VerticalAlignment="Top" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="12,265,0,0" x:Name="wooSlider5" VerticalAlignment="Top" Width="324" />
+            <Label Content="Colour Iterations" Height="24" HorizontalAlignment="Left" Margin="13,296,0,0" Name="label7" VerticalAlignment="Top" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="12,318,0,0" x:Name="wooSlider6" VerticalAlignment="Top" Width="324" />
+            <ComboBox Height="25" HorizontalAlignment="Left" Margin="12,372,0,0" Name="comboBox1" VerticalAlignment="Top" Width="159" SelectionChanged="comboBox1_SelectionChanged" />
+            <ComboBox Height="25" HorizontalAlignment="Left" Margin="177,372,0,0" Name="comboBox2" VerticalAlignment="Top" Width="159" SelectionChanged="comboBox2_SelectionChanged" />
+            <Label Content="Background" Height="26" HorizontalAlignment="Left" Margin="13,349,0,0" Name="label8" VerticalAlignment="Top" />
+            <Label Content="Lighting" Height="26" HorizontalAlignment="Left" Margin="177,349,0,0" Name="label9" VerticalAlignment="Top" />
+            <ComboBox Height="25" HorizontalAlignment="Left" Margin="12,426,0,0" Name="comboBox3" VerticalAlignment="Top" Width="324" SelectionChanged="comboBox3_SelectionChanged" />
+            <Label Content="Distance Estimator Mode" Height="26" HorizontalAlignment="Left" Margin="13,403,0,0" Name="label10" VerticalAlignment="Top" />
+            <CheckBox Content="Headlight Enabled" Height="16" HorizontalAlignment="Left" Margin="13,462,0,0" Name="checkBox1" VerticalAlignment="Top"  Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="13,481,0,0" x:Name="wooSlider7" VerticalAlignment="Top" Width="324" />
+        </Grid>
+    </Border>
+</UserControl>

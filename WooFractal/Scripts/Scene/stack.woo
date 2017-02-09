@@ -1,0 +1,33 @@
+rule main {
+power+=1
+repeat(35) { step }
+}
+
+rule step {
+{roundsq}
+scale*=vec(0.93,0.93,0.93)
+pos.y += 1
+ry += 14
+}
+
+rule roundsq {
+diff = vec(0.5:0.7, 0.7:0.9, 0.9:1)
+
+pos.x -= 4
+pos.z += 4.5
+rx += 90
+rz -= 90
+
+repeat (4) {side}
+} 
+
+rule side
+{
+sphere
+pos.y += 0.5
+rz += 90
+scale *= vec(1, 9, 1)
+cylinder
+scale *= vec(1, 1 / 9, 1)
+pos.y += 8.5
+}

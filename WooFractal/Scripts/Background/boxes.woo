@@ -1,0 +1,27 @@
+rule main {
+diff = vec(1.0, 1.0, 1.0)
+refl = vec(0.4, 0.4, 0.4)
+gloss = 0.97
+pos.y -= 3
+scale = vec(380, 1, 380)
+box
+
+scale = vec(1, 1, 1)
+pos.y -= 2
+
+pos = vec (-9*20, -4, -9*20)
+
+// build a grid of platforms
+repeat (19) { 
+ repeat (19) {
+  scale = vec(14, 4, 14)
+  box
+  scale = vec(1,1,1)
+  pos.z += 20
+ }
+ pos += vec(20, 0, -19*20)
+ //.z -= 19*20
+ //pos.x += 20
+}
+
+}

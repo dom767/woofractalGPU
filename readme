@@ -1,0 +1,113 @@
+Wooscripter, started by Dom Penfold, now up and open to the general public. Note that coretracer.dll is my own raytracer which is not currently available on github. A release version is included in this project's bin folder.
+
+v1.02
+- Transparency support
+ . object tinting
+ . object colour
+ . optional caustics
+ . refraction
+ . fresnel
+ . transparency on distance estimators
+- Fast Gaussian postprocess filter
+- Distance extents can now be modified using distanceextents = vec(2,2,2)
+- Sparse Voxel Octree support (primitive svo)
+- New distance estimator functions
+ . sin function
+ . single fold
+ . repeat() syntax
+ . KIFS steps for menger, cube, tetrahedra
+ . vector min function
+- Culture invariance for Russian friends (thanks Vlad!)
+- Rule extensions
+ . argument passing for rules
+ . sqrt function
+- Preview window optimisations
+ 
+v1.01
+- Improved pathtracer
+ . vastly reduced noise
+ . correct biased sampler
+ . caustics optional flag (reduce noise when off)
+- Distance estimator improvements
+ . fixed vector selectors .y and .z (doh!)
+ . support distance extents render optimisation
+ . new maths functions (cos, sin, tan, sqrt, power)
+ . new primitive macros (capsule, cylinder)
+ . new noise function (turb3d)
+ . new experimental fold function (rotationfold)
+- Improved worldlight sampler to reduce noise on low iteration counts
+- 2d sampler support + file caching
+
+v1.0
+- Extended shader language to support .x, .y, .z, +, -, /, *, % and operator precedence
+- Fixed a divby0 for dark scenes
+
+v0.999
+- Added support for shader to be used to render materials
+
+v0.99
+- Changes to the way box + fold work for simple DE functions
+- Fixed image saving to capture postprocess filter
+
+v0.98
+- Added support for mandelbox and mandelbulb distance estimators
+- Added boxfold, spherefold and outerspherefold support for distance estimation
+- Moved postprocess filtering into the C++ codebase for performance reasons
+- Changed wooscript functions for call, repeat, branch, push and pop
+- Main window has additional information on camera position and target
+- Manual option for exposure settings
+- Changed the way distance estimation functions are specified in scripts
+
+v0.97
+- Save PNG and also a JPG when storing images (JPG for web, PNG for lossless)
+- Additional support for distance functions
+- Added a Kaleidoscopic IFS fractal distance primitive
+- Bug fix for "=" operator working incorrectly on pos following rotation and scale changes
+- App settings for storing camera settings after shutdown
+- Field of View (FOV) now editable in main window
+- Added Spherical lens support (1=true fisheye)
+- Changed render window to better support non-16:9 ratio renders (imagerenderer adds borders now instead of stretching)
+- Added additional tone mapping functions (gamma and simple tone map)
+- Added postprocess filter with 5x5 kernel
+- Added support for bloom filters (source values are passed through a gamma function before postprocess)
+- Fixed a bug in the raytracer where the 35th object in the scene sometimes disappears...
+
+v0.96
+- Added Menger Primitive (configurable menger cube, fast intersectio approach)
+- Added support for distance functions
+- Updated help window to show distance function help
+
+v0.95
+- Fixed a major memory leak in the raytracer, stability seems far better now
+- Added nanoblock script sample to the installer
+
+v0.94
+- Lots more safety on the wootracer, shouldn't crash easily anymore...
+- Modified the help panel to point to the language reference article
+- Added various tutorials to the distribution
+- Updated branch and repeat to allow expressions (i.e. "repeat(box, (7*2)+v0.x)")
+
+v0.93
+- Improved the token parser to allow no whitespace expressions i.e. diff=vec(1,1,1) now works
+- FinalRender window improved so it's easier to use
+
+v0.92
+- Added cylinder primitive to wootracer and scripting language
+
+v0.91
+- Ability to Save Scene XML for debugging purpuses
+- Sample code for installation
+- Background colour now a scriptable value
+- Circle's default to diamter 1, not radius 1
+- Buffer transfer settings now immediately impact preview render
+- Help window added
+- Add resolution selector for preview window
+- Improved camera control and initial settings (Shift moves slowly, Ctrl changes up/down to vertical axis)
+
+v0.9
+- Initial Release
+
+Please note that wooscript is my own language and while I'm happy for people to use and extend this application (and hence this language), please make me aware if you'd like to build other applications utilising the syntax etc.
+
+Ta,
+Dom

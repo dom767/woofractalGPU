@@ -1,0 +1,9 @@
+rule main {
+box
+pos.x += 2
+sphere
+pos.z += 2
+cylinder
+pos.y += 2
+spherelight
+}

@@ -1,0 +1,25 @@
+rule main {
+scale = vec(8,8,8)
+pos.z -= 5
+mengerpattern("101101101101111101101101101")
+{ row } pos.z += 2.5
+mengerpattern("111110100110100000100000000")
+{ row } pos.z += 2.5
+mengerpattern("111101111101000101111101111")
+{ row } pos.z += 2.5
+mengerpattern("111111111000010000000010000")
+{ row } pos.z += 2.5
+mengerpattern("101010111010010000101011100")
+{ row } pos.z += 2.5
+}
+
+rule row {
+mengeriterations = 1
+pos.x -= 5
+
+repeat (5) {
+ menger
+ mengeriterations += 1
+ pos.x += 2.5
+ }
+}

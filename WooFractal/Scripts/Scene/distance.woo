@@ -1,0 +1,32 @@
+rule main {
+scale = vec(8,8,8)
+
+distanceminimum=0.001
+distanceiterations=2000
+distancefunction("sphere(pos, vec(0,0,0), 1.0)")
+diff = vec(0,1,0)
+distance
+
+// smooth merge of two objects
+pos.x += 2.5
+distancefunction("smin(sphere(pos, vec(0,0.5,0), 0.5), sphere(pos, vec(0,-0.5,0), 0.5), 8)")
+diff = vec(0,0.5,1)
+distance
+
+// CSG -
+pos.z += 2.5
+pos.x += -2.5
+distancefunction("max(neg(sphere(pos, vec(0,0.2,0), 0.8)), sphere(pos, vec(0,-0.2,0), 0.8))")
+diff = vec(1,0.5,0)
+distance
+
+// many tori
+pos.x += 2.5
+distancefunction("torus(roty(repxyz(pos, vec(0.1, 0.31, 0.1)), mul(getx(pos),70)), 0.04, 0.01)")
+diff = vec(0.5,1,0)
+distance
+
+//distancefunction("torus(roty(repxyz(pos, vec(0.1, 0.31, 0.1)), mul(getx(pos),0)), 0.04, 0.01)")
+//distancefunction("torus(roty(repxyz(pos, vec(0.1, 0.31, 0.1)), 30), 0.04, 0.01)")
+//distancefunction("torus(roty(repx(pos,0.1), mul(getx(pos), 120)), 0.04, 0.01)")
+}

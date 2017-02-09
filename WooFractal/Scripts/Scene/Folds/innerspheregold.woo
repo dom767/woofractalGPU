@@ -1,0 +1,18 @@
+rule main {
+scale = vec(8,8,8)
+
+distanceminimum=0.001
+distanceiterations=200
+stepsize=0.8
+
+//distancefunction("max(neg(sphere(pos, vec(0,0.2,0), 0.8)), sphere(pos, vec(0,-0.2,0), 0.8))")
+//distancefunction("max(max(neg(sphere(pos, vec(-3,2,0), 3.8)),sphere(pos, vec(-3,2,0), 4.0)), box(pos, vec(1,1,1), vec(0.0,0.0,0.0)))")
+//distancefunction("max(max(neg(sphere(pos, vec(0,0,0), 0.9)),sphere(pos, vec(0,0,0), 1.0)), box(repxyz(pos,vec(0.2,0.2,0.2)), vec(0.07,0.07,0.07), vec(0,0,0)))")
+//distancefunction("box(repxyz(pos,vec(0.2,0.2,0.2)), vec(0.08,0.08,0.08), vec(0,0,0))")
+distancefunction("max(sphere(pos, vec(0,0,0), 1.0), box(repxyz(spherefold(pos,0.95),vec(0.15,0.15,0.15)), vec(0.2,0.025,0.025), vec(0,0,0)))")
+diff = vec(1,0.5,0)
+distance
+pos.y += 0.5
+scale = vec(2,2,2)
+diff = vec(100,100,100)
+}

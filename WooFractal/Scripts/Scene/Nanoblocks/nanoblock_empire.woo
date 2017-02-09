@@ -1,0 +1,762 @@
+rule main {
+empire
+}
+
+rule empire {
+pos += vec(-10, 0, -10)
+
+green
+nanobox(1, 1, 20, 20)
+
+pos.y += 0.78
+lightgrey
+nano1x1c(3,5)
+nano1x1c(3,7)
+nano1x1c(3,14)
+nano1x1c(3,16)
+nano1x1c(18,5)
+nano1x1c(18,7)
+nano1x1c(18,14)
+nano1x1c(18,16)
+nano1x1(6,5)
+nano1x1(9,5)
+nano1x1(12,5)
+nano1x1(15,5)
+nano1x1(6,16)
+nano1x1(9,16)
+nano1x1(12,16)
+nano1x1(15,16)
+nano1x1(3,9)
+nano1x1(3,12)
+nano1x1(18,9)
+nano1x1(18,12)
+
+clearblue
+nano1x2(4,6)
+nano1x4(4,8)
+nano1x4(4,12)
+nano1x4(17,6)
+nano1x4(17,10)
+nano1x2(17,14)
+nano4x1(5,6)
+nano4x1(9,6)
+nano4x1(13,6)
+nano4x1(5,15)
+nano4x1(9,15)
+nano4x1(13,15)
+
+pos.y += 0.78
+lightgrey
+nano8x2(3,5)
+nano8x2(11,5)
+nano8x2(3,15)
+nano8x2(11,15)
+nano2x8(3,7)
+nano2x8(17,7)
+
+pos.y += 0.78
+lightgrey
+nano1x2(3,5)
+nano1x2(3,15)
+nano1x2(18,5)
+nano1x2(18,15)
+nano1x1(6,5)
+nano1x1(9,5)
+nano1x1(12,5)
+nano1x1(15,5)
+nano1x1(6,16)
+nano1x1(9,16)
+nano1x1(12,16)
+nano1x1(15,16)
+nano1x1(3, 9)
+nano1x1(3, 12)
+nano1x1(18, 9)
+nano1x1(18, 12)
+
+clearblue
+nano1x2(3, 7)
+nano1x2(3, 10)
+nano1x2(3, 13)
+nano1x2(18, 7)
+nano1x2(18, 10)
+nano1x2(18, 13)
+nano2x1(4,5)
+nano2x1(7,5)
+nano2x1(10,5)
+nano2x1(13,5)
+nano2x1(16,5)
+nano2x1(4,16)
+nano2x1(7,16)
+nano2x1(10,16)
+nano2x1(13,16)
+nano2x1(16,16)
+
+pos.y += 0.78
+lightgrey
+nano2x4(3,5)
+nano4x2(5,5)
+nano4x1(9,5)
+nano4x2(13,5)
+nano2x4(17,5)
+nano1x4(3,9)
+nano1x4(18,9)
+nano2x4(3,13)
+nano4x2(5,15)
+nano4x1(9,16)
+nano4x2(13,15)
+nano2x4(17,13)
+
+pos.y += 0.78
+lightgrey
+nano1x2(3,5)
+nano1x2(3,15)
+nano1x2(18,5)
+nano1x2(18,15)
+nano1x1(6,5)
+nano1x1(9,5)
+nano1x1(12,5)
+nano1x1(15,5)
+nano1x1(6,16)
+nano1x1(9,16)
+nano1x1(12,16)
+nano1x1(15,16)
+nano1x1(3, 9)
+nano1x1(3, 12)
+nano1x1(18, 9)
+nano1x1(18, 12)
+nano8x2(7,6)
+nano8x2(7,14)
+nano2x8(4,7)
+nano2x8(16,7)
+
+clearblue
+nano1x2(3, 7)
+nano1x2(3, 10)
+nano1x2(3, 13)
+nano1x2(18, 7)
+nano1x2(18, 10)
+nano1x2(18, 13)
+nano2x1(4,5)
+nano2x1(7,5)
+nano2x1(10,5)
+nano2x1(13,5)
+nano2x1(16,5)
+nano2x1(4,16)
+nano2x1(7,16)
+nano2x1(10,16)
+nano2x1(13,16)
+nano2x1(16,16)
+
+pos.y += 0.78
+lightgrey
+nano8x2(3,5)
+nano8x2(11,5)
+nano8x2(3,15)
+nano8x2(11,15)
+nano8x2(7,7)
+nano8x2(7,13)
+nano2x8(3,7)
+nano2x8(17,7)
+nano2x8(5,7)
+nano2x8(15,7)
+
+repeat(3)
+{
+pos.y += 0.78
+lightgrey
+nano2x1(6,6)
+nano2x1(5,8)
+nano2x1(14,6)
+nano2x1(15,8)
+nano2x1(6,15)
+nano2x1(5,13)
+nano2x1(14,15)
+nano2x1(15,13)
+nano1x2(8,6)
+nano1x2(13,6)
+nano1x2(8,14)
+nano1x2(13,14)
+
+clearblue
+nano1x4(5,9)
+nano1x4(16,9)
+nano4x1(9,7)
+nano4x1(9,14)
+nano1x1(6,7)
+nano1x1(6,14)
+nano1x1(15,7)
+nano1x1(15,14)
+
+pos.y += 0.78
+lightgrey
+nano1x4(5, 8)
+nano1x4(16, 10)
+nano1x2(5, 12)
+nano1x2(16, 8)
+nano1x3(6,6)
+nano1x3(6,13)
+nano1x3(15,6)
+nano1x3(15,13)
+nano2x1(7,6)
+nano2x1(7,15)
+nano2x1(13,6)
+nano2x1(13,15)
+nano3x1(8,7)
+nano3x1(11,7)
+nano3x1(8,14)
+nano3x1(11,14)
+}
+
+pos.y += 0.78
+lightgrey
+nano2x1(6,6)
+nano2x1(5,8)
+nano2x1(14,6)
+nano2x1(15,8)
+nano2x1(6,15)
+nano2x1(5,13)
+nano2x1(14,15)
+nano2x1(15,13)
+nano1x2(8,6)
+nano1x2(13,6)
+nano1x2(8,14)
+nano1x2(13,14)
+
+clearblue
+nano1x4(5,9)
+nano1x4(16,9)
+nano4x1(9,7)
+nano4x1(9,14)
+nano1x1(6,7)
+nano1x1(6,14)
+nano1x1(15,7)
+nano1x1(15,14)
+
+pos.y += 0.78
+lightgrey
+nano2x4(15, 8)
+nano2x4(5, 10)
+nano2x2(15, 12)
+nano2x2(5, 8)
+nano1x2(6,6)
+nano1x2(6,14)
+nano1x2(15,6)
+nano1x2(15,14)
+nano2x1(7,6)
+nano2x1(7,15)
+nano2x1(13,6)
+nano2x1(13,15)
+nano3x1(8,7)
+nano3x1(11,7)
+nano3x1(8,14)
+nano3x1(11,14)
+
+pos.y += 0.78
+lightgrey
+nano2x1(6,6)
+nano1x1(6,8)
+nano2x1(14,6)
+nano1x1(15,8)
+nano2x1(6,15)
+nano1x1(6,13)
+nano2x1(14,15)
+nano1x1(15,13)
+nano1x2(8,6)
+nano1x2(13,6)
+nano1x2(8,14)
+nano1x2(13,14)
+
+clearblue
+nano1x4(6,9)
+nano1x4(15,9)
+nano4x1(9,7)
+nano4x1(9,14)
+nano1x1(6,7)
+nano1x1(6,14)
+nano1x1(15,7)
+nano1x1(15,14)
+
+pos.y += 0.78
+lightgrey
+nano3x1(6,6)
+nano3x1(6,15)
+nano3x1(13,6)
+nano3x1(13,15)
+nano3x1(8,7)
+nano3x1(11,7)
+nano3x1(8,14)
+nano3x1(11,14)
+nano2x8(6,7)
+nano2x8(14,7)
+
+pos.y += 0.78
+lightgrey
+nano2x8(7,7)
+nano2x8(13,7)
+
+clearblue
+nano1x4(6,9)
+nano1x4(15,9)
+nano4x1(9,7)
+nano4x1(9,14)
+
+pos.y += 0.78
+lightgrey
+nano8x2(7,7)
+nano8x2(7,13)
+nano2x4(6,9)
+nano2x4(14,9)
+
+pos.y += 0.78
+lightgrey
+nano2x8(7,7)
+nano2x8(13,7)
+
+clearblue
+nano1x4(6,9)
+nano1x4(15,9)
+nano4x1(9,7)
+nano4x1(9,14)
+
+pos.y += 0.78
+lightgrey
+nano1x2(7,7)
+nano1x2(7,13)
+nano1x2(14,7)
+nano1x2(14,13)
+nano2x8(8,7)
+nano2x8(10,7)
+nano2x8(12,7)
+nano2x4(6,9)
+nano2x4(14,9)
+
+repeat(7)
+{
+pos.y += 0.78
+lightgrey
+nano3x1(7,7)
+nano3x1(12,7)
+nano3x1(7,14)
+nano3x1(12,14)
+
+clearblue
+nano1x2(7,12)
+nano1x4(7,8)
+nano1x4(14,10)
+nano1x2(14,8)
+nano1x2(9,8)
+nano1x2(12,8)
+nano1x2(9,12)
+nano1x2(12,12)
+nano2x1(10,9)
+nano2x1(10,12)
+
+pos.y += 0.78
+lightgrey
+nano2x8(7,7)
+nano2x8(13,7)
+nano1x2(9,7)
+nano1x2(12,7)
+nano1x2(9,13)
+nano1x2(12,13)
+nano4x1(9,9)
+nano4x1(9,12)
+
+pos.y += 0.78
+lightgrey
+nano3x1(7,7)
+nano3x1(12,7)
+nano3x1(7,14)
+nano3x1(12,14)
+
+clearblue
+nano1x2(7,8)
+nano1x4(7,10)
+nano1x4(14,8)
+nano1x2(14,12)
+nano1x2(9,8)
+nano1x2(12,8)
+nano1x2(9,12)
+nano1x2(12,12)
+nano2x1(10,9)
+nano2x1(10,12)
+
+pos.y += 0.78
+lightgrey
+nano2x8(7,7)
+nano2x8(13,7)
+nano1x2(9,7)
+nano1x2(12,7)
+nano1x2(9,13)
+nano1x2(12,13)
+nano4x1(9,9)
+nano4x1(9,12)
+}
+
+pos.y += 0.78
+lightgrey
+nano3x1(7,7)
+nano3x1(12,7)
+nano3x1(7,14)
+nano3x1(12,14)
+
+clearblue
+nano1x2(7,12)
+nano1x4(7,8)
+nano1x4(14,10)
+nano1x2(14,8)
+nano1x2(9,8)
+nano1x2(12,8)
+nano1x2(9,12)
+nano1x2(12,12)
+nano2x1(10,9)
+nano2x1(10,12)
+
+pos.y += 0.78
+lightgrey
+nano2x8(7,7)
+nano2x8(13,7)
+nano1x2(9,7)
+nano1x2(12,7)
+nano1x2(9,13)
+nano1x2(12,13)
+nano4x1(9,9)
+nano4x1(9,12)
+
+pos.y += 0.78
+lightgrey
+nano1x1(8,8)
+nano1x1(8,13)
+nano1x1(13,8)
+nano1x1(13,13)
+nano1x2(9,8)
+nano1x2(12,8)
+nano1x2(9,12)
+nano1x2(12,12)
+
+clearblue
+nano1x4(8,9)
+nano1x4(13,9)
+nano2x1(10,9)
+nano2x1(10,12)
+
+pos.y += 0.78
+lightgrey
+nano2x2(8,8)
+nano2x4(8,10)
+nano2x2(12,12)
+nano2x4(12,8)
+nano2x4(10,9)
+
+pos.y += 0.78
+lightgrey
+nano2x1(8,8)
+nano2x1(12,8)
+nano2x1(8,13)
+nano2x1(12,13)
+
+clearblue
+nano1x4(8,9)
+nano1x4(13,9)
+nano4x1(9,9)
+nano4x1(9,12)
+
+pos.y += 0.78
+lightgrey
+nano2x2(8,12)
+nano2x4(8,8)
+nano2x2(12,8)
+nano2x4(12,10)
+nano2x4(10,9)
+
+pos.y += 0.78
+lightgrey
+nano2x1(8,8)
+nano2x1(12,8)
+nano2x1(8,13)
+nano2x1(12,13)
+
+clearblue
+nano1x4(8,9)
+nano1x4(13,9)
+nano4x1(9,9)
+nano4x1(9,12)
+
+pos.y += 0.78
+lightgrey
+nano2x2(8,8)
+nano2x4(8,10)
+nano2x2(12,12)
+nano2x4(12,8)
+nano2x4(10,9)
+
+pos.y += 0.78
+lightgrey
+nano2x4(9,9)
+nano2x4(11,9)
+
+pos.y += 0.78
+lightgrey
+nano1x1(9,9)
+nano1x1(12,9)
+nano1x1(9,12)
+nano1x1(12,12)
+
+clearblue
+nano2x1(10,9)
+nano2x1(10,12)
+nano1x2(9,10)
+nano1x2(12,10)
+
+pos.y += 0.78
+lightgrey
+nano4x2(9,9)
+nano4x2(9,11)
+
+pos.y += 0.78
+lightgrey
+nano2x2(10,10)
+
+pos.y += 0.78
+nano1x2s(10,10)
+nano1x2s(11,10)
+
+pos.y += 0.78
+nano2x1s(10,10.5)
+
+pos.y += 0.78
+nano1x1(10.5,10.5)
+pos.y += 0.78
+nano1x1(10.5,10.5)
+pos.y += 0.78
+nano1x1c(10.5,10.5)
+pos.y += 0.78
+nano1x1(10.5,10.5)
+pos.y += 0.78
+nano1x1c(10.5,10.5)
+pos.y += 0.78
+nano1x1c(10.5,10.5)
+}
+
+///////////////
+// COLOURS
+///////////////
+
+rule clear {
+opacity = 0.9
+diff = vec(0.7, 0.8, 0.9)
+abs = vec(1,1,1)
+density = 1
+tintdensity = 1
+refractiveindex = 1.3
+}
+
+rule clearblue {
+opacity = 0.1
+diff = vec(0.7, 0.8, 0.9)
+abs = vec(0.7, 0.8, 0.9)
+density = 0.1
+tintdensity = 1
+refractiveindex = 1.1
+}
+
+rule opaque {
+opacity = 1
+}
+
+rule lightgreen {
+opaque
+diff = vec(0.74, 0.93, 0.41)
+}
+
+rule green {
+opaque
+diff = vec(0.43, 0.69, 0.34)
+}
+
+rule darkgreen {
+opaque
+diff = vec(0.11, 0.41, 0.26)
+}
+
+rule blue {
+opaque
+diff = vec(0.5, 0.5, 1.0)
+}
+
+rule orange {
+opaque
+diff = vec(1,0.5,0)
+}
+
+rule yellow {
+opaque
+diff = vec(0.97, 0.97, 0.19)
+}
+
+rule sand {
+opaque
+diff = vec(0.97, 0.81, 0.39)
+}
+
+rule white {
+opaque
+diff = vec(1, 1, 1)
+}
+
+rule lightgrey {
+opaque
+diff = vec(0.84, 0.84, 0.84)
+}
+
+rule darkgrey {
+opaque
+diff = vec(0.56, 0.6, 0.56)
+}
+
+///////////////
+// PREDEFINED BLOCK TYPES
+///////////////
+
+rule nano1x1(float x, float y) {
+nanobox(x, y, 1, 1)
+}
+
+rule nano10x10(float x, float y) {
+nanobox(x, y, 10, 10)
+}
+
+rule nano2x2(float x, float y) {
+nanobox(x, y, 2, 2)
+}
+
+rule nano2x1(float x, float y) {
+nanobox(x, y, 2, 1)
+}
+
+rule nano1x2(float x, float y) {
+nanobox(x, y, 1, 2)
+}
+
+rule nano4x2(float x, float y) {
+nanobox(x, y, 4, 2)
+}
+
+rule nano8x2(float x, float y) {
+nanobox(x, y, 8, 2)
+}
+
+rule nano2x8(float x, float y) {
+nanobox(x, y, 2, 8)
+}
+
+rule nano2x4(float x, float y) {
+nanobox(x, y, 2, 4)
+}
+
+rule nano4x1(float x, float y) {
+nanobox(x, y, 4, 1)
+}
+
+rule nano1x4(float x, float y) {
+nanobox(x, y, 1, 4)
+}
+
+rule nano3x1(float x, float y) {
+nanobox(x, y, 3, 1)
+}
+
+rule nano1x3(float x, float y) {
+nanobox(x, y, 1, 3)
+}
+
+rule nano1x1c(float x, float y)
+{
+ {
+ pos.x += x pos.z += y
+
+ scale = vec(0.97, 0.775, 0.97)
+ cylinder
+ pos.y += 1
+ scale = vec(1,1,1)
+ nanocyl
+ }
+}
+
+rule nano2x1s(float x, float y)
+{
+{pos.x += x pos.z += y
+ry -= 90
+nano1x2centre}
+}
+
+rule nano1x2s(float x, float y)
+{
+ {
+ pos.x += x pos.z += y
+ nano1x2centre
+ }
+}
+
+rule nano1x2centre
+{
+ pos.z += 0.5
+ scale = vec(0.97, 0.775, 1.97)
+ box
+ scale = vec(1, 1, 1)
+ pos.z -= 0.5
+ 
+ pos.y += 0.775
+ pos.z += 0.5
+ nanocyl
+}
+
+rule nanobox(float posx, float posy, float width, float height)
+{
+ {
+ pos.x += posx
+ pos.z += posy
+
+ // move middle location
+ pos.x += (width * 0.5) - 0.5
+ pos.z += (height * 0.5) - 0.5
+
+ // give a bit of noise to the box
+ scale = vec(width - 0.03, 0.775, height - 0.03)
+ box
+
+ // move to top surface of box
+ pos.y += 1
+
+ // reset for the little nanocylinders
+ scale = vec(1,1,1)
+ pos.x -= (width * 0.5) - 0.5
+ pos.z -= (height * 0.5) - 0.5
+
+ // build the nanocylinders
+ repeat (width)
+ {
+  { repeat(height) { zcyl } }
+  pos.x += 1
+ }
+ }
+}
+
+rule xcyl
+{
+// preserve state between calls
+{ repeat(v0.y) { zcyl } }
+pos.x += 1
+}
+
+rule zcyl
+{
+{nanocyl}
+pos.z += 1
+}
+
+rule nanocyl
+{
+scale = vec(0.6, 0.39, 0.6)
+cylinder
+}

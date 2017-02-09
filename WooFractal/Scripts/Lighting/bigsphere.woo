@@ -1,0 +1,11 @@
+rule main {
+//directionalLight(vec(1.0, 1.0, 1.0), vec(-1.2, 1.0, -0.6), 0.01, 1)
+//pointLight(vec(100.0, 0.0, 0.0), vec(0, 20, 0)) // test comment
+//ambientLight(vec(0.2,0.2,0.3))
+//worldLight(vec(1, 1, 1), 16)
+pos = vec(-10, 7.5, 7.5)
+scale = vec(15, 15, 15)
+diff = vec(100, 100, 100)
+spherelight
+background(vec(0,0,0))
+}

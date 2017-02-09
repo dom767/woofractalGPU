@@ -1,0 +1,81 @@
+rule main {
+scale = vec(8,8,8)
+
+distanceminimum=0.001
+distanceiterations=2000
+stepsize=1
+
+scale = vec(3,3,3)
+
+diff = vec(0.65,0.8,0.5)
+refl = vec(0.3,0.3,0.3)
+spec = vec(0.3,0.3,0.3)
+power = 26
+gloss = 0.999
+
+//materialfunction(marble)
+//materialfunction(voronoi)
+//distancefunction(voronoisphere)
+distancefunction(kaleido)
+//sphere
+//pos.y-=0.3
+distance
+}
+
+shader kaleido
+{
+distance = kaleido(pos, vec(0.4,0.1,0.1), vec(0.3,0,0), vec(1,1,1), 15, 2)
+}
+
+shader voronoi
+{
+pos = pos*1
+diff = vec(pow(1-voronoi(normalise(pos)*3, 713, 50, 18),1),0,0)
+diff = lerp(vec(0,0,0), vec(0.9,0.8,0.6), diff.x)
+}
+
+shader marble
+{
+diff = vec(pow(turb3d(pos, 1.0, 0.8, 713,7, 0.7),4),0,0)
+diff = lerp(vec(1,0.9,0.8), vec(0,0,0), diff.x)
+}
+
+shader voronoisphere
+{
+//distance = torus(rotx(pos,90), 0.8, 0.1+0.1*pow(1-voronoi((pos)*2, 713, 30, 5),1))
+distance = max(max(torus(rotx(pos,90), 0.8, 0.199), neg(torus(rotx(pos,90), 0.8, 0.197))),
+torus(rotx(pos,90), 0.8, 0.1+0.1*pow(1-voronoi((pos)*2, 713, 30, 1.5),1)))
+}
+
+shader voronoibox
+{
+distance = voronoi(pos, 713, 30, 0.5)
+}
+
+shader spheres3
+{
+diff = rotatefold(pos, 11.25)
+diff = rotatefold(rotz(diff, 90), 5.625)
+diff = diff+vec(0,0,-0.9)
+diff = rotatefold(diff, 11.25)
+diff = rotatefold(rotz(diff, 90), 5.625)
+diff = diff+vec(0,0,-0.07)
+
+distance =sphere(diff,vec(0,0,0),0.006*sqrt(1-pos.y*pos.y))
+}
+
+shader spheres2
+{
+diff = rotatefold(pos, 11.25)
+diff = rotatefold(rotz(diff, 90), 5.625)
+diff = diff+vec(0,0,-0.9)
+
+distance =max(sphere(pos, vec(0,0,0), 0.9), neg(sphere(diff,vec(0,0,0),0.06*sqrt(1-pos.y*pos.y))))
+}
+
+shader spheres
+{
+diff = rotatefold(vec( pos.x, fold(pos.y, 0.07), pos.z), 11.25)
+diff = diff+vec(0,0,-0.94*sqrt(1-pos.y*pos.y))
+distance =sphere(diff,vec(0,0,0),0.07*sqrt(1-pos.y*pos.y))
+}

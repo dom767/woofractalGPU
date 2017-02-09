@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Controls;
+using System.Xml.Linq;
+using System.Xml;
+
+namespace WooFractal
+{
+    public enum EFractalType
+    {
+        Tetra = 0,
+        Menger = 1,
+        Cube = 2
+    }
+    public abstract class WooFractalIteration
+    {
+        public abstract UserControl GetControl();
+        public abstract string GetFractalString();
+        public abstract void Compile(ref string frag);
+        public abstract void CreateElement(XElement parent);
+        public int _Repeats = 1;
+    };
+
+
+}

@@ -1,0 +1,23 @@
+rule main {
+scale = vec(8,8,8)
+recursions = 4
+subdivide
+}
+
+rule subdivide {
+if (recursions < 0.1)
+{ pos.y += 0.1 scale *= vec(0.8,0.8,0.8) box }
+else
+{
+pos.y += 0.25
+scale *= vec(0.5,0.5,0.5)
+{ pos += vec(-0.5,-0.5,-0.5) subdivide }
+{ pos += vec(-0.5,-0.5,0.5) subdivide }
+{ pos += vec(-0.5,0.5,-0.5) subdivide }
+{ pos += vec(-0.5,0.5,0.5) subdivide }
+{ pos += vec(0.5,-0.5,-0.5) subdivide }
+{ pos += vec(0.5,-0.5,0.5) subdivide }
+{ pos += vec(0.5,0.5,-0.5) subdivide }
+{ pos += vec(0.5,0.5,0.5) subdivide }
+}
+}

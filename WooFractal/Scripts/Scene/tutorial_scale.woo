@@ -1,0 +1,14 @@
+rule main {
+//draw a simple box
+box
+
+//move along and draw a double height box
+pos.x += 2
+scale = vec(1, 2, 1)
+box
+
+//move along and draw a thin 4x height box
+pos.x += 2
+scale = vec(0.5, 4, 0.5)
+box
+}

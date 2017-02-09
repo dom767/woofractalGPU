@@ -1,0 +1,52 @@
+rule main {
+diff = vec(1.0, 1.0, 1.0)
+refl = vec(0.4, 0.4, 0.4)
+gloss = 0.97
+pos.y -= 1
+scale = vec(80, 1, 80)
+materialfunction(check)
+cylinder
+
+scale = vec(1,1,1)
+pos.y += 1
+scale = vec(1,3,1)
+v0.x = 0
+repeat (36)
+{
+ if (v0.x < 0.1)
+ {
+  materialfunction(black)
+  v0.x = 1
+ }
+ else
+ {
+  materialfunction(white)
+  v0.x = 0
+ }
+ {
+ pos.x += 12
+ box
+ }
+ ry += 10
+}
+}
+
+shader white
+{
+diff = vec(1,1,1)
+refl = vec(0.1, 0.1, 0.1)
+}
+
+shader black
+{
+diff = vec(0,0,0)
+refl = vec(0.35, 0.35, 0.35)
+}
+
+shader check
+{
+diff = vec(mod(add(round(mod(mul(getx(pos),0.25),1)),round(mod(mul(getz(pos),0.25),1))),2),1,1)
+diff = vec(getx(diff),getx(diff),getx(diff))
+refl = vec(add(0.1,mul(sub(1,getx(diff)),0.25)),1,1)
+refl = vec(getx(refl),getx(refl),getx(refl))
+}

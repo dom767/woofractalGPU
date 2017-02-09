@@ -1,0 +1,7 @@
+rule main {
+pos.y -= 0
+diff = vec(1.0, 1.0, 1.0)
+refl = vec(0.0, 0.0, 0.0)
+scale = vec(460, 460, 460)
+circle
+}

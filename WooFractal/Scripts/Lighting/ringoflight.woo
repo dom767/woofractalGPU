@@ -1,0 +1,12 @@
+rule main {
+pos += vec (0, 5, 0)
+repeat(10) { lightbulb }
+}
+
+rule lightbulb {
+{
+ pos += vec(15, 0, 0)
+ pointLight(vec(1,1,1), pos)//call (spherelight)
+}
+ry += 36
+}

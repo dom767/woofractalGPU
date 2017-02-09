@@ -1,0 +1,8361 @@
+DLL.InitialiseRender
+Coretracer.BuildFromXml
+DLL.SetViewport
+Coretracer.BuildViewport
+DLL.SyncRender
+Coretracer.StartRender
+Camera.Render
+Camera.Render InitialiseRenderQueue
+Camera.Render InitialiseThreads
+Camera.Render Initialise Thread 0
+Camera.Render Initialise Thread 1
+Camera.Render Initialise Thread 2
+Camera.Render Initialise Thread 3
+Camera.Render Initialise Thread 4
+Camera.Render Initialise Thread 5
+Camera.Render Initialise Thread 6
+Thread 0 rendered square at 0, 0
+
+Thread 1 rendered square at 16, 0
+
+Thread 2 rendered square at 32, 0
+
+Thread 3 rendered square at 48, 0
+
+Thread 4 rendered square at 64, 0
+
+Thread 5 rendered square at 80, 0
+
+Thread 6 rendered square at 96, 0
+
+Thread 0 rendered square at 112, 0
+
+Thread 1 rendered square at 128, 0
+
+Sample ray
+Thread 5 rendered square at 192, 0
+
+Thread 2 rendered square at 144, 0
+
+Thread 3 rendered square at 160, 0
+
+Thread 4 rendered square at 176, 0
+
+Thread 0 rendered square at 224, 0
+
+Thread 1 rendered square at 240, 0
+
+Thread 5 rendered square at 256, 0
+
+Thread 2 rendered square at 272, 0
+
+Thread 0 rendered square at 320, 0
+
+Thread 3 rendered square at 288, 0
+Thread 3 rendered square at 288, 0
+
+
+Thread 6 rendered square at 208, 0
+
+Thread 1 rendered square at 0, 16
+
+Thread 5 rendered square at 16, 16
+
+Thread 2 rendered square at 32, 16
+
+Thread 0 rendered square at 48, 16
+
+Thread 3 rendered square at 64, 16
+
+Thread 4 rendered square at 80, 16
+
+Thread 1 rendered square at 112, 16
+
+Thread 6 rendered square at 96, 16
+
+Thread 0 rendered square at 160, 16
+
+Thread 5 rendered square at 128, 16
+
+Thread 2 rendered square at 144, 16
+
+Thread 3 rendered square at 176, 16
+
+Thread 2 rendered square at 272, 16
+
+Thread 4 rendered square at 192, 16
+
+Thread 5 rendered square at 256, 16
+
+Thread 3 rendered square at 288, 16
+
+Thread 1 rendered square at 208, 16
+
+Thread 0 rendered square at 240, 16
+Thread 0 rendered square at 240, 16
+
+
+Thread 6 rendered square at 224, 16
+
+Thread 2 rendered square at 304, 16
+
+Thread 3 rendered square at 0, 32
+Thread 3 rendered square at 0, 32
+
+
+Thread 1 rendered square at 32, 32
+
+Thread 4 rendered square at 48, 32
+
+Thread 6 rendered square at 80, 32
+
+Thread 2 rendered square at 96, 32
+
+Thread 5 rendered square at 128, 32
+
+Thread 1 rendered square at 144, 32
+
+Thread 3 rendered square at 112, 32
+
+Thread 0 rendered square at 64, 32
+
+Thread 4 rendered square at 160, 32
+
+Thread 4 rendered square at 272, 32
+
+Thread 6 rendered square at 176, 32
+
+Thread 2 rendered square at 192, 32
+
+Thread 0 rendered square at 256, 32
+
+Thread 1 rendered square at 224, 32
+
+Thread 5 rendered square at 208, 32
+
+Thread 3 rendered square at 240, 32
+
+Thread 4 rendered square at 288, 32
+
+Thread 2 rendered square at 320, 32
+
+Thread 6 rendered square at 304, 32
+
+Thread 0 rendered square at 06, 48
+
+Thread 0 rendered square at 0, 48
+
+Thread 5 rendered square at 32, 48
+
+Thread 3 rendered square at 48, 48
+
+Thread 4 rendered square at 64, 48
+
+Thread 2 rendered square at 80, 48
+
+Thread 6 rendered square at 96, 48
+
+Thread 0 rendered square at 128, 48
+
+Thread 1 rendered square at 112, 48
+
+Thread 5 rendered square at 144, 48
+
+Thread 3 rendered square at 160, 48
+
+Thread 4 rendered square at 176, 48
+
+Thread 2 rendered square at 192, 48
+
+Thread 6 rendered square at 208, 48
+
+Thread 1 rendered square at 240, 48
+
+Thread 4 rendered square at 288, 48
+
+Thread 6 rendered square at 320, 48
+
+Thread 2 rendered square at 304, 48
+
+Thread 5 rendered square at 256, 48
+
+Thread 0 rendered square at 224, 48
+
+Thread 1 rendered square at 0, 64
+
+Thread 4 rendered square at 16, 64
+
+Thread 3 rendered square at 272, 48
+
+Thread 6 rendered square at 32, 64
+
+Thread 2 rendered square at 48, 64
+
+Thread 1 rendered square at 96, 64
+
+Thread 5 rendered square at 64, 64
+
+Thread 0 rendered square at 80, 64
+
+Thread 4 rendered square at 112, 64
+
+Thread 3 rendered square at 128, 64
+
+Thread 6 rendered square at 144, 64
+
+Thread 5 rendered square at 192, 64
+
+Thread 2 rendered square at 160, 64
+
+Thread 1 rendered square at 176, 64
+
+Thread 4 rendered square at 224, 64
+Thread 3 rendered square at 240, 64
+
+Thread 3 rendered square at 240, 64
+
+
+Thread 1 rendered square at 304, 64
+
+Thread 3 rendered square at 320, 64
+
+Thread 4 rendered square at 0, 80
+
+Thread 5 rendered square at 272, 64
+
+Thread 2 rendered square at 288, 64
+
+Thread 6 rendered square at 256, 64
+
+Thread 0 rendered square at 16, 80
+
+Thread 1 rendered square at 32, 80
+
+Thread 3 rendered square at 48, 80
+
+Thread 4 rendered square at 64, 80
+
+Thread 5 rendered square at 80, 80
+
+Thread 0 rendered square at 128, 80
+
+Thread 2 rendered square at 96, 80
+Thread 2 rendered square at 96, 80
+
+
+Thread 1 rendered square at 144, 80
+
+Thread 3 rendered square at 160, 80
+
+Thread 4 rendered square at 176, 80
+
+Thread 5 rendered square at 192, 80
+
+Thread 0 rendered square at 208, 80
+
+Thread 1 rendered square at 256, 80
+
+Thread 2 rendered square at 240, 80
+Thread 2 rendered square at 240, 80
+
+
+Thread 0 rendered square at 320, 80
+
+Thread 3 rendered square at 272, 80
+
+Thread 1 rendered square at 0, 96
+
+Thread 5 rendered square at 304, 80
+
+Thread 4 rendered square at 288, 80
+
+Thread 2 rendered square at 16, 96
+
+Thread 6 rendered square at 32, 96
+
+Thread 0 rendered square at 48, 96
+
+Thread 5 rendered square at 96, 96
+
+Thread 3 rendered square at 64, 96
+
+Thread 1 rendered square at 80, 96
+
+Thread 4 rendered square at 112, 96
+
+Thread 2 rendered square at 128, 96
+Thread 2 rendered square at 128, 96
+
+
+Thread 0 rendered square at 160, 96
+
+Thread 1 rendered square at 208, 96
+
+Thread 3 rendered square at 192, 96
+
+Thread 5 rendered square at 176, 96
+
+Thread 4 rendered square at 224, 96
+
+Thread 5 rendered square at 320, 96
+
+Thread 2 rendered square at 256, 96
+Thread 2 rendered square at 256, 96
+
+
+Thread 0 rendered square at 272, 96
+
+Thread 3 rendered square at 304, 96
+
+Thread 1 rendered square at 288, 96
+
+Thread 4 rendered square at 0, 112
+
+Thread 5 rendered square at 16, 112
+
+Thread 3 rendered square at 80, 112
+
+Thread 6 rendered square at 48, 112
+
+Thread 2 rendered square at 64, 112
+
+Thread 2 rendered square at 32, 112
+
+Thread 1 rendered square at 96, 112
+
+Thread 4 rendered square at 112, 112
+
+Thread 5 rendered square at 128, 112
+
+Thread 3 rendered square at 144, 112
+
+Thread 0 rendered square at 176, 112
+
+Thread 2 rendered square at 192, 112
+Thread 2 rendered square at 192, 112
+
+
+Thread 1 rendered square at 208, 112
+
+Thread 4 rendered square at 224, 112
+
+Thread 5 rendered square at 240, 112
+
+Thread 1 rendered square at 320, 112
+
+Thread 3 rendered square at 256, 112
+
+Thread 4 rendered square at 0, 128
+
+Thread 0 rendered square at 272, 112
+
+Thread 2 rendered square at 288, 112
+
+Thread 6 rendered square at 304, 112
+
+Thread 5 rendered square at 16, 128
+
+Thread 1 rendered square at 32, 128
+
+Thread 3 rendered square at 48, 128
+
+Thread 4 rendered square at 64, 128
+
+Thread 0 rendered square at 80, 128
+
+Thread 2 rendered square at 96, 128
+
+Thread 6 rendered square at 112, 128
+
+Thread 5 rendered square at 128, 128
+
+Thread 1 rendered square at 144, 128
+
+Thread 3 rendered square at 160, 128
+
+Thread 4 rendered square at 176, 128
+
+Thread 0 rendered square at 192, 128
+
+Thread 6 rendered square at 224, 128
+
+Thread 2 rendered square at 208, 128
+
+Thread 5 rendered square at 240, 128
+
+Thread 6 rendered square at 320, 128
+
+Thread 1 rendered square at 256, 128
+
+Thread 4 rendered square at 288, 128
+
+Thread 3 rendered square at 272, 128
+
+Thread 0 rendered square at 304, 128
+
+Thread 2 rendered square at 0, 144
+
+Thread 5 rendered square at 16, 144
+
+Thread 6 rendered square at 32, 144
+
+Thread 1 rendered square at 48, 144
+
+Thread 4 rendered square at 64, 144
+
+Thread 3 rendered square at 80, 144
+
+Thread 0 rendered square at 96, 144
+
+Thread 2 rendered square at 112, 144
+
+Thread 5 rendered square at 128, 144
+
+Thread 6 rendered square at 144, 144
+
+Thread 1 rendered square at 160, 144
+
+Thread 4 rendered square at 176, 144
+
+Thread 3 rendered square at 192, 144
+
+Thread 0 rendered square at 208, 144
+
+Thread 2 rendered square at 224, 144
+
+Thread 6 rendered square at 240, 144
+Thread 5 rendered square at 240, 144
+Thread 5 rendered square at 240, 144
+
+
+
+Thread 4 rendered square at 288, 144
+
+Thread 1 rendered square at 272, 144
+
+Thread 3 rendered square at 304, 144
+
+Thread 2 rendered square at 0, 160
+
+Thread 6 rendered square at 32, 160
+
+Thread 5 rendered square at 16, 160
+
+Thread 0 rendered square at 48, 160
+
+Thread 4 rendered square at 64, 160
+
+Thread 1 rendered square at 80, 160
+
+Thread 3 rendered square at 96, 160
+
+Thread 2 rendered square at 112, 160
+
+Thread 5 rendered square at 144, 160
+
+Thread 6 rendered square at 128, 160
+
+Thread 0 rendered square at 160, 160
+
+Thread 4 rendered square at 176, 160
+
+Thread 3 rendered square at 208, 160
+
+Thread 1 rendered square at 192, 160
+
+Thread 2 rendered square at 224, 160
+
+Thread 5 rendered square at 240, 160
+
+Thread 6 rendered square at 256, 160
+
+Thread 0 rendered square at 272, 160
+
+Thread 4 rendered square at 288, 160
+
+Thread 1 rendered square at 320, 160
+
+Thread 3 rendered square at 304, 160
+
+Thread 2 rendered square at 0, 176
+
+Thread 5 rendered square at 16, 176
+
+Thread 0 rendered square at 48, 176
+
+Thread 3 rendered square at 96, 176
+
+Thread 6 rendered square at 32, 176
+
+Thread 4 rendered square at 64, 176
+
+Thread 1 rendered square at 80, 176
+
+Thread 5 rendered square at 128, 176
+
+Thread 2 rendered square at 112, 176
+
+Thread 6 rendered square at 176, 176
+
+Thread 0 rendered square at 144, 176
+
+Thread 3 rendered square at 160, 176
+
+Thread 3 rendered square at 160, 176
+
+Thread 1 rendered square at 208, 176
+
+Thread 5 rendered square at 224, 176
+
+Thread 2 rendered square at 240, 176
+
+Thread 1 rendered square at 320, 176
+
+Thread 3 rendered square at 304, 176
+
+Thread 0 rendered square at 272, 176
+
+Thread 6 rendered square at 256, 176
+
+Thread 4 rendered square at 288, 176
+
+Thread 5 rendered square at 0, 192
+
+Thread 3 rendered square at 48, 192
+
+Thread 2 rendered square at 16, 192
+
+Thread 1 rendered square at 32, 192
+
+Thread 6 rendered square at 80, 192
+
+Thread 0 rendered square at 64, 192
+
+Thread 4 rendered square at 96, 192
+
+Thread 5 rendered square at 112, 192
+
+Thread 3 rendered square at 128, 192
+
+Thread 2 rendered square at 144, 192
+
+Thread 1 rendered square at 160, 192
+
+Thread 0 rendered square at 192, 192
+
+Thread 4 rendered square at 208, 192
+
+Thread 6 rendered square at 176, 192
+
+Thread 3 rendered square at 240, 192
+
+Thread 5 rendered square at 224, 192
+
+Thread 6 rendered square at 320, 192
+
+Thread 2 rendered square at 256, 192
+
+Thread 3 rendered square at 0, 208
+
+Thread 1 rendered square at 272, 192
+
+Thread 4 rendered square at 304, 192
+Thread 4 rendered square at 304, 192
+
+
+Thread 5 rendered square at 16, 208
+
+Thread 6 rendered square at 32, 208
+
+Thread 2 rendered square at 48, 208
+
+Thread 3 rendered square at 64, 208
+
+Thread 0 rendered square at 96, 208
+
+Thread 4 rendered square at 112, 208
+
+Thread 5 rendered square at 128, 208
+
+Thread 1 rendered square at 80, 208
+
+Thread 6 rendered square at 144, 208
+
+Thread 2 rendered square at 160, 208
+
+Thread 3 rendered square at 176, 208
+
+Thread 0 rendered square at 192, 208
+
+Thread 4 rendered square at 208, 208
+
+Thread 5 rendered square at 224, 208
+
+Thread 4 rendered square at 320, 208
+
+Thread 6 rendered square at 256, 208
+
+Thread 1 rendered square at 240, 208
+
+Thread 2 rendered square at 272, 208
+
+Thread 5 rendered square at 0, 224
+
+Thread 3 rendered square at 288, 208
+
+Thread 0 rendered square at 304, 208
+
+Thread 4 rendered square at 16, 224
+
+Thread 6 rendered square at 32, 224
+
+Thread 2 rendered square at 64, 224
+
+Thread 5 rendered square at 80, 224
+
+Thread 3 rendered square at 96, 224
+
+Thread 1 rendered square at 48, 224
+
+Thread 0 rendered square at 112, 224
+
+Thread 4 rendered square at 128, 224
+
+Thread 6 rendered square at 144, 224
+
+Thread 2 rendered square at 160, 224
+
+Thread 5 rendered square at 176, 224
+
+Thread 3 rendered square at 192, 224
+
+Thread 1 rendered square at 208, 224
+
+Thread 0 rendered square at 224, 224
+
+Thread 4 rendered square at 240, 224
+
+Thread 1 rendered square at 320, 224
+
+Thread 0 rendered square at 0, 240
+
+Thread 6 rendered square at 256, 224
+
+Thread 3 rendered square at 304, 224
+
+Thread 2 rendered square at 272, 224
+
+Thread 5 rendered square at 288, 224
+
+Thread 4 rendered square at 16, 240
+
+Thread 1 rendered square at 32, 240
+
+Thread 0 rendered square at 48, 240
+
+Thread 3 rendered square at 80, 240
+
+Thread 6 rendered square at 64, 240
+
+Thread 2 rendered square at 96, 240
+
+Thread 5 rendered square at 112, 240
+
+Thread 4 rendered square at 128, 240
+
+Thread 3 rendered square at 176, 240
+
+Thread 0 rendered square at 160, 240
+
+Thread 1 rendered square at 144, 240
+
+Thread 5 rendered square at 224, 240
+
+Thread 6 rendered square at 192, 240
+
+Thread 2 rendered square at 208, 240
+
+Thread 4 rendered square at 240, 240
+
+Thread 6 rendered square at 320, 240
+
+Thread 2 rendered square at 0, 256
+
+Thread 5 rendered square at 304, 240
+
+Thread 1 rendered square at 288, 240
+
+Thread 0 rendered square at 272, 240
+
+Thread 4 rendered square at 16, 256
+
+Thread 3 rendered square at 256, 240
+
+Thread 6 rendered square at 32, 256
+
+Thread 2 rendered square at 48, 256
+
+Thread 4 rendered square at 112, 256
+
+Thread 3 rendered square at 128, 256
+
+Thread 0 rendered square at 96, 256
+
+Thread 5 rendered square at 64, 256
+
+Thread 1 rendered square at 80, 256
+
+Thread 6 rendered square at 144, 256
+
+Thread 3 rendered square at 192, 256
+
+Thread 2 rendered square at 160, 256
+
+Thread 4 rendered square at 176, 256
+
+Thread 0 rendered square at 208, 256
+
+Thread 4 rendered square at 304, 256
+
+Thread 5 rendered square at 224, 256
+
+Thread 0 rendered square at 320, 256
+
+Thread 4 rendered square at 0, 272
+
+Thread 3 rendered square at 272, 256
+
+Thread 5 rendered square at 16, 272
+
+Thread 2 rendered square at 288, 256
+
+Thread 0 rendered square at 32, 272
+
+Thread 1 rendered square at 240, 256
+
+Thread 6 rendered square at 256, 256
+
+Thread 4 rendered square at 48, 272
+
+Thread 5 rendered square at 80, 272
+
+Thread 3 rendered square at 64, 272
+
+Thread 2 rendered square at 96, 272
+
+Thread 1 rendered square at 128, 272
+
+Thread 0 rendered square at 112, 272
+
+Thread 6 rendered square at 144, 272
+
+Thread 3 rendered square at 192, 272
+
+Thread 4 rendered square at 160, 272
+
+Thread 5 rendered square at 176, 272
+
+Thread 4 rendered square at 288, 272
+
+Thread 2 rendered square at 208, 272
+
+Thread 5 rendered square at 304, 272
+
+Thread 0 rendered square at 240, 272
+
+Thread 4 rendered square at 320, 272
+
+Thread 1 rendered square at 224, 272
+
+Thread 6 rendered square at 256, 272
+
+Thread 2 rendered square at 0, 288
+
+Thread 5 rendered square at 16, 288
+
+Thread 3 rendered square at 272, 272
+
+Thread 0 rendered square at 32, 288
+
+Thread 4 rendered square at 48, 288
+
+Thread 1 rendered square at 64, 288
+
+Thread 6 rendered square at 80, 288
+
+Thread 2 rendered square at 96, 288
+
+Thread 3 rendered square at 128, 288
+
+Thread 5 rendered square at 112, 288
+
+Thread 0 rendered square at 144, 288
+
+Thread 4 rendered square at 160, 288
+
+Thread 6 rendered square at 192, 288
+
+Thread 1 rendered square at 176, 288
+
+Thread 2 rendered square at 208, 288
+
+Thread 4 rendered square at 272, 288
+
+Thread 5 rendered square at 240, 288
+
+Thread 0 rendered square at 256, 288
+
+Thread 2 rendered square at 320, 288
+
+Thread 3 rendered square at 224, 288
+
+Thread 1 rendered square at 304, 288
+Thread 1 rendered square at 304, 288
+
+
+Thread 4 rendered square at 0, 304
+
+Thread 5 rendered square at 16, 304
+
+Thread 0 rendered square at 32, 304
+
+Thread 2 rendered square at 48, 304
+
+Thread 3 rendered square at 64, 304
+
+Thread 6 rendered square at 80, 304
+
+Thread 1 rendered square at 96, 304
+
+Thread 4 rendered square at 112, 304
+
+Thread 2 rendered square at 160, 304
+
+Thread 5 rendered square at 128, 304
+
+Thread 0 rendered square at 144, 304
+
+Thread 3 rendered square at 176, 304
+
+Thread 6 rendered square at 192, 304
+
+Thread 5 rendered square at 256, 304
+
+Thread 0 rendered square at 272, 304
+
+Thread 3 rendered square at 288, 304
+
+Thread 2 rendered square at 240, 304
+
+Thread 5 rendered square at 320, 304
+
+Thread 6 rendered square at 304, 304
+
+Thread 4 rendered square at 224, 304
+
+Thread 0 rendered square at 0, 320
+
+Thread 3 rendered square at 16, 320
+
+Thread 1 rendered square at 208, 304
+
+Thread 2 rendered square at 32, 320
+
+Thread 5 rendered square at 48, 320
+
+Thread 6 rendered square at 64, 320
+
+Thread 4 rendered square at 80, 320
+
+Thread 0 rendered square at 96, 320
+
+Thread 3 rendered square at 112, 320
+
+Thread 2 rendered square at 144, 320
+
+Thread 1 rendered square at 128, 320
+
+Thread 5 rendered square at 160, 320
+
+Thread 6 rendered square at 176, 320
+
+Thread 1 rendered square at 256, 320
+
+Thread 4 rendered square at 192, 320
+
+Thread 5 rendered square at 272, 320
+
+Thread 3 rendered square at 224, 320
+
+Thread 2 rendered square at 240, 320
+
+Thread 6 rendered square at 288, 320
+
+Thread 0 rendered square at 208, 320
+
+Thread 4 rendered square at 320, 320
+
+Thread 1 rendered square at 304, 320
+
+Camera.Render ThreadsComplete
+Camera.Render ClearedHandles
+Coretracer.CopyBuffer
+DLL.CopyBuffer
+Coretracer.CopyBuffer
+DLL.InitialiseRender
+Coretracer.BuildFromXml
+DLL.SetViewport
+Coretracer.BuildViewport
+DLL.SyncRender
+Coretracer.StartRender
+Camera.Render
+Camera.Render InitialiseRenderQueue
+Camera.Render InitialiseThreads
+Camera.Render Initialise Thread 0
+Camera.Render Initialise Thread 1
+Camera.Render Initialise Thread 2
+Camera.Render Initialise Thread 3
+Camera.Render Initialise Thread 4
+Camera.Render Initialise Thread 5
+Camera.Render Initialise Thread 6
+Thread 0 rendered square at 0, 0
+
+Thread 1 rendered square at 16, 0
+
+Thread 2 rendered square at 32, 0
+
+Thread 3 rendered square at 48, 0
+
+Thread 4 rendered square at 64, 0
+
+Thread 5 rendered square at 80, 0
+
+Thread 6 rendered square at 96, 0
+
+Thread 0 rendered square at 112, 0
+
+Thread 1 rendered square at 128, 0
+
+Sample ray
+Directional light test rayDirectional light test ray
+
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 0, 0, 0, 0, 256192816, 256114688, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : 0.282952, 0.726339, 0.626395
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : -1
+
+Thread 2 rendered square at 144, 0
+
+Thread 6 rendered square at 208, 0
+
+Thread 4 rendered square at 176, 0
+
+Thread 5 rendered square at 192, 0
+Thread 5 rendered square at 192, 0
+
+
+Thread 1 rendered square at 240, 0
+
+Thread 2 rendered square at 256, 0
+
+Thread 5 rendered square at 320, 0
+
+Thread 6 rendered square at 272, 0
+
+Thread 4 rendered square at 288, 0
+
+Thread 3 rendered square at 304, 0
+
+Thread 1 rendered square at 0, 16
+
+Thread 2 rendered square at 16, 16
+
+Thread 5 rendered square at 32, 16
+
+Thread 6 rendered square at 48, 16
+
+Thread 4 rendered square at 64, 16
+
+Thread 0 rendered square at 224, 0
+
+Thread 3 rendered square at 80, 16
+
+Thread 1 rendered square at 96, 16
+
+Thread 2 rendered square at 112, 16
+
+Thread 5 rendered square at 128, 16
+
+Thread 6 rendered square at 144, 16
+
+Thread 4 rendered square at 160, 16
+
+Thread 6 rendered square at 256, 16
+
+Thread 3 rendered square at 192, 16
+
+Thread 4 rendered square at 272, 16
+
+Thread 5 rendered square at 240, 16
+
+Thread 0 rendered square at 176, 16
+
+Thread 6 rendered square at 288, 16
+
+Thread 4 rendered square at 320, 16
+
+Thread 3 rendered square at 304, 16
+
+Thread 1 rendered square at 208, 16
+
+Thread 2 rendered square at 224, 16
+
+Thread 5 rendered square at 0, 32
+
+Thread 0 rendered square at 16, 32
+
+Thread 6 rendered square at 32, 32
+
+Thread 4 rendered square at 48, 32
+
+Thread 3 rendered square at 64, 32
+
+Thread 1 rendered square at 80, 32
+
+Thread 2 rendered square at 96, 32
+
+Thread 5 rendered square at 112, 32
+
+Thread 0 rendered square at 128, 32
+
+Thread 6 rendered square at 144, 32
+
+Thread 4 rendered square at 160, 32
+
+Thread 4 rendered square at 272, 32
+
+Thread 3 rendered square at 176, 32
+
+Thread 2 rendered square at 208, 32
+
+Thread 1 rendered square at 192, 32
+
+Thread 4 rendered square at 288, 32
+
+Thread 5 rendered square at 224, 32
+
+Thread 3 rendered square at 304, 32
+
+Thread 6 rendered square at 256, 32
+
+Thread 2 rendered square at 320, 32
+
+Thread 0 rendered square at 240, 32
+
+Thread 1 rendered square at 0, 48
+
+Thread 4 rendered square at 16, 48
+
+Thread 5 rendered square at 32, 48
+
+Thread 3 rendered square at 48, 48
+
+Thread 6 rendered square at 64, 48
+
+Thread 2 rendered square at 80, 48
+
+Thread 0 rendered square at 96, 48
+
+Thread 1 rendered square at 112, 48
+
+Thread 4 rendered square at 128, 48
+
+Thread 5 rendered square at 144, 48
+
+Thread 3 rendered square at 160, 48
+
+Thread 0 rendered square at 208, 48
+
+Thread 6 rendered square at 176, 48
+
+Thread 2 rendered square at 192, 48
+
+Thread 4 rendered square at 240, 48
+
+Thread 1 rendered square at 224, 48
+
+Thread 2 rendered square at 320, 48
+
+Thread 6 rendered square at 304, 48
+
+Thread 0 rendered square at 288, 48
+
+Thread 4 rendered square at 0, 64
+
+Thread 5 rendered square at 256, 48
+
+Thread 1 rendered square at 16, 64
+
+Thread 3 rendered square at 272, 48
+
+Thread 2 rendered square at 32, 64
+
+Thread 6 rendered square at 48, 64
+
+Thread 0 rendered square at 64, 64
+
+Thread 4 rendered square at 80, 64
+
+Thread 5 rendered square at 96, 64
+
+Thread 1 rendered square at 112, 64
+
+Thread 3 rendered square at 128, 64
+
+Thread 2 rendered square at 144, 64
+
+Thread 6 rendered square at 160, 64
+
+Thread 4 rendered square at 192, 64
+
+Thread 5 rendered square at 208, 64
+
+Thread 3 rendered square at 240, 64
+
+Thread 1 rendered square at 224, 64
+
+Thread 0 rendered square at 176, 64
+
+Thread 3 rendered square at 320, 64
+
+Thread 5 rendered square at 304, 64
+
+Thread 1 rendered square at 0, 80
+
+Thread 2 rendered square at 256, 64
+
+Thread 6 rendered square at 272, 64
+
+Thread 4 rendered square at 288, 64
+
+Thread 0 rendered square at 16, 80
+
+Thread 3 rendered square at 32, 80
+
+Thread 5 rendered square at 48, 80
+
+Thread 1 rendered square at 64, 80
+
+Thread 2 rendered square at 80, 80
+
+Thread 6 rendered square at 96, 80
+
+Thread 4 rendered square at 112, 80
+
+Thread 0 rendered square at 128, 80
+
+Thread 3 rendered square at 144, 80
+
+Thread 5 rendered square at 160, 80
+
+Thread 1 rendered square at 176, 80
+
+Thread 2 rendered square at 192, 80
+
+Thread 6 rendered square at 208, 80
+
+Thread 4 rendered square at 224, 80
+
+Thread 6 rendered square at 320, 80
+
+Thread 4 rendered square at 0, 96
+
+Thread 2 rendered square at 304, 80
+
+Thread 3 rendered square at 256, 80
+
+Thread 5 rendered square at 272, 80
+
+Thread 1 rendered square at 288, 80
+
+Thread 0 rendered square at 240, 80
+
+Thread 6 rendered square at 16, 96
+
+Thread 4 rendered square at 32, 96
+
+Thread 3 rendered square at 64, 96
+
+Thread 2 rendered square at 48, 96
+
+Thread 5 rendered square at 80, 96
+
+Thread 0 rendered square at 112, 96
+
+Thread 1 rendered square at 96, 96
+
+Thread 2 rendered square at 176, 96
+
+Thread 6 rendered square at 128, 96
+
+Thread 4 rendered square at 144, 96
+
+Thread 3 rendered square at 160, 96
+
+Thread 0 rendered square at 192, 96
+
+Thread 5 rendered square at 208, 96
+
+Thread 1 rendered square at 224, 96
+
+Thread 2 rendered square at 240, 96
+
+Thread 5 rendered square at 320, 96
+
+Thread 4 rendered square at 272, 96
+
+Thread 6 rendered square at 256, 96
+
+Thread 3 rendered square at 288, 96
+
+Thread 1 rendered square at 0, 112
+
+Thread 0 rendered square at 304, 96
+
+Thread 2 rendered square at 16, 112
+
+Thread 4 rendered square at 48, 112
+
+Thread 5 rendered square at 32, 112
+
+Thread 6 rendered square at 64, 112
+
+Thread 3 rendered square at 80, 112
+
+Thread 1 rendered square at 96, 112
+
+Thread 0 rendered square at 112, 112
+
+Thread 2 rendered square at 128, 112
+
+Thread 4 rendered square at 144, 112
+
+Thread 5 rendered square at 160, 112
+
+Thread 6 rendered square at 176, 112
+
+Thread 3 rendered square at 192, 112
+
+Thread 0 rendered square at 224, 112
+
+Thread 1 rendered square at 208, 112
+
+Thread 2 rendered square at 240, 112
+
+Thread 0 rendered square at 320, 112
+
+Thread 3 rendered square at 304, 112
+
+Thread 4 rendered square at 256, 112
+
+Thread 5 rendered square at 272, 112
+Thread 5 rendered square at 272, 112
+
+
+Thread 1 rendered square at 0, 128
+
+Thread 2 rendered square at 16, 128
+
+Thread 0 rendered square at 32, 128
+
+Thread 4 rendered square at 64, 128
+
+Thread 3 rendered square at 48, 128
+
+Thread 6 rendered square at 80, 128
+
+Thread 2 rendered square at 128, 128
+
+Thread 5 rendered square at 96, 128
+
+Thread 1 rendered square at 112, 128
+
+Thread 4 rendered square at 160, 128
+
+Thread 3 rendered square at 176, 128
+
+Thread 6 rendered square at 192, 128
+
+Thread 6 rendered square at 192, 128
+
+Thread 5 rendered square at 224, 128
+
+Thread 1 rendered square at 240, 128
+
+Thread 0 rendered square at 144, 128
+
+Thread 5 rendered square at 320, 128
+
+Thread 3 rendered square at 256, 128
+
+Thread 3 rendered square at 272, 128
+
+Thread 2 rendered square at 288, 128
+Thread 2 rendered square at 288, 128
+
+
+Thread 1 rendered square at 0, 144
+
+Thread 0 rendered square at 16, 144
+
+Thread 5 rendered square at 32, 144
+
+Thread 3 rendered square at 64, 144
+
+Thread 3 rendered square at 64, 144
+
+Thread 6 rendered square at 80, 144
+
+Thread 2 rendered square at 96, 144
+
+Thread 1 rendered square at 112, 144
+
+Thread 5 rendered square at 144, 144
+
+Thread 4 rendered square at 160, 144
+
+Thread 3 rendered square at 176, 144
+
+Thread 6 rendered square at 192, 144
+
+Thread 2 rendered square at 208, 144
+
+Thread 1 rendered square at 224, 144
+
+Thread 0 rendered square at 128, 144
+
+Thread 5 rendered square at 240, 144
+
+Thread 3 rendered square at 272, 144
+
+Thread 4 rendered square at 256, 144
+
+Thread 1 rendered square at 320, 144
+
+Thread 2 rendered square at 304, 144
+
+Thread 6 rendered square at 288, 144
+
+Thread 0 rendered square at 0, 160
+
+Thread 4 rendered square at 48, 160
+
+Thread 5 rendered square at 16, 160
+
+Thread 3 rendered square at 32, 160
+
+Thread 1 rendered square at 64, 160
+
+Thread 6 rendered square at 96, 160
+
+Thread 2 rendered square at 80, 160
+
+Thread 0 rendered square at 112, 160
+
+Thread 4 rendered square at 128, 160
+
+Thread 5 rendered square at 144, 160
+
+Thread 3 rendered square at 160, 160
+
+Thread 1 rendered square at 176, 160
+
+Thread 2 rendered square at 208, 160
+
+Thread 6 rendered square at 192, 160
+
+Thread 0 rendered square at 224, 160
+
+Thread 4 rendered square at 240, 160
+
+Thread 6 rendered square at 320, 160
+
+Thread 5 rendered square at 256, 160
+
+Thread 3 rendered square at 272, 160
+
+Thread 1 rendered square at 288, 160
+
+Thread 2 rendered square at 304, 160
+
+Thread 0 rendered square at 0, 176
+
+Thread 4 rendered square at 16, 176
+
+Thread 6 rendered square at 32, 176
+
+Thread 5 rendered square at 48, 176
+
+Thread 3 rendered square at 64, 176
+
+Thread 1 rendered square at 80, 176
+
+Thread 2 rendered square at 96, 176
+
+Thread 0 rendered square at 112, 176
+
+Thread 4 rendered square at 128, 176
+
+Thread 6 rendered square at 144, 176
+
+Thread 5 rendered square at 160, 176
+
+Thread 3 rendered square at 176, 176
+
+Thread 1 rendered square at 192, 176
+
+Thread 2 rendered square at 208, 176
+
+Thread 0 rendered square at 224, 176
+
+Thread 4 rendered square at 240, 176
+
+Thread 6 rendered square at 256, 176
+
+Thread 5 rendered square at 272, 176
+
+Thread 3 rendered square at 288, 176
+
+Thread 2 rendered square at 320, 176
+
+Thread 1 rendered square at 304, 176
+
+Thread 0 rendered square at 0, 192
+
+Thread 6 rendered square at 32, 192
+
+Thread 5 rendered square at 48, 192
+
+Thread 4 rendered square at 16, 192
+
+Thread 3 rendered square at 64, 192
+
+Thread 2 rendered square at 80, 192
+
+Thread 1 rendered square at 96, 192
+
+Thread 0 rendered square at 112, 192
+
+Thread 5 rendered square at 144, 192
+
+Thread 6 rendered square at 128, 192
+
+Thread 4 rendered square at 160, 192
+
+Thread 3 rendered square at 176, 192
+
+Thread 2 rendered square at 192, 192
+
+Thread 1 rendered square at 208, 192
+
+Thread 5 rendered square at 240, 192
+
+Thread 0 rendered square at 224, 192
+
+Thread 6 rendered square at 256, 192
+
+Thread 4 rendered square at 272, 192
+
+Thread 3 rendered square at 288, 192
+
+Thread 1 rendered square at 320, 192
+Thread 1 rendered square at 320, 192
+
+
+Thread 2 rendered square at 304, 192
+
+Thread 0 rendered square at 16, 208
+
+Thread 6 rendered square at 32, 208
+
+Thread 5 rendered square at 96, 208
+
+Thread 4 rendered square at 48, 208
+
+Thread 3 rendered square at 64, 208
+
+Thread 1 rendered square at 80, 208
+
+Thread 2 rendered square at 112, 208
+
+Thread 6 rendered square at 144, 208
+
+Thread 0 rendered square at 128, 208
+
+Thread 5 rendered square at 160, 208
+
+Thread 4 rendered square at 176, 208
+
+Thread 3 rendered square at 192, 208
+
+Thread 2 rendered square at 224, 208
+
+Thread 1 rendered square at 208, 208
+
+Thread 6 rendered square at 240, 208
+
+Thread 2 rendered square at 320, 208
+
+Thread 1 rendered square at 0, 224
+
+Thread 5 rendered square at 272, 208
+
+Thread 4 rendered square at 288, 208
+
+Thread 3 rendered square at 304, 208
+
+Thread 0 rendered square at 256, 208
+
+Thread 6 rendered square at 16, 224
+
+Thread 2 rendered square at 32, 224
+
+Thread 1 rendered square at 48, 224
+
+Thread 5 rendered square at 64, 224
+
+Thread 4 rendered square at 80, 224
+
+Thread 3 rendered square at 96, 224
+
+Thread 6 rendered square at 128, 224
+
+Thread 2 rendered square at 144, 224
+
+Thread 1 rendered square at 160, 224
+
+Thread 5 rendered square at 176, 224
+
+Thread 4 rendered square at 192, 224
+
+Thread 3 rendered square at 208, 224
+
+Thread 0 rendered square at 112, 224
+
+Thread 0 rendered square at 320, 224
+
+Thread 6 rendered square at 224, 224
+
+Thread 2 rendered square at 240, 224
+
+Thread 3 rendered square at 304, 224
+
+Thread 1 rendered square at 256, 224
+
+Thread 5 rendered square at 272, 224
+
+Thread 0 rendered square at 288, 224
+
+Thread 0 rendered square at 0, 240
+
+Thread 6 rendered square at 16, 240
+
+Thread 3 rendered square at 48, 240
+
+Thread 2 rendered square at 32, 240
+
+Thread 4 rendered square at 96, 240
+
+Thread 5 rendered square at 80, 240
+
+Thread 0 rendered square at 112, 240
+
+Thread 1 rendered square at 64, 240
+
+Thread 6 rendered square at 128, 240
+
+Thread 3 rendered square at 144, 240
+
+Thread 2 rendered square at 160, 240
+
+Thread 5 rendered square at 192, 240
+
+Thread 4 rendered square at 176, 240
+
+Thread 6 rendered square at 240, 240
+
+Thread 0 rendered square at 208, 240
+
+Thread 1 rendered square at 224, 240
+
+Thread 6 rendered square at 320, 240
+
+Thread 4 rendered square at 304, 240
+
+Thread 0 rendered square at 0, 256
+
+Thread 1 rendered square at 16, 256
+
+Thread 2 rendered square at 272, 240
+
+Thread 5 rendered square at 288, 240
+
+Thread 3 rendered square at 256, 240
+
+Thread 6 rendered square at 32, 256
+
+Thread 4 rendered square at 48, 256
+
+Thread 3 rendered square at 128, 256
+
+Thread 5 rendered square at 112, 256
+
+Thread 6 rendered square at 144, 256
+
+Thread 0 rendered square at 64, 256
+
+Thread 2 rendered square at 96, 256
+
+Thread 1 rendered square at 80, 256
+
+Thread 3 rendered square at 176, 256
+
+Thread 4 rendered square at 160, 256
+
+Thread 5 rendered square at 192, 256
+
+Thread 6 rendered square at 208, 256
+
+Thread 5 rendered square at 304, 256
+
+Thread 3 rendered square at 272, 256
+
+Thread 6 rendered square at 320, 256
+
+Thread 4 rendered square at 288, 256
+
+Thread 0 rendered square at 224, 256
+
+Thread 3 rendered square at 16, 272
+
+Thread 5 rendered square at 0, 272
+
+Thread 6 rendered square at 32, 272
+
+Thread 2 rendered square at 240, 256
+
+Thread 1 rendered square at 256, 256
+
+Thread 3 rendered square at 80, 272
+
+Thread 4 rendered square at 48, 272
+
+Thread 6 rendered square at 112, 272
+
+Thread 0 rendered square at 64, 272
+
+Thread 5 rendered square at 96, 272
+
+Thread 1 rendered square at 144, 272
+
+Thread 2 rendered square at 128, 272
+
+Thread 6 rendered square at 192, 272
+
+Thread 3 rendered square at 160, 272
+
+Thread 4 rendered square at 176, 272
+
+Thread 3 rendered square at 288, 272
+
+Thread 4 rendered square at 304, 272
+
+Thread 0 rendered square at 208, 272
+
+Thread 5 rendered square at 224, 272
+
+Thread 3 rendered square at 320, 272
+
+Thread 1 rendered square at 240, 272
+
+Thread 1 rendered square at 240, 272
+
+Thread 0 rendered square at 16, 288
+
+Thread 4 rendered square at 0, 288
+
+Thread 6 rendered square at 272, 272
+
+Thread 5 rendered square at 32, 288
+
+Thread 3 rendered square at 48, 288
+
+Thread 2 rendered square at 64, 288
+
+Thread 1 rendered square at 80, 288
+
+Thread 0 rendered square at 96, 288
+
+Thread 6 rendered square at 128, 288
+
+Thread 4 rendered square at 112, 288
+
+Thread 5 rendered square at 144, 288
+
+Thread 3 rendered square at 160, 288
+
+Thread 2 rendered square at 176, 288
+
+Thread 3 rendered square at 272, 288
+
+Thread 5 rendered square at 256, 288
+
+Thread 6 rendered square at 224, 288
+
+Thread 4 rendered square at 240, 288
+
+Thread 1 rendered square at 192, 288
+
+Thread 3 rendered square at 304, 288
+
+Thread 5 rendered square at 320, 288
+
+Thread 0 rendered square at 208, 288
+
+Thread 6 rendered square at 0, 304
+
+Thread 2 rendered square at 288, 288
+
+Thread 4 rendered square at 16, 304
+
+Thread 3 rendered square at 48, 304
+
+Thread 5 rendered square at 64, 304
+
+Thread 1 rendered square at 32, 304
+
+Thread 0 rendered square at 80, 304
+
+Thread 6 rendered square at 96, 304
+
+Thread 2 rendered square at 112, 304
+
+Thread 4 rendered square at 128, 304
+
+Thread 3 rendered square at 144, 304
+
+Thread 5 rendered square at 160, 304
+
+Thread 1 rendered square at 176, 304
+
+Thread 0 rendered square at 192, 304
+
+Thread 3 rendered square at 256, 304
+
+Thread 4 rendered square at 240, 304
+
+Thread 5 rendered square at 272, 304
+
+Thread 3 rendered square at 320, 304
+
+Thread 1 rendered square at 288, 304
+
+Thread 0 rendered square at 304, 304
+
+Thread 6 rendered square at 208, 304
+
+Thread 4 rendered square at 0, 320
+
+Thread 3 rendered square at 32, 320
+
+Thread 2 rendered square at 224, 304
+
+Thread 5 rendered square at 16, 320
+
+Thread 0 rendered square at 64, 320
+
+Thread 1 rendered square at 48, 320
+
+Thread 6 rendered square at 80, 320
+
+Thread 4 rendered square at 96, 320
+
+Thread 3 rendered square at 112, 320
+
+Thread 2 rendered square at 128, 320
+
+Thread 5 rendered square at 144, 320
+
+Thread 0 rendered square at 160, 320
+Thread 0 rendered square at 160, 320
+
+
+Thread 6 rendered square at 192, 320
+
+Thread 5 rendered square at 256, 320
+
+Thread 4 rendered square at 208, 320
+
+Thread 2 rendered square at 240, 320
+
+Thread 1 rendered square at 288, 320
+
+Thread 0 rendered square at 272, 320
+
+Thread 3 rendered square at 224, 320
+
+Thread 6 rendered square at 304, 320
+
+Thread 5 rendered square at 320, 320
+
+Camera.Render ThreadsComplete
+Camera.Render ClearedHandles
+Coretracer.CopyBuffer
+DLL.CopyBuffer
+Coretracer.CopyBuffer
+DLL.InitialiseRender
+Coretracer.BuildFromXml
+DLL.SetViewport
+Coretracer.BuildViewport
+DLL.SyncRender
+Coretracer.StartRender
+Camera.Render
+Camera.Render InitialiseRenderQueue
+Camera.Render InitialiseThreads
+Camera.Render Initialise Thread 0
+Camera.Render Initialise Thread 1
+Camera.Render Initialise Thread 2
+Camera.Render Initialise Thread 3
+Camera.Render Initialise Thread 4
+Camera.Render Initialise Thread 5
+Camera.Render Initialise Thread 6
+Thread 0 rendered square at 0, 0
+
+Thread 1 rendered square at 16, 0
+
+Thread 2 rendered square at 32, 0
+
+Thread 3 rendered square at 48, 0
+
+Thread 4 rendered square at 64, 0
+
+Thread 5 rendered square at 80, 0
+
+Thread 6 rendered square at 96, 0
+
+Thread 0 rendered square at 112, 0
+
+Thread 6 rendered square at 208, 0
+
+Sample rayShadow test ray
+
+Shadow test rayDirectional light test ray
+
+Directional light test ray
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 349960449, 0, 1053609165, -1086324736, 2, 1065378382, 
+Obj Tested Total: 2
+Ray start : 0.04857, 0.721588, -0.445578
+Ray direction : -0.512452, 0.727051, -0.456934
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 8
+Collision point : -1
+
+KDTree intersect, obj intersected : 2, 
+Obj Tested : 1, 2, 0, 0, 0, 0, 0, 256192816, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : 0.0948846, 0.725501, 0.68165
+Ray recursionRemaining : 3
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : 0.448482
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 0, 0, 0, 0, 0, 256192816, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : 0.282952, 0.726339, 0.626395
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : -1
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 1998219009, 0, 1053609165, -1086324736, 2, 1065378382, 
+Obj Tested Total: 2
+Ray start : -0.0136283, 0.717377, -0.450068
+Ray direction : -0.507566, 0.741504, -0.438803
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 8
+Collision point : -1
+
+
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 347862785, 0, 1053609165, -1086324736, 2, 1065378382, 
+Obj Tested Total: 2
+Ray start : -0.00388152, 0.717062, -0.45041
+Ray direction : -0.518557, 0.723013, -0.456454
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 8
+Collision point : -1
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 338163457, 0, 1053609165, -1086324736, 2, 1065378382, 
+Obj Tested Total: 2
+Ray start : -0.0519925, 0.731863, -0.439927
+Ray direction : -0.527915, 0.733994, -0.427269
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 8
+Collision point : -1
+
+Reflection rayReflection ray
+
+
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 0, 0, 0, 0, 0, 256192816, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : 0.25712, 0.706421, 0.659438
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : -1
+
+
+Thread 2 rendered square at 144, 0
+
+Thread 3 rendered square at 160, 0
+
+Thread 4 rendered square at 176, 0
+
+Thread 5 rendered square at 192, 0
+
+Thread 0 rendered square at 224, 0
+
+Thread 6 rendered square at 240, 0
+
+Thread 2 rendered square at 256, 0
+
+Thread 3 rendered square at 272, 0
+
+Thread 0 rendered square at 320, 0
+
+Thread 5 rendered square at 304, 0
+
+Thread 4 rendered square at 288, 0
+
+Thread 1 rendered square at 128, 0
+
+Thread 6 rendered square at 0, 16
+
+Thread 2 rendered square at 16, 16
+
+Thread 3 rendered square at 32, 16
+
+Thread 0 rendered square at 48, 16
+
+Thread 5 rendered square at 64, 16
+
+Thread 4 rendered square at 80, 16
+
+Thread 1 rendered square at 96, 16
+
+Thread 6 rendered square at 112, 16
+
+Thread 2 rendered square at 128, 16
+
+Thread 3 rendered square at 144, 16
+
+Thread 0 rendered square at 160, 16
+
+Thread 5 rendered square at 176, 16
+
+Thread 3 rendered square at 192, 16
+
+Thread 3 rendered square at 256, 16
+
+Thread 0 rendered square at 272, 16
+
+Thread 5 rendered square at 288, 16
+
+Thread 2 rendered square at 240, 16
+
+Thread 3 rendered square at 320, 16
+
+Thread 4 rendered square at 304, 16
+
+Thread 0 rendered square at 0, 32
+
+Thread 6 rendered square at 224, 16
+
+Thread 5 rendered square at 16, 32
+
+Thread 1 rendered square at 208, 16
+
+Thread 2 rendered square at 32, 32
+
+Thread 3 rendered square at 48, 32
+
+Thread 4 rendered square at 64, 32
+
+Thread 6 rendered square at 96, 32
+
+Thread 0 rendered square at 80, 32
+
+Thread 5 rendered square at 112, 32
+
+Thread 1 rendered square at 128, 32
+
+Thread 3 rendered square at 160, 32
+
+Thread 2 rendered square at 144, 32
+
+Thread 2 rendered square at 272, 32
+
+Thread 4 rendered square at 176, 32
+
+Thread 6 rendered square at 192, 32
+
+Thread 3 rendered square at 256, 32
+
+Thread 2 rendered square at 288, 32
+
+Thread 5 rendered square at 224, 32
+
+Thread 0 rendered square at 208, 32
+
+Thread 1 rendered square at 240, 32
+
+Thread 4 rendered square at 304, 32
+
+Thread 6 rendered square at 320, 32
+
+Thread 3 rendered square at 0, 48
+
+Thread 2 rendered square at 16, 48
+
+Thread 5 rendered square at 32, 48
+
+Thread 6 rendered square at 96, 48
+
+Thread 0 rendered square at 48, 48
+
+Thread 1 rendered square at 64, 48
+
+Thread 4 rendered square at 80, 48
+
+Thread 3 rendered square at 112, 48
+
+Thread 2 rendered square at 128, 48
+
+Thread 5 rendered square at 144, 48
+
+Thread 6 rendered square at 160, 48
+
+Thread 0 rendered square at 176, 48
+
+Thread 3 rendered square at 224, 48
+
+Thread 1 rendered square at 192, 48
+
+Thread 4 rendered square at 208, 48
+
+Thread 1 rendered square at 320, 48
+
+Thread 3 rendered square at 304, 48
+
+Thread 2 rendered square at 240, 48
+
+Thread 0 rendered square at 288, 48
+
+Thread 5 rendered square at 256, 48
+
+Thread 4 rendered square at 0, 64
+
+Thread 1 rendered square at 16, 64
+
+Thread 6 rendered square at 272, 48
+
+Thread 3 rendered square at 32, 64
+
+Thread 2 rendered square at 48, 64
+
+Thread 0 rendered square at 64, 64
+
+Thread 5 rendered square at 80, 64
+
+Thread 4 rendered square at 96, 64
+
+Thread 6 rendered square at 128, 64
+
+Thread 1 rendered square at 112, 64
+
+Thread 3 rendered square at 144, 64
+
+Thread 4 rendered square at 208, 64
+
+Thread 2 rendered square at 160, 64
+
+Thread 0 rendered square at 192, 64
+
+Thread 0 rendered square at 176, 64
+
+Thread 1 rendered square at 240, 64
+
+Thread 6 rendered square at 224, 64
+
+Thread 0 rendered square at 320, 64
+
+Thread 5 rendered square at 304, 64
+
+Thread 1 rendered square at 0, 80
+
+Thread 3 rendered square at 256, 64
+
+Thread 2 rendered square at 288, 64
+
+Thread 4 rendered square at 272, 64
+
+Thread 6 rendered square at 16, 80
+
+Thread 0 rendered square at 32, 80
+
+Thread 5 rendered square at 48, 80
+
+Thread 1 rendered square at 64, 80
+
+Thread 3 rendered square at 80, 80
+
+Thread 2 rendered square at 96, 80
+
+Thread 4 rendered square at 112, 80
+
+Thread 6 rendered square at 128, 80
+
+Thread 0 rendered square at 144, 80
+
+Thread 3 rendered square at 192, 80
+
+Thread 1 rendered square at 176, 80
+Thread 1 rendered square at 176, 80
+
+
+Thread 2 rendered square at 208, 80
+
+Thread 4 rendered square at 224, 80
+
+Thread 6 rendered square at 240, 80
+
+Thread 2 rendered square at 320, 80
+
+Thread 5 rendered square at 304, 80
+
+Thread 3 rendered square at 272, 80
+
+Thread 4 rendered square at 0, 96
+
+Thread 0 rendered square at 256, 80
+
+Thread 1 rendered square at 288, 80
+
+Thread 3 rendered square at 64, 96
+
+Thread 2 rendered square at 16, 96
+
+Thread 6 rendered square at 32, 96
+
+Thread 5 rendered square at 48, 96
+
+Thread 4 rendered square at 80, 96
+
+Thread 0 rendered square at 96, 96
+
+Thread 1 rendered square at 112, 96
+
+Thread 3 rendered square at 128, 96
+
+Thread 6 rendered square at 144, 96
+
+Thread 6 rendered square at 160, 96
+
+Thread 5 rendered square at 176, 96
+
+Thread 4 rendered square at 192, 96
+
+Thread 0 rendered square at 208, 96
+
+Thread 0 rendered square at 320, 96
+
+Thread 1 rendered square at 224, 96
+
+Thread 3 rendered square at 240, 96
+
+Thread 2 rendered square at 256, 96
+
+Thread 5 rendered square at 288, 96
+
+Thread 6 rendered square at 272, 96
+
+Thread 4 rendered square at 304, 96
+
+Thread 0 rendered square at 0, 112
+
+Thread 1 rendered square at 16, 112
+
+Thread 3 rendered square at 32, 112
+
+Thread 2 rendered square at 48, 112
+
+Thread 6 rendered square at 80, 112
+
+Thread 4 rendered square at 96, 112
+
+Thread 5 rendered square at 64, 112
+
+Thread 0 rendered square at 112, 112
+
+Thread 1 rendered square at 128, 112
+
+Thread 3 rendered square at 144, 112
+
+Thread 2 rendered square at 160, 112
+
+Thread 6 rendered square at 176, 112
+
+Thread 4 rendered square at 192, 112
+
+Thread 5 rendered square at 208, 112
+
+Thread 0 rendered square at 224, 112
+
+Thread 5 rendered square at 320, 112
+
+Thread 1 rendered square at 240, 112
+
+Thread 3 rendered square at 256, 112
+
+Thread 2 rendered square at 272, 112
+
+Thread 6 rendered square at 0, 128
+
+Thread 6 rendered square at 288, 112
+
+Thread 4 rendered square at 304, 112
+
+Thread 5 rendered square at 16, 128
+
+Thread 1 rendered square at 32, 128
+
+Thread 3 rendered square at 48, 128
+
+Thread 2 rendered square at 64, 128
+
+Thread 6 rendered square at 96, 128
+
+Thread 0 rendered square at 80, 128
+
+Thread 4 rendered square at 112, 128
+
+Thread 5 rendered square at 128, 128
+
+Thread 1 rendered square at 144, 128
+
+Thread 3 rendered square at 160, 128
+
+Thread 2 rendered square at 176, 128
+
+Thread 6 rendered square at 192, 128
+
+Thread 4 rendered square at 224, 128
+
+Thread 0 rendered square at 208, 128
+
+Thread 4 rendered square at 320, 128
+
+Thread 5 rendered square at 240, 128
+
+Thread 1 rendered square at 256, 128
+
+Thread 2 rendered square at 288, 128
+
+Thread 3 rendered square at 272, 128
+
+Thread 0 rendered square at 0, , 128
+
+Thread 0 rendered square at 0, 144
+
+Thread 4 rendered square at 16, 144
+
+Thread 5 rendered square at 32, 144
+
+Thread 2 rendered square at 64, 144
+
+Thread 6 rendered square at 96, 144
+
+Thread 6 rendered square at 96, 144
+
+Thread 3 rendered square at 80, 144
+
+Thread 0 rendered square at 112, 144
+
+Thread 4 rendered square at 128, 144
+
+Thread 5 rendered square at 144, 144
+
+Thread 2 rendered square at 160, 144
+
+Thread 3 rendered square at 208, 144
+
+Thread 1 rendered square at 176, 144
+
+Thread 6 rendered square at 192, 144
+
+Thread 0 rendered square at 224, 144
+
+Thread 4 rendered square at 240, 144
+
+Thread 5 rendered square at 256, 144
+
+Thread 6 rendered square at 320, 144
+
+Thread 2 rendered square at 272, 144
+
+Thread 3 rendered square at 288, 144
+
+Thread 1 rendered square at 304, 144
+
+Thread 0 rendered square at 0, 160
+
+Thread 4 rendered square at 16, 160
+
+Thread 5 rendered square at 32, 160
+
+Thread 6 rendered square at 48, 160
+
+Thread 2 rendered square at 64, 160
+
+Thread 3 rendered square at 80, 160
+
+Thread 1 rendered square at 96, 160
+
+Thread 0 rendered square at 112, 160
+
+Thread 4 rendered square at 128, 160
+
+Thread 3 rendered square at 192, 160
+
+Thread 5 rendered square at 144, 160
+
+Thread 6 rendered square at 160, 160
+
+Thread 2 rendered square at 176, 160
+
+Thread 4 rendered square at 240, 160
+
+Thread 1 rendered square at 208, 160
+
+Thread 0 rendered square at 224, 160
+
+Thread 3 rendered square at 256, 160
+
+Thread 5 rendered square at 272, 160
+
+Thread 4 rendered square at 320, 160
+
+Thread 6 rendered square at 288, 160
+
+Thread 2 rendered square at 304, 160
+
+Thread 0 rendered square at 16, 176
+
+Thread 1 rendered square at 0, 176
+
+Thread 5 rendered square at 48, 176
+
+Thread 4 rendered square at 64, 176
+
+Thread 3 rendered square at 32, 176
+
+Thread 6 rendered square at 80, 176
+
+Thread 2 rendered square at 96, 176
+
+Thread 0 rendered square at 112, 176
+
+Thread 1 rendered square at 128, 176
+
+Thread 5 rendered square at 144, 176
+
+Thread 4 rendered square at 160, 176
+
+Thread 3 rendered square at 176, 176
+
+Thread 6 rendered square at 192, 176
+
+Thread 2 rendered square at 208, 176
+
+Thread 0 rendered square at 224, 176
+
+Thread 1 rendered square at 240, 176
+
+Thread 4 rendered square at 272, 176
+
+Thread 5 rendered square at 256, 176
+
+Thread 2 rendered square at 320, 176
+
+Thread 3 rendered square at 288, 176
+
+Thread 0 rendered square at 0, 192
+
+Thread 6 rendered square at 304, 176
+
+Thread 1 rendered square at 16, 192
+
+Thread 4 rendered square at 32, 192
+
+Thread 5 rendered square at 48, 192
+
+Thread 3 rendered square at 80, 192
+
+Thread 2 rendered square at 64, 192
+
+Thread 0 rendered square at 96, 192
+
+Thread 6 rendered square at 112, 192
+
+Thread 4 rendered square at 144, 192
+
+Thread 1 rendered square at 128, 192
+
+Thread 5 rendered square at 160, 192
+
+Thread 3 rendered square at 176, 192
+
+Thread 2 rendered square at 192, 192
+
+Thread 0 rendered square at 208, 192
+
+Thread 6 rendered square at 224, 192
+
+Thread 4 rendered square at 240, 192
+
+Thread 1 rendered square at 256, 192
+
+Thread 5 rendered square at 272, 192
+
+Thread 3 rendered square at 288, 192
+
+Thread 2 rendered square at 304, 192
+
+Thread 6 rendered square at 0, 208
+
+Thread 4 rendered square at 16, 208
+
+Thread 0 rendered square at 320, 192
+
+Thread 1 rendered square at 32, 208
+
+Thread 5 rendered square at 48, 208
+
+Thread 3 rendered square at 64, 208
+
+Thread 2 rendered square at 80, 208
+
+Thread 6 rendered square at 96, 208
+
+Thread 4 rendered square at 112, 208
+
+Thread 0 rendered square at 128, 208
+
+Thread 1 rendered square at 144, 208
+
+Thread 5 rendered square at 160, 208
+
+Thread 3 rendered square at 176, 208
+Thread 3 rendered square at 176, 208
+
+
+Thread 6 rendered square at 208, 208
+
+Thread 4 rendered square at 224, 208
+
+Thread 6 rendered square at 320, 208
+
+Thread 0 rendered square at 240, 208
+
+Thread 1 rendered square at 256, 208
+
+Thread 5 rendered square at 272, 208
+
+Thread 4 rendered square at 0, 224
+
+Thread 3 rendered square at 304, 208
+
+Thread 3 rendered square at 288, 208
+
+Thread 6 rendered square at 16, 224
+
+Thread 0 rendered square at 32, 224
+
+Thread 5 rendered square at 64, 224
+
+Thread 4 rendered square at 80, 224
+
+Thread 1 rendered square at 48, 224
+
+Thread 2 rendered square at 96, 224
+
+Thread 3 rendered square at 112, 224
+
+Thread 6 rendered square at 128, 224
+
+Thread 4 rendered square at 176, 224
+
+Thread 0 rendered square at 144, 224
+
+Thread 5 rendered square at 160, 224
+
+Thread 1 rendered square at 192, 224
+
+Thread 3 rendered square at 224, 224
+
+Thread 2 rendered square at 208, 224
+
+Thread 3 rendered square at 320, 224
+
+Thread 2 rendered square at 0, 240
+
+Thread 4 rendered square at 256, 224
+
+Thread 6 rendered square at 240, 224
+
+Thread 0 rendered square at 272, 224
+
+Thread 1 rendered square at 304, 224
+
+Thread 5 rendered square at 288, 224
+
+Thread 3 rendered square at 16, 240
+
+Thread 2 rendered square at 32, 240
+
+Thread 4 rendered square at 48, 240
+
+Thread 0 rendered square at 80, 240
+
+Thread 6 rendered square at 64, 240
+
+Thread 1 rendered square at 96,  240
+
+Thread 1 rendered square at 96, 240
+
+Thread 3 rendered square at 128, 240
+
+Thread 4 rendered square at 160, 240
+
+Thread 2 rendered square at 144, 240
+
+Thread 6 rendered square at 192, 240
+
+Thread 0 rendered square at 176, 240
+
+Thread 1 rendered square at 224, 240
+
+Thread 5 rendered square at 208, 240
+
+Thread 3 rendered square at 240, 240
+
+Thread 1 rendered square at 320, 240
+
+Thread 5 rendered square at 0, 256
+
+Thread 0 rendered square at 304, 240
+
+Thread 4 rendered square at 256, 240
+
+Thread 2 rendered square at 272, 240
+
+Thread 3 rendered square at 16, 256
+
+Thread 6 rendered square at 288, 240
+
+Thread 1 rendered square at 32, 256
+
+Thread 5 rendered square at 48, 256
+
+Thread 3 rendered square at 112, 256
+
+Thread 2 rendered square at 96, 256
+
+Thread 6 rendered square at 128, 256
+
+Thread 4 rendered square at 80, 256
+
+Thread 0 rendered square at 64, 256
+
+Thread 1 rendered square at 144, 256
+
+Thread 5 rendered square at 160, 256
+
+Thread 3 rendered square at 176, 256
+
+Thread 2 rendered square at 192, 256
+
+Thread 4 rendered square at 224, 256
+
+Thread 6 rendered square at 208, 256
+
+Thread 4 rendered square at 320, 256
+
+Thread 2 rendered square at 304, 256
+
+Thread 6 rendered square at 0, 272
+
+Thread 3 rendered square at 288, 256
+
+Thread 4 rendered square at 16, 272
+
+Thread 5 rendered square at 272, 256
+
+Thread 2 rendered square at 32, 272
+
+Thread 1 rendered square at 256, 256
+
+Thread 0 rendered square at 240, 256
+
+Thread 3 rendered square at 64, 272
+
+Thread 6 rendered square at 48, 272
+
+Thread 4 rendered square at 80, 272
+
+Thread 0 rendered square at 144, 272
+
+Thread 1 rendered square at 128, 272
+
+Thread 5 rendered square at 96, 272
+
+Thread 2 rendered square at 112, 272
+
+Thread 3 rendered square at 160, 272
+
+Thread 4 rendered square at 192, 272
+
+Thread 6 rendered square at 176, 272
+
+Thread 4 rendered square at 288, 272
+
+Thread 6 rendered square at 304, 272
+
+Thread 4 rendered square at 320, 272
+
+Thread 0 rendered square at 208, 272
+
+Thread 1 rendered square at 224, 272
+
+Thread 2 rendered square at 256, 272
+
+Thread 5 rendered square at 240, 272
+
+Thread 3 rendered square at 272, 272
+
+Thread 4 rendered square at 0, 288
+Thread 4 rendered square at 0, 288
+
+
+Thread 0 rendered square at 32, 288
+
+Thread 1 rendered square at 48, 288
+
+Thread 2 rendered square at 64, 288
+
+Thread 5 rendered square at 80, 288
+
+Thread 3 rendered square at 96, 288
+
+Thread 4 rendered square at 128, 288
+
+Thread 6 rendered square at 112, 288
+
+Thread 0 rendered square at 144, 288
+
+Thread 1 rendered square at 160, 288
+
+Thread 2 rendered square at 176, 288
+
+Thread 3 rendered square at 208, 288
+
+Thread 5 rendered square at 192, 288
+
+Thread 6 rendered square at 240, 288
+
+Thread 4 rendered square at 224, 288
+
+Thread 3 rendered square at 304, 288
+
+Thread 5 rendered square at 320, 288
+
+Thread 2 rendered square at 288, 288
+
+Thread 1 rendered square at 272, 288
+
+Thread 6 rendered square at 0, 304
+
+Thread 4 rendered square at 16, 304
+
+Thread 5 rendered square at 48, 304
+
+Thread 3 rendered square at 32, 304
+
+Thread 0 rendered square at 256, 288
+
+Thread 2 rendered square at 64, 304
+
+Thread 1 rendered square at 80, 304
+
+Thread 6 rendered square at 96, 304
+
+Thread 4 rendered square at 112, 304
+
+Thread 3 rendered square at 128, 304
+
+Thread 3 rendered square at 144, 304
+
+Thread 2 rendered square at 176, 304
+
+Thread 0 rendered square at 160, 304
+
+Thread 1 rendered square at 192, 304
+
+Thread 3 rendered square at 256, 304
+
+Thread 2 rendered square at 272, 304
+
+Thread 0 rendered square at 288, 304
+
+Thread 3 rendered square at 320, 304
+
+Thread 5 rendered square at 240, 304
+
+Thread 1 rendered square at 304, 304
+
+Thread 2 rendered square at 0, 320
+
+Thread 0 rendered square at 16, 320
+
+Thread 6 rendered square at 208, 304
+
+Thread 4 rendered square at 224, 304
+
+Thread 3 rendered square at 32, 320
+
+Thread 5 rendered square at 48, 320
+
+Thread 1 rendered square at 64, 320
+
+Thread 2 rendered square at 80, 320
+
+Thread 0 rendered square at 96, 320
+
+Thread 6 rendered square at 112, 320
+
+Thread 4 rendered square at 128, 320
+
+Thread 5 rendered square at 160, 320
+
+Thread 1 rendered square at 176, 320
+
+Thread 1 rendered square at 176, 320
+
+Thread 4 rendered square at 240, 320
+
+Thread 5 rendered square at 256, 320
+
+Thread 1 rendered square at 288, 320
+
+Thread 2 rendered square at 192, 320
+
+Thread 3 rendered square at 272, 320
+
+Thread 4 rendered square at 304, 320
+
+Thread 0 rendered square at 208, 320
+
+Thread 6 rendered square at 224, 320
+
+Thread 5 rendered square at 320, 320
+
+Camera.Render ThreadsComplete
+Camera.Render ClearedHandles
+Coretracer.CopyBuffer
+DLL.CopyBuffer
+Coretracer.CopyBuffer
+DLL.InitialiseRender
+Coretracer.BuildFromXml
+DLL.SetViewport
+Coretracer.BuildViewport
+DLL.SyncRender
+Coretracer.StartRender
+Camera.Render
+Camera.Render InitialiseRenderQueue
+Camera.Render InitialiseThreads
+Camera.Render Initialise Thread 0
+Camera.Render Initialise Thread 1
+Camera.Render Initialise Thread 2
+Camera.Render Initialise Thread 3
+Camera.Render Initialise Thread 4
+Camera.Render Initialise Thread 5
+Camera.Render Initialise Thread 6
+Thread 0 rendered square at 0, 0
+
+Thread 1 rendered square at 16, 0
+
+Thread 3 rendered square at 48, 0
+
+Thread 4 rendered square at 64, 0
+
+Thread 6 rendered square at 96, 0
+
+Thread 5 rendered square at 80, 0
+
+Thread 2 rendered square at 32, 0
+
+Thread 0 rendered square at 112, 0
+
+Thread 1 rendered square at 128, 0
+
+Sample rayDirectional light test ray
+Shadow test ray
+
+Thread 2 rendered square at 208, 0
+
+Thread 5 rendered square at 192, 0
+
+Thread 3 rendered square at 144, 0
+
+Thread 6 rendered square at 176, 0
+
+Thread 6 rendered square at 176, 0
+
+Thread 4 rendered square at 160, 0
+
+Thread 1 rendered square at 240, 0
+
+Thread 2 rendered square at 256, 0
+
+Thread 6 rendered square at 320, 0
+
+Thread 3 rendered square at 288, 0
+
+Thread 4 rendered square at 0, 16
+
+Thread 5 rendered square at 272, 0
+
+Thread 0 rendered square at 304, 0
+
+Thread 1 rendered square at 16, 16
+
+Thread 2 rendered square at 32, 16
+
+Thread 6 rendered square at 48, 16
+
+Thread 3 rendered square at 64, 16
+
+Thread 4 rendered square at 80, 16
+
+Thread 5 rendered square at 96, 16
+
+Thread 0 rendered square at 112, 16
+
+Thread 1 rendered square at 128, 16
+
+Thread 2 rendered square at 144, 16
+
+Thread 3 rendered square at 176, 16
+
+Thread 6 rendered square at 160, 16
+
+Thread 3 rendered square at 272, 16
+
+Thread 2 rendered square at 256, 16
+
+Thread 4 rendered square at 192, 16
+
+Thread 6 rendered square at 288, 16
+
+Thread 3 rendered square at 304, 16
+
+Thread 1 rendered square at 240, 16
+
+Thread 2 rendered square at 320, 16
+
+Thread 0 rendered square at 224, 16
+
+Thread 4 rendered square at 0, 32
+
+Thread 6 rendered square at 16, 32
+
+Thread 5 rendered square at 208, 16
+
+Thread 3 rendered square at 32, 32
+
+Thread 1 rendered square at 48, 32
+
+Thread 2 rendered square at 64, 32
+
+Thread 0 rendered square at 80, 32
+
+Thread 4 rendered square at 96, 32
+
+Thread 6 rendered square at 112, 32
+
+Thread 3 rendered square at 144, 32
+
+Thread 5 rendered square at 128, 32
+
+Thread 1 rendered square at 160, 32
+
+Thread 2 rendered square at 176, 32
+
+Thread 1 rendered square at 272, 32
+
+Thread 1 rendered square at 272, 32
+
+Thread 4 rendered square at 208, 32
+
+Thread 6 rendered square at 224, 32
+
+Thread 2 rendered square at 288, 32
+
+Thread 5 rendered square at 256, 32
+
+Thread 1 rendered square at 320, 32
+
+Thread 3 rendered square at 240, 32
+
+Thread 0 rendered square at 304, 32
+
+Thread 4 rendered square at 0, 48
+
+Thread 6 rendered square at 16, 48
+
+Thread 2 rendered square at 32, 48
+
+Thread 5 rendered square at 48, 48
+
+Thread 1 rendered square at 64, 48
+
+Thread 3 rendered square at 80, 48
+
+Thread 0 rendered square at 96, 48
+
+Thread 4 rendered square at 112, 48
+
+Thread 6 rendered square at 128, 48
+
+Thread 2 rendered square at 144, 48
+
+Thread 5 rendered square at 160, 48
+
+Thread 3 rendered square at 192, 48
+
+Thread 1 rendered square at 176, 48
+
+Thread 0 rendered square at 208, 48
+
+Thread 4 rendered square at 224, 48
+
+Thread 6 rendered square at 240, 48
+
+Thread 0 rendered square at 320, 48
+
+Thread 1 rendered square at 304, 48
+
+Thread 3 rendered square at 288, 48
+
+Thread 2 rendered square at 256, 48
+
+Thread 4 rendered square at 0, 64
+
+Thread 6 rendered square at 16, 64
+
+Thread 5 rendered square at 272, 48
+
+Thread 3 rendered square at 64, 64
+
+Thread 0 rendered square at 32, 64
+
+Thread 1 rendered square at 48, 64
+
+Thread 2 rendered square at 80, 64
+
+Thread 4 rendered square at 96, 64
+
+Thread 6 rendered square at 112, 64
+
+Thread 5 rendered square at 128, 64
+
+Thread 3 rendered square at 144, 64
+
+Thread 0 rendered square at 160, 64
+
+Thread 1 rendered square at 176, 64
+
+Thread 2 rendered square at 192, 64
+
+Thread 4 rendered square at 208, 64
+
+Thread 6 rendered square at 224, 64
+
+Thread 4 rendered square at 320, 64
+
+Thread 2 rendered square at 304, 64
+
+Thread 5 rendered square at 240, 64
+
+Thread 6 rendered square at 0, 80
+
+Thread 3 rendered square at 288, 64
+
+Thread 3 rendered square at 256, 64
+
+Thread 0 rendered square at 272, 64
+
+Thread 4 rendered square at 16, 80
+
+Thread 2 rendered square at 32, 80
+
+Thread 5 rendered square at 48, 80
+
+Thread 6 rendered square at 64, 80
+
+Thread 3 rendered square at 96, 80
+
+Thread 1 rendered square at 80, 80
+
+Thread 0 rendered square at 112, 80
+
+Thread 4 rendered square at 128, 80
+
+Thread 2 rendered square at 144, 80
+
+Thread 6 rendered square at 176, 80
+
+Thread 5 rendered square at 160, 80
+
+Thread 3 rendered square at 192, 80
+
+Thread 1 rendered square at 208, 80
+
+Thread 0 rendered square at 224, 80
+
+Thread 4 rendered square at 240, 80
+
+Thread 1 rendered square at 320, 80
+
+Thread 2 rendered square at 256, 80
+
+Thread 3 rendered square at 304, 80
+
+Thread 0 rendered square at 0, 96
+
+Thread 5 rendered square at 288, 80
+
+Thread 6 rendered square at 272, 80
+
+Thread 4 rendered square at 16, 96
+
+Thread 1 rendered square at 32, 96
+
+Thread 2 rendered square at 48, 96
+
+Thread 3 rendered square at 64, 96
+
+Thread 5 rendered square at 96, 96
+
+Thread 6 rendered square at 112, 96
+
+Thread 0 rendered square at 80, 96
+
+Thread 4 rendered square at 128, 96
+
+Thread 1 rendered square at 144, 96
+
+Thread 2 rendered square at 160, 96
+
+Thread 3 rendered square at 176, 96
+
+Thread 5 rendered square at 192, 96
+
+Thread 6 rendered square at 208, 96
+
+Thread 0 rendered square at 224, 96
+
+Thread 4 rendered square at 240, 96
+
+Thread 1 rendered square at 256, 96
+
+Thread 6 rendered square at 320, 96
+
+Thread 2 rendered square at 272, 96
+
+Thread 3 rendered square at 288, 96
+
+Thread 5 rendered square at 304, 96
+
+Thread 4 rendered square at 16, 112
+
+Thread 1 rendered square at 32, 112
+
+Thread 2 rendered square at 64, 112
+
+Thread 3 rendered square at 80, 112
+
+Thread 5 rendered square at 96, 112
+
+Thread 6 rendered square at 48, 112
+
+Thread 0 rendered square at 0, 112
+
+Thread 4 rendered square at 112, 112
+
+Thread 1 rendered square at 128, 112
+
+Thread 2 rendered square at 144, 112
+
+Thread 3 rendered square at 160, 112
+
+Thread 6 rendered square at 192, 112
+
+Thread 5 rendered square at 176, 112
+
+Thread 0 rendered square at 208, 112
+
+Thread 4 rendered square at 224, 112
+
+Thread 0 rendered square at 320, 112
+
+Thread 2 rendered square at 256, 112
+
+Thread 1 rendered square at 240, 112
+
+Thread 3 rendered square at 272, 112
+
+Thread 6 rendered square at 288, 112
+
+Thread 5 rendered square at 304, 112
+
+Thread 4 rendered square at 0, 128
+
+Thread 0 rendered square at 16, 128
+
+Thread 2 rendered square at 32, 128
+
+Thread 1 rendered square at 48, 128
+
+Thread 3 rendered square at 64, 128
+
+Thread 6 rendered square at 80, 128
+
+Thread 5 rendered square at 96, 128
+
+Thread 4 rendered square at 112, 128
+
+Thread 2 rendered square at 144, 128
+
+Thread 0 rendered square at 128, 128
+
+Thread 3 rendered square at 176, 128
+
+Thread 1 rendered square at 160, 128
+
+Thread 6 rendered square at 192, 128
+
+Thread 5 rendered square at 208, 128
+
+Thread 4 rendered square at 224, 128
+
+Thread 2 rendered square at 240, 128
+
+Thread 0 rendered square at 256, 128
+
+Thread 3 rendered square at 272, 128
+
+Thread 5 rendered square at 320, 128
+
+Thread 1 rendered square at 288, 128
+
+Thread 6 rendered square at 304, 128
+
+Thread 4 rendered square at 0, 144
+
+Thread 2 rendered square at 16, 144
+
+Thread 3 rendered square at 48, 144
+
+Thread 0 rendered square at 32, 144
+
+Thread 5 rendered square at 64, 144
+
+Thread 6 rendered square at 96, 144
+
+Thread 6 rendered square at 96, 144
+
+Thread 4 rendered square at 112, 144
+
+Thread 2 rendered square at 128, 144
+
+Thread 3 rendered square at 144, 144
+
+Thread 0 rendered square at 160, 144
+
+Thread 5 rendered square at 176, 144
+
+Thread 6 rendered square at 208, 144
+
+Thread 4 rendered square at 224, 144
+
+Thread 2 rendered square at 240, 144
+
+Thread 1 rendered square at 192, 144
+
+Thread 3 rendered square at 256, 144
+
+Thread 0 rendered square at 272, 144
+
+Thread 4 rendered square at 320, 144
+
+Thread 5 rendered square at 288, 144
+
+Thread 2 rendered square at 0, 160
+
+Thread 6 rendered square at 304, 144
+
+Thread 1 rendered square at 16, 160
+
+Thread 3 rendered square at 32, 160
+
+Thread 0 rendered square at 48, 160
+
+Thread 4 rendered square at 64, 160
+
+Thread 2 rendered square at 96, 160
+
+Thread 5 rendered square at 80, 160
+
+Thread 6 rendered square at 112, 160
+
+Thread 1 rendered square at 128, 160
+
+Thread 3 rendered square at 144, 160
+
+Thread 0 rendered square at 160, 160
+
+Thread 2 rendered square at 192, 160
+
+Thread 4 rendered square at 176, 160
+
+Thread 5 rendered square at 208, 160
+
+Thread 6 rendered square at 224, 160
+
+Thread 3 rendered square at 256, 160
+
+Thread 1 rendered square at 240, 160
+
+Thread 2 rendered square at 288, 160
+
+Thread 5 rendered square at 320, 160
+
+Thread 0 rendered square at 272, 160
+
+Thread 4 rendered square at 304, 160
+
+Thread 6 rendered square at 0, 176
+
+Thread 3 rendered square at 16, 176
+
+Thread 1 rendered square at 32, 176
+
+Thread 5 rendered square at 64, 176
+
+Thread 2 rendered square at 48, 176
+
+Thread 4 rendered square at 96, 176
+
+Thread 3 rendered square at 128, 176
+
+Thread 6 rendered square at 112, 176
+
+Thread 0 rendered square at 80, 176
+
+Thread 1 rendered square at 144, 176
+
+Thread 5 rendered square at 160, 176
+
+Thread 2 rendered square at 176, 176
+
+Thread 4 rendered square at 192, 176
+
+Thread 3 rendered square at 208, 176
+
+Thread 6 rendered square at 224, 176
+
+Thread 1 rendered square at 256, 176
+
+Thread 0 rendered square at 240, 176
+
+Thread 5 rendered square at 272, 176
+
+Thread 2 rendered square at 288, 176
+
+Thread 4 rendered square at 304, 176
+
+Thread 3 rendered square at 320, 176
+
+Thread 6 rendered square at 0, 192
+
+Thread 1 rendered square at 16, 192
+
+Thread 0 rendered square at 32, 192
+
+Thread 5 rendered square at 48, 192
+
+Thread 2 rendered square at 64, 192
+
+Thread 4 rendered square at 80, 192
+
+Thread 3 rendered square at 96, 192
+
+Thread 6 rendered square at 112, 192
+
+Thread 1 rendered square at 128, 192
+
+Thread 5 rendered square at 160, 192
+
+Thread 2 rendered square at 176, 192
+
+Thread 4 rendered square at 192, 192
+
+Thread 3 rendered square at 208, 192
+
+Thread 0 rendered square at 144, 192
+
+Thread 6 rendered square at 224, 192
+
+Thread 1 rendered square at 240, 192
+
+Thread 2 rendered square at 272, 192
+
+Thread 0 rendered square at 320, 192
+
+Thread 5 rendered square at 256, 192
+
+Thread 4 rendered square at 288, 192
+
+Thread 6 rendered square at 0, 208
+
+Thread 3 rendered square at 304, 192
+
+Thread 1 rendered square at 16, 208
+
+Thread 2 rendered square at 32, 208
+
+Thread 0 rendered square at 48, 208
+
+Thread 5 rendered square at 64, 208
+
+Thread 4 rendered square at 80, 208
+
+Thread 3 rendered square at 112, 208
+
+Thread 6 rendered square at 96, 208
+
+Thread 1 rendered square at 128, 208
+
+Thread 2 rendered square at 144, 208
+
+Thread 0 rendered square at 160, 208
+
+Thread 3 rendered square at 208, 208
+
+Thread 4 rendered square at 192, 208
+
+Thread 5 rendered square at 176, 208
+
+Thread 6 rendered square at 224, 208
+
+Thread 5 rendered square at 320, 208
+
+Thread 6 rendered square at 0, 224
+
+Thread 3 rendered square at 288, 208
+
+Thread 2 rendered square at 256, 208
+
+Thread 1 rendered square at 240, 208
+
+Thread 0 rendered square at 272, 208
+
+Thread 4 rendered square at 304, 208
+
+Thread 5 rendered square at 16, 224
+
+Thread 3 rendered square at 48, 224
+
+Thread 6 rendered square at 32, 224
+
+Thread 2 rendered square at 64, 224
+
+Thread 0 rendered square at 96, 224
+
+Thread 1 rendered square at 80, 224
+
+Thread 4 rendered square at 112, 224
+
+Thread 5 rendered square at 128, 224
+
+Thread 3 rendered square at 144, 224
+
+Thread 6 rendered square at 160, 224
+
+Thread 2 rendered square at 176, 224
+
+Thread 1 rendered square at 208, 224
+
+Thread 0 rendered square at 192, 224
+
+Thread 4 rendered square at 224, 224
+
+Thread 0 rendered square at 320, 224
+
+Thread 4 rendered square at 0, 240
+
+Thread 3 rendered square at 256, 224
+
+Thread 5 rendered square at 240, 224
+
+Thread 2 rendered square at 288, 224
+
+Thread 1 rendered square at 304, 224
+
+Thread 6 rendered square at 272, 224
+
+Thread 0 rendered square at 16, 240
+
+Thread 3 rendered square at 48, 240
+
+Thread 4 rendered square at 32, 240
+
+Thread 2 rendered square at 80, 240
+
+Thread 1 rendered square at 96, 240
+
+Thread 6 rendered square at 112, 240
+
+Thread 5 rendered square at 64, 240
+
+Thread 0 rendered square at 128, 240
+
+Thread 3 rendered square at 144, 240
+
+Thread 4 rendered square at 160, 240
+
+Thread 2 rendered square at 176, 240
+
+Thread 6 rendered square at 208, 240
+
+Thread 1 rendered square at 192, 240
+
+Thread 5 rendered square at 224, 240
+
+Thread 0 rendered square at 240, 240
+
+Thread 1 rendered square at 320, 240
+
+Thread 3 rendered square at 256, 240
+
+Thread 5 rendered square at 0, 256
+
+Thread 6 rendered square at 304, 240
+
+Thread 4 rendered square at 272, 240
+
+Thread 2 rendered square at 288, 240
+
+Thread 0 rendered square at 16, 256
+
+Thread 1 rendered square at 32, 256
+
+Thread 3 rendered square at 48, 256
+
+Thread 2 rendered square at 112, 256
+
+Thread 4 rendered square at 96, 256
+
+Thread 0 rendered square at 128, 256
+
+Thread 5 rendered square at 64, 256
+
+Thread 1 rendered square at 144, 256
+
+Thread 6 rendered square at 80, 256
+
+Thread 3 rendered square at 160, 256
+
+Thread 2 rendered square at 176, 256
+
+Thread 4 rendered square at 192, 256
+
+Thread 4 rendered square at 304, 256
+
+Thread 5 rendered square at 224, 256
+
+Thread 2 rendered square at 288, 256
+
+Thread 4 rendered square at 320, 256
+
+Thread 0 rendered square at 208, 256
+
+Thread 3 rendered square at 272, 256
+
+Thread 5 rendered square at 0, 272
+
+Thread 1 rendered square at 240, 256
+
+Thread 2 rendered square at 16, 272
+
+Thread 6 rendered square at 256, 256
+
+Thread 4 rendered square at 32, 272
+
+Thread 0 rendered square at 48, 272
+
+Thread 3 rendered square at 64, 272
+
+Thread 5 rendered square at 80, 272
+
+Thread 1 rendered square at 96, 272
+
+Thread 2 rendered square at 112, 272
+
+Thread 4 rendered square at 144, 272
+
+Thread 6 rendered square at 128, 272
+
+Thread 0 rendered square at 160, 272
+
+Thread 3 rendered square at 176, 272
+
+Thread 5 rendered square at 192, 272
+
+Thread 4 rendered square at 240, 272
+
+Thread 1 rendered square at 208, 272
+
+Thread 3 rendered square at 288, 272
+
+Thread 2 rendered square at 224, 272
+
+Thread 6 rendered square at 256, 272
+
+Thread 5 rendered square at 304, 272
+
+Thread 4 rendered square at 320, 272
+
+Thread 1 rendered square at 0, 288
+
+Thread 3 rendered square at 16, 288
+
+Thread 0 rendered square at 272, 272
+
+Thread 2 rendered square at 32, 288
+
+Thread 6 rendered square at 48, 288
+
+Thread 4 rendered square at 80, 288
+
+Thread 5 rendered square at 64, 288
+
+Thread 1 rendered square at 96, 288
+
+Thread 3 rendered square at 112, 288
+
+Thread 2 rendered square at 144, 288
+
+Thread 0 rendered square at 128, 288
+
+Thread 6 rendered square at 160, 288
+
+Thread 4 rendered square at 176, 288
+
+Thread 5 rendered square at 192, 288
+
+Thread 5 rendered square at 304, 288
+
+Thread 3 rendered square at 208, 288
+
+Thread 3 rendered square at 224, 288
+
+Thread 6 rendered square at 272, 288
+Thread 6 rendered square at 272, 288
+
+
+Thread 2 rendered square at 240, 288
+
+Thread 5 rendered square at 320, 288
+
+Thread 0 rendered square at 256, 288
+
+Thread 1 rendered square at 0, 304
+
+Thread 3 rendered square at 16, 304
+
+Thread 4 rendered square at 32, 304
+
+Thread 2 rendered square at 64, 304
+
+Thread 6 rendered square at 48, 304
+
+Thread 5 rendered square at 80, 304
+
+Thread 0 rendered square at 96, 304
+
+Thread 4 rendered square at 144, 304
+
+Thread 1 rendered square at 112, 304
+
+Thread 3 rendered square at 128, 304
+
+Thread 2 rendered square at 160, 304
+
+Thread 6 rendered square at 176, 304
+
+Thread 5 rendered square at 192, 304
+
+Thread 3 rendered square at 256, 304
+
+Thread 1 rendered square at 240, 304
+
+Thread 2 rendered square at 272, 304
+
+Thread 6 rendered square at 288, 304
+
+Thread 3 rendered square at 320, 304
+
+Thread 4 rendered square at 224, 304
+
+Thread 5 rendered square at 304, 304
+
+Thread 1 rendered square at 0, 320
+
+Thread 0 rendered square at 208, 304
+
+Thread 2 rendered square at 16, 320
+
+Thread 6 rendered square at 32, 320
+
+Thread 3 rendered square at 48, 320
+
+Thread 4 rendered square at 64, 320
+
+Thread 5 rendered square at 80, 320
+
+Thread 1 rendered square at 96, 320
+
+Thread 0 rendered square at 112, 320
+
+Thread 3 rendered square at 160, 320
+
+Thread 2 rendered square at 128, 320
+
+Thread 4 rendered square at 176, 320
+
+Thread 6 rendered square at 144, 320
+
+Thread 2 rendered square at 256, 320
+
+Thread 5 rendered square at 192, 320
+
+Thread 3 rendered square at 240, 320
+
+Thread 6 rendered square at 288, 320
+
+Thread 4 rendered square at 272, 320
+
+Thread 1 rendered square at 208, 320
+
+Thread 5 rendered square at 320, 320
+
+Thread 0 rendered square at 224, 320
+
+Thread 2 rendered square at 304, 320
+
+Camera.Render ThreadsComplete
+Camera.Render ClearedHandles
+Coretracer.CopyBuffer
+DLL.CopyBuffer
+Coretracer.CopyBuffer
+DLL.InitialiseRender
+Coretracer.BuildFromXml
+DLL.SetViewport
+Coretracer.BuildViewport
+DLL.SyncRender
+Coretracer.StartRender
+Camera.Render
+Camera.Render InitialiseRenderQueue
+Camera.Render InitialiseThreads
+Camera.Render Initialise Thread 0
+Camera.Render Initialise Thread 1
+Camera.Render Initialise Thread 2
+Camera.Render Initialise Thread 3
+Camera.Render Initialise Thread 4
+Camera.Render Initialise Thread 5
+Camera.Render Initialise Thread 6
+Thread 0 rendered square at 0, 0
+
+Thread 1 rendered square at 16, 0
+
+Thread 2 rendered square at 32, 0
+
+Thread 3 rendered square at 48, 0
+
+Thread 4 rendered square at 64, 0
+
+Thread 5 rendered square at 80, 0
+
+Thread 6 rendered square at 96, 0
+
+Thread 0 rendered square at 112, 0
+
+Thread 1 rendered square at 128, 0
+
+Sample ray
+Reflection ray
+KDTree intersect, obj intersected : 2, 
+Obj Tested : 1, 2, 0, 0, 0, 0, 0, 256192816, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : -0.0785223, 0.726439, 0.68273
+Ray recursionRemaining : 3
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : 0.445536
+
+Shadow test ray
+Directional light test ray
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 0, 0, 0, 0, 0, 0, 
+Obj Tested Total: 2
+Ray start : 0.097165, 0.748548, -0.422827
+Ray direction : 0.269948, 0.885795, 0.377486
+Ray recursionRemaining : 2
+Ray importance : 0.583851
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : -1
+
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 1998219009, 0, 1053609165, -1086324736, 2, 1065378382, 
+Obj Tested Total: 2
+Ray start : 0.0336958, 0.730322, -0.442512
+Ray direction : -0.527198, 0.722179, -0.447794
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 8
+Collision point : -1
+
+Thread 6 rendered square at 208, 0
+
+Thread 2 rendered square at 144, 0
+
+Thread 4 rendered square at 176, 0
+
+Thread 5 rendered square at 192, 0
+
+Thread 3 rendered square at 160, 0
+
+Thread 1 rendered square at 240, 0
+
+Thread 6 rendered square at 256, 0
+
+Thread 2 rendered square at 272, 0
+
+Thread 5 rendered square at 304, 0
+
+Thread 4 rendered square at 288, 0
+
+Thread 1 rendered square at 0, 16
+
+Thread 6 rendered square at 16, 16
+
+Thread 2 rendered square at 32, 16
+
+Thread 0 rendered square at 224, 0
+
+Thread 5 rendered square at 48, 16
+
+Thread 4 rendered square at 64, 16
+
+Thread 3 rendered square at 320, 0
+
+Thread 1 rendered square at 80, 16
+
+Thread 6 rendered square at 96, 16
+
+Thread 4 rendered square at 160, 16
+
+Thread 5 rendered square at 144, 16
+
+Thread 3 rendered square at 176, 16
+
+Thread 0 rendered square at 128, 16
+
+Thread 2 rendered square at 112, 16
+
+Thread 0 rendered square at 272, 16
+
+Thread 3 rendered square at 256, 16
+
+Thread 1 rendered square at 192, 16
+
+Thread 5 rendered square at 240, 16
+
+Thread 6 rendered square at 208, 16
+
+Thread 2 rendered square at 288, 16
+
+Thread 3 rendered square at 320, 16
+
+Thread 4 rendered square at 224, 16
+
+Thread 1 rendered square at 0, 32
+
+Thread 0 rendered square at 304, 16
+
+Thread 5 rendered square at 16, 32
+
+Thread 6 rendered square at 32, 32
+
+Thread 2 rendered square at 48, 32
+
+Thread 3 rendered square at 64, 32
+
+Thread 4 rendered square at 80, 32
+
+Thread 0 rendered square at 112, 32
+
+Thread 1 rendered square at 96, 32
+
+Thread 5 rendered square at 128, 32
+
+Thread 6 rendered square at 144, 32
+
+Thread 2 rendered square at 160, 32
+
+Thread 2 rendered square at 272, 32
+
+Thread 3 rendered square at 176, 32
+
+Thread 4 rendered square at 192, 32
+
+Thread 6 rendered square at 256, 32
+
+Thread 1 rendered square at 224, 32
+
+Thread 5 rendered square at 240, 32
+
+Thread 2 rendered square at 288, 32
+
+Thread 0 rendered square at 208, 32
+
+Thread 4 rendered square at 320, 32
+
+Thread 3 rendered square at 304, 32
+
+Thread 6 rendered square at 0, 48
+
+Thread 1 rendered square at 16, 48
+
+Thread 5 rendered square at 32, 48
+
+Thread 2 rendered square at 48, 48
+
+Thread 0 rendered square at 80, 48
+
+Thread 0 rendered square at 64, 48
+
+Thread 3 rendered square at 96, 48
+
+Thread 6 rendered square at 112, 48
+
+Thread 1 rendered square at 128, 48
+
+Thread 5 rendered square at 144, 48
+
+Thread 2 rendered square at 160, 48
+
+Thread 4 rendered square at 176, 48
+
+Thread 3 rendered square at 208, 48
+
+Thread 0 rendered square at 192, 48
+
+Thread 6 rendered square at 224, 48
+
+Thread 1 rendered square at 240, 48
+
+Thread 0 rendered square at 320, 48
+
+Thread 3 rendered square at 304, 48
+
+Thread 5 rendered square at 256, 48
+
+Thread 4 rendered square at 288, 48
+
+Thread 6 rendered square at 0, 64
+
+Thread 1 rendered square at 16, 64
+
+Thread 2 rendered square at 272, 48
+
+Thread 3 rendered square at 48, 64
+
+Thread 0 rendered square at 32, 64
+
+Thread 4 rendered square at 80, 64
+
+Thread 5 rendered square at 64, 64
+
+Thread 6 rendered square at 96, 64
+
+Thread 1 rendered square at 112, 64
+
+Thread 2 rendered square at 128, 64
+
+Thread 3 rendered square at 144, 64
+
+Thread 0 rendered square at 160, 64
+
+Thread 4 rendered square at 176, 64
+
+Thread 5 rendered square at 192, 64
+
+Thread 6 rendered square at 208, 64
+
+Thread 6 rendered square at 320, 64
+
+Thread 1 rendered square at 224, 64
+
+Thread 5 rendered square at 304, 64
+
+Thread 2 rendered square at 240, 64
+
+Thread 3 rendered square at 256, 64
+
+Thread 6 rendered square at 0, 80
+
+Thread 4 rendered square at 288, 64
+
+Thread 0 rendered square at 272, 64
+
+Thread 1 rendered square at 16, 80
+
+Thread 5 rendered square at 32, 80
+
+Thread 2 rendered square at 48, 80
+
+Thread 3 rendered square at 64, 80
+
+Thread 6 rendered square at 80, 80
+
+Thread 4 rendered square at 96, 80
+
+Thread 0 rendered square at 112, 80
+
+Thread 1 rendered square at 128, 80
+
+Thread 5 rendered square at 144, 80
+
+Thread 2 rendered square at 160, 80
+
+Thread 3 rendered square at 176, 80
+
+Thread 6 rendered square at 192, 80
+
+Thread 4 rendered square at 208, 80
+
+Thread 0 rendered square at 224, 80
+
+Thread 4 rendered square at 320, 80
+
+Thread 6 rendered square at 304, 80
+
+Thread 3 rendered square at 288, 80
+Thread 3 rendered square at 288, 80
+
+
+Thread 5 rendered square at 256, 80
+
+Thread 2 rendered square at 272, 80
+
+Thread 0 rendered square at 0, 96
+
+Thread 4 rendered square at 16, 96
+
+Thread 6 rendered square at 64, 96
+
+Thread 6 rendered square at 32, 96
+
+Thread 1 rendered square at 48, 96
+
+Thread 5 rendered square at 80, 96
+
+Thread 2 rendered square at 96, 96
+
+Thread 0 rendered square at 112, 96
+
+Thread 4 rendered square at 128, 96
+
+Thread 1 rendered square at 176, 96
+
+Thread 6 rendered square at 160, 96
+
+Thread 3 rendered square at 144, 96
+
+Thread 5 rendered square at 192, 96
+
+Thread 2 rendered square at 208, 96
+
+Thread 4 rendered square at 240, 96
+
+Thread 0 rendered square at 224, 96
+
+Thread 2 rendered square at 320, 96
+
+Thread 3 rendered square at 288, 96
+
+Thread 4 rendered square at 0, 112
+
+Thread 6 rendered square at 272, 96
+
+Thread 1 rendered square at 256, 96
+
+Thread 5 rendered square at 304, 96
+
+Thread 0 rendered square at 16, 112
+
+Thread 2 rendered square at 32, 112
+
+Thread 3 rendered square at 48, 112
+
+Thread 4 rendered square at 64, 112
+
+Thread 1 rendered square at 96, 112
+
+Thread 6 rendered square at 80, 112
+
+Thread 5 rendered square at 112, 112
+
+Thread 2 rendered square at 144, 112
+
+Thread 0 rendered square at 128, 112
+
+Thread 3 rendered square at 160, 112
+
+Thread 6 rendered square at 208, 112
+
+Thread 4 rendered square at 176, 112
+
+Thread 1 rendered square at 192, 112
+
+Thread 5 rendered square at 224, 112
+
+Thread 0 rendered square at 256, 112
+
+Thread 2 rendered square at 240, 112
+
+Thread 1 rendered square at 320, 112
+
+Thread 3 rendered square at 272, 112
+
+Thread 5 rendered square at 0, 128
+
+Thread 6 rendered square at 288, 112
+
+Thread 4 rendered square at 304, 112
+
+Thread 0 rendered square at 16, 128
+
+Thread 2 rendered square at 32, 128
+
+Thread 1 rendered square at 48, 128
+
+Thread 3 rendered square at 64, 128
+
+Thread 6 rendered square at 96, 128
+
+Thread 6 rendered square at 96, 128
+
+Thread 4 rendered square at 112, 128
+
+Thread 2 rendered square at 144, 128
+
+Thread 0 rendered square at 128, 128
+
+Thread 1 rendered square at 160, 128
+
+Thread 3 rendered square at 176, 128
+
+Thread 5 rendered square at 192, 128
+
+Thread 6 rendered square at 208, 128
+
+Thread 4 rendered square at 224, 128
+
+Thread 2 rendered square at 240, 128
+
+Thread 0 rendered square at 256, 128
+
+Thread 1 rendered square at 272, 128
+
+Thread 6 rendered square at 320, 128
+
+Thread 3 rendered square at 288, 128
+
+Thread 4 rendered square at 0, 144
+
+Thread 5 rendered square at 304, 128
+
+Thread 2 rendered square at 16, 144
+
+Thread 1 rendered square at 48, 144
+
+Thread 6 rendered square at 64, 144
+
+Thread 3 rendered square at 80, 144
+
+Thread 4 rendered square at 96, 144
+
+Thread 5 rendered square at 112, 144
+
+Thread 2 rendered square at 128, 144
+
+Thread 0 rendered square at 32, 144
+
+Thread 1 rendered square at 144, 144
+
+Thread 6 rendered square at 160, 144
+
+Thread 3 rendered square at 176, 144
+
+Thread 4 rendered square at 192, 144
+
+Thread 5 rendered square at 208, 144
+
+Thread 2 rendered square at 224, 144
+
+Thread 0 rendered square at 240, 144
+
+Thread 6 rendered square at 272, 144
+
+Thread 1 rendered square at 256, 144
+
+Thread 5 rendered square at 320, 144
+
+Thread 3 rendered square at 288, 144
+
+Thread 4 rendered square at 304, 144
+
+Thread 2 rendered square at 0, 160
+
+Thread 0 rendered square at 16, 160
+
+Thread 6 rendered square at 32, 160
+
+Thread 1 rendered square at 48, 160
+
+Thread 3 rendered square at 64, 160
+
+Thread 3 rendered square at 80, 160
+
+Thread 4 rendered square at 96, 160
+
+Thread 2 rendered square at 112, 160
+
+Thread 3 rendered square at 192, 160
+
+Thread 6 rendered square at 144, 160
+
+Thread 0 rendered square at 128, 160
+
+Thread 1 rendered square at 160, 160
+
+Thread 5 rendered square at 176, 160
+
+Thread 4 rendered square at 208, 160
+
+Thread 3 rendered square at 240, 160
+
+Thread 2 rendered square at 224, 160
+
+Thread 4 rendered square at 320, 160
+
+Thread 6 rendered square at 256, 160
+Thread 6 rendered square at 256, 160
+
+
+Thread 1 rendered square at 288, 160
+
+Thread 5 rendered square at 304, 160
+
+Thread 3 rendered square at 0, 176
+
+Thread 2 rendered square at 16, 176
+
+Thread 4 rendered square at 32, 176
+
+Thread 6 rendered square at 64, 176
+
+Thread 0 rendered square at 48, 176
+
+Thread 1 rendered square at 80, 176
+
+Thread 5 rendered square at 96, 176
+
+Thread 3 rendered square at 112, 176
+
+Thread 2 rendered square at 128, 176
+
+Thread 6 rendered square at 160, 176
+
+Thread 4 rendered square at 144, 176
+
+Thread 0 rendered square at 176, 176
+
+Thread 1 rendered square at 192, 176
+
+Thread 5 rendered square at 208, 176
+
+Thread 3 rendered square at 224, 176
+
+Thread 2 rendered square at 240, 176
+
+Thread 5 rendered square at 320, 176
+
+Thread 6 rendered square at 256, 176
+
+Thread 4 rendered square at 272, 176
+
+Thread 3 rendered square at 0, 192
+
+Thread 3 rendered square at 0, 192
+
+Thread 1 rendered square at 304, 176
+
+Thread 2 rendered square at 16, 192
+
+Thread 5 rendered square at 32, 192
+
+Thread 6 rendered square at 48, 192
+
+Thread 3 rendered square at 96, 192
+
+Thread 4 rendered square at 64, 192
+
+Thread 1 rendered square at 112, 192
+
+Thread 0 rendered square at 80, 192
+
+Thread 2 rendered square at 128, 192
+
+Thread 5 rendered square at 176, 192
+
+Thread 5 rendered square at 144, 192
+
+Thread 6 rendered square at 160, 192
+
+Thread 4 rendered square at 192, 192
+
+Thread 1 rendered square at 208, 192
+
+Thread 0 rendered square at 224, 192
+
+Thread 2 rendered square at 240, 192
+
+Thread 1 rendered square at 320, 192
+
+Thread 0 rendered square at 0, 20892
+Thread 0 rendered square at 0, 208
+ 
+Thread 0 rendered square at 0, 208
+
+
+
+Thread 6 rendered square at 288, 192
+
+Thread 4 rendered square at 304, 192
+
+Thread 2 rendered square at 16, 208
+
+Thread 3 rendered square at 80, 208
+
+Thread 1 rendered square at 32, 208
+
+Thread 6 rendered square at 96, 208
+
+Thread 5 rendered square at 48, 208
+
+Thread 0 rendered square at 64, 208
+
+Thread 4 rendered square at 112, 208
+
+Thread 2 rendered square at 128, 208
+
+Thread 3 rendered square at 144, 208
+
+Thread 1 rendered square at 160, 208
+
+Thread 5 rendered square at 192, 208
+
+Thread 6 rendered square at 176, 208
+
+Thread 0 rendered square at 208, 208
+
+Thread 4 rendered square at 224, 208
+
+Thread 2 rendered square at 240, 208
+Thread 2 rendered square at 240, 208
+
+
+Thread 3 rendered square at 256, 208
+
+Thread 4 rendered square at 0, 224
+
+Thread 1 rendered square at 272, 208
+
+Thread 6 rendered square at 304, 208
+
+Thread 5 rendered square at 288, 208
+
+Thread 3 rendered square at 48, 224
+
+Thread 2 rendered square at 16, 224
+
+Thread 4 rendered square at 64, 224
+
+Thread 0 rendered square at 32, 224
+
+Thread 1 rendered square at 80, 224
+
+Thread 6 rendered square at 96, 224
+
+Thread 5 rendered square at 112, 224
+
+Thread 3 rendered square at 128, 224
+
+Thread 2 rendered square at 144, 224
+
+Thread 4 rendered square at 160, 224
+
+Thread 0 rendered square at 176, 224
+
+Thread 6 rendered square at 208, 224
+
+Thread 6 rendered square at 208, 224
+
+Thread 5 rendered square at 224, 224
+
+Thread 6 rendered square at 320, 224
+
+Thread 3 rendered square at 240, 224
+
+Thread 5 rendered square at 0, 240
+
+Thread 2 rendered square at 256, 224
+
+Thread 4 rendered square at 272, 224
+
+Thread 0 rendered square at 288, 224
+
+Thread 1 rendered square at 304, 224
+
+Thread 6 rendered square at 16, 240
+
+Thread 3 rendered square at 32, 240
+
+Thread 5 rendered square at 48, 240
+
+Thread 4 rendered square at 80, 240
+
+Thread 0 rendered square at 96, 240
+
+Thread 2 rendered square at 64, 240
+
+Thread 1 rendered square at 112, 240
+
+Thread 6 rendered square at 128, 240
+
+Thread 3 rendered square at 144, 240
+
+Thread 5 rendered square at 160, 240
+
+Thread 4 rendered square at 176, 240
+
+Thread 2 rendered square at 208, 240
+
+Thread 1 rendered square at 224, 240
+
+Thread 0 rendered square at 192, 240
+
+Thread 6 rendered square at 240, 240
+
+Thread 1 rendered square at 320, 240
+
+Thread 0 rendered square at 0, 256
+
+Thread 2 rendered square at 304, 240
+
+Thread 6 rendered square at 16, 256
+
+Thread 5 rendered square at 272, 240
+
+Thread 3 rendered square at 256, 240
+
+Thread 4 rendered square at 288, 240
+
+Thread 1 rendered square at 32, 256
+
+Thread 0 rendered square at 48, 256
+
+Thread 3 rendered square at 128, 256
+
+Thread 4 rendered square at 112, 256
+
+Thread 5 rendered square at 96, 256
+
+Thread 2 rendered square at 64, 256
+
+Thread 1 rendered square at 144, 256
+
+Thread 6 rendered square at 80, 256
+
+Thread 0 rendered square at 160, 256
+
+Thread 3 rendered square at 176, 256
+
+Thread 4 rendered square at 192, 256
+
+Thread 5 rendered square at 208, 256
+
+Thread 4 rendered square at 304, 256
+
+Thread 5 rendered square at 320, 256
+
+Thread 2 rendered square at 224, 256
+
+Thread 3 rendered square at 288, 256
+
+Thread 4 rendered square at 0, 272
+
+Thread 6 rendered square at 256, 256
+
+Thread 5 rendered square at 16, 272
+
+Thread 0 rendered square at 272, 256
+
+Thread 1 rendered square at 240, 256
+
+Thread 2 rendered square at 32, 272
+
+Thread 3 rendered square at 48, 272
+
+Thread 6 rendered square at 80, 272
+
+Thread 4 rendered square at 64, 272
+
+Thread 5 rendered square at 96, 272
+
+Thread 1 rendered square at 128, 272
+
+Thread 2 rendered square at 144, 272
+
+Thread 0 rendered square at 112, 272
+
+Thread 3 rendered square at 160, 272
+
+Thread 6 rendered square at 176, 272
+
+Thread 1 rendered square at 224, 272
+
+Thread 6 rendered square at 288, 272
+
+Thread 4 rendered square at 192, 272
+
+Thread 5 rendered square at 208, 272
+
+Thread 2 rendered square at 240, 272
+
+Thread 6 rendered square at 320, 272
+
+Thread 1 rendered square at 304, 272
+
+Thread 0 rendered square at 256, 272
+
+Thread 3 rendered square at 272, 272
+
+Thread 4 rendered square at 0, 288
+
+Thread 5 rendered square at 16, 288
+
+Thread 2 rendered square at 32, 288
+
+Thread 6 rendered square at 48, 288
+
+Thread 1 rendered square at 64, 288
+
+Thread 3 rendered square at 96, 288
+
+Thread 0 rendered square at 80, 288
+
+Thread 4 rendered square at 112, 288
+
+Thread 5 rendered square at 128, 288
+
+Thread 2 rendered square at 144, 288
+
+Thread 3 rendered square at 192, 288
+
+Thread 6 rendered square at 160, 288
+
+Thread 1 rendered square at 176, 288
+
+Thread 0 rendered square at 208, 288
+
+Thread 6 rendered square at 288, 288
+
+Thread 5 rendered square at 240, 288
+
+Thread 3 rendered square at 272, 288
+
+Thread 0 rendered square at 320, 288
+
+Thread 1 rendered square at 304, 288
+
+Thread 4 rendered square at 224, 288
+
+Thread 2 rendered square at 256, 288
+
+Thread 6 rendered square at 0, 304
+
+Thread 5 rendered square at 16, 304
+
+Thread 3 rendered square at 32, 304
+
+Thread 0 rendered square at 48, 304
+
+Thread 1 rendered square at 64, 304
+
+Thread 4 rendered square at 80, 304
+
+Thread 2 rendered square at 96, 304
+
+Thread 6 rendered square at 112, 304
+
+Thread 3 rendered square at 144, 304
+
+Thread 5 rendered square at 128, 304
+
+Thread 1 rendered square at 176, 304
+
+Thread 4 rendered square at 192, 304
+
+Thread 0 rendered square at 160, 304
+
+Thread 5 rendered square at 256, 304
+
+Thread 1 rendered square at 272, 304
+
+Thread 3 rendered square at 240, 304
+
+Thread 5 rendered square at 320, 304
+
+Thread 2 rendered square at 208, 304
+
+Thread 4 rendered square at 288, 304
+
+Thread 0 rendered square at 304, 304
+
+Thread 6 rendered square at 224, 304
+
+Thread 1 rendered square at 0, 320
+
+Thread 3 rendered square at 16, 320
+
+Thread 5 rendered square at 32, 320
+
+Thread 2 rendered square at 48, 320
+
+Thread 4 rendered square at 64, 320
+
+Thread 0 rendered square at 80, 320
+
+Thread 6 rendered square at 96, 320
+
+Thread 1 rendered square at 112, 320
+
+Thread 3 rendered square at 128, 320
+
+Thread 5 rendered square at 144, 320
+
+Thread 2 rendered square at 160, 320
+
+Thread 4 rendered square at 176, 320
+
+Thread 0 rendered square at 192, 320
+
+Thread 5 rendered square at 256, 320
+
+Thread 3 rendered square at 240, 320
+
+Thread 2 rendered square at 272, 320
+
+Thread 1 rendered square at 224, 320
+
+Thread 6 rendered square at 208, 320
+
+Thread 4 rendered square at 288, 320
+
+Thread 5 rendered square at 320, 320
+
+Thread 0 rendered square at 304, 320
+
+Camera.Render ThreadsComplete
+Camera.Render ClearedHandles
+Coretracer.CopyBuffer
+DLL.CopyBuffer
+Coretracer.CopyBuffer
+DLL.InitialiseRender
+Coretracer.BuildFromXml
+DLL.SetViewport
+Coretracer.BuildViewport
+DLL.SyncRender
+Coretracer.StartRender
+Camera.Render
+Camera.Render InitialiseRenderQueue
+Camera.Render InitialiseThreads
+Camera.Render Initialise Thread 0
+Camera.Render Initialise Thread 1
+Camera.Render Initialise Thread 2
+Camera.Render Initialise Thread 3
+Camera.Render Initialise Thread 4
+Camera.Render Initialise Thread 5
+Camera.Render Initialise Thread 6
+Thread 3 rendered square at 48, 0
+
+Thread 0 rendered square at 0, 0
+
+Thread 5 rendered square at 80, 0
+
+Thread 1 rendered square at 16, 0
+
+Thread 2 rendered square at 32, 0
+
+Thread 4 rendered square at 64, 0
+
+Thread 6 rendered square at 96, 0
+
+Thread 3 rendered square at 112, 0
+
+Thread 5 rendered square at 144, 0
+
+Sample ray
+Thread 6 rendered square at 208, 0
+
+Thread 4 rendered square at 192, 0
+
+Thread 2 rendered square at 176, 0
+
+Thread 1 rendered square at 160, 0
+
+Thread 3 rendered square at 224, 0
+
+Thread 0 rendered square at 128, 0
+
+Thread 5 rendered square at 240, 0
+
+Thread 6 rendered square at 256, 0
+
+Thread 4 rendered square at 272, 0
+
+Thread 2 rendered square at 320, 0
+
+Thread 2 rendered square at 288, 0
+
+Thread 1 rendered square at 304, 0
+
+Thread 0 rendered square at 0, 16
+
+Thread 6 rendered square at 32, 16
+
+Thread 5 rendered square at 16, 16
+
+Thread 4 rendered square at 48, 16
+
+Thread 3 rendered square at 64, 16
+
+Thread 2 rendered square at 80, 16
+
+Thread 1 rendered square at 96, 16
+
+Thread 4 rendered square at 160, 16
+
+Thread 0 rendered square at 112, 16
+
+Thread 6 rendered square at 128, 16
+
+Thread 5 rendered square at 144, 16
+
+Thread 3 rendered square at 176, 16
+
+Thread 6 rendered square at 256, 16
+
+Thread 5 rendered square at 272, 16
+
+Thread 2 rendered square at 192, 16
+
+Thread 3 rendered square at 288, 16
+
+Thread 1 rendered square at 208, 16
+
+Thread 5 rendered square at 320, 16
+
+Thread 0 rendered square at 240, 16
+
+Thread 6 rendered square at 304, 16
+
+Thread 2 rendered square at 0, 32
+
+Thread 3 rendered square at 16, 32
+
+Thread 4 rendered square at 224, 16
+
+Thread 1 rendered square at 32, 32
+
+Thread 5 rendered square at 48, 32
+
+Thread 6 rendered square at 80, 32
+
+Thread 2 rendered square at 96, 32
+
+Thread 4 rendered square at 128, 32
+
+Thread 1 rendered square at 144, 32
+
+Thread 3 rendered square at 112, 32
+
+Thread 0 rendered square at 64, 32
+
+Thread 5 rendered square at 160, 32
+
+Thread 6 rendered square at 176, 32
+
+Thread 5 rendered square at 272, 32
+
+Thread 2 rendered square at 192, 32
+
+Thread 4 rendered square at 208, 32
+
+Thread 1 rendered square at 224, 32
+
+Thread 2 rendered square at 320, 32
+
+Thread 3 rendered square at 240, 32
+
+Thread 6 rendered square at 288, 32
+
+Thread 5 rendered square at 304, 32
+
+Thread 4 rendered square at 0, 48
+
+Thread 1 rendered square at 16, 48
+
+Thread 2 rendered square at 32, 48
+
+Thread 6 rendered square at 64, 48
+
+Thread 0 rendered square at 256, 32
+
+Thread 3 rendered square at 48, 48
+
+Thread 4 rendered square at 96, 48
+
+Thread 5 rendered square at 80, 48
+
+Thread 1 rendered square at 112, 48
+
+Thread 2 rendered square at 128, 48
+
+Thread 6 rendered square at 144, 48
+
+Thread 3 rendered square at 176, 48
+
+Thread 4 rendered square at 192, 48
+
+Thread 5 rendered square at 208, 48
+Thread 5 rendered square at 208, 48
+
+
+Thread 2 rendered square at 240, 48
+
+Thread 1 rendered square at 320, 48
+
+Thread 5 rendered square at 304, 48
+
+Thread 4 rendered square at 288, 48
+
+Thread 0 rendered square at 160, 48
+
+Thread 2 rendered square at 0, 64
+
+Thread 1 rendered square at 16, 64
+
+Thread 6 rendered square at 256, 48
+
+Thread 3 rendered square at 272, 48
+
+Thread 5 rendered square at 32, 64
+
+Thread 4 rendered square at 48, 64
+
+Thread 2 rendered square at 80, 64
+
+Thread 1 rendered square at 96, 64
+
+Thread 0 rendered square at 64, 64
+
+Thread 6 rendered square at 112, 64
+
+Thread 3 rendered square at 128, 64
+
+Thread 4 rendered square at 160, 64
+
+Thread 5 rendered square at 144, 64
+
+Thread 2 rendered square at 176, 64
+
+Thread 1 rendered square at 192, 64
+
+Thread 6 rendered square at 224, 64
+
+Thread 1 rendered square at 304, 64
+
+Thread 6 rendered square at 320, 64
+
+Thread 3 rendered square at 240, 64
+
+Thread 1 rendered square at 256, 64
+
+Thread 1 rendered square at 0, 80
+
+Thread 2 rendered square at 288, 64
+
+Thread 0 rendered square at 208, 64
+
+Thread 5 rendered square at 272, 64
+
+Thread 6 rendered square at 16, 80
+
+Thread 3 rendered square at 32, 80
+
+Thread 4 rendered square at 48, 80
+
+Thread 2 rendered square at 80, 80
+Thread 2 rendered square at 80, 80
+
+
+Thread 0 rendered square at 96, 80
+
+Thread 5 rendered square at 112, 80
+
+Thread 6 rendered square at 128, 80
+
+Thread 3 rendered square at 144, 80
+
+Thread 4 rendered square at 160, 80
+
+Thread 2 rendered square at 192, 80
+
+Thread 1 rendered square at 176, 80
+
+Thread 5 rendered square at 224, 80
+
+Thread 0 rendered square at 208, 80
+
+Thread 5 rendered square at 320, 80
+
+Thread 6 rendered square at 240, 80
+
+Thread 1 rendered square at 304, 80
+
+Thread 0 rendered square at 0, 96
+
+Thread 3 rendered square at 256, 80
+
+Thread 4 rendered square at 272, 80
+
+Thread 2 rendered square at 288, 80
+
+Thread 5 rendered square at 16, 96
+
+Thread 6 rendered square at 32, 96
+
+Thread 1 rendered square at 48, 96
+
+Thread 0 rendered square at 64, 96
+
+Thread 3 rendered square at 96, 96
+
+Thread 2 rendered square at 112, 96
+
+Thread 4 rendered square at 80, 96
+
+Thread 5 rendered square at 128, 96
+
+Thread 6 rendered square at 144, 96
+
+Thread 0 rendered square at 176, 96
+
+Thread 1 rendered square at 160, 96
+
+Thread 3 rendered square at 192, 96
+
+Thread 2 rendered square at 208, 96
+
+Thread 4 rendered square at 224, 96
+
+Thread 2 rendered square at 320, 96
+
+Thread 5 rendered square at 240, 96
+
+Thread 6 rendered square at 256, 96
+
+Thread 1 rendered square at 288, 96
+
+Thread 0 rendered square at 272, 96
+
+Thread 4 rendered square at 0, 112
+
+Thread 3 rendered square at 304, 96
+
+Thread 2 rendered square at 16, 112
+
+Thread 6 rendered square at 48, 112
+
+Thread 5 rendered square at 32, 112
+
+Thread 1 rendered square at 64, 112
+
+Thread 4 rendered square at 96, 112
+
+Thread 0 rendered square at 80, 112
+
+Thread 3 rendered square at 112, 112
+
+Thread 6 rendered square at 144, 112
+
+Thread 2 rendered square at 128, 112
+
+Thread 5 rendered square at 160, 112
+
+Thread 4 rendered square at 192, 112
+
+Thread 1 rendered square at 176, 112
+
+Thread 3 rendered square at 224, 112
+
+Thread 0 rendered square at 208, 112
+
+Thread 3 rendered square at 320, 112
+
+Thread 6 rendered square at 240, 112
+
+Thread 2 rendered square at 256, 112
+
+Thread 4 rendered square at 288, 112
+
+Thread 5 rendered square at 272, 112
+
+Thread 0 rendered square at 0, 128
+
+Thread 1 rendered square at 304, 112
+
+Thread 3 rendered square at 16, 128
+
+Thread 2 rendered square at 48, 128
+Thread 2 rendered square at 48, 128
+
+
+Thread 4 rendered square at 64, 128
+
+Thread 5 rendered square at 80, 128
+
+Thread 0 rendered square at 96, 128
+
+Thread 1 rendered square at 112, 128
+
+Thread 3 rendered square at 128, 128
+
+Thread 2 rendered square at 160, 128
+
+Thread 6 rendered square at 144, 128
+
+Thread 4 rendered square at 176, 128
+
+Thread 5 rendered square at 192, 128
+
+Thread 1 rendered square at 224, 128
+
+Thread 0 rendered square at 208, 128
+
+Thread 3 rendered square at 240, 128
+
+Thread 1 rendered square at 320, 128
+
+Thread 2 rendered square at 256, 128
+
+Thread 6 rendered square at 272, 128
+
+Thread 4 rendered square at 288, 128
+
+Thread 5 rendered square at 304, 128
+
+Thread 0 rendered square at 0, 144
+
+Thread 3 rendered square at 16, 144
+
+Thread 1 rendered square at 32, 144
+
+Thread 2 rendered square at 48, 144
+
+Thread 6 rendered square at 64, 144
+
+Thread 4 rendered square at 80, 144
+
+Thread 0 rendered square at 112, 144
+
+Thread 5 rendered square at 96, 144
+
+Thread 3 rendered square at 128, 144
+
+Thread 1 rendered square at 144, 144
+
+Thread 2 rendered square at 160, 144
+
+Thread 6 rendered square at 176, 144
+
+Thread 4 rendered square at 192, 144
+
+Thread 0 rendered square at 208, 144
+
+Thread 5 rendered square at 224, 144
+
+Thread 3 rendered square at 240, 144
+
+Thread 2 rendered square at 272, 144
+
+Thread 1 rendered square at 256, 144
+
+Thread 6 rendered square at 288, 144
+
+Thread 4 rendered square at 304, 144
+
+Thread 0 rendered square at 320, 144
+
+Thread 5 rendered square at 0, 160
+
+Thread 3 rendered square at 16, 160
+
+Thread 2 rendered square at 32, 160
+
+Thread 1 rendered square at 48, 160
+
+Thread 6 rendered square at 64, 160
+
+Thread 4 rendered square at 80, 160
+
+Thread 0 rendered square at 96, 160
+
+Thread 5 rendered square at 112, 160
+
+Thread 2 rendered square at 144, 160
+
+Thread 3 rendered square at 128, 160
+
+Thread 1 rendered square at 176, 160
+
+Thread 1 rendered square at 160, 160
+
+Thread 4 rendered square at 192, 160
+
+Thread 0 rendered square at 208, 160
+
+Thread 5 rendered square at 224, 160
+
+Thread 4 rendered square at 304, 160
+
+Thread 2 rendered square at 240, 160
+Thread 2 rendered square at 240, 160
+
+
+Thread 6 rendered square at 272, 160
+
+Thread 1 rendered square at 288, 160
+
+Thread 0 rendered square at 320, 160
+
+Thread 5 rendered square at 0, 176
+
+Thread 4 rendered square at 16, 176
+
+Thread 2 rendered square at 32, 176
+
+Thread 6 rendered square at 64, 176
+
+Thread 3 rendered square at 48, 176
+
+Thread 1 rendered square at 80, 176
+
+Thread 0 rendered square at 96, 176
+
+Thread 4 rendered square at 128, 176
+
+Thread 5 rendered square at 112, 176
+
+Thread 3 rendered square at 176, 176
+
+Thread 2 rendered square at 144, 176
+
+Thread 6 rendered square at 160, 176
+
+Thread 1 rendered square at 192, 176
+
+Thread 0 rendered square at 208, 176
+
+Thread 4 rendered square at 224, 176
+
+Thread 3 rendered square at 256, 176
+
+Thread 5 rendered square at 240, 176
+
+Thread 0 rendered square at 320, 176
+
+Thread 6 rendered square at 288, 176
+
+Thread 2 rendered square at 272, 176
+
+Thread 1 rendered square at 304, 176
+
+Thread 4 rendered square at 0, 192
+
+Thread 3 rendered square at 16, 192
+
+Thread 5 rendered square at 32, 192
+
+Thread 0 rendered square at 48, 192
+
+Thread 6 rendered square at 64, 192
+
+Thread 2 rendered square at 80, 192
+
+Thread 1 rendered square at 96, 192
+
+Thread 4 rendered square at 112, 192
+
+Thread 3 rendered square at 128, 192
+
+Thread 5 rendered square at 144, 192
+
+Thread 6 rendered square at 176, 192
+
+Thread 2 rendered square at 192, 192
+
+Thread 0 rendered square at 160, 192
+
+Thread 1 rendered square at 208, 192
+
+Thread 4 rendered square at 224, 192
+
+Thread 4 rendered square at 0, 208
+
+Thread 3 rendered square at 240, 192
+
+Thread 1 rendered square at 320, 192
+
+Thread 5 rendered square at 256, 192
+
+Thread 6 rendered square at 272, 192
+
+Thread 2 rendered square at 288, 192
+
+Thread 0 rendered square at 304, 192
+
+Thread 4 rendered square at 16, 208
+
+Thread 4 rendered square at 16, 208
+
+Thread 1 rendered square at 48, 208
+
+Thread 5 rendered square at 64, 208
+
+Thread 6 rendered square at 80, 208
+
+Thread 2 rendered square at 96, 208
+
+Thread 0 rendered square at 112, 208
+
+Thread 4 rendered square at 144, 208
+
+Thread 3 rendered square at 128, 208
+
+Thread 1 rendered square at 160, 208
+
+Thread 5 rendered square at 176, 208
+
+Thread 6 rendered square at 192, 208
+
+Thread 2 rendered square at 208, 208
+
+Thread 2 rendered square at 320, 208
+
+Thread 4 rendered square at 240, 208
+
+Thread 0 rendered square at 224, 208
+
+Thread 3 rendered square at 256, 208
+
+Thread 1 rendered square at 272, 208
+
+Thread 5 rendered square at 288, 208
+
+Thread 2 rendered square at 0, 224
+
+Thread 6 rendered square at 304, 208
+
+Thread 4 rendered square at 16, 224
+
+Thread 0 rendered square at 32, 224
+
+Thread 3 rendered square at 48, 224
+
+Thread 1 rendered square at 64, 224
+
+Thread 2 rendered square at 96, 224
+
+Thread 5 rendered square at 80, 224
+
+Thread 6 rendered square at 112, 224
+
+Thread 4 rendered square at 128, 224
+
+Thread 0 rendered square at 144, 224
+
+Thread 3 rendered square at 160, 224
+
+Thread 1 rendered square at 176, 224
+
+Thread 2 rendered square at 192, 224
+
+Thread 6 rendered square at 224, 224
+
+Thread 5 rendered square at 208, 224
+
+Thread 6 rendered square at 320, 224
+
+Thread 5 rendered square at 0, 240
+
+Thread 4 rendered square at 240, 224
+
+Thread 2 rendered square at 304, 224
+
+Thread 0 rendered square at 256, 224
+
+Thread 1 rendered square at 288, 224
+
+Thread 3 rendered square at 272, 224
+
+Thread 6 rendered square at 16, 240
+
+Thread 5 rendered square at 32, 240
+
+Thread 4 rendered square at 48, 240
+
+Thread 3 rendered square at 112, 240
+
+Thread 6 rendered square at 128, 240
+
+Thread 1 rendered square at 96, 240
+
+Thread 0 rendered square at 80, 240
+
+Thread 2 rendered square at 64, 240
+
+Thread 5 rendered square at 144, 240
+
+Thread 4 rendered square at 160, 240
+
+Thread 3 rendered square at 176, 240
+
+Thread 6 rendered square at 192, 240
+
+Thread 1 rendered square at 208, 240
+
+Thread 0 rendered square at 224, 240
+
+Thread 2 rendered square at 240, 240
+
+Thread 1 rendered square at 320, 240
+
+Thread 0 rendered square at 0, 256
+
+Thread 6 rendered square at 304, 240
+
+Thread 2 rendered square at 16, 256
+
+Thread 4 rendered square at 272, 240
+
+Thread 5 rendered square at 256, 240
+
+Thread 3 rendered square at 288, 240
+
+Thread 1 rendered square at 32, 256
+
+Thread 0 rendered square at 48, 256
+
+Thread 4 rendered square at 96, 256
+ Thread 4 rendered square at 96, 256
+
+
+Thread 3 rendered square at 128, 256
+
+Thread 6 rendered square at 64, 256
+
+Thread 2 rendered square at 80, 256
+
+Thread 1 rendered square at 144, 256
+
+Thread 0 rendered square at 160, 256
+
+Thread 4 rendered square at 176, 256
+
+Thread 5 rendered square at 192, 256
+
+Thread 3 rendered square at 208, 256
+
+Thread 3 rendered square at 320, 256
+
+Thread 5 rendered square at 304, 256
+
+Thread 3 rendered square at 0, 272
+
+Thread 6 rendered square at 224, 256
+
+Thread 5 rendered square at 168, 256
+
+Thread 5 rendered square at 16, 272
+
+Thread 3 rendered square at 32, 272
+
+Thread 0 rendered square at 272, 256
+
+Thread 1 rendered square at 256, 256
+
+Thread 2 rendered square at 240, 256
+
+Thread 2 rendered square at 144, 272
+
+Thread 6 rendered square at 48, 272
+
+Thread 4 rendered square at 64, 272
+
+Thread 3 rendered square at 96, 272
+
+Thread 5 rendered square at 80, 272
+
+Thread 0 rendered square at 112, 272
+
+Thread 1 rendered square at 128, 272
+
+Thread 2 rendered square at 160, 272
+
+Thread 6 rendered square at 176, 272
+
+Thread 4 rendered square at 192, 272
+
+Thread 3 rendered square at 208, 272
+
+Thread 6 rendered square at 288, 272
+
+Thread 4 rendered square at 304, 272
+
+Thread 5 rendered square at 224, 272
+
+Thread 0 rendered square at 240, 272
+
+Thread 3 rendered square at 320, 272
+
+Thread 1 rendered square at 256, 272
+
+Thread 6 rendered square at 0, 288
+
+Thread 4 rendered square at 16, 288
+
+Thread 5 rendered square at 32, 288
+
+Thread 2 rendered square at 272, 272
+
+Thread 0 rendered square at 48, 288
+
+Thread 3 rendered square at 64, 288
+
+Thread 1 rendered square at 80, 288
+
+Thread 6 rendered square at 96, 288
+
+Thread 4 rendered square at 112, 288
+
+Thread 5 rendered square at 128, 288
+
+Thread 2 rendered square at 144, 288
+
+Thread 0 rendered square at 160, 288
+
+Thread 3 rendered square at 176, 288
+
+Thread 3 rendered square at 288, 288
+
+Thread 1 rendered square at 192, 288
+
+Thread 4 rendered square at 224, 288
+
+Thread 6 rendered square at 208, 288
+
+Thread 1 rendered square at 320, 288
+
+Thread 3 rendered square at 304, 288
+
+Thread 2 rendered square at 256, 288
+
+Thread 0 rendered square at 272, 288
+
+Thread 4 rendered square at 0, 304
+
+Thread 5 rendered square at 240, 288
+
+Thread 6 rendered square at 16, 304
+
+Thread 1 rendered square at 32, 304
+
+Thread 3 rendered square at 48, 304
+
+Thread 2 rendered square at 64, 304
+
+Thread 0 rendered square at 80, 304
+
+Thread 4 rendered square at 96, 304
+
+Thread 5 rendered square at 112, 304
+
+Thread 6 rendered square at 128, 304
+
+Thread 1 rendered square at 144, 304
+
+Thread 3 rendered square at 160, 304
+
+Thread 2 rendered square at 176, 304
+
+Thread 1 rendered square at 256, 304
+
+Thread 3 rendered square at 272, 304
+
+Thread 6 rendered square at 240, 304
+
+Thread 2 rendered square at 288, 304
+
+Thread 3 rendered square at 320, 304
+
+Thread 0 rendered square at 192, 304
+
+Thread 4 rendered square at 208, 304
+
+Thread 6 rendered square at 0, 320
+
+Thread 5 rendered square at 224, 304
+
+Thread 1 rendered square at 304, 304
+
+Thread 2 rendered square at 16, 320
+
+Thread 3 rendered square at 32, 320
+
+Thread 4 rendered square at 64, 320
+
+Thread 0 rendered square at 48, 320
+
+Thread 6 rendered square at 80, 320
+
+Thread 5 rendered square at 96, 320
+
+Thread 3 rendered square at 144, 320
+
+Thread 2 rendered square at 128, 320
+
+Thread 1 rendered square at 112, 320
+
+Thread 0 rendered square at 176, 320
+
+Thread 4 rendered square at 160, 320
+
+Thread 1 rendered square at 256, 320
+
+Thread 6 rendered square at 192, 320
+
+Thread 2 rendered square at 240, 320
+
+Thread 4 rendered square at 288, 320
+
+Thread 4 rendered square at 288, 320
+
+Thread 6 rendered square at 320, 320
+
+Thread 3 rendered square at 224, 320
+
+Thread 1 rendered square at 304, 320
+
+Thread 5 rendered square at 208, 320
+
+Camera.Render ThreadsComplete
+Camera.Render ClearedHandles
+Coretracer.CopyBuffer
+DLL.CopyBuffer
+Coretracer.CopyBuffer
+DLL.InitialiseRender
+Coretracer.BuildFromXml
+DLL.SetViewport
+Coretracer.BuildViewport
+DLL.SyncRender
+Coretracer.StartRender
+Camera.Render
+Camera.Render InitialiseRenderQueue
+Camera.Render InitialiseThreads
+Camera.Render Initialise Thread 0
+Camera.Render Initialise Thread 1
+Camera.Render Initialise Thread 2
+Camera.Render Initialise Thread 3
+Camera.Render Initialise Thread 4
+Camera.Render Initialise Thread 5
+Camera.Render Initialise Thread 6
+Thread 0 rendered square at 0, 0
+
+Thread 3 rendered square at 48, 0
+
+Thread 1 rendered square at 16, 0
+
+Thread 2 rendered square at 32, 0
+
+Thread 4 rendered square at 64, 0
+
+Thread 5 rendered square at 80, 0
+
+Thread 6 rendered square at 96, 0
+
+Thread 0 rendered square at 112, 0
+
+Thread 1 rendered square at 144, 0
+
+Sample rayDirectional light test ray
+
+Directional light test rayShadow test ray
+
+Thread 6 rendered square at 208, 0
+
+Thread 2 rendered square at 160, 0
+
+Thread 5 rendered square at 192, 0
+
+Thread 4 rendered square at 176, 0
+
+Thread 3 rendered square at 128, 0
+
+Thread 0 rendered square at 224, 0
+
+Thread 6 rendered square at 256, 0
+
+Thread 2 rendered square at 272, 0
+
+Thread 5 rendered square at 288, 0
+
+Thread 1 rendered square at 240, 0
+
+Thread 1 rendered square at 240, 0
+
+Thread 4 rendered square at 304, 0
+
+Thread 0 rendered square at 0, 16
+
+Thread 6 rendered square at 16, 16
+
+Thread 2 rendered square at 32, 16
+
+Thread 5 rendered square at 48, 16
+
+Thread 3 rendered square at 64, 16
+
+Thread 1 rendered square at 80, 16
+
+Thread 4 rendered square at 96, 16
+
+Thread 5 rendered square at 160, 16
+
+Thread 6 rendered square at 128, 16
+
+Thread 2 rendered square at 144, 16
+
+Thread 0 rendered square at 112, 16
+
+Thread 3 rendered square at 176, 16
+
+Thread 0 rendered square at 272, 16
+
+Thread 2 rendered square at 256, 16
+
+Thread 3 rendered square at 288, 16
+
+Thread 6 rendered square at 240, 16
+
+Thread 2 rendered square at 320, 16
+
+Thread 1 rendered square at 192, 16
+
+Thread 0 rendered square at 304, 16
+
+Thread 5 rendered square at 208, 16
+
+Thread 5 rendered square at 224, 16
+
+Thread 6 rendered square at 16, 32
+
+Thread 3 rendered square at 0, 32
+
+Thread 2 rendered square at 32, 32
+
+Thread 1 rendered square at 48, 32
+
+Thread 5 rendered square at 96, 32
+
+Thread 0 rendered square at 64, 32
+
+Thread 4 rendered square at 80, 32
+
+Thread 6 rendered square at 112, 32
+
+Thread 3 rendered square at 128, 32
+
+Thread 2 rendered square at 144, 32
+
+Thread 1 rendered square at 160, 32
+
+Thread 5 rendered square at 176, 32
+
+Thread 0 rendered square at 192, 32
+
+Thread 1 rendered square at 272, 32
+
+Thread 5 rendered square at 288, 32
+
+Thread 4 rendered square at 208, 32
+
+Thread 2 rendered square at 256, 32
+
+Thread 3 rendered square at 240, 32
+
+Thread 6 rendered square at 224, 32
+
+Thread 1 rendered square at 320, 32
+
+Thread 0 rendered square at 304, 32
+
+Thread 5 rendered square at 0, 48
+
+Thread 4 rendered square at 16, 48
+
+Thread 2 rendered square at 32, 48
+
+Thread 3 rendered square at 48, 48
+
+Thread 6 rendered square at 64, 48
+
+Thread 1 rendered square at 80, 48
+
+Thread 5 rendered square at 112, 48
+
+Thread 4 rendered square at 128, 48
+
+Thread 2 rendered square at 144, 48
+
+Thread 6 rendered square at 176, 48
+
+Thread 1 rendered square at 192, 48
+
+Thread 3 rendered square at 160, 48
+
+Thread 5 rendered square at 208, 48
+
+Thread 4 rendered square at 224, 48
+
+Thread 2 rendered square at 240, 48
+
+Thread 4 rendered square at 320, 48
+
+Thread 3 rendered square at 288, 48
+
+Thread 0 rendered square at 304, 48
+
+Thread 0 rendered square at 96, 48
+
+Thread 2 rendered square at 0, 64
+
+Thread 4 rendered square at 16, 64
+
+Thread 1 rendered square at 272, 48
+
+Thread 6 rendered square at 256, 48
+
+Thread 3 rendered square at 32, 64
+
+Thread 5 rendered square at 48, 64
+
+Thread 0 rendered square at 64, 64
+
+Thread 4 rendered square at 96, 64
+
+Thread 2 rendered square at 80, 64
+
+Thread 1 rendered square at 112, 64
+
+Thread 6 rendered square at 128, 64
+
+Thread 3 rendered square at 144, 64
+
+Thread 5 rendered square at 160, 64
+
+Thread 0 rendered square at 176, 64
+
+Thread 2 rendered square at 208, 64
+
+Thread 4 rendered square at 192, 64
+
+Thread 6 rendered square at 240, 64
+
+Thread 1 rendered square at 224, 64
+
+Thread 4 rendered square at 320, 64
+
+Thread 2 rendered square at 304, 64
+
+Thread 6 rendered square at 0, 80
+
+Thread 5 rendered square at 272, 64
+
+Thread 3 rendered square at 256, 64
+
+Thread 0 rendered square at 288, 64
+
+Thread 1 rendered square at 16, 80
+
+Thread 4 rendered square at 32, 80
+
+Thread 2 rendered square at 48, 80
+
+Thread 5 rendered square at 80, 80
+
+Thread 6 rendered square at 64, 80
+
+Thread 3 rendered square at 96, 80
+
+Thread 0 rendered square at 112, 80
+
+Thread 1 rendered square at 128, 80
+
+Thread 4 rendered square at 144, 80
+
+Thread 5 rendered square at 176, 80
+
+Thread 2 rendered square at 160, 80
+
+Thread 6 rendered square at 192, 80
+
+Thread 0 rendered square at 224, 80
+Thread 0 rendered square at 224, 80
+
+
+Thread 1 rendered square at 240, 80
+
+Thread 0 rendered square at 320, 80
+
+Thread 4 rendered square at 256, 80
+
+Thread 3 rendered square at 0, 96
+
+Thread 5 rendered square at 272, 80
+
+Thread 6 rendered square at 304, 80
+
+Thread 2 rendered square at 288, 80
+
+Thread 1 rendered square at 16, 96
+
+Thread 0 rendered square at 32, 96
+
+Thread 5 rendered square at 64, 96
+
+Thread 3 rendered square at 48, 96
+
+Thread 4 rendered square at 80, 96
+
+Thread 6 rendered square at 96, 96
+
+Thread 2 rendered square at 112, 96
+
+Thread 5 rendered square at 160, 96
+
+Thread 1 rendered square at 128, 96
+
+Thread 0 rendered square at 144, 96
+
+Thread 3 rendered square at 176, 96
+
+Thread 4 rendered square at 192, 96
+
+Thread 6 rendered square at 208, 96
+
+Thread 6 rendered square at 320, 96
+
+Thread 2 rendered square at 224, 96
+
+Thread 5 rendered square at 240, 96
+
+Thread 0 rendered square at 272, 96
+
+Thread 1 rendered square at 256, 96
+
+Thread 4 rendered square at 304, 96
+
+Thread 3 rendered square at 288, 96
+
+Thread 6 rendered square at 0, 112
+
+Thread 5 rendered square at 32, 112
+Thread 5 rendered square at 32, 112
+
+
+Thread 1 rendered square at 64, 112
+
+Thread 0 rendered square at 48, 112
+
+Thread 3 rendered square at 96, 112
+
+Thread 4 rendered square at 80, 112
+
+Thread 6 rendered square at 112, 112
+
+Thread 5 rendered square at 144, 112
+
+Thread 2 rendered square at 128, 112
+
+Thread 1 rendered square at 160, 112
+
+Thread 0 rendered square at 176, 112
+
+Thread 3 rendered square at 192, 112
+
+Thread 4 rendered square at 208, 112
+
+Thread 5 rendered square at 240, 112
+
+Thread 6 rendered square at 224, 112
+
+Thread 4 rendered square at 320, 112
+
+Thread 2 rendered square at 256, 112
+
+Thread 0 rendered square at 288, 112
+
+Thread 3 rendered square at 304, 112
+
+Thread 1 rendered square at 272, 112
+
+Thread 5 rendered square at 0, 128
+
+Thread 6 rendered square at 16, 128
+
+Thread 4 rendered square at 32, 128
+
+Thread 2 rendered square at 48, 128
+
+Thread 3 rendered square at 80, 128
+
+Thread 0 rendered square at 64, 128
+
+Thread 5 rendered square at 112, 128
+
+Thread 1 rendered square at 96, 128
+
+Thread 6 rendered square at 128, 128
+
+Thread 4 rendered square at 144, 128
+
+Thread 2 rendered square at 160, 128
+
+Thread 3 rendered square at 176, 128
+
+Thread 5 rendered square at 208, 128
+
+Thread 1 rendered square at 224, 128
+
+Thread 0 rendered square at 192, 128
+
+Thread 4 rendered square at 256, 128
+
+Thread 6 rendered square at 240, 128
+
+Thread 1 rendered square at 320, 128
+
+Thread 2 rendered square at 272, 128
+
+Thread 3 rendered square at 288, 128
+
+Thread 5 rendered square at 304, 128
+
+Thread 4 rendered square at 16, 144
+
+Thread 6 rendered square at 32, 144
+
+Thread 0 rendered square at 0, 144
+
+Thread 1 rendered square at 48, 144
+
+Thread 2 rendered square at 64, 144
+
+Thread 3 rendered square at 80, 144
+
+Thread 5 rendered square at 96, 144
+
+Thread 4 rendered square at 112, 144
+
+Thread 6 rendered square at 128, 144
+
+Thread 1 rendered square at 160, 144
+
+Thread 0 rendered square at 144, 144
+
+Thread 2 rendered square at 176, 144
+
+Thread 5 rendered square at 208, 144
+
+Thread 3 rendered square at 192, 144
+
+Thread 4 rendered square at 224, 144
+
+Thread 6 rendered square at 240, 144
+
+Thread 3 rendered square at 320, 144
+
+Thread 2 rendered square at 288, 144
+
+Thread 1 rendered square at 256, 144
+
+Thread 5 rendered square at 304, 144
+
+Thread 0 rendered square at 272, 144
+
+Thread 4 rendered square at 0, 160
+
+Thread 6 rendered square at 16, 160
+
+Thread 3 rendered square at 32, 160
+
+Thread 5 rendered square at 80, 160
+
+Thread 2 rendered square at 48, 160
+
+Thread 1 rendered square at 64, 160
+
+Thread 0 rendered square at 96, 160
+
+Thread 4 rendered square at 112, 160
+
+Thread 6 rendered square at 128, 160
+
+Thread 3 rendered square at 144, 160
+
+Thread 5 rendered square at 160, 160
+
+Thread 2 rendered square at 176, 160
+
+Thread 1 rendered square at 192, 160
+
+Thread 0 rendered square at 208, 160
+
+Thread 4 rendered square at 224, 160
+
+Thread 6 rendered square at 240, 160
+
+Thread 3 rendered square at 256, 160
+
+Thread 5 rendered square at 272, 160
+
+Thread 0 rendered square at 320, 160
+
+Thread 2 rendered square at 288, 160
+
+Thread 1 rendered square at 304, 160
+
+Thread 4 rendered square at 0, 176
+
+Thread 6 rendered square at 16, 176
+
+Thread 3 rendered square at 32, 176
+
+Thread 5 rendered square at 48, 176
+
+Thread 0 rendered square at 64, 176
+
+Thread 2 rendered square at 80, 176
+
+Thread 1 rendered square at 96, 176
+
+Thread 4 rendered square at 112, 176
+
+Thread 6 rendered square at 128, 176
+
+Thread 3 rendered square at 144, 176
+
+Thread 5 rendered square at 160, 176
+
+Thread 0 rendered square at 176, 176
+
+Thread 2 rendered square at 192, 176
+
+Thread 1 rendered square at 208, 176
+
+Thread 4 rendered square at 224, 176
+
+Thread 5 rendered square at 240, 176
+
+Thread 5 rendered square at 272, 176
+
+Thread 3 rendered square at 256, 176
+
+Thread 1 rendered square at 320, 176
+
+Thread 0 rendered square at 288, 176
+
+Thread 4 rendered square at 0, 192
+
+Thread 2 rendered square at 304, 176
+
+Thread 5 rendered square at 32, 192
+
+Thread 6 rendered square at 16, 192
+
+Thread 3 rendered square at 48, 192
+
+Thread 1 rendered square at 64, 192
+
+Thread 0 rendered square at 80, 192
+
+Thread 4 rendered square at 96, 192
+
+Thread 2 rendered square at 112, 192
+
+Thread 5 rendered square at 128, 192
+
+Thread 6 rendered square at 144, 192
+
+Thread 3 rendered square at 160, 192
+
+Thread 1 rendered square at 176, 192
+
+Thread 0 rendered square at 192, 192
+
+Thread 4 rendered square at 208, 192
+
+Thread 2 rendered square at 224, 192
+
+Thread 5 rendered square at 240, 192
+
+Thread 3 rendered square at 272, 192
+
+Thread 6 rendered square at 256, 192
+
+Thread 4 rendered square at 320, 192
+
+Thread 2 rendered square at 0, 208
+
+Thread 0 rendered square at 304, 192
+Thread 0 rendered square at 304, 192
+
+
+Thread 5 rendered square at 16, 208
+
+Thread 6 rendered square at 48, 208
+
+Thread 4 rendered square at 64, 208
+
+Thread 3 rendered square at 32, 208
+
+Thread 2 rendered square at 80, 208
+
+Thread 1 rendered square at 96, 208
+
+Thread 5 rendered square at 128, 208
+
+Thread 0 rendered square at 112, 208
+
+Thread 6 rendered square at 144, 208
+
+Thread 4 rendered square at 160, 208
+
+Thread 3 rendered square at 176, 208
+
+Thread 2 rendered square at 192, 208
+
+Thread 1 rendered square at 208, 208
+
+Thread 5 rendered square at 224, 208
+
+Thread 0 rendered square at 240, 208
+
+Thread 1 rendered square at 320, 208
+
+Thread 6 rendered square at 256, 208
+
+Thread 5 rendered square at 0, 224
+
+Thread 4 rendered square at 272, 208
+
+Thread 3 rendered square at 288, 208
+
+Thread 2 rendered square at 304, 208
+
+Thread 0 rendered square at 32, 224
+Thread 0 rendered square at 32, 224
+
+
+Thread 6 rendered square at 48, 224
+
+Thread 5 rendered square at 64, 224
+
+Thread 4 rendered square at 80, 224
+
+Thread 3 rendered square at 96, 224
+
+Thread 2 rendered square at 112, 224
+
+Thread 6 rendered square at 160, 224
+
+Thread 0 rendered square at 144, 224
+
+Thread 5 rendered square at 176, 224
+
+Thread 4 rendered square at 192, 224
+
+Thread 1 rendered square at 128, 224
+
+Thread 3 rendered square at 208, 224
+
+Thread 2 rendered square at 224, 224
+
+Thread 3 rendered square at 320, 224
+
+Thread 2 rendered square at 0, 240
+
+Thread 5 rendered square at 272, 224
+
+Thread 6 rendered square at 240, 224
+
+Thread 1 rendered square at 304, 224
+Thread 1 rendered square at 304, 224
+
+
+Thread 4 rendered square at 288, 224
+
+Thread 3 rendered square at 16, 240
+
+Thread 2 rendered square at 32, 240
+
+Thread 5 rendered square at 48, 240
+
+Thread 4 rendered square at 112, 240
+
+Thread 1 rendered square at 96, 240
+
+Thread 3 rendered square at 128, 240
+
+Thread 0 rendered square at 80, 240
+
+Thread 6 rendered square at 64, 240
+
+Thread 2 rendered square at 144, 240
+
+Thread 5 rendered square at 160, 240
+
+Thread 3 rendered square at 208, 240
+
+Thread 4 rendered square at 176, 240
+
+Thread 1 rendered square at 192, 240
+
+Thread 0 rendered square at 224, 240
+
+Thread 6 rendered square at 240, 240
+
+Thread 1 rendered square at 320, 240
+
+Thread 0 rendered square at 0, 256
+
+Thread 4 rendered square at 304, 240
+
+Thread 6 rendered square at 16, 256
+
+Thread 2 rendered square at 256, 240
+
+Thread 5 rendered square at 272, 240
+
+Thread 3 rendered square at 288, 240
+
+Thread 1 rendered square at 32, 256
+
+Thread 0 rendered square at 48, 256
+
+Thread 5 rendered square at 112, 256
+
+Thread 2 rendered square at 96, 256
+
+Thread 3 rendered square at 128, 256
+
+Thread 1 rendered square at 144, 256
+
+Thread 6 rendered square at 80, 256
+
+Thread 6 rendered square at 80, 256
+
+Thread 0 rendered square at 160, 256
+
+Thread 5 rendered square at 176, 256
+
+Thread 3 rendered square at 208, 256
+
+Thread 2 rendered square at 192, 256
+
+Thread 2 rendered square at 320, 256
+
+Thread 3 rendered square at 304, 256
+
+Thread 1 rendered square at 224, 256
+
+Thread 5 rendered square at 288, 256
+
+Thread 6 rendered square at 256, 256
+
+Thread 2 rendered square at 0, 272
+Thread 2 rendered square at 0, 272
+
+
+Thread 4 rendered square at 240, 256
+
+Thread 0 rendered square at 272, 256
+
+Thread 1 rendered square at 32, 272
+
+Thread 5 rendered square at 48, 272
+
+Thread 3 rendered square at 96, 272
+
+Thread 0 rendered square at 128, 272
+
+Thread 2 rendered square at 80, 272
+Thread 2 rendered square at 80, 272
+
+
+Thread 4 rendered square at 112, 272
+
+Thread 1 rendered square at 144, 272
+
+Thread 5 rendered square at 160, 272
+
+Thread 4 rendered square at 240, 272
+
+Thread 3 rendered square at 176, 272
+
+Thread 0 rendered square at 192, 272
+
+Thread 6 rendered square at 208, 272
+
+Thread 2 rendered square at 224, 272
+
+Thread 4 rendered square at 288, 272
+
+Thread 0 rendered square at 320, 272
+
+Thread 0 rendered square at 320, 272
+
+Thread 1 rendered square at 256, 272
+
+Thread 5 rendered square at 272, 272
+
+Thread 6 rendered square at 0, 288
+
+Thread 2 rendered square at 16, 288
+
+Thread 4 rendered square at 32, 288
+
+Thread 3 rendered square at 48, 288
+
+Thread 0 rendered square at 64, 288
+
+Thread 1 rendered square at 80, 288
+
+Thread 5 rendered square at 96, 288
+
+Thread 6 rendered square at 112, 288
+
+Thread 4 rendered square at 144, 288
+
+Thread 2 rendered square at 128, 288
+
+Thread 3 rendered square at 160, 288
+
+Thread 0 rendered square at 176, 288
+
+Thread 2 rendered square at 256, 288
+
+Thread 5 rendered square at 208, 288
+
+Thread 3 rendered square at 272, 288
+
+Thread 1 rendered square at 192, 288
+
+Thread 4 rendered square at 240, 288
+
+Thread 6 rendered square at 224, 288
+
+Thread 2 rendered square at 304, 288
+
+Thread 5 rendered square at 320, 288
+
+Thread 3 rendered square at 0, 304
+
+Thread 1 rendered square at 16, 304
+
+Thread 0 rendered square at 288, 288
+
+Thread 6 rendered square at 48, 304
+
+Thread 4 rendered square at 32, 304
+
+Thread 2 rendered square at 64, 304
+
+Thread 5 rendered square at 80, 304
+
+Thread 3 rendered square at 96, 304
+
+Thread 0 rendered square at 128, 304
+
+Thread 6 rendered square at 144, 304
+
+Thread 1 rendered square at 112, 304
+
+Thread 4 rendered square at 160, 304
+
+Thread 2 rendered square at 176, 304
+
+Thread 5 rendered square at 192, 304
+
+Thread 1 rendered square at 256, 304
+
+Thread 4 rendered square at 272, 304
+
+Thread 2 rendered square at 288, 304
+
+Thread 6 rendered square at 240, 304
+
+Thread 1 rendered square at 320, 304
+
+Thread 5 rendered square at 304, 304
+
+Thread 4 rendered square at 0, 320
+
+Thread 3 rendered square at 208, 304
+
+Thread 2 rendered square at 16, 320
+
+Thread 6 rendered square at 32, 320
+
+Thread 1 rendered square at 48, 320
+
+Thread 5 rendered square at 64, 320
+
+Thread 0 rendered square at 224, 304
+
+Thread 4 rendered square at 80, 320
+
+Thread 3 rendered square at 96, 320
+
+Thread 2 rendered square at 112, 320
+
+Thread 4 rendered square at 192, 320
+
+Thread 6 rendered square at 128, 320
+
+Thread 1 rendered square at 144, 320
+
+Thread 5 rendered square at 160, 320
+
+Thread 0 rendered square at 176, 320
+
+Thread 4 rendered square at 240, 320
+
+Thread 6 rendered square at 256, 320
+
+Thread 1 rendered square at 272, 320
+
+Thread 5 rendered square at 288, 320
+
+Thread 0 rendered square at 304, 320
+
+Thread 4 rendered square at 320, 320
+
+Thread 3 rendered square at 208, 320
+
+Thread 2 rendered square at 224, 320
+
+Camera.Render ThreadsComplete
+Camera.Render ClearedHandles
+Coretracer.CopyBuffer
+DLL.CopyBuffer
+Coretracer.CopyBuffer
+DLL.InitialiseRender
+Coretracer.BuildFromXml
+DLL.SetViewport
+Coretracer.BuildViewport
+DLL.SyncRender
+Coretracer.StartRender
+Camera.Render
+Camera.Render InitialiseRenderQueue
+Camera.Render InitialiseThreads
+Camera.Render Initialise Thread 0
+Camera.Render Initialise Thread 1
+Camera.Render Initialise Thread 2
+Camera.Render Initialise Thread 3
+Camera.Render Initialise Thread 4
+Camera.Render Initialise Thread 5
+Camera.Render Initialise Thread 6
+Thread 0 rendered square at 0, 0
+
+Thread 1 rendered square at 16, 0
+
+Thread 2 rendered square at 32, 0
+
+Thread 3 rendered square at 48, 0
+
+Thread 4 rendered square at 64, 0
+
+Thread 5 rendered square at 80, 0
+
+Thread 6 rendered square at 96, 0
+
+Thread 0 rendered square at 112, 0
+
+Thread 1 rendered square at 128, 0
+
+Sample ray
+Reflection ray
+KDTree intersect, obj intersected : 2, 
+Obj Tested : 1, 2, 0, 0, 0, 0, 256192816, 256114688, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : 0.0872403, 0.726999, 0.681075
+Ray recursionRemaining : 3
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : 0.44942
+
+Shadow test ray
+Directional light test ray
+KDTree intersect, obj intersected : 2, 
+Obj Tested : 1, 2, 0, 0, 0, 0, 0, 256192816, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : 0.110875, 0.728659, 0.675842
+Ray recursionRemaining : 3
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : 0.463097
+
+Shadow test ray
+Directional light test ray
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 0, 0, 0, 0, 0, 0, 
+Obj Tested Total: 2
+Ray start : 0.0156939, 0.735029, -0.441038
+Ray direction : 0.0489137, 0.974377, 0.219538
+Ray recursionRemaining : 2
+Ray importance : 0.583851
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : -1
+
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 0, 0, 0, 0, 256192816, 256114688, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : 0.229023, 0.728834, 0.645252
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : -1
+
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 0, 0, 0, 0, 0, 256192816, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : 0.282952, 0.726339, 0.626395
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : -1
+
+Thread 4 rendered square at 176, 0
+
+Thread 6 rendered square at 208, 0
+
+Thread 2 rendered square at 144, 0
+
+Thread 3 rendered square at 160, 0
+
+Thread 5 rendered square at 192, 0
+
+Thread 1 rendered square at 240, 0
+
+Thread 0 rendered square at 224, 0
+
+Thread 4 rendered square at 256, 0
+
+Thread 6 rendered square at 272, 0
+
+Thread 5 rendered square at 320, 0
+
+Thread 2 rendered square at 288, 0
+
+Thread 3 rendered square at 304, 0
+
+Thread 1 rendered square at 0, 16
+
+Thread 0 rendered square at 16, 16
+
+Thread 4 rendered square at 32, 16
+
+Thread 6 rendered square at 48, 16
+
+Thread 5 rendered square at 64, 16
+
+Thread 2 rendered square at 80, 16
+
+Thread 3 rendered square at 96, 16
+
+Thread 1 rendered square at 112, 16
+
+Thread 4 rendered square at 144, 16
+
+Thread 6 rendered square at 160, 16
+
+Thread 5 rendered square at 176, 16
+
+Thread 2 rendered square at 192, 16
+
+Thread 6 rendered square at 256, 16
+
+Thread 5 rendered square at 272, 16
+
+Thread 4 rendered square at 240, 16
+
+Thread 0 rendered square at 128, 16
+
+Thread 3 rendered square at 208, 16
+Thread 3 rendered square at 208, 16
+
+
+Thread 1 rendered square at 224, 16
+
+Thread 2 rendered square at 288, 16
+
+Thread 6 rendered square at 304, 16
+
+Thread 4 rendered square at 0, 32
+
+Thread 5 rendered square at 32, 32
+
+Thread 0 rendered square at 16, 32
+
+Thread 3 rendered square at 48, 32
+
+Thread 1 rendered square at 64, 32
+
+Thread 2 rendered square at 80, 32
+Thread 2 rendered square at 80, 32
+
+
+Thread 4 rendered square at 112, 32
+
+Thread 5 rendered square at 128, 32
+
+Thread 3 rendered square at 160, 32
+
+Thread 0 rendered square at 144, 32
+
+Thread 1 rendered square at 176, 32
+
+Thread 6 rendered square at 192, 32
+
+Thread 2 rendered square at 208, 32
+
+Thread 4 rendered square at 224, 32
+
+Thread 1 rendered square at 288, 32
+
+Thread 2 rendered square at 320, 32
+
+Thread 3 rendered square at 256, 32
+
+Thread 5 rendered square at 240, 32
+
+Thread 6 rendered square at 304, 32
+
+Thread 0 rendered square at 272, 32
+
+Thread 4 rendered square at 0, 48
+
+Thread 1 rendered square at 16, 48
+
+Thread 2 rendered square at 32, 48
+
+Thread 3 rendered square at 48, 48
+
+Thread 5 rendered square at 64, 48
+
+Thread 6 rendered square at 80, 48
+
+Thread 1 rendered square at 128, 48
+
+Thread 0 rendered square at 96, 48
+
+Thread 4 rendered square at 112, 48
+
+Thread 2 rendered square at 144, 48
+
+Thread 3 rendered square at 160, 48
+
+Thread 5 rendered square at 176, 48
+
+Thread 6 rendered square at 192, 48
+
+Thread 1 rendered square at 208, 48
+
+Thread 1 rendered square at 208, 48
+
+Thread 0 rendered square at 224, 48
+
+Thread 2 rendered square at 256, 48
+
+Thread 6 rendered square at 304, 48
+
+Thread 5 rendered square at 320, 48
+
+Thread 5 rendered square at 288, 48
+
+Thread 1 rendered square at 0, 64
+
+Thread 0 rendered square at 16, 64
+
+Thread 3 rendered square at 272, 48
+
+Thread 2 rendered square at 32, 64
+
+Thread 4 rendered square at 64, 64
+
+Thread 6 rendered square at 48, 64
+
+Thread 5 rendered square at 80, 64
+
+Thread 1 rendered square at 96, 64
+
+Thread 0 rendered square at 112, 64
+
+Thread 3 rendered square at 128, 64
+
+Thread 6 rendered square at 176, 64
+
+Thread 4 rendered square at 160, 64
+
+Thread 2 rendered square at 144, 64
+
+Thread 5 rendered square at 192, 64
+
+Thread 1 rendered square at 208, 64
+
+Thread 0 rendered square at 224, 64
+
+Thread 3 rendered square at 240, 64
+
+Thread 1 rendered square at 320, 64
+
+Thread 5 rendered square at 304, 64
+
+Thread 2 rendered square at 288, 64
+
+Thread 4 rendered square at 272, 64
+
+Thread 0 rendered square at 0, 80
+
+Thread 6 rendered square at 256, 64
+
+Thread 3 rendered square at 16, 80
+
+Thread 1 rendered square at 32, 80
+
+Thread 5 rendered square at 48, 80
+
+Thread 2 rendered square at 64, 80
+
+Thread 4 rendered square at 80, 80
+
+Thread 6 rendered square at 112, 80
+
+Thread 0 rendered square at 96, 80
+
+Thread 3 rendered square at 128, 80
+
+Thread 1 rendered square at 144, 80
+
+Thread 5 rendered square at 160, 80
+
+Thread 2 rendered square at 176, 80
+
+Thread 4 rendered square at 192, 80
+
+Thread 6 rendered square at 208, 80
+
+Thread 6 rendered square at 320, 80
+
+Thread 0 rendered square at 224, 80
+
+Thread 3 rendered square at 240, 80
+
+Thread 4 rendered square at 304, 80
+
+Thread 1 rendered square at 256, 80
+
+Thread 5 rendered square at 272, 80
+
+Thread 6 rendered square at 0, 96
+
+Thread 2 rendered square at 288, 80
+
+Thread 3 rendered square at 32, 96
+
+Thread 4 rendered square at 48, 96
+
+Thread 1 rendered square at 64, 96
+
+Thread 5 rendered square at 80, 96
+
+Thread 6 rendered square at 96, 96
+
+Thread 2 rendered square at 112, 96
+
+Thread 3 rendered square at 128, 96
+
+Thread 0 rendered square at 16, 96
+
+Thread 4 rendered square at 144, 96
+
+Thread 1 rendered square at 160, 96
+
+Thread 5 rendered square at 176, 96
+
+Thread 6 rendered square at 192, 96
+
+Thread 2 rendered square at 208, 96
+
+Thread 2 rendered square at 320, 96
+
+Thread 3 rendered square at 224, 96
+
+Thread 4 rendered square at 240, 96
+
+Thread 0 rendered square at 256, 96
+
+Thread 6 rendered square at 304, 96
+
+Thread 1 rendered square at 272, 96
+
+Thread 5 rendered square at 288, 96
+
+Thread 2 rendered square at 0, 112
+
+Thread 3 rendered square at 16, 112
+
+Thread 4 rendered square at 32, 112
+
+Thread 6 rendered square at 64, 112
+
+Thread 0 rendered square at 48, 112
+
+Thread 1 rendered square at 80, 112
+
+Thread 5 rendered square at 96, 112
+
+Thread 2 rendered square at 112, 112
+
+Thread 3 rendered square at 128, 112
+
+Thread 4 rendered square at 144, 112
+
+Thread 6 rendered square at 160, 112
+
+Thread 0 rendered square at 176, 112
+
+Thread 1 rendered square at 192, 112
+
+Thread 5 rendered square at 208, 112
+
+Thread 2 rendered square at 224, 112
+
+Thread 3 rendered square at 240, 112
+
+Thread 4 rendered square at 256, 112
+
+Thread 5 rendered square at 320, 112
+
+Thread 6 rendered square at 272, 112
+
+Thread 0 rendered square at 288, 112
+
+Thread 1 rendered square at 304, 112
+
+Thread 2 rendered square at 0, 128
+
+Thread 3 rendered square at 16, 128
+
+Thread 4 rendered square at 32, 128
+
+Thread 5 rendered square at 48, 128
+
+Thread 6 rendered square at 64, 128
+
+Thread 0 rendered square at 80, 128
+
+Thread 1 rendered square at 96, 128
+
+Thread 2 rendered square at 112, 128
+
+Thread 3 rendered square at 128, 128
+
+Thread 4 rendered square at 144, 128
+
+Thread 5 rendered square at 160, 128
+
+Thread 6 rendered square at 176, 128
+
+Thread 0 rendered square at 192, 128
+
+Thread 1 rendered square at 208, 128
+
+Thread 2 rendered square at 224, 128
+
+Thread 3 rendered square at 240, 128
+
+Thread 4 rendered square at 256, 128
+
+Thread 5 rendered square at 272, 128
+
+Thread 1 rendered square at 320, 128
+
+Thread 6 rendered square at 288, 128
+
+Thread 2 rendered square at 0, 144
+
+Thread 3 rendered square at 16, 144
+
+Thread 4 rendered square at 32, 144
+
+Thread 0 rendered square at 304, 128
+
+Thread 1 rendered square at 64, 144
+
+Thread 5 rendered square at 48, 144
+
+Thread 6 rendered square at 80, 144
+
+Thread 2 rendered square at 96, 144
+
+Thread 3 rendered square at 112, 144
+
+Thread 4 rendered square at 128, 144
+
+Thread 0 rendered square at 144, 144
+
+Thread 5 rendered square at 176, 144
+
+Thread 1 rendered square at 160, 144
+
+Thread 6 rendered square at 192, 144
+
+Thread 2 rendered square at 208, 144
+
+Thread 3 rendered square at 224, 144
+
+Thread 4 rendered square at 240, 144
+
+Thread 5 rendered square at 272, 144
+
+Thread 2 rendered square at 320, 144
+
+Thread 2 rendered square at 320, 144
+
+Thread 6 rendered square at 304, 144
+
+Thread 0 rendered square at 256, 144
+
+Thread 3 rendered square at 0, 160
+
+Thread 4 rendered square at 16, 160
+
+Thread 5 rendered square at 32, 160
+
+Thread 2 rendered square at 64, 160
+
+Thread 1 rendered square at 48, 160
+
+Thread 6 rendered square at 80, 160
+
+Thread 0 rendered square at 96, 160
+
+Thread 3 rendered square at 112, 160
+
+Thread 4 rendered square at 128, 160
+
+Thread 5 rendered square at 144, 160
+
+Thread 1 rendered square at 176, 160
+
+Thread 2 rendered square at 160, 160
+
+Thread 6 rendered square at 192, 160
+
+Thread 0 rendered square at 208, 160
+
+Thread 3 rendered square at 224, 160
+
+Thread 4 rendered square at 240, 160
+
+Thread 6 rendered square at 304, 160
+
+Thread 5 rendered square at 256, 160
+
+Thread 1 rendered square at 272, 160
+
+Thread 0 rendered square at 320, 160
+
+Thread 2 rendered square at 288, 160
+
+Thread 3 rendered square at 0, 176
+
+Thread 4 rendered square at 16, 176
+
+Thread 6 rendered square at 32, 176
+
+Thread 1 rendered square at 64, 176
+
+Thread 5 rendered square at 48, 176
+
+Thread 0 rendered square at 80, 176
+
+Thread 2 rendered square at 96, 176
+
+Thread 3 rendered square at 112, 176
+
+Thread 6 rendered square at 144, 176
+
+Thread 4 rendered square at 128, 176
+
+Thread 5 rendered square at 176, 176
+
+Thread 1 rendered square at 160, 176
+
+Thread 2 rendered square at 208, 176
+
+Thread 0 rendered square at 192, 176
+
+Thread 3 rendered square at 224, 176
+
+Thread 4 rendered square at 256, 176
+
+Thread 6 rendered square at 240, 176
+
+Thread 3 rendered square at 0, 192
+
+Thread 0 rendered square at 320, 176
+
+Thread 5 rendered square at 272, 176
+
+Thread 1 rendered square at 288, 176
+
+Thread 2 rendered square at 304, 176
+
+Thread 4 rendered square at 16, 192
+
+Thread 6 rendered square at 32, 192
+
+Thread 3 rendered square at 48, 192
+
+Thread 5 rendered square at 80, 192
+
+Thread 5 rendered square at 80, 192
+
+Thread 0 rendered square at 64, 192
+
+Thread 2 rendered square at 112, 192
+
+Thread 4 rendered square at 128, 192
+
+Thread 6 rendered square at 144, 192
+
+Thread 3 rendered square at 160, 192
+
+Thread 1 rendered square at 176, 192
+
+Thread 5 rendered square at 192, 192
+
+Thread 0 rendered square at 208, 192
+
+Thread 4 rendered square at 240, 192
+
+Thread 2 rendered square at 224, 192
+
+Thread 6 rendered square at 256, 192
+
+Thread 0 rendered square at 320, 192
+
+Thread 4 rendered square at 0, 208
+
+Thread 3 rendered square at 272, 192
+
+Thread 1 rendered square at 288, 192
+
+Thread 5 rendered square at 304, 192
+
+Thread 2 rendered square at 16, 208
+
+Thread 6 rendered square at 32, 208
+
+Thread 4 rendered square at 64, 208
+
+Thread 0 rendered square at 48, 208
+
+Thread 3 rendered square at 80, 208
+
+Thread 1 rendered square at 96, 208
+
+Thread 5 rendered square at 112, 208
+
+Thread 6 rendered square at 144, 208
+
+Thread 2 rendered square at 128, 208
+
+Thread 4 rendered square at 160, 208
+
+Thread 0 rendered square at 176, 208
+
+Thread 3 rendered square at 192, 208
+
+Thread 1 rendered square at 208, 208
+
+Thread 5 rendered square at 224, 208
+
+Thread 6 rendered square at 240, 208
+
+Thread 2 rendered square at 256, 208
+
+Thread 1 rendered square at 320, 208
+
+Thread 5 rendered square at 0, 224
+
+Thread 4 rendered square at 272, 208
+
+Thread 3 rendered square at 304, 208
+
+Thread 0 rendered square at 288, 208
+
+Thread 6 rendered square at 16, 224
+
+Thread 1 rendered square at 48, 224
+
+Thread 5 rendered square at 64, 224
+
+Thread 4 rendered square at 80, 224
+
+Thread 2 rendered square at 32, 224
+
+Thread 3 rendered square at 96, 224
+
+Thread 6 rendered square at 128, 224
+
+Thread 1 rendered square at 144, 224
+
+Thread 5 rendered square at 160, 224
+
+Thread 4 rendered square at 176, 224
+
+Thread 2 rendered square at 192, 224
+
+Thread 3 rendered square at 208, 224
+
+Thread 6 rendered square at 224, 224
+
+Thread 0 rendered square at 112, 224
+
+Thread 6 rendered square at 320, 224
+
+Thread 1 rendered square at 240, 224
+
+Thread 5 rendered square at 256, 224
+
+Thread 4 rendered square at 272, 224
+
+Thread 0 rendered square at 0, 240
+
+Thread 2 rendered square at 288, 224
+
+Thread 3 rendered square at 304, 224
+
+Thread 6 rendered square at 16, 240
+
+Thread 5 rendered square at 48, 240
+
+Thread 1 rendered square at 32, 240
+
+Thread 0 rendered square at 80, 240
+
+Thread 2 rendered square at 96, 240
+
+Thread 4 rendered square at 64, 240
+
+Thread 3 rendered square at 112, 240
+
+Thread 6 rendered square at 128, 240
+
+Thread 5 rendered square at 144, 240
+
+Thread 1 rendered square at 160, 240
+
+Thread 2 rendered square at 192, 240
+
+Thread 4 rendered square at 208, 240
+
+Thread 3 rendered square at 224, 240
+
+Thread 0 rendered square at 176, 240
+
+Thread 3 rendered square at 320, 240
+
+Thread 6 rendered square at 240, 240
+
+Thread 4 rendered square at 304, 240
+
+Thread 0 rendered square at 0, 256
+
+Thread 3 rendered square at 16, 256
+
+Thread 1 rendered square at 272, 240
+
+Thread 5 rendered square at 256, 240
+
+Thread 2 rendered square at 288, 240
+
+Thread 6 rendered square at 32, 256
+
+Thread 4 rendered square at 48, 256
+
+Thread 5 rendered square at 112, 256
+
+Thread 2 rendered square at 128, 256
+
+Thread 1 rendered square at 96, 256
+
+Thread 3 rendered square at 80, 256
+
+Thread 6 rendered square at 144, 256
+
+Thread 0 rendered square at 64, 256
+
+Thread 4 rendered square at 160, 256
+
+Thread 5 rendered square at 176, 256
+
+Thread 2 rendered square at 192, 256
+
+Thread 1 rendered square at 208, 256
+
+Thread 2 rendered square at 304, 256
+
+Thread 4 rendered square at 272, 256
+
+Thread 3 rendered square at 224, 256
+
+Thread 1 rendered square at 320, 256
+
+Thread 5 rendered square at 288, 256
+
+Thread 6 rendered square at 240, 256
+
+Thread 4 rendered square at 0, 272
+
+Thread 4 rendered square at 16, 272
+
+Thread 3 rendered square at 32, 272
+
+Thread 0 rendered square at 256, 256
+
+Thread 3 rendered square at 128, 272
+
+Thread 1 rendered square at 48, 272
+
+Thread 6 rendered square at 80, 272
+
+Thread 5 rendered square at 64, 272
+
+Thread 4 rendered square at 112, 272
+
+Thread 2 rendered square at 96, 272
+
+Thread 0 rendered square at 144, 272
+
+Thread 3 rendered square at 160, 272
+
+Thread 1 rendered square at 176, 272
+
+Thread 1 rendered square at 288, 272
+
+Thread 6 rendered square at 192, 272
+
+Thread 5 rendered square at 208, 272
+
+Thread 4 rendered square at 224, 272
+
+Thread 2 rendered square at 240, 272
+
+Thread 6 rendered square at 320, 272
+
+Thread 1 rendered square at 304, 272
+
+Thread 0 rendered square at 256, 272
+
+Thread 5 rendered square at 0, 288
+
+Thread 4 rendered square at 16, 288
+
+Thread 3 rendered square at 272, 272
+
+Thread 2 rendered square at 32, 288
+
+Thread 6 rendered square at 48, 288
+
+Thread 1 rendered square at 64, 288
+
+Thread 0 rendered square at 80, 288
+
+Thread 5 rendered square at 96, 288
+
+Thread 4 rendered square at 112, 288
+
+Thread 3 rendered square at 128, 288
+
+Thread 6 rendered square at 160, 288
+
+Thread 2 rendered square at 144, 288
+
+Thread 1 rendered square at 176, 288
+
+Thread 4 rendered square at 224, 288
+
+Thread 6 rendered square at 256, 288
+
+Thread 2 rendered square at 272, 288
+
+Thread 0 rendered square at 192, 288
+
+Thread 5 rendered square at 208, 288
+
+Thread 4 rendered square at 304, 288
+
+Thread 6 rendered square at 320, 288
+
+Thread 3 rendered square at 240, 288
+
+Thread 2 rendered square at 0, 304
+
+Thread 1 rendered square at 288, 288
+
+Thread 4 rendered square at 48, 304
+
+Thread 0 rendered square at 16, 304
+Thread 6 rendered square at 64, 304
+
+
+Thread 5 rendered square at 32, 304
+
+Thread 3 rendered square at 80, 304
+
+Thread 2 rendered square at 96, 304
+
+Thread 1 rendered square at 112, 304
+
+Thread 4 rendered square at 128, 304
+
+Thread 6 rendered square at 160, 304
+
+Thread 5 rendered square at 176, 304
+
+Thread 0 rendered square at 144, 304
+
+Thread 3 rendered square at 192, 304
+
+Thread 6 rendered square at 256, 304
+
+Thread 5 rendered square at 272, 304
+
+Thread 4 rendered square at 240, 304
+
+Thread 6 rendered square at 320, 304
+
+Thread 0 rendered square at 288, 304
+
+Thread 3 rendered square at 304, 304
+
+Thread 1 rendered square at 224, 304
+
+Thread 2 rendered square at 208, 304
+
+Thread 5 rendered square at 0, 320
+
+Thread 4 rendered square at 16, 320
+
+Thread 6 rendered square at 32, 320
+
+Thread 3 rendered square at 64, 320
+
+Thread 0 rendered square at 48, 320
+
+Thread 1 rendered square at 80, 320
+
+Thread 2 rendered square at 96, 320
+
+Thread 5 rendered square at 112, 320
+
+Thread 4 rendered square at 128, 320
+
+Thread 6 rendered square at 144, 320
+
+Thread 3 rendered square at 160, 320
+
+Thread 0 rendered square at 176, 320
+
+Thread 6 rendered square at 256, 320
+
+Thread 1 rendered square at 192, 320
+
+Thread 4 rendered square at 240, 320
+
+Thread 3 rendered square at 272, 320
+
+Thread 2 rendered square at 208, 320
+
+Thread 1 rendered square at 320, 320
+
+Thread 6 rendered square at 304, 320
+
+Thread 5 rendered square at 224, 320
+
+Thread 0 rendered square at 288, 320
+
+Camera.Render ThreadsComplete
+Camera.Render ClearedHandles
+Coretracer.CopyBuffer
+DLL.CopyBuffer
+Coretracer.CopyBuffer
+DLL.InitialiseRender
+Coretracer.BuildFromXml
+DLL.SetViewport
+Coretracer.BuildViewport
+DLL.SyncRender
+Coretracer.StartRender
+Camera.Render
+Camera.Render InitialiseRenderQueue
+Camera.Render InitialiseThreads
+Camera.Render Initialise Thread 0
+Camera.Render Initialise Thread 1
+Camera.Render Initialise Thread 2
+Camera.Render Initialise Thread 3
+Camera.Render Initialise Thread 4
+Camera.Render Initialise Thread 5
+Camera.Render Initialise Thread 6
+Thread 0 rendered square at 0, 0
+
+Thread 1 rendered square at 16, 0
+
+Thread 2 rendered square at 32, 0
+
+Thread 3 rendered square at 48, 0
+
+Thread 4 rendered square at 64, 0
+
+Thread 6 rendered square at 96, 0
+
+Thread 5 rendered square at 80, 0
+
+Thread 1 rendered square at 128, 0
+
+Thread 2 rendered square at 144, 0
+
+Sample ray
+Shadow test ray
+Reflection ray
+Directional light test ray
+KDTree intersect, obj intersected : 
+Obj Tested : 1, 2, 0, 0, 0, 0, 0, 256192816, 
+Obj Tested Total: 2
+Ray start : 0, 0.4, -0.75
+Ray direction : 0.229186, 0.725621, 0.648806
+Ray recursionRemaining : 3
+Ray importance : 1
+Ray AirRefractionIndex : 1.003
+Ray RefractiveIndex : 1.003
+Ray m_RequestFlags : 1
+Collision point : -1
+
+Thread 4 rendered square at 176, 0
+
+Thread 5 rendered square at 208, 0
+
+Thread 3 rendered square at 160, 0
+
+Thread 6 rendered square at 192, 0
+
+Thread 1 rendered square at 224, 0
+
+Thread 2 rendered square at 240, 0
+
+Thread 4 rendered square at 256, 0
+
+Thread 5 rendered square at 272, 0
+
+Thread 1 rendered square at 320, 0
+
+Thread 3 rendered square at 288, 0
+
+Thread 6 rendered square at 304, 0
+
+Thread 2 rendered square at 0, 16
+
+Thread 5 rendered square at 32, 16
+
+Thread 4 rendered square at 16, 16
+
+Thread 1 rendered square at 48, 16
+
+Thread 3 rendered square at 64, 16
+
+Thread 6 rendered square at 80, 16
+
+Thread 2 rendered square at 96, 16
+
+Thread 4 rendered square at 128, 16
+
+Thread 1 rendered square at 144, 16
+
+Thread 5 rendered square at 112, 16
+
+Thread 3 rendered square at 160, 16
+
+Thread 0 rendered square at 112, 0
+
+Thread 3 rendered square at 256, 16
+
+Thread 0 rendered square at 272, 16
+
+Thread 5 rendered square at 240, 16
+
+Thread 6 rendered square at 176, 16
+
+Thread 3 rendered square at 288, 16
+
+Thread 2 rendered square at 192, 16
+
+Thread 0 rendered square at 304, 16
+
+Thread 1 rendered square at 224, 16
+
+Thread 4 rendered square at 208, 16
+
+Thread 5 rendered square at 320, 16
+
+Thread 6 rendered square at 0, 32
+
+Thread 3 rendered square at 16, 32
+
+Thread 2 rendered square at 32, 32
+
+Thread 0 rendered square at 48, 32
+
+Thread 4 rendered square at 80, 32
+
+Thread 1 rendered square at 64, 32
+
+Thread 5 rendered square at 96, 32
+
+Thread 6 rendered square at 112, 32
+
+Thread 3 rendered square at 128, 32
+
+Thread 2 rendered square at 144, 32
+
+Thread 0 rendered square at 160, 32
+
+Thread 4 rendered square at 176, 32
+
+Thread 0 rendered square at 272, 32
+
+Thread 1 rendered square at 192, 32
+
+Thread 5 rendered square at 208, 32
+
+Thread 6 rendered square at 224, 32
+
+Thread 4 rendered square at 288, 32
+
+Thread 3 rendered square at 240, 32
+
+Thread 1 rendered square at 320, 32
+
+Thread 2 rendered square at 256, 32
+
+Thread 0 rendered square at 304, 32
+
+Thread 6 rendered square at 16, 48
+
+Thread 5 rendered square at 0, 48
+
+Thread 4 rendered square at 32, 48
+
+Thread 0 rendered square at 96, 48
+
+Thread 3 rendered square at 48, 48
+
+Thread 1 rendered square at 64, 48
+
+Thread 2 rendered square at 80, 48
+
+Thread 6 rendered square at 112, 48
+
+Thread 5 rendered square at 128, 48
+
+Thread 4 rendered square at 144, 48
+
+Thread 0 rendered square at 176, 48
+
+Thread 0 rendered square at 160, 48
+
+Thread 1 rendered square at 192, 48
+
+Thread 4 rendered square at 256, 48
+
+Thread 4 rendered square at 256, 48
+
+Thread 6 rendered square at 224, 48
+
+Thread 5 rendered square at 240, 48
+
+Thread 0 rendered square at 288, 48
+
+Thread 2 rendered square at 320, 48
+
+Thread 1 rendered square at 304, 48
+
+Thread 4 rendered square at 0, 64
+
+Thread 6 rendered square at 16, 64
+
+Thread 3 rendered square at 272, 48
+
+Thread 5 rendered square at 32, 64
+
+Thread 0 rendered square at 48, 64
+
+Thread 4 rendered square at 96, 64
+
+Thread 2 rendered square at 64, 64
+
+Thread 1 rendered square at 80, 64
+
+Thread 6 rendered square at 112, 64
+
+Thread 3 rendered square at 128, 64
+
+Thread 5 rendered square at 144, 64
+
+Thread 4 rendered square at 176, 64
+
+Thread 0 rendered square at 160, 64
+
+Thread 2 rendered square at 192, 64
+
+Thread 1 rendered square at 208, 64
+
+Thread 6 rendered square at 224, 64
+
+Thread 3 rendered square at 240, 64
+
+Thread 1 rendered square at 320, 64
+
+Thread 2 rendered square at 304, 64
+
+Thread 6 rendered square at 0, 80
+
+Thread 4 rendered square at 272, 64
+
+Thread 5 rendered square at 256, 64
+
+Thread 0 rendered square at 288, 64
+
+Thread 3 rendered square at 16, 80
+
+Thread 1 rendered square at 32, 80
+
+Thread 2 rendered square at 48, 80
+
+Thread 6 rendered square at 64, 80
+
+Thread 4 rendered square at 80, 80
+
+Thread 5 rendered square at 96, 80
+
+Thread 0 rendered square at 112, 80
+
+Thread 3 rendered square at 128, 80
+
+Thread 1 rendered square at 144, 80
+
+Thread 4 rendered square at 192, 80
+
+Thread 6 rendered square at 176, 80
+
+Thread 2 rendered square at 160, 80
+
+Thread 5 rendered square at 208, 80
+
+Thread 0 rendered square at 224, 80
+
+Thread 3 rendered square at 240, 80
+
+Thread 5 rendered square at 320, 80
+
+Thread 2 rendered square at 304, 80
+
+Thread 0 rendered square at 0, 96
+
+Thread 1 rendered square at 256, 80
+
+Thread 4 rendered square at 272, 80
+
+Thread 6 rendered square at 288, 80
+
+Thread 3 rendered square at 16, 96
+
+Thread 5 rendered square at 32, 96
+
+Thread 2 rendered square at 48, 96
+
+Thread 0 rendered square at 64, 96
+
+Thread 4 rendered square at 80, 96
+
+Thread 1 rendered square at 96, 96
+
+Thread 6 rendered square at 112, 96
+
+Thread 3 rendered square at 128, 96
+
+Thread 5 rendered square at 144, 96
+
+Thread 2 rendered square at 160, 96
+
+Thread 4 rendered square at 192, 96
+
+Thread 1 rendered square at 208, 96
+
+Thread 6 rendered square at 224, 96
+
+Thread 6 rendered square at 320, 96
+
+Thread 0 rendered square at 176, 96
+
+Thread 3 rendered square at 240, 96
+
+Thread 5 rendered square at 256, 96
+
+Thread 2 rendered square at 272, 96
+
+Thread 1 rendered square at 304, 96
+
+Thread 4 rendered square at 288, 96
+
+Thread 6 rendered square at 0, 112
+
+Thread 3 rendered square at 32, 112
+
+Thread 5 rendered square at 48, 112
+
+Thread 2 rendered square at 64, 112
+
+Thread 4 rendered square at 96, 112
+
+Thread 1 rendered square at 80, 112
+
+Thread 0 rendered square at 16, 112
+
+Thread 6 rendered square at 112, 112
+
+Thread 3 rendered square at 128, 112
+
+Thread 5 rendered square at 144, 112
+
+Thread 2 rendered square at 160, 112
+
+Thread 4 rendered square at 176, 112
+
+Thread 1 rendered square at 192, 112
+
+Thread 6 rendered square at 224, 112
+
+Thread 0 rendered square at 208, 112
+
+Thread 6 rendered square at 320, 112
+
+Thread 3 rendered square at 240, 112
+
+Thread 5 rendered square at 256, 112
+
+Thread 4 rendered square at 288, 112
+
+Thread 2 rendered square at 272, 112
+
+Thread 1 rendered square at 304, 112
+
+Thread 0 rendered square at 0, 128
+
+Thread 6 rendered square at 16, 128
+
+Thread 3 rendered square at 32, 128
+
+Thread 5 rendered square at 48, 128
+
+Thread 4 rendered square at 64, 128
+
+Thread 2 rendered square at 80, 128
+
+Thread 1 rendered square at 96, 128
+
+Thread 0 rendered square at 112, 128
+
+Thread 6 rendered square at 128, 128
+
+Thread 3 rendered square at 144, 128
+
+Thread 5 rendered square at 160, 128
+
+Thread 4 rendered square at 176, 128
+
+Thread 1 rendered square at 208, 128
+
+Thread 2 rendered square at 192, 128
+
+Thread 0 rendered square at 224, 128
+
+Thread 6 rendered square at 240, 128
+
+Thread 3 rendered square at 256, 128
+
+Thread 5 rendered square at 272, 128
+
+Thread 2 rendered square at 320, 128
+
+Thread 4 rendered square at 288, 128
+
+Thread 1 rendered square at 304, 128
+
+Thread 0 rendered square at 0, 144
+
+Thread 6 rendered square at 16, 144
+
+Thread 4 rendered square at 80, 144
+
+Thread 3 rendered square at 32, 144
+
+Thread 5 rendered square at 48, 144
+
+Thread 2 rendered square at 64, 144
+
+Thread 0 rendered square at 96, 144
+
+Thread 0 rendered square at 112, 144
+
+Thread 4 rendered square at 144, 144
+
+Thread 6 rendered square at 128, 144
+
+Thread 3 rendered square at 160, 144
+
+Thread 2 rendered square at 192, 144
+
+Thread 5 rendered square at 176, 144
+
+Thread 1 rendered square at 208, 144
+
+Thread 0 rendered square at 224, 144
+
+Thread 4 rendered square at 240, 144
+
+Thread 3 rendered square at 272, 144
+
+Thread 6 rendered square at 256, 144
+
+Thread 1 rendered square at 320, 144
+
+Thread 5 rendered square at 304, 144
+
+Thread 2 rendered square at 288, 144
+
+Thread 0 rendered square at 0, 160
+
+Thread 4 rendered square at 16, 160
+
+Thread 3 rendered square at 32, 160
+
+Thread 1 rendered square at 64, 160
+
+Thread 6 rendered square at 48, 160
+
+Thread 5 rendered square at 80, 160
+
+Thread 0 rendered square at 112, 160
+
+Thread 2 rendered square at 96, 160
+
+Thread 4 rendered square at 128, 160
+
+Thread 1 rendered square at 160, 160
+
+Thread 6 rendered square at 176, 160
+
+Thread 3 rendered square at 144, 160
+
+Thread 5 rendered square at 192, 160
+
+Thread 0 rendered square at 208, 160
+
+Thread 2 rendered square at 224, 160
+
+Thread 4 rendered square at 240, 160
+
+Thread 3 rendered square at 288, 160
+
+Thread 1 rendered square at 256, 160
+
+Thread 5 rendered square at 304, 160
+
+Thread 6 rendered square at 272, 160
+
+Thread 0 rendered square at 320, 160
+
+Thread 2 rendered square at 0, 176
+
+Thread 4 rendered square at 16, 176
+
+Thread 1 rendered square at 48, 176
+
+Thread 3 rendered square at 32, 176
+
+Thread 5 rendered square at 64, 176
+
+Thread 6 rendered square at 80, 176
+
+Thread 0 rendered square at 96, 176
+
+Thread 2 rendered square at 112, 176
+
+Thread 4 rendered square at 128, 176
+
+Thread 1 rendered square at 144, 176
+
+Thread 3 rendered square at 160, 176
+
+Thread 5 rendered square at 176, 176
+
+Thread 6 rendered square at 192, 176
+
+Thread 0 rendered square at 208, 176
+
+Thread 2 rendered square at 224, 176
+
+Thread 4 rendered square at 240, 176
+
+Thread 0 rendered square at 320, 176
+
+Thread 1 rendered square at 256, 176
+
+Thread 2 rendered square at 0, 192
+
+Thread 3 rendered square at 272, 176
+
+Thread 5 rendered square at 288, 176
+
+Thread 6 rendered square at 304, 176
+
+Thread 4 rendered square at 16, 192
+
+Thread 0 rendered square at 32, 192
+
+Thread 1 rendered square at 48, 192
+
+Thread 2 rendered square at 64, 192
+
+Thread 3 rendered square at 80, 192
+
+Thread 5 rendered square at 96, 192
+
+Thread 6 rendered square at 112, 192
+
+Thread 4 rendered square at 128, 192
+
+Thread 1 rendered square at 160, 192
+
+Thread 3 rendered square at 192, 192
+
+Thread 2 rendered square at 176, 192
+
+Thread 6 rendered square at 224, 192
+
+Thread 5 rendered square at 208, 192
+
+Thread 0 rendered square at 144, 192
+
+Thread 4 rendered square at 240, 192
+
+Thread 5 rendered square at 320, 192
+
+Thread 1 rendered square at 256, 192
+
+Thread 3 rendered square at 272, 192
+
+Thread 6 rendered square at 304, 192
+
+Thread 2 rendered square at 288, 192
+
+Thread 0 rendered square at 0, 208
+
+Thread 4 rendered square at 16, 208
+
+Thread 5 rendered square at 32, 208
+
+Thread 1 rendered square at 64, 208
+
+Thread 1 rendered square at 48, 208
+
+Thread 6 rendered square at 80, 208
+
+Thread 2 rendered square at 96, 208
+
+Thread 0 rendered square at 112, 208
+
+Thread 4 rendered square at 128, 208
+
+Thread 5 rendered square at 144, 208
+
+Thread 3 rendered square at 160, 208
+
+Thread 1 rendered square at 176, 208
+
+Thread 6 rendered square at 192, 208
+
+Thread 2 rendered square at 208, 208
+
+Thread 0 rendered square at 224, 208
+
+Thread 2 rendered square at 320, 208
+
+Thread 4 rendered square at 240, 208
+
+Thread 5 rendered square at 256, 208
+
+Thread 0 rendered square at 0, 224
+
+Thread 3 rendered square at 272, 208
+
+Thread 1 rendered square at 288, 208
+
+Thread 6 rendered square at 304, 208
+
+Thread 2 rendered square at 16, 224
+
+Thread 0 rendered square at 64, 224
+
+Thread 4 rendered square at 32, 224
+
+Thread 5 rendered square at 48, 224
+
+Thread 3 rendered square at 80, 224
+
+Thread 1 rendered square at 96, 224
+
+Thread 6 rendered square at 112, 224
+
+Thread 4 rendered square at 160, 224
+
+Thread 0 rendered square at 144, 224
+
+Thread 2 rendered square at 128, 224
+
+Thread 5 rendered square at 176, 224
+
+Thread 3 rendered square at 192, 224
+
+Thread 6 rendered square at 224, 224
+
+Thread 1 rendered square at 208, 224
+
+Thread 6 rendered square at 320, 224
+
+Thread 4 rendered square at 240, 224
+
+Thread 1 rendered square at 0, 240
+
+Thread 2 rendered square at 272, 224
+
+Thread 0 rendered square at 256, 224
+
+Thread 3 rendered square at 304, 224
+
+Thread 5 rendered square at 288, 224
+
+Thread 6 rendered square at 16, 240
+
+Thread 1 rendered square at 48, 240
+
+Thread 4 rendered square at 32, 240
+
+Thread 3 rendered square at 96, 240
+
+Thread 0 rendered square at 80, 240
+
+Thread 5 rendered square at 112, 240
+
+Thread 2 rendered square at 64, 240
+
+Thread 6 rendered square at 128, 240
+
+Thread 4 rendered square at 160, 240
+
+Thread 1 rendered square at 144, 240
+
+Thread 3 rendered square at 176, 240
+
+Thread 0 rendered square at 192, 240
+
+Thread 5 rendered square at 208, 240
+
+Thread 2 rendered square at 224, 240
+
+Thread 5 rendered square at 320, 240
+
+Thread 2 rendered square at 0, 256
+
+Thread 6 rendered square at 240, 240
+
+Thread 1 rendered square at 272, 240
+
+Thread 4 rendered square at 256, 240
+
+Thread 0 rendered square at 304, 240
+
+Thread 5 rendered square at 16, 256
+
+Thread 3 rendered square at 288, 240
+
+Thread 2 rendered square at 32, 256
+
+Thread 6 rendered square at 48, 256
+
+Thread 5 rendered square at 112, 256
+
+Thread 4 rendered square at 80, 256
+
+Thread 0 rendered square at 96, 256
+
+Thread 3 rendered square at 128, 256
+
+Thread 1 rendered square at 64, 256
+
+Thread 2 rendered square at 144, 256
+
+Thread 6 rendered square at 160, 256
+
+Thread 5 rendered square at 176, 256
+
+Thread 4 rendered square at 192, 256
+
+Thread 0 rendered square at 208, 256
+
+Thread 4 rendered square at 304, 256
+
+Thread 3 rendered square at 224, 256
+
+Thread 0 rendered square at 320, 256
+
+Thread 4 rendered square at 0, 272
+
+Thread 6 rendered square at 272, 256
+
+Thread 3 rendered square at 16, 272
+
+Thread 5 rendered square at 288, 256
+
+Thread 1 rendered square at 240, 256
+
+Thread 0 rendered square at 32, 272
+
+Thread 2 rendered square at 256, 256
+
+Thread 4 rendered square at 48, 272
+
+Thread 2 rendered square at 144, 272
+
+Thread 6 rendered square at 64, 272
+
+Thread 3 rendered square at 80, 272
+
+Thread 5 rendered square at 96, 272
+
+Thread 1 rendered square at 112, 272
+
+Thread 0 rendered square at 128, 272
+
+Thread 2 rendered square at 176, 272
+
+Thread 4 rendered square at 160, 272
+
+Thread 1 rendered square at 240, 272
+
+Thread 4 rendered square at 288, 272
+
+Thread 6 rendered square at 192, 272
+
+Thread 3 rendered square at 208, 272
+
+Thread 5 rendered square at 224, 272
+
+Thread 4 rendered square at 320, 272
+
+Thread 1 rendered square at 304, 272
+
+Thread 0 rendered square at 256, 272
+
+Thread 6 rendered square at 0, 288
+
+Thread 3 rendered square at 16, 288
+
+Thread 2 rendered square at 272, 272
+
+Thread 5 rendered square at 32, 288
+
+Thread 4 rendered square at 48, 288
+
+Thread 1 rendered square at 64, 288
+
+Thread 6 rendered square at 96, 288
+
+Thread 3 rendered square at 112, 288
+
+Thread 2 rendered square at 128, 288
+
+Thread 5 rendered square at 144, 288
+
+Thread 0 rendered square at 80, 288
+
+Thread 4 rendered square at 160, 288
+
+Thread 1 rendered square at 176, 288
+
+Thread 4 rendered square at 272, 288
+
+Thread 6 rendered square at 192, 288
+
+Thread 3 rendered square at 208, 288
+
+Thread 0 rendered square at 256, 288
+
+Thread 1 rendered square at 288, 288
+
+Thread 6 rendered square at 320, 288
+
+Thread 4 rendered square at 304, 288
+
+Thread 5 rendered square at 240, 288
+
+Thread 2 rendered square at 224, 288
+
+Thread 3 rendered square at 0, 304
+
+Thread 0 rendered square at 16, 304
+
+Thread 1 rendered square at 32, 304
+
+Thread 6 rendered square at 64, 304
+
+Thread 6 rendered square at 48, 304
+
+Thread 5 rendered square at 80, 304
+
+Thread 3 rendered square at 112, 304
+
+Thread 2 rendered square at 96, 304
+
+Thread 0 rendered square at 128, 304
+
+Thread 4 rendered square at 160, 304
+
+Thread 1 rendered square at 144, 304
+
+Thread 6 rendered square at 176, 304
+
+Thread 5 rendered square at 192, 304
+
+Thread 3 rendered square at 208, 304
+
+Thread 4 rendered square at 256, 304
+
+Thread 1 rendered square at 272, 304
+
+Thread 6 rendered square at 288, 304
+
+Thread 3 rendered square at 320, 304
+
+Thread 2 rendered square at 224, 304
+
+Thread 0 rendered square at 240, 304
+
+Thread 5 rendered square at 304, 304
+
+Thread 4 rendered square at 0, 320
+
+Thread 1 rendered square at 16, 320
+
+Thread 6 rendered square at 32, 320
+
+Thread 3 rendered square at 48, 320
+
+Thread 2 rendered square at 64, 320
+
+Thread 0 rendered square at 80, 320
+
+Thread 5 rendered square at 96, 320
+
+Thread 3 rendered square at 160, 320
+
+Thread 4 rendered square at 112, 320
+
+Thread 1 rendered square at 128, 320
+
+Thread 6 rendered square at 144, 320
+
+Thread 2 rendered square at 176, 320
+
+Thread 0 rendered square at 192, 320
+
+Thread 4 rendered square at 240, 320
+
+Thread 1 rendered square at 256, 320
+
+Thread 6 rendered square at 272, 320
+
+Thread 2 rendered square at 288, 320
+
+Thread 5 rendered square at 208, 320
+
+Thread 3 rendered square at 224, 320
+
+Thread 4 rendered square at 320, 320
+
+Thread 0 rendered square at 304, 320
+
+Camera.Render ThreadsComplete
+Camera.Render ClearedHandles
+Coretracer.CopyBuffer
+DLL.CopyBuffer
+Coretracer.CopyBuffer

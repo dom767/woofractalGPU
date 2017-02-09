@@ -1,0 +1,63 @@
+rule main {
+scale = vec(8,8,8)
+
+// set up material
+diff = vec(0.6,0.4,0.2)
+refl = vec(0.6,0.6,0.6)
+spec = vec(0.3,0.3,0.3)
+gloss = 0.98
+power = 15
+
+// set up distance estimator
+distanceiterations=1000
+distanceminimum=0.001
+stepsize=1
+distancefunction(gridcuboids)
+distance
+
+// cube of cubes
+pos.x += 2.5
+distancefunction(gridcubes)
+distance
+
+// plane of tori
+pos.x -= 2.5
+pos.z += 2.5
+distancefunction(planeoftori)
+distance
+
+// plane of capsules
+pos.x += 2.5
+distancefunction(planeofcapsules)
+distance
+} 
+
+shader gridcuboids
+{
+distance = max( // CSG intersect
+  sphere(pos, vec(0,0,0), 1.0), // outer sphere
+  box(vec(fold(getx(pos),0.1), // repeating box
+      fold(gety(pos),0.1),
+      fold(getz(pos),0.1)),
+    vec(0.5,0.02,0.02), // cubiud
+    vec(0,0,0))) // no offset
+}
+
+shader gridcubes
+{
+distance = box(vec(fold(pos.x, 0.2), fold(pos.y, 0.2), fold(pos.z, 0.2)),
+ vec(0.1, 0.1, 0.1),
+ vec(0,0,0))
+}
+
+shader planeoftori
+{
+distance = torus(vec(fold(pos.x, 0.2), pos.y, fold(pos.z, 0.2)),
+ 0.15, 0.02)
+}
+
+shader planeofcapsules
+{
+distance = capsule(rotx(vec(fold(pos.x, 0.2), pos.y, fold(pos.z, 0.2)),25*pos.y),
+ 0.6, 0.1)
+}

@@ -1,0 +1,31 @@
+rule main {
+scale = vec(30,30,30)
+refl = vec(0.0, 0.0, 0.0)
+spec = vec(0,0,0)
+
+diff = vec(0.76, 0.75, 0.5)
+pos.y -= 1
+box
+pos.y += 2
+box
+pos.y -= 1
+pos.z += 1
+box
+
+diff = vec(0.63, 0.06, 0.04)
+pos.z -= 1
+pos.x -= 1
+box
+
+diff = vec(0.15, 0.48, 0.09)
+pos.x += 2
+box
+
+pos.y += 0.8
+pos.x -= 1
+
+diff= vec(20,20,17)
+scale = vec(5,5,5)
+spherelight
+
+}

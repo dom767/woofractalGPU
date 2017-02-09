@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="WooFractal.FractalColourControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="789" d:DesignWidth="348" xmlns:my="clr-namespace:WooFractal">
+    <Border BorderBrush="Black" BorderThickness="1">
+        <Grid>
+            <CheckBox Content="X Orbit Gradient" Height="16" HorizontalAlignment="Left" Margin="12,36,0,0" Name="checkBox1" VerticalAlignment="Top" Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
+            <Label Background="Black" Content="F R A C T A L   C O L O U R" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="348" />
+            <my:OrbitColourControl HorizontalAlignment="Left" Margin="0,58,0,0" x:Name="orbitColourControl1" VerticalAlignment="Top" Height="159" Width="348" />
+            <CheckBox Content="Y Orbit Gradient" Height="16" HorizontalAlignment="Left" Margin="12,222,0,0" Name="checkBox2" VerticalAlignment="Top" Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
+            <my:OrbitColourControl Height="159" HorizontalAlignment="Left" Margin="0,244,0,0" x:Name="orbitColourControl2" VerticalAlignment="Top" Width="348" />
+            <CheckBox Content="Z Orbit Gradient" Height="16" HorizontalAlignment="Left" Margin="12,410,0,0" Name="checkBox3" VerticalAlignment="Top" Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
+            <my:OrbitColourControl Height="159" HorizontalAlignment="Left" Margin="0,432,0,0" x:Name="orbitColourControl3" VerticalAlignment="Top" Width="348" />
+            <CheckBox Content="Distance Orbit Gradient" Height="16" HorizontalAlignment="Left" Margin="12,597,0,0" Name="checkBox4" VerticalAlignment="Top" Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
+            <my:OrbitColourControl Height="159" HorizontalAlignment="Left" Margin="0,619,0,0" x:Name="orbitColourControl4" VerticalAlignment="Top" Width="348" />
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,29 @@
+rule main {
+repeat (100) { object }
+pos = vec(0, 10 - 3, 0)
+scale = vec(6,6,6)
+diff = vec(0.6, 0.7, 1)
+sphere
+} 
+
+rule object
+{
+pos = vec(-10:10, -10:10, -10:10)
+pos = normalise(pos)
+v0 = pos * vec(0.4, 0.4, 0.4)
+pos = pos * vec(3, 3, 3)
+pos.y += 10
+diff = vec(1,1,1)
+refl = vec(0.2,0.2,0.2)
+{
+ scale = vec(0.3, 0.3, 0.3)
+ repeat(40) { phys }
+}
+}
+
+rule phys {
+pos += v0
+v0.y -= 0.01
+sphere
+// scale = vec(1, 1, 1)
+}
