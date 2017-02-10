@@ -62,7 +62,6 @@ C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\bin\Debug\SharpGL.SceneGr
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\bin\Debug\SharpGL.WPF.pdb
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\AddFractal.baml
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\FinalRender.baml
-C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\HelpWindow.baml
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\MaterialControl.baml
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\PostProcessSettings.baml
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\RPYEditor.baml
@@ -73,7 +72,6 @@ C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\ColourSelec
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\FinalRender.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\FractalColourControl.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\FractalControl.g.cs
-C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\HelpWindow.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\KleinianGroupControl.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\MainWindow.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Debug\MandelboxControl.g.cs
