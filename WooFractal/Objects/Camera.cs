@@ -6,12 +6,25 @@ using System.Xml.Linq;
 using GlmNet;
 using System.Xml;
 using System.IO;
+using System.Windows.Controls;
 
 namespace WooFractal
 {
     [Serializable]
     public class Camera
     {
+        CameraControls _Controls;
+        public UserControl GetControl()
+        {
+            _Controls = new CameraControls(this);
+            return _Controls;
+        }
+
+        public void UpdateGUI()
+        {
+            _Controls.CreateGUI();
+        }
+        
         public Vector3 _Position;
         public Vector3 _Target;
         public double _FOV;
@@ -101,7 +114,7 @@ pos = camPos;
 
 if (!depth)
 {
-vec3 offset = vec3(" + _ApertureSize + @"*(rand2d(vec3(pixelIndex, sampleIndex++, randomIndex))-vec2(0.5,0.5)), 0);
+vec3 offset = vec3(" + _ApertureSize * _FocusDepth + @"*(rand2d(vec3(pixelIndex, sampleIndex++, randomIndex))-vec2(0.5,0.5)), 0);
 
 // get the focal point
 vec3 focusedPoint = direction * " +_FocusDepth+ @";

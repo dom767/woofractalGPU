@@ -7,11 +7,11 @@ namespace WooFractal
 {
     class GPULight
     {
-        public void Set(WootracerOptions wootracerOptions)
+        public void Set(RaytracerOptions wootracerOptions)
         {
             _WootracerOptions = wootracerOptions;
         }
-        private WootracerOptions _WootracerOptions;
+        private RaytracerOptions _WootracerOptions;
 
         public void Compile(ref string frag)
         {

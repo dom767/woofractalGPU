@@ -33,17 +33,15 @@ namespace WooFractal
     public partial class MainWindow : Window
     {
         PostProcess _PostProcess;
-        WootracerOptions _WootracerOptions = new WootracerOptions();
-        CameraOptions _CameraOptions = new CameraOptions();
+        RaytracerOptions _RaytracerOptions = new RaytracerOptions();
         Scene _Scene = new Scene();
 
         public void LoadScratch()
         {
-            LoadFractal("scratch");
+            LoadContext("scratch");
         }
 
         string _SettingsLocation;
-        AppSettings _AppSettings;
 
         public MainWindow()
         {
@@ -52,32 +50,18 @@ namespace WooFractal
             DataContext = this;
 
             _SettingsLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Settings.xml";
-            _AppSettings = AppSettings.Load(_SettingsLocation);
-            _WootracerOptions = _AppSettings._WootracerOptions;
-//            _CameraOptions = _AppSettings._CameraOptions;
 
             // initialise post process settings
             _PostProcess = new PostProcess();
 
-            // starting camera settings
-//            _WootracerOptions = new WootracerOptions();
-//            _Scene.Initialise(_WootracerOptions, _AppSettings._CameraOptions);
-
             // initialise the script objects
             LoadScratch();
-
 
             BuildFractalList();
 
             BuildOptionsList();
 
             BuildColourList();
-
-//            FractalSettings fractalSettings = LoadFractal("scratch");
-//            _FractalIterations = fractalSettings._FractalIterations;
-  //          _FractalColours = fractalSettings._FractalColours;
-    //        _RenderOptions = fractalSettings._RenderOptions;
-
         }
 
         public void AddCuboid()
@@ -134,8 +118,8 @@ namespace WooFractal
             stackPanel2.Children.Clear();
 
             stackPanel2.Children.Add(_Scene._FractalSettings._RenderOptions.GetControl());
-            stackPanel2.Children.Add(_WootracerOptions.GetControl());
-            stackPanel2.Children.Add(_CameraOptions.GetControl());
+            stackPanel2.Children.Add(_RaytracerOptions.GetControl());
+            stackPanel2.Children.Add(_Scene._Camera.GetControl());
         }
 
         private void BuildColourList()
@@ -171,7 +155,7 @@ namespace WooFractal
             {
 //                _ImageRenderer.Render();
             }
-            if (_WootracerOptions._AutoExposure)
+            if (_RaytracerOptions._AutoExposure)
             {
 //                _WootracerOptions._Exposure = _ImageRenderer._MaxValue;
             }
@@ -331,7 +315,7 @@ bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec
  return (hitFractal || hitBkg);
 }";
 
-            _GPULight.Set(_WootracerOptions);
+            _GPULight.Set(_RaytracerOptions);
             _GPULight.Compile(ref frag);
 
             string frag2 = @"
@@ -456,13 +440,13 @@ void main(void)
 
                 if (e.Key == Key.Left)
                 {
-                    _Velocity.x -= Multiplier * _CameraOptions._FocusDepth;
+                    _Velocity.x -= Multiplier * _Scene._Camera._FocusDepth;
                     e.Handled = true;
                     _CameraDirty = true;
                 }
                 else if (e.Key == Key.Right)
                 {
-                    _Velocity.x += Multiplier * _CameraOptions._FocusDepth;
+                    _Velocity.x += Multiplier * _Scene._Camera._FocusDepth;
                     e.Handled = true;
                     _CameraDirty = true;
                 }
@@ -470,13 +454,13 @@ void main(void)
                 {
                     if (!Keyboard.IsKeyDown(Key.LeftCtrl) && !Keyboard.IsKeyDown(Key.RightCtrl))
                     {
-                        _Velocity.z += Multiplier * _CameraOptions._FocusDepth;
+                        _Velocity.z += Multiplier * _Scene._Camera._FocusDepth;
                         e.Handled = true;
                         _CameraDirty = true;
                     }
                     else
                     {
-                        _Velocity.y += Multiplier * _CameraOptions._FocusDepth;
+                        _Velocity.y += Multiplier * _Scene._Camera._FocusDepth;
                         e.Handled = true;
                         _CameraDirty = true;
                     }
@@ -485,13 +469,13 @@ void main(void)
                 {
                     if (!Keyboard.IsKeyDown(Key.LeftCtrl) && !Keyboard.IsKeyDown(Key.RightCtrl))
                     {
-                        _Velocity.z -= Multiplier * _CameraOptions._FocusDepth;
+                        _Velocity.z -= Multiplier * _Scene._Camera._FocusDepth;
                         e.Handled = true;
                         _CameraDirty = true;
                     }
                     else
                     {
-                        _Velocity.y -= Multiplier * _CameraOptions._FocusDepth;
+                        _Velocity.y -= Multiplier * _Scene._Camera._FocusDepth;
                         e.Handled = true;
                         _CameraDirty = true;
                     }
@@ -542,9 +526,6 @@ void main(void)
             */
  //           _WootracerOptions.UpdateGUI();
  //           _WootracerOptions._FocusDistance = (_Camera._Target - _Camera._Position).Magnitude();
-            _Scene._Camera._FOV = _CameraOptions._FieldOfView;
-            _Scene._Camera._Spherical = _CameraOptions._Spherical;
-            _Scene._Camera._Stereographic = _CameraOptions._Stereographic;
 
             _Velocity *= 0.6;
 
@@ -610,9 +591,9 @@ void main(void)
 
             dir = (_Scene._Camera._Target - _Scene._Camera._Position);
             dir.Normalise();
-            dir *= _CameraOptions._FocusDepth;
+            dir *= _Scene._Camera._FocusDepth;
             _Scene._Camera._Target = _Scene._Camera._Position + dir;
-            _CameraOptions.UpdateGUI();
+            _Scene._Camera.UpdateGUI();
 
             _ImageDrag = true;
 
@@ -644,7 +625,7 @@ void main(void)
                 newdir *= length;
 
                 _Scene._Camera._Target = _Scene._Camera._Position + newdir;
-                _CameraOptions.UpdateGUI();
+                _Scene._Camera.UpdateGUI();
                 _CameraDirty = true;
 
                 if (!_Timer.IsEnabled)
@@ -675,11 +656,11 @@ void main(void)
             SaveStatus(); 
 
             _Velocity = new Vector3(0, 0, 0);
-            _Scene._Camera._FocusDepth = (float)_CameraOptions._FocusDepth;
-            _Scene._Camera._ApertureSize = (float)_CameraOptions._ApertureSize * _CameraOptions._FocusDepth;
-            _Scene._Camera._FOV = (float)_CameraOptions._FieldOfView;
-            _Scene._Camera._Spherical = (float)_CameraOptions._Spherical;
-            _Scene._Camera._Stereographic = (float)_CameraOptions._Stereographic;
+//            _Scene._Camera._FocusDepth = (float)_Scene._Camera._FocusDepth;
+//            _Scene._Camera._ApertureSize = (float)_Scene._Camera._ApertureSize * _Scene._Camera._FocusDepth;
+//            _Scene._Camera._FOV = (float)_Scene._Camera._FieldOfView;
+//            _Scene._Camera._Spherical = (float)_Scene._Camera._Spherical;
+//            _Scene._Camera._Stereographic = (float)_CameraOptions._Stereographic;
 
             StopPreview();
 
@@ -724,7 +705,7 @@ void main(void)
 
         private bool getShadowsEnabled()
         {
-            return _WootracerOptions._ShadowsEnabled;
+            return _RaytracerOptions._ShadowsEnabled;
         }
 
         private bool getSimpleLighting()
@@ -761,11 +742,10 @@ void main(void)
 
         private void SaveStatus()
         {
-            _AppSettings.Save(_SettingsLocation, _CameraOptions, _WootracerOptions);
-            SaveFractal("scratch");
+            SaveContext("scratch");
         }
 
-        private void LoadFractal(string name)
+        private void LoadContext(string name)
         {
             string filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes\\" + name + ".wsd";
             if (System.IO.File.Exists(filename))
@@ -778,14 +758,27 @@ void main(void)
                     {
                         while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
                         {
-                            if (reader.NodeType == XmlNodeType.Element && reader.Name == "SCENE")
+                            if (reader.NodeType == XmlNodeType.Element && reader.Name == "CONTEXT")
                             {
-                                _Scene = new Scene();
-                                _Scene.LoadXML(reader);
+                                reader.Read();
+                                while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
+                                {
+                                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "OPTIONS")
+                                    {
+                                        _RaytracerOptions = new RaytracerOptions();
+                                        _RaytracerOptions.LoadXML(reader);
+                                    }
+                                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "SCENE")
+                                    {
+                                        _Scene = new Scene();
+                                        _Scene.LoadXML(reader);
+                                    }
+                                }
+                                reader.Read();
                             }
                         }
                     }
-                    catch (XmlException)
+                    catch (XmlException /*e*/)
                     {
                         _Scene = new Scene();
                     }
@@ -793,7 +786,7 @@ void main(void)
                 sr.Close();
             }
         }
-        private void SaveFractal(string name)
+        private void SaveContext(string name)
         {
             string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes";
             if (!System.IO.Directory.Exists(store))
@@ -806,8 +799,10 @@ void main(void)
             {
                 try
                 {
-                    XElement sceneElement = _Scene.CreateElement();
-                    sw.Write(sceneElement.ToString());
+                    XElement context = new XElement("CONTEXT");
+                    context.Add(_Scene.CreateElement());
+                    context.Add(_RaytracerOptions.CreateElement());
+                    sw.Write(context.ToString());
                     sw.Close();
                 }
                 catch (Exception /*e*/)
@@ -930,7 +925,7 @@ void main(void)
             {
                 string filename = dlg.FileName;
                 filename = filename.Substring(0, filename.IndexOf(".wsd"));
-                LoadFractal(filename);
+                LoadContext(filename);
             }
         }
 
@@ -1041,9 +1036,9 @@ void main(void)
 
             dir = (_Scene._Camera._Target - _Scene._Camera._Position);
             dir.Normalise();
-            dir *= _CameraOptions._FocusDepth;
+            dir *= _Scene._Camera._FocusDepth;
             _Scene._Camera._Target = _Scene._Camera._Position + dir;
-            _CameraOptions.UpdateGUI();
+            _Scene._Camera.UpdateGUI();
 
             _ImageDrag = true;
         }
@@ -1052,10 +1047,8 @@ void main(void)
         {
             if (depth > 0)
             {
-                _CameraOptions._FocusDepth = (double)depth;
-                _Scene._Camera._FocusDepth = (float)_CameraOptions._FocusDepth;
+                _Scene._Camera._FocusDepth = (double)depth;
                 _CameraDirty = true;
-                _Scene._Camera._ApertureSize = (float)_CameraOptions._ApertureSize * _CameraOptions._FocusDepth;
             }
         }
 
@@ -1091,7 +1084,7 @@ void main(void)
                 newdir *= length;
 
                 _Scene._Camera._Target = _Scene._Camera._Position + newdir;
-                _CameraOptions.UpdateGUI();
+                _Scene._Camera.UpdateGUI();
                 _CameraDirty = true;
 
                 if (!_Timer.IsEnabled)
@@ -1101,19 +1094,19 @@ void main(void)
 
         private void UpdateGUI()
         {
-            button3.Content = "Shadows : " + (_WootracerOptions._ShadowsEnabled ? "On" : "Off");
+            button3.Content = "Shadows : " + (_RaytracerOptions._ShadowsEnabled ? "On" : "Off");
         }
 
         private void button3_Click_1(object sender, RoutedEventArgs e)
         {
-            _WootracerOptions._ShadowsEnabled = !_WootracerOptions._ShadowsEnabled;
+            _RaytracerOptions._ShadowsEnabled = !_RaytracerOptions._ShadowsEnabled;
             _Dirty = true;
             UpdateGUI();
         }
 
         private void button6_Click(object sender, RoutedEventArgs e)
         {
-            _WootracerOptions._ReflectionsEnabled = !_WootracerOptions._ReflectionsEnabled;
+            _RaytracerOptions._ReflectionsEnabled = !_RaytracerOptions._ReflectionsEnabled;
             _Dirty = true;
             UpdateGUI();
         }

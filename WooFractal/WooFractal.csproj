@@ -94,11 +94,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CameraOptions.cs" />
     <Compile Include="GUI\AddFractal.xaml.cs">
       <DependentUpon>AddFractal.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppSettings.cs" />
     <Compile Include="GUI\CameraControls.xaml.cs">
       <DependentUpon>CameraControls.xaml</DependentUpon>
     </Compile>

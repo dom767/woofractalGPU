@@ -17,10 +17,10 @@ namespace WooFractal
     /// <summary>
     /// Interaction logic for WootracerControls.xaml
     /// </summary>
-    public partial class WootracerControls : UserControl, IGUIUpdateable
+    public partial class RaytracerControls : UserControl, IGUIUpdateable
     {
-        WootracerOptions _Parent;
-        public WootracerControls(WootracerOptions wootracerOptions)
+        RaytracerOptions _Parent;
+        public RaytracerControls(RaytracerOptions wootracerOptions)
         {
             InitializeComponent();
 

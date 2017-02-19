@@ -19,12 +19,12 @@ namespace WooFractal
     /// </summary>
     public partial class CameraControls : UserControl, IGUIUpdateable
     {
-        CameraOptions _Parent;
-        public CameraControls(CameraOptions cameraOptions)
+        Camera _Parent;
+        public CameraControls(Camera camera)
         {
             InitializeComponent();
 
-            _Parent = cameraOptions;
+            _Parent = camera;
 
             CreateGUI();
         }
@@ -32,7 +32,7 @@ namespace WooFractal
         public void CreateGUI()
         {
             wooSlider2.Set(_Parent._ApertureSize, 0.0001, 0.1, this);
-            wooSlider3.Set(_Parent._FieldOfView, 1, 360, this);
+            wooSlider3.Set(_Parent._FOV, 1, 360, this);
             wooSlider4.Set(_Parent._Spherical, 0, 1, this);
             wooSlider5.Set(_Parent._Stereographic, 0, 1, this);
         }
@@ -40,7 +40,7 @@ namespace WooFractal
         public void GUIUpdate()
         {
             _Parent._ApertureSize = wooSlider2.GetSliderValue();
-            _Parent._FieldOfView = wooSlider3.GetSliderValue();
+            _Parent._FOV = wooSlider3.GetSliderValue();
             _Parent._Spherical = wooSlider4.GetSliderValue();
             _Parent._Stereographic = wooSlider5.GetSliderValue();
 
