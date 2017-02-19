@@ -13,6 +13,9 @@ namespace WooFractal
     {
         public FractalSettings()
         {
+            _FractalIterations = new List<WooFractalIteration>();
+            _RenderOptions = new RenderOptions();
+            _FractalColours = new FractalColours();
         }
 
         public void Set(RenderOptions renderOptions, FractalColours fractalColours, List<WooFractalIteration> fractalIterations)
@@ -21,58 +24,56 @@ namespace WooFractal
             _FractalColours = fractalColours;
             _FractalIterations = fractalIterations;
         }
-        public string BuildXML()
+        public void CreateElement(XElement parent)
         {
-            XElement parent = new XElement("FRACTAL");
-            _RenderOptions.CreateElement(parent);
-            _FractalColours.CreateElement(parent);
+            XElement ret = new XElement("FRACTAL");
+            _RenderOptions.CreateElement(ret);
+            _FractalColours.CreateElement(ret);
             for (int i = 0; i < _FractalIterations.Count; i++)
-                _FractalIterations[i].CreateElement(parent);
-            return parent.ToString();
+                _FractalIterations[i].CreateElement(ret);
+            parent.Add(ret);
         }
-        public void Load(string xml)
+        public void LoadXML(XmlReader reader)
         {
             _FractalIterations = new List<WooFractalIteration>();
-            using (XmlReader reader = XmlReader.Create(new StringReader(xml)))
+            while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
             {
-                while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "RENDEROPTIONS")
                 {
-                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "RENDEROPTIONS")
-                    {
-                        _RenderOptions = new RenderOptions();
-                        _RenderOptions.LoadXML(reader);
-                    }
-                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "FRACTALCOLOURS")
-                    {
-                        _FractalColours = new FractalColours();
-                        _FractalColours.LoadXML(reader);
-                    }
-                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "KIFSFRACTAL")
-                    {
-                        KIFSIteration fractalIteration = new KIFSIteration();
-                        fractalIteration.LoadXML(reader);
-                        _FractalIterations.Add(fractalIteration);
-                    }
-                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "BULBFRACTAL")
-                    {
-                        MandelbulbIteration fractalIteration = new MandelbulbIteration();
-                        fractalIteration.LoadXML(reader);
-                        _FractalIterations.Add(fractalIteration);
-                    }
-                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "BOXFRACTAL")
-                    {
-                        MandelboxIteration fractalIteration = new MandelboxIteration();
-                        fractalIteration.LoadXML(reader);
-                        _FractalIterations.Add(fractalIteration);
-                    }
-                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "KLEINIANGROUP")
-                    {
-                        KleinianGroupIteration fractalIteration = new KleinianGroupIteration();
-                        fractalIteration.LoadXML(reader);
-                        _FractalIterations.Add(fractalIteration);
-                    }
+                    _RenderOptions = new RenderOptions();
+                    _RenderOptions.LoadXML(reader);
+                }
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "FRACTALCOLOURS")
+                {
+                    _FractalColours = new FractalColours();
+                    _FractalColours.LoadXML(reader);
+                }
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "KIFSFRACTAL")
+                {
+                    KIFSIteration fractalIteration = new KIFSIteration();
+                    fractalIteration.LoadXML(reader);
+                    _FractalIterations.Add(fractalIteration);
+                }
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "BULBFRACTAL")
+                {
+                    MandelbulbIteration fractalIteration = new MandelbulbIteration();
+                    fractalIteration.LoadXML(reader);
+                    _FractalIterations.Add(fractalIteration);
+                }
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "BOXFRACTAL")
+                {
+                    MandelboxIteration fractalIteration = new MandelboxIteration();
+                    fractalIteration.LoadXML(reader);
+                    _FractalIterations.Add(fractalIteration);
+                }
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "KLEINIANGROUP")
+                {
+                    KleinianGroupIteration fractalIteration = new KleinianGroupIteration();
+                    fractalIteration.LoadXML(reader);
+                    _FractalIterations.Add(fractalIteration);
                 }
             }
+            reader.Read();
         }
         public void Compile(ref string frag)
         {
@@ -207,7 +208,7 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
             
             frag2 += @"
   }
- // DEMode 0=KIFS, 1=BOX, 2=BULB
+ // DEMode 0=KIFS, 1=BOX, 2=BULB, 3=kleinian
  if (DEMode==1) return (r - 1) / abs(scale);
  if (DEMode==2) return 0.5*log(r)*r/scale;
  if (DEMode==0) return 0.5*log(r)*r/scale;

@@ -62,9 +62,7 @@ namespace WooFractal
 
         public void RenderPreview()
         {
-            _Camera = new Camera(new Vector3(0, 0.4, -0.75), new Vector3(0, 0.5, 0), 40, 0, 0);
-            _Camera._AAEnabled = true;
-            _Camera._DOFEnabled = false;
+//            _Camera = new Camera(new Vector3(0, 0.4, -0.75), new Vector3(0, 0.5, 0), 40, 1, 1, 0, 0);
 
 /*            string log = "", error = "";
             _BackgroundScript = new WooScript();

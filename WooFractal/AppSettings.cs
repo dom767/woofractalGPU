@@ -27,16 +27,16 @@ namespace WooFractal
             _Stereographic = 0.0;
         }
 
-        public void Save(string filename, Camera camera, WootracerOptions wootracerOptions)
+        public void Save(string filename, CameraOptions camera, WootracerOptions wootracerOptions)
         {
             _WootracerOptions = wootracerOptions;
             using (StreamWriter sw = new StreamWriter(filename))
             {
                 try
                 {
-                    _CameraFrom = camera._Position;
-                    _CameraTo = camera._Target;
-                    _FOV = camera._FOV;
+                    _CameraFrom = camera._CameraPosition;
+                    _CameraTo = camera._CameraTarget;
+                    _FOV = camera._FieldOfView;
                     _ApertureSize = camera._ApertureSize;
                     _Spherical = camera._Spherical;
                     _Stereographic = camera._Stereographic;

@@ -31,24 +31,14 @@ namespace WooFractal
 
         public void CreateGUI()
         {
-            wooSlider2.Set(_Parent._ApertureSize, 0.0001, 0.1, this);
-            wooSlider3.Set(_Parent._FieldOfView, 1, 360, this);
-            wooSlider4.Set(_Parent._Spherical, 0, 1, this);
-            wooSlider5.Set(_Parent._Stereographic, 0, 1, this);
             wooSlider6.Set(_Parent._Exposure, 0.1, 10, this);
             checkBox1.IsChecked = _Parent._AutoExposure;
-            checkBox2.IsChecked = _Parent._ShadowsEnabled;
         }
 
         public void GUIUpdate()
         {
-            _Parent._ApertureSize = wooSlider2.GetSliderValue();
-            _Parent._FieldOfView = wooSlider3.GetSliderValue();
-            _Parent._Spherical = wooSlider4.GetSliderValue();
-            _Parent._Stereographic = wooSlider5.GetSliderValue();
             _Parent._Exposure = wooSlider6.GetSliderValue();
             _Parent._AutoExposure = checkBox1.IsChecked.HasValue && checkBox1.IsChecked.Value;
-            _Parent._ShadowsEnabled = checkBox2.IsChecked.HasValue && checkBox2.IsChecked.Value;
 
             ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
         }

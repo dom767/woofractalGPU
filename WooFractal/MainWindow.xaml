@@ -1,7 +1,7 @@
 ﻿<Window x:Class="WooFractal.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="561" Width="1170" Closing="Window_Closing_1" Loaded="Window_Loaded" xmlns:my="clr-namespace:WooFractal"
+        Title="MainWindow" Height="621" Width="1170" Closing="Window_Closing_1" Loaded="Window_Loaded" xmlns:my="clr-namespace:WooFractal"
         xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF" PreviewKeyDown="Window_KeyDown">
 
     <Window.Resources>
@@ -33,8 +33,8 @@
     <Grid Name="MainCanvas">
         <sharpGL:OpenGLControl x:Name="openGlCtrl"
             OpenGLDraw="OpenGLControl_OpenGLDraw" OpenGLInitialized="OpenGLControl_OpenGLInitialized" 
-            RenderContextType="FBO" Resized="OpenGLControl_Resized" Margin="395,0,0,42" MouseDown="openGlCtrl_MouseDown" MouseUp="openGlCtrl_MouseUp" PreviewMouseMove="openGlCtrl_PreviewMouseMove" />
-        <Button Content="Final Render" HorizontalAlignment="Left" Margin="395,0,0,13" Name="button4" Width="235" Click="button4_Click" Height="23" VerticalAlignment="Bottom" />
+            RenderContextType="FBO" Resized="OpenGLControl_Resized" Margin="395,0,0,69" MouseDown="openGlCtrl_MouseDown" MouseUp="openGlCtrl_MouseUp" PreviewMouseMove="openGlCtrl_PreviewMouseMove" />
+        <Button Content="Final Render" HorizontalAlignment="Left" Margin="752,0,0,13" Name="button4" Width="170" Click="button4_Click" Height="50" VerticalAlignment="Bottom" />
         <TabControl HorizontalAlignment="Left" Name="tabControl1" Width="389" Margin="0,0,0,2">
             <TabItem Header="Fractal" Name="tabItem1" IsSelected="True">
                 <Grid>
@@ -59,8 +59,14 @@
                 </ScrollViewer>
             </TabItem>
         </TabControl>
-        <Button Content="Save XML" HorizontalAlignment="Left" Margin="644,0,0,13" Name="button5" Width="101" Click="button5_Click" Height="23" VerticalAlignment="Bottom" />
+        <Button Content="Export GLSL" HorizontalAlignment="Left" Margin="928,0,0,40" Name="button5" Width="101" Click="button5_Click" Height="23" VerticalAlignment="Bottom" />
         <Button Content="Save Fractal" Height="23" HorizontalAlignment="Left" Margin="1035,0,0,12" Name="button1" VerticalAlignment="Bottom" Width="101" Click="button1_Click_1" />
         <Button Content="Load Fractal" Height="23" HorizontalAlignment="Left" Margin="928,0,0,13" Name="button2" VerticalAlignment="Bottom" Width="101" Click="button2_Click_1" />
+        <Button Content="Shadows : Off" Height="23" HorizontalAlignment="Left" Margin="395,0,0,40" Name="button3" VerticalAlignment="Bottom" Width="113" Click="button3_Click_1" />
+        <Button Content="Reflections : Off" Height="23" HorizontalAlignment="Left" Margin="395,0,0,13" Name="button6" VerticalAlignment="Bottom" Width="113" Click="button6_Click" />
+        <Button Content="Depth of Field : Off" Height="23" HorizontalAlignment="Left" Margin="514,519,0,0" Name="button7" VerticalAlignment="Top" Width="113" Click="button7_Click" />
+        <Button Content="Headlight : Off" Height="23" HorizontalAlignment="Left" Margin="514,0,0,13" Name="button8" VerticalAlignment="Bottom" Width="113" Click="button8_Click" />
+        <Button Content="Colours : Off" Height="23" HorizontalAlignment="Left" Margin="633,0,0,40" Name="button9" VerticalAlignment="Bottom" Width="113" Click="button9_Click" />
+        <Button Content="Progressive : Off" Height="23" HorizontalAlignment="Left" Margin="633,0,0,13" Name="button10" VerticalAlignment="Bottom" Width="113" Click="button10_Click" />
     </Grid>
 </Window>

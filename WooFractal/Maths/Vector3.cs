@@ -43,6 +43,11 @@ namespace WooFractal
             z *= arg;
         }
 
+        public Vector3 GetSub(Vector3 arg)
+        {
+            return new Vector3(x - arg.x, y - arg.y, z - arg.z);
+        }
+
         public double Dot(Vector3 arg)
         {
             return x * arg.x + y * arg.y + z * arg.z;

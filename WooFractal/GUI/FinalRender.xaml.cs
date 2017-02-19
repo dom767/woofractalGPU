@@ -174,7 +174,6 @@ namespace WooFractal
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            _Camera._MinSamples = _Camera._MaxSamples = _SamplesPerPixel;
             BuildXML();
 
             int width = 960;
@@ -222,22 +221,22 @@ namespace WooFractal
 
         private void checkBox1_Checked(object sender, RoutedEventArgs e)
         {
-            _Camera._AAEnabled = true;
+//            _Camera._AAEnabled = true;
         }
 
         private void checkBox1_Unchecked(object sender, RoutedEventArgs e)
         {
-            _Camera._AAEnabled = false;
+//            _Camera._AAEnabled = false;
         }
 
         private void checkBox2_Checked(object sender, RoutedEventArgs e)
         {
-            _Camera._DOFEnabled = true;
+//            _Camera._DOFEnabled = true;
         }
 
         private void checkBox2_Unchecked(object sender, RoutedEventArgs e)
         {
-            _Camera._DOFEnabled = false;
+//            _Camera._DOFEnabled = false;
         }
 
         private void radioButton6_Checked(object sender, RoutedEventArgs e)

@@ -30,7 +30,7 @@ void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float
    else
     ";
             }
-            frag += @"lightDiff = vec3(dot(vec3(0,1,0), normal));
+            frag += @"lightDiff = vec3(dot(direction, normal));
 
 //lightDiff = vec3(dot(direction, normal));
 //

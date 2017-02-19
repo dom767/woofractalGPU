@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\App.xaml
-18-1897652283
+18-1483397603
 
-48-1043499631
+48-1491708718
 19-1821906037
-AddFractal.xaml;ColourSelector.xaml;FinalRender.xaml;FractalColourControl.xaml;FractalControl.xaml;KleinianGroupControl.xaml;MainWindow.xaml;MandelboxControl.xaml;MandelbulbControl.xaml;MaterialControl.xaml;MaterialEditor.xaml;OrbitColourControl.xaml;PostProcessSettings.xaml;RenderControls.xaml;RPYEditor.xaml;Splash.xaml;WooSlider.xaml;WootracerControls.xaml;
+GUI\AddFractal.xaml;GUI\CameraControls.xaml;GUI\ColourSelector.xaml;GUI\FinalRender.xaml;GUI\FractalColourControl.xaml;GUI\FractalControl.xaml;GUI\KleinianGroupControl.xaml;MainWindow.xaml;GUI\MandelboxControl.xaml;GUI\MandelbulbControl.xaml;GUI\MaterialControl.xaml;GUI\MaterialEditor.xaml;GUI\OrbitColourControl.xaml;GUI\PostProcessSettings.xaml;GUI\RenderControls.xaml;GUI\RPYEditor.xaml;GUI\WooSlider.xaml;GUI\WootracerControls.xaml;
 
 False
 
