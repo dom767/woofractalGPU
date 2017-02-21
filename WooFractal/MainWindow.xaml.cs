@@ -351,7 +351,7 @@ void main(void)
   vec3 iterpos = pos;
   vec3 iterdir = dir;
   
-  for (int i=0; i<(depth ? 1 : 2); i++)
+  for (int i=0; i<(depth ? 1 : 1); i++)
   {
    bool hit = trace(iterpos, iterdir, dist, out_pos, normal, out_diff, out_spec);
 
@@ -409,7 +409,6 @@ void main(void)
 
         private void TriggerPreview()
         {
-//            _Scale = getPreviewResolution();
             _SimpleLighting = getSimpleLighting();
 
             // reset the renderer
@@ -711,27 +710,6 @@ void main(void)
         private bool getSimpleLighting()
         {
             return true;// (simpleLighting.IsChecked.HasValue && simpleLighting.IsChecked.Value);
-        }
-
-        private float getPreviewResolution()
-        {
-/*            if (radioButton1.IsChecked.HasValue && radioButton1.IsChecked.Value)
-            {
-                return 1.0f;
-            }
-            else if (radioButton2.IsChecked.HasValue && radioButton2.IsChecked.Value)
-            {
-                return 0.5f;
-            }
-            else if (radioButton3.IsChecked.HasValue && radioButton3.IsChecked.Value)
-            {
-                return 0.33333f;
-            }
-            else if (radioButton4.IsChecked.HasValue && radioButton4.IsChecked.Value)
-            {
-                return 0.1f;
-            }
- */           return 0.33f;
         }
 
         private void radioButton1_Checked(object sender, RoutedEventArgs e)
