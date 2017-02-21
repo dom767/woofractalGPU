@@ -13,6 +13,7 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
+*.exe
 
 # Windows shortcuts
 *.lnk
@@ -45,7 +46,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
-WooFractal/obj/
+WooFractal/obj/x86/
 WooFractal/bin/Debug/Apex.dll
 WooFractal/bin/Debug/sequence101024753
 WooFractal/bin/Debug/SharpGL.pdb
@@ -57,3 +58,5 @@ WooFractal/bin/Debug/WooFractal.exe
 WooFractal/bin/Debug/WooFractal.vshost.exe.config
 *.config
 WooFractal/bin/Debug/WooFractal.vshost.exe.manifest
+
+*.exe
