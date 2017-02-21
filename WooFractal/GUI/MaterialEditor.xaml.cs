@@ -93,8 +93,6 @@ namespace WooFractal
 
         }
 
-        Camera _Camera;
-
         private void BuildXML()
         {
 //            _XML = @"<VIEWPORT width=" + image1.Width + @" height=" + image1.Height + @"/>";

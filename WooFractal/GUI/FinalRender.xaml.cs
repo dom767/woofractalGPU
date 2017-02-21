@@ -130,7 +130,6 @@ namespace WooFractal
         public static readonly DependencyProperty _RecursionsProperty =
             DependencyProperty.Register("_Recursions", typeof(int), typeof(FinalRender), new UIPropertyMetadata(2));
 
-        Camera _Camera;
         PostProcess _PostProcess;
 
         private void BuildXML()

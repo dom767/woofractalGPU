@@ -7,13 +7,7 @@ namespace WooFractal
 {
     class GPULight
     {
-        public void Set(RaytracerOptions wootracerOptions)
-        {
-            _WootracerOptions = wootracerOptions;
-        }
-        private RaytracerOptions _WootracerOptions;
-
-        public void Compile(ref string frag)
+        public void Compile(RaytracerOptions raytracerOptions, ref string frag)
         {
             frag += @"
 
@@ -23,7 +17,7 @@ void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float
    vec3 opos, onor, odif, ospec;
    float dist = 1000;
    ";
-            if (_WootracerOptions._ShadowsEnabled)
+            if (raytracerOptions._ShadowsEnabled)
             {
                 frag += @"if (trace(pos, direction, dist, opos, onor, odif, ospec))
     lightDiff = vec3(0,0,0);
@@ -37,7 +31,7 @@ void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float
    vec3 wdirection = getSampleBiased(normal, 1);
    dist = 1000;
    ";
-            if (_WootracerOptions._ShadowsEnabled)
+            if (raytracerOptions._ShadowsEnabled)
             {
                 frag += @"if (trace(pos, wdirection, dist, opos, onor, odif, ospec))
     lightDiff = vec3(0,0,0);
