@@ -57,6 +57,8 @@ namespace WooFractal
             // initialise the script objects
             LoadScratch();
 
+            UpdateGUI();
+
             BuildFractalList();
 
             BuildOptionsList();
