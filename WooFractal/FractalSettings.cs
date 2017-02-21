@@ -178,6 +178,18 @@ void Box(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in
 	scale = scale * mScale + 1.0f;
 }
 
+void Cuboid(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in vec3 mPOffset, in mat3 mRotate1Matrix, in mat3 mRotate2Matrix )
+{
+	pos *= mRotate1Matrix;
+
+	pos = abs(pos);
+
+	pos *= mRotate2Matrix;
+
+	pos = pos*mScale - mPOffset;
+	scale *= mScale;
+}
+
 float DE(in vec3 origPos, out vec4 orbitTrap)
 {
   origPos.xyz = origPos.xzy;
@@ -211,7 +223,7 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
  // DEMode 0=KIFS, 1=BOX, 2=BULB, 3=kleinian
  if (DEMode==1) return (r - 1) / abs(scale);
  if (DEMode==2) return 0.5*log(r)*r/scale;
- if (DEMode==0) return 0.5*log(r)*r/scale;
+ if (DEMode==0) return (r - 1) / abs(scale);
  if (DEMode==3) return 0.25*abs(pos.z)/scale;
  // return length(origPos-vec3(0,0,0))-1;
 }
