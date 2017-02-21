@@ -52,7 +52,8 @@ namespace WooFractal
                 new XAttribute("fov", _FOV),
                 new XAttribute("apertureSize", _ApertureSize),
                 new XAttribute("spherical", _Spherical),
-                new XAttribute("stereographic", _Stereographic));
+                new XAttribute("stereographic", _Stereographic),
+                new XAttribute("focusDepth", _FocusDepth));
         }
 
         public void LoadXML(XmlReader reader)
@@ -63,6 +64,7 @@ namespace WooFractal
             XMLHelpers.ReadDouble(reader, "apertureSize", ref _ApertureSize);
             XMLHelpers.ReadDouble(reader, "spherical", ref _Spherical);
             XMLHelpers.ReadDouble(reader, "stereographic", ref _Stereographic);
+            XMLHelpers.ReadDouble(reader, "focusDepth", ref _FocusDepth);
             reader.Read();
         }
 
