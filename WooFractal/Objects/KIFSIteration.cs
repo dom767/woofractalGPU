@@ -67,7 +67,7 @@ namespace WooFractal
             switch (_FractalType)
             {
                 case EFractalType.Cube:
-            frag += "Tetra(pos, origPos, scale, " + _Scale + ", vec3(" + Utils.Vector3ToString(_Offset) + "), mat3(" + Utils.Matrix3ToString(preRot) + "), mat3(" + Utils.Matrix3ToString(postRot) + @"));
+                    frag += "Cuboid(pos, origPos, scale, " + _Scale + ", vec3(" + Utils.Vector3ToString(_Offset) + "), mat3(" + Utils.Matrix3ToString(preRot) + "), mat3(" + Utils.Matrix3ToString(postRot) + @"));
             DEMode = 0;";
                     break;
                 case EFractalType.Menger:
@@ -75,7 +75,7 @@ namespace WooFractal
             DEMode = 0;";
                     break;
                 case EFractalType.Tetra:
-            frag += "Tetra(pos, origPos, scale, " + _Scale + ", vec3(" + Utils.Vector3ToString(_Offset) + "), mat3(" + Utils.Matrix3ToString(preRot) + "), mat3(" + Utils.Matrix3ToString(postRot) + @"));
+                    frag += "Tetra(pos, origPos, scale, " + _Scale + ", vec3(" + Utils.Vector3ToString(_Offset) + "), mat3(" + Utils.Matrix3ToString(preRot) + "), mat3(" + Utils.Matrix3ToString(postRot) + @"));
             DEMode = 0;";
                     break;
             }
