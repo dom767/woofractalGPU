@@ -30,7 +30,7 @@ namespace WooFractal
                 new XAttribute("autoExposure", _AutoExposure),
                 new XAttribute("shadowsEnabled", _ShadowsEnabled),
                 new XAttribute("dofEnabled", _DoFEnabled),
-                new XAttribute("reflectionsEnabled", _ReflectionsEnabled),
+                new XAttribute("reflections", _Reflections),
                 new XAttribute("headlight", _Headlight),
                 new XAttribute("colours", _Colours),
                 new XAttribute("progressive", _Progressive));
@@ -42,7 +42,7 @@ namespace WooFractal
             XMLHelpers.ReadBool(reader, "autoExposure", ref _AutoExposure);
             XMLHelpers.ReadBool(reader, "shadowsEnabled", ref _ShadowsEnabled);
             XMLHelpers.ReadBool(reader, "dofEnabled", ref _DoFEnabled);
-            XMLHelpers.ReadBool(reader, "reflectionsEnabled", ref _ReflectionsEnabled);
+            XMLHelpers.ReadInt(reader, "reflections", ref _Reflections);
             XMLHelpers.ReadBool(reader, "headlight", ref _Headlight);
             XMLHelpers.ReadBool(reader, "colours", ref _Colours);
             XMLHelpers.ReadBool(reader, "progressive", ref _Progressive);
@@ -53,7 +53,7 @@ namespace WooFractal
         public bool _AutoExposure = true;
         public bool _ShadowsEnabled = true;
         public bool _DoFEnabled = true;
-        public bool _ReflectionsEnabled = false;
+        public int _Reflections = 0;
         public bool _Headlight = true;
         public bool _Colours = true;
         public bool _Progressive = false;

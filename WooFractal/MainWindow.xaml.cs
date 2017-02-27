@@ -34,6 +34,7 @@ namespace WooFractal
     {
         PostProcess _PostProcess;
         RaytracerOptions _RaytracerOptions = new RaytracerOptions();
+        RaytracerOptions _FinalRTOptions = new RaytracerOptions();
         Scene _Scene = new Scene();
 
         public void LoadScratch()
@@ -406,8 +407,12 @@ namespace WooFractal
             TriggerPreview();
         }
 
+
+        bool _PreviewRender = true;
+
         public void StopPreview()
         {
+            _PreviewRender = false;
             _Timer.Stop();
 //            _ImageRenderer.Stop();
 //            _ImageRenderer = null;
@@ -415,6 +420,7 @@ namespace WooFractal
 
         public void StartPreview()
         {
+            _PreviewRender = true;
             Compile();
             _Timer.Start();
         }
@@ -432,7 +438,7 @@ namespace WooFractal
 
             StopPreview();
 
-            FinalRender ownedWindow = new FinalRender(ref _Scene._Camera, ref _PostProcess);
+            FinalRender ownedWindow = new FinalRender(ref _Scene, ref _FinalRTOptions, ref _PostProcess);
 
             ownedWindow.Owner = Window.GetWindow(this);
             ownedWindow.ShowDialog();
@@ -680,17 +686,19 @@ namespace WooFractal
 
         private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
-            //  Get the OpenGL instance.
+            if (!_PreviewRender)
+                return;
+
             var gl = args.OpenGL;
 
-            //  Clear the color and depth buffer.
-            gl.ClearColor(0f, 0f, 0f, 1f);
-            gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
+            if (_Clean)
+            {
+                _ShaderRenderer.Clean(gl);
+                _Clean = false;
+                _ShaderRenderer.Start();
+            }
 
-            uint error = gl.GetError();
-
-            _ShaderRenderer.Render(gl, _Clean);
-            _Clean = false;
+            _ShaderRenderer.Render(gl);
 
             if (_ShaderRenderer._ImageDepthSet)
             {
@@ -842,6 +850,8 @@ namespace WooFractal
         private void UpdateGUI()
         {
             button3.Content = "Shadows : " + (_RaytracerOptions._ShadowsEnabled ? "On" : "Off");
+            button6.Content = "Reflections : " + (_RaytracerOptions._Reflections.ToString());
+            button7.Content = "Depth of Field : " + (_RaytracerOptions._DoFEnabled ? "On" : "Off");
         }
 
         private void button3_Click_1(object sender, RoutedEventArgs e)
@@ -853,14 +863,18 @@ namespace WooFractal
 
         private void button6_Click(object sender, RoutedEventArgs e)
         {
-            _RaytracerOptions._ReflectionsEnabled = !_RaytracerOptions._ReflectionsEnabled;
+            _RaytracerOptions._Reflections++;
+            if (_RaytracerOptions._Reflections > 3)
+                _RaytracerOptions._Reflections = 0;
             _Dirty = true;
             UpdateGUI();
         }
 
         private void button7_Click(object sender, RoutedEventArgs e)
         {
-            // DoF
+            _RaytracerOptions._DoFEnabled = !_RaytracerOptions._DoFEnabled;
+            _Dirty = true;
+            UpdateGUI();
         }
 
         private void button8_Click(object sender, RoutedEventArgs e)

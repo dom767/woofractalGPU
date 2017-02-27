@@ -78,6 +78,10 @@ namespace WooFractal
 
         public PostProcess()
         {
+            _GammaFactor = 1.0;
+            _GammaContrast = 1.0;
+            _ToneFactor = 1.0;
+            _ToneMappingMode = 0;
         }
 
         public void SetGaussian5x5() { _Settings5x5.SetGaussian(); }
@@ -86,5 +90,10 @@ namespace WooFractal
 
         public Settings5x5 _Settings5x5 = new Settings5x5();
         public SettingsFastGaussian _SettingsFastGaussian = new SettingsFastGaussian();
+
+        public double _GammaFactor;
+        public double _GammaContrast;
+        public double _ToneFactor;
+        public int _ToneMappingMode;
     }
 }

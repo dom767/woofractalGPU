@@ -64,7 +64,7 @@
         <Button Content="Load Fractal" Height="23" HorizontalAlignment="Left" Margin="928,0,0,13" Name="button2" VerticalAlignment="Bottom" Width="101" Click="button2_Click_1" />
         <Button Content="Shadows : Off" Height="23" HorizontalAlignment="Left" Margin="395,0,0,40" Name="button3" VerticalAlignment="Bottom" Width="113" Click="button3_Click_1" />
         <Button Content="Reflections : Off" Height="23" HorizontalAlignment="Left" Margin="395,0,0,13" Name="button6" VerticalAlignment="Bottom" Width="113" Click="button6_Click" />
-        <Button Content="Depth of Field : Off" Height="23" HorizontalAlignment="Left" Margin="514,519,0,0" Name="button7" VerticalAlignment="Top" Width="113" Click="button7_Click" />
+        <Button Content="Depth of Field : Off" HorizontalAlignment="Left" Margin="514,0,0,40" Name="button7" Width="113" Click="button7_Click" Height="23" VerticalAlignment="Bottom" />
         <Button Content="Headlight : Off" Height="23" HorizontalAlignment="Left" Margin="514,0,0,13" Name="button8" VerticalAlignment="Bottom" Width="113" Click="button8_Click" />
         <Button Content="Colours : Off" Height="23" HorizontalAlignment="Left" Margin="633,0,0,40" Name="button9" VerticalAlignment="Bottom" Width="113" Click="button9_Click" />
         <Button Content="Progressive : Off" Height="23" HorizontalAlignment="Left" Margin="633,0,0,13" Name="button10" VerticalAlignment="Bottom" Width="113" Click="button10_Click" />

@@ -122,7 +122,7 @@ vec4 getBackgroundColour(vec3 dir)
 
 ";
 
-            _Camera.Compile(ref frag);
+            _Camera.Compile(raytracerOptions, ref frag);
 
             _FractalSettings._FractalColours.Compile(ref frag);
 
@@ -224,7 +224,7 @@ void main(void)
   vec3 iterpos = pos;
   vec3 iterdir = dir;
   
-  for (int i=0; i<(depth ? 1 : 1); i++)
+  for (int i=0; i<(depth ? 1 : "+(1+raytracerOptions._Reflections).ToString()+@"); i++)
   {
    bool hit = trace(iterpos, iterdir, dist, out_pos, normal, out_diff, out_spec);
 

@@ -19,6 +19,7 @@ namespace WooFractal
         uint[] _RaytracerBuffer = new uint[2];
         uint[] _RandomNumbers = new uint[1];
         uint[] _RenderBuffer = new uint[1];
+        PostProcess _PostProcess;
 
         private void LoadRandomNumbers(OpenGL gl)
         {
@@ -99,16 +100,55 @@ namespace WooFractal
 #version 130
 in vec2 texCoord;
 out vec4 FragColor;
+uniform float mode; // 0=ramp, 1=exposure, 2=standard
+uniform float toneFactor;
+uniform float gammaFactor;
+uniform float gammaContrast;
 uniform sampler2D renderedTexture;
+
+vec3 filmic(vec3 value)
+{
+float A=0.22;
+float B=0.30;
+float C=0.1;
+float D=0.2;
+float E=0.01;
+float F=0.3;
+return ((value*(A*value+C*B)+D*E)/(value*(A*value+B)+D*F)) - E/F;
+}
+
 void main()
 {
-vec4 rgb = texture(renderedTexture, vec2((texCoord.x+1)*0.5, (texCoord.y+1)*0.5));
-FragColor=rgb;
-FragColor.rgb /= FragColor.a;
-//FragColor.r = FragColor.r*0.1;
-//FragColor.g = FragColor.g*0.1;
-//FragColor.b = FragColor.b*0.1;
-//FragColor=vec4(texCoord.x, texCoord.y, 1, 1);
+ vec4 rgb = texture(renderedTexture, vec2((texCoord.x+1)*0.5, (texCoord.y+1)*0.5));
+ FragColor=rgb;
+ FragColor.rgb /= FragColor.a;
+ 
+ // brightness/contrast
+ float luminance = dot(FragColor.rgb, vec3(0.2126,0.7152,0.0722));
+ float luminanceOut = gammaFactor * pow(luminance, gammaContrast);
+ float multiplier = (max(0, luminance) * luminanceOut) / (luminance * luminance);
+ FragColor.rgb *= multiplier;
+
+if (mode>2.9 && mode<3.1)
+{
+ //filmic https://www.slideshare.net/ozlael/hable-john-uncharted2-hdr-lighting
+ FragColor.rgb = filmic(FragColor.rgb)/filmic(vec3(toneFactor));
+}
+else if (mode>1.9 && mode<2.1)
+{
+ //reinhard https://imdoingitwrong.wordpress.com/2010/08/19/why-reinhard-desaturates-my-blacks-3/
+ float nL = luminance * (1+luminance/(toneFactor*toneFactor)) / (1+luminance);
+ FragColor.rgb *= nL;
+}
+else if (mode>0.9 && mode<1.1)
+{
+ //exposure originally Matt Fairclough
+ FragColor.rgb = 1 - exp(-FragColor.rgb * toneFactor);
+}
+else
+{
+ FragColor.rgb /= toneFactor;
+}
 }
 ";
             shaderTransfer = new ShaderProgram();
@@ -158,6 +198,8 @@ FragColor=vec4(0,0,0,0);
             }
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
 
+            _PostProcess = new PostProcess();
+
             stopWatch = new Stopwatch();
             stopWatch.Start();
             
@@ -171,6 +213,11 @@ FragColor=vec4(0,0,0,0);
        //     gl.GenRenderbuffersEXT(1, _RenderBuffer);
             //gl.BindRenderbufferEXT(OpenGL.GL_RENDERBUFFER_EXT, _RenderBuffer[0]);
             //gl.RenderbufferStorageEXT(OpenGL.GL_RENDERBUFFER_EXT, OpenGL.GL_RGBA, (int)viewport[2], (int)viewport[3]);
+        }
+
+        public void SetPostProcess(PostProcess postProcess)
+        {
+            _PostProcess = postProcess;
         }
 
         public void Destroy(OpenGL gl)
@@ -221,19 +268,31 @@ FragColor=vec4(0,0,0,0);
 
             gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _FrameBuffer[0]);
             shader.Bind(gl);
-            shader.SetUniform1(gl, "renderedTexture", 0);
-            gl.ActiveTexture(OpenGL.GL_TEXTURE0);
-            gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[1]);
             gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
             shader.Unbind(gl);
             
             gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _FrameBuffer[1]);
             shader.Bind(gl);
-            shader.SetUniform1(gl, "renderedTexture", 0);
-            gl.ActiveTexture(OpenGL.GL_TEXTURE0);
-            gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[0]);
             gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
             shader.Unbind(gl);
+            gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, 0);
+            Debug.WriteLine("Cleaning buffers");
+        }
+
+        public void Clean(OpenGL gl)
+        {
+            CleanBuffers(gl);
+        }
+
+        public bool _Rendering = false;
+        public void Start()
+        {
+            _Rendering = true;
+        }
+
+        public void Stop()
+        {
+            _Rendering = false;
         }
 
         /// <summary>
@@ -241,21 +300,22 @@ FragColor=vec4(0,0,0,0);
         /// </summary>
         /// <param name="gl">The OpenGL instance.</param>
         /// <param name="useToonShader">if set to <c>true</c> use the toon shader, otherwise use a per-pixel shader.</param>
-        public void Render(OpenGL gl, bool clean)
+        public void Render(OpenGL gl)
         {
+            //  Clear the color and depth buffer.
+            gl.ClearColor(0f, 0f, 0f, 0f);
+            gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
+
             float[] viewport = new float[4];
             gl.GetFloat(OpenGL.GL_VIEWPORT, viewport);
-
-            if (clean)
-            {
-                CleanBuffers(gl);
-            }
 
             //  Get a reference to the raytracer shader.
             var shader = shaderRayMarch;
 
             int renderBuffer = 0;
             if (_PingPong) renderBuffer = 1;
+
+            Debug.WriteLine("Rendering renderbuffer : " + renderBuffer);
 
             uint[] frameBuffer = new uint[1];
             uint[] depthCalcBuffer = new uint[1];
@@ -292,12 +352,10 @@ FragColor=vec4(0,0,0,0);
 
             int rt1 = shader.GetUniformLocation(gl, "renderedTexture");
             int rn1 = shader.GetUniformLocation(gl, "randomNumbers");
-            Debug.WriteLine("renderedTexture : " + rt1 + " randomNumbers : " + rn1);
             gl.Uniform1(rt1, 0);
             gl.Uniform1(rn1, 1);
             shader.SetUniform1(gl, "renderedTexture", 0);
             shader.SetUniform1(gl, "randomNumbers", 1);
-            shader.SetUniform1(gl, "clean", clean ? 0 : 0);
             shader.SetUniform1(gl, "depth", _Depth ? 1 : 0);
             shader.SetUniform1(gl, "mouseX", _MouseX);
             shader.SetUniform1(gl, "mouseY", viewport[3] - _MouseY);
@@ -307,7 +365,8 @@ FragColor=vec4(0,0,0,0);
             gl.ActiveTexture(OpenGL.GL_TEXTURE1);
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RandomNumbers[0]);
             gl.ActiveTexture(OpenGL.GL_TEXTURE0);
-            gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
+            if (_Rendering)
+                gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
             shader.Unbind(gl);
 
             if (_Depth)
@@ -336,6 +395,11 @@ FragColor=vec4(0,0,0,0);
 
                 shader.Bind(gl);
                 shader.SetUniform1(gl, "renderedTexture", 0);
+                shader.SetUniform1(gl, "gammaFactor", (float)_PostProcess._GammaFactor);
+                shader.SetUniform1(gl, "gammaContrast", (float)_PostProcess._GammaContrast);
+                shader.SetUniform1(gl, "mode", _PostProcess._ToneMappingMode);
+                shader.SetUniform1(gl, "toneFactor", (float)_PostProcess._ToneFactor);
+
                 gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
                 shader.Unbind(gl);
 
@@ -358,13 +422,6 @@ FragColor=vec4(0,0,0,0);
                         Debug.WriteLine("progIndex : " + _ProgressiveIntervalIndex);
                     }
                     _ProgressiveIntervalIndex++;
-                    if (clean)
-                    {
-                        Debug.WriteLine("Clean");
-                        _TotalTime = 0;
-                        _Frames = 0;
-                        _ProgressiveIntervalIndex = 0;
-                    }
                     if (_ProgressiveIntervalIndex > _ProgressiveInterval)
                     {
                         _ProgressiveIntervalIndex = 0;
@@ -372,7 +429,8 @@ FragColor=vec4(0,0,0,0);
                 }
                 else
                 {
-                    _PingPong = !_PingPong;
+                    if (_Rendering)
+                        _PingPong = !_PingPong;
                 }
             }
         }

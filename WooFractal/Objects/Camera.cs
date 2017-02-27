@@ -68,7 +68,7 @@ namespace WooFractal
             reader.Read();
         }
 
-        public void Compile(ref string frag)
+        public void Compile(RaytracerOptions raytracerOptions, ref string frag)
         {
             Vector3 to = _Target - _Position;
             to.Normalise();
@@ -106,7 +106,7 @@ void getcamera(out vec3 pos, out vec3 dir, in vec2 q, in bool depth)
 float aspect = screenHeight/screenWidth;
 if (!depth)
 {
-vec2 r = getRandomDisc()*0.5;
+vec2 r = rand2d(vec3(pixelIndex, sampleIndex++, randomIndex))-vec2(0.5,0.5);
 q.x += r.x/screenWidth;
 q.y += r.y/screenHeight;
 }
@@ -116,7 +116,14 @@ pos = camPos;
 
 if (!depth)
 {
-vec3 offset = vec3(" + _ApertureSize * _FocusDepth + @"*(rand2d(vec3(pixelIndex, sampleIndex++, randomIndex))-vec2(0.5,0.5)), 0);
+vec3 offset = vec3(";
+            
+            if (raytracerOptions._DoFEnabled)
+                frag += (_ApertureSize * _FocusDepth).ToString();
+            else
+                frag += "0.0";
+
+            frag += @"*(getRandomDisc()*0.5), 0);
 
 // get the focal point
 vec3 focusedPoint = direction * " +_FocusDepth+ @";

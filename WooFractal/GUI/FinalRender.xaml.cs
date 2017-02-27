@@ -12,84 +12,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Diagnostics;
+using SharpGL;
+using SharpGL.SceneGraph.Core;
+using SharpGL.SceneGraph.Primitives;
+using SharpGL.SceneGraph;
 
 namespace WooFractal
 {
     /// <summary>
     /// Interaction logic for FinalRender.xaml
     /// </summary>
-    public partial class FinalRender : Window
+    public partial class FinalRender : Window, IGUIUpdateable
     {
-        public double _Min
-        {
-            get { return (double)GetValue(_MinProperty); }
-            set { SetValue(_MinProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for _Min.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty _MinProperty =
-            DependencyProperty.Register("_Min", typeof(double), typeof(FinalRender), new UIPropertyMetadata((double)0));
-
-        public double _Max
-        {
-            get { return (double)GetValue(_MaxProperty); }
-            set { SetValue(_MaxProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for _Max.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty _MaxProperty =
-            DependencyProperty.Register("_Max", typeof(double), typeof(FinalRender), new UIPropertyMetadata((double)0));
-
-        public double _MaxValue
-        {
-            get { return (double)GetValue(_MaxValueProperty); }
-            set { SetValue(_MaxValueProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for _MaxValue.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty _MaxValueProperty =
-            DependencyProperty.Register("_MaxValue", typeof(double), typeof(FinalRender), new UIPropertyMetadata((double)0));
-
-        public double _Factor
-        {
-            get { return (double)GetValue(_FactorProperty); }
-            set { SetValue(_FactorProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for _Factor.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty _FactorProperty =
-            DependencyProperty.Register("_Factor", typeof(double), typeof(FinalRender), new UIPropertyMetadata((double)0));
-
-        public double _ToneFactor
-        {
-            get { return (double)GetValue(_ToneFactorProperty); }
-            set { SetValue(_ToneFactorProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for _ToneFactor.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty _ToneFactorProperty =
-            DependencyProperty.Register("_ToneFactor", typeof(double), typeof(FinalRender), new UIPropertyMetadata((double)0));
-
-        public double _GammaFactor
-        {
-            get { return (double)GetValue(_GammaFactorProperty); }
-            set { SetValue(_GammaFactorProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for _GammaFactor.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty _GammaFactorProperty =
-            DependencyProperty.Register("_GammaFactor", typeof(double), typeof(FinalRender), new UIPropertyMetadata((double)0));
-
-        public double _GammaContrast
-        {
-            get { return (double)GetValue(_GammaContrastProperty); }
-            set { SetValue(_GammaContrastProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for _GammaContrast.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty _GammaContrastProperty =
-            DependencyProperty.Register("_GammaContrast", typeof(double), typeof(FinalRender), new UIPropertyMetadata((double)0));
-
         public int _ImageWidth
         {
             get { return (int)GetValue(_ImageWidthProperty); }
@@ -110,27 +44,10 @@ namespace WooFractal
         public static readonly DependencyProperty _ImageHeightProperty =
             DependencyProperty.Register("_ImageHeight", typeof(int), typeof(FinalRender), new UIPropertyMetadata(480));
 
-        public int _SamplesPerPixel
-        {
-            get { return (int)GetValue(_SamplesPerPixelProperty); }
-            set { SetValue(_SamplesPerPixelProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for _SamplesPerPixel.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty _SamplesPerPixelProperty =
-            DependencyProperty.Register("_SamplesPerPixel", typeof(int), typeof(FinalRender), new UIPropertyMetadata(0));
-
-        public int _Recursions
-        {
-            get { return (int)GetValue(_RecursionsProperty); }
-            set { SetValue(_RecursionsProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for _Recursions.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty _RecursionsProperty =
-            DependencyProperty.Register("_Recursions", typeof(int), typeof(FinalRender), new UIPropertyMetadata(2));
-
         PostProcess _PostProcess;
+        Scene _Scene;
+        RaytracerOptions _RaytracerOptions;
+        ShaderRenderer _ShaderRenderer;
 
         private void BuildXML()
         {
@@ -139,35 +56,78 @@ namespace WooFractal
 //            _XML += _Scene.CreateElement(false, false).ToString();
         }
 
-        public FinalRender(ref Camera camera, ref PostProcess postprocess)
+        public FinalRender(ref Scene scene, ref RaytracerOptions raytracerOptions, ref PostProcess postprocess)
         {
-/*            _Scene = scene;
-            _Camera = camera;
-            _Recursions = _Scene._Recursions;
-
+            _Scene = scene;
+            _RaytracerOptions = raytracerOptions;
+            _PostProcess = postprocess;
             DataContext = this;
             InitializeComponent();
-            _MaxValue = 1;
-            _Factor = 1;
-            _ToneFactor = 1.4;
-            _GammaFactor = 0.7;
-            _GammaContrast = 0.7;
 
-            if (_Camera._AAEnabled)
-                checkBox1.IsChecked = true;
-            if (_Camera._DOFEnabled)
-                checkBox2.IsChecked = true;
-            if (_Scene._PathTracer)
-                checkBox3.IsChecked = true;
-            if (_Scene._Caustics)
-                checkBox4.IsChecked = true;
-            _SamplesPerPixel = _Camera._MinSamples;
-
-            _PostProcess = postprocess;
-
-            BuildXML();*/
+            UpdateGUI();
         }
 
+        private void UpdateGUI()
+        {
+            button11.Content = "Shadows : " + (_RaytracerOptions._ShadowsEnabled ? "On" : "Off");
+            button12.Content = "Reflections : " + (_RaytracerOptions._Reflections.ToString());
+            button13.Content = "Depth of Field : " + (_RaytracerOptions._DoFEnabled ? "On" : "Off");
+
+            wooSlider3.Set(_PostProcess._GammaFactor, 0.01, 5, this);
+            wooSlider4.Set(_PostProcess._GammaContrast, 0.01, 5, this);
+            wooSlider1.Set(_PostProcess._ToneFactor, 0.01, 5, this);
+        }
+
+        public void GUIUpdate()
+        {
+            _PostProcess._ToneMappingMode = comboBox1.SelectedIndex;
+            _PostProcess._GammaFactor = wooSlider3.GetSliderValue();
+            _PostProcess._GammaContrast = wooSlider4.GetSliderValue();
+            _PostProcess._ToneFactor = wooSlider1.GetSliderValue();
+
+            _ShaderRenderer.SetPostProcess(_PostProcess);
+        }
+
+        private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
+        {
+            var gl = args.OpenGL;
+            _ShaderRenderer.Render(gl);
+        }
+
+        OpenGL _GL;
+
+        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
+        {
+            _GL = args.OpenGL;
+
+            //  Initialise the scene.
+            _ShaderRenderer = new ShaderRenderer();
+            string frag = "";
+            _Scene.Compile(_RaytracerOptions, ref frag);
+            _ShaderRenderer.Compile(_GL, frag);
+            _ShaderRenderer.Initialise(_GL, 1, 1);
+            _ShaderRenderer.Clean(_GL);
+        }
+
+        private void OpenGL_Closing()
+        {
+            _ShaderRenderer.Destroy(_GL);
+        }
+
+        private void OpenGLControl_Resized(object sender, OpenGLEventArgs args)
+        {
+            //  Get the OpenGL instance.
+            var gl = args.OpenGL;
+
+            //  Initialise the scene.
+            _ShaderRenderer = new ShaderRenderer();
+            string frag="";
+            _Scene.Compile(_RaytracerOptions, ref frag);
+            _ShaderRenderer.Compile(gl, frag);
+            _ShaderRenderer.Initialise(_GL, (int)ActualWidth, (int)ActualHeight);
+            _ShaderRenderer.SetPostProcess(_PostProcess);
+        }
+        
         bool _ImageRendering;
         DispatcherTimer _Timer;
 
@@ -198,6 +158,8 @@ namespace WooFractal
 //            _ImageRenderer.SetPostProcess(_PostProcess);
 //            _ImageRenderer.Render();
 
+            _ShaderRenderer.Start();
+
             // set up animation thread for the camera movement
             _Timer = new DispatcherTimer();
             _Timer.Interval = TimeSpan.FromMilliseconds(100);
@@ -212,30 +174,13 @@ namespace WooFractal
 
         public void updateRender()
         {
+            GUIUpdate();
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-        }
-
-        private void checkBox1_Checked(object sender, RoutedEventArgs e)
-        {
-//            _Camera._AAEnabled = true;
-        }
-
-        private void checkBox1_Unchecked(object sender, RoutedEventArgs e)
-        {
-//            _Camera._AAEnabled = false;
-        }
-
-        private void checkBox2_Checked(object sender, RoutedEventArgs e)
-        {
-//            _Camera._DOFEnabled = true;
-        }
-
-        private void checkBox2_Unchecked(object sender, RoutedEventArgs e)
-        {
-//            _Camera._DOFEnabled = false;
+            // Stop Render
+            _ShaderRenderer.Stop();
         }
 
         private void radioButton6_Checked(object sender, RoutedEventArgs e)
@@ -256,7 +201,7 @@ namespace WooFractal
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            _Timer.Stop();
+//            _Timer.Stop();
         }
 
         private void refreshRender(object sender, RoutedEventArgs e)
@@ -376,14 +321,6 @@ namespace WooFractal
             if (!_ImageRendering)
             {
                 updateRender();
-            }
-        }
-
-        private void textBox1_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (_Recursions >= 0 && _Recursions < 64)
-            {
-//                _Scene._Recursions = _Recursions;
             }
         }
     }
