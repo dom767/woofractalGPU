@@ -60,3 +60,6 @@ WooFractal/bin/Debug/WooFractal.vshost.exe.config
 WooFractal/bin/Debug/WooFractal.vshost.exe.manifest
 
 *.exe
+WooFractal/obj/x86/Debug/WooFractal.exe
+*.cs
+*.cs
