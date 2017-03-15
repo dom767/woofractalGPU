@@ -73,7 +73,6 @@ C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\WooFracta
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\AddFractal.baml
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\FinalRender.baml
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\MaterialControl.baml
-C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\PostProcessSettings.baml
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\RPYEditor.baml
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\WooSlider.baml
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\AddFractal.g.cs
@@ -87,7 +86,6 @@ C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\Mande
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\MaterialControl.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\MaterialEditor.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\OrbitColourControl.g.cs
-C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\PostProcessSettings.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\RenderControls.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\RPYEditor.g.cs
 C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\obj\x86\Release\GUI\WooSlider.g.cs
