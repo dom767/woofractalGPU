@@ -70,6 +70,8 @@ namespace WooFractal
 
         public void Compile(RaytracerOptions raytracerOptions, ref string frag)
         {
+//            _Position = new Vector3(0, 1, -2);
+//            _Target = new Vector3(0, 1, 0);
             Vector3 to = _Target - _Position;
             to.Normalise();
             Vector3 up = new Vector3(0, 1, 0);

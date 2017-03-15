@@ -66,10 +66,10 @@ namespace WooFractal
 
         private void PopulateScenesType(string sceneType, ref List<Script> scriptsList)
         {
-            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scripts\\" + sceneType;
+            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\" + sceneType;
             if (System.IO.Directory.Exists(store))
             {
-                var scripts = System.IO.Directory.EnumerateFiles(store, "*.woo");
+                var scripts = System.IO.Directory.EnumerateFiles(store, "*.frag");
                 foreach (string scriptName in scripts)
                 {
                     string shortName = scriptName.Substring(0, scriptName.LastIndexOf('.'));
@@ -91,8 +91,8 @@ namespace WooFractal
 
         private void PopulateScenes()
         {
-            PopulateScenesType("background", ref _Backgrounds);
-            PopulateScenesType("lighting", ref _LightingEnvironments);
+            PopulateScenesType("backgrounds", ref _Backgrounds);
+//            PopulateScenesType("lighting", ref _LightingEnvironments);
         }
 
         public void LoadXML(XmlReader reader)

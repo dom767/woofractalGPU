@@ -117,7 +117,7 @@ vec2 getRandomDisc()
 
 vec4 getBackgroundColour(vec3 dir)
 {
-  return vec4(0.5+0.5*dir.x, 0.5+0.5*dir.y, 0.5+0.5*dir.z, 0.0);
+  return vec4(1,1,1,1);//vec4(0.5+0.5*dir.x, 0.5+0.5*dir.y, 0.5+0.5*dir.z, 0.0);
 }
 
 ";
@@ -134,28 +134,98 @@ float udBox(in vec3 p, in vec3 b, in vec3 c)
 return length(max(abs(p-c)-b, 0.0));
 }
 
-float bkgScene(in vec3 p)
+float sdSphere( vec3 p, float s )
 {
-  return udBox(p, vec3(20,0.5,20), vec3(0,-1.5,0));
+  return length(p)-s;
 }
 
-bool traceBackground(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out vec3 out_diff, out vec3 out_spec)
+vec3 repeatxzfixed(vec3 p, vec3 c, vec3 dist)
+{
+ vec3 q = min(-dist,p)+dist + mod(min(max(p,-dist),dist),c)-0.5*c + max(p, dist)-dist;
+ return vec3(q.x, p.y, q.z);
+}
+
+vec3 repeatxz(vec3 p, vec3 c)
+{
+ return vec3((mod(p,c)-0.5*c).x, p.y, (mod(p,c)-0.5*c).z);
+}
+
+float GetValue(int x, int seed, int axis, int octave)
+{
+	int val = x + axis*789221 + octave*15731 + seed*761;
+	val = (val<<13) ^ val;
+	return 1.0f - ( float(val * (val * val * 15731 + 789221) + 1376312589 & 0x7fffffff) / 1073741824.0f);
+}
+
+int imod(int arg, int mod)
+{
+	int ret = arg % mod;
+	if (ret<0) ret += mod;
+	return ret;
+}
+float GetPerlin2d(float posx, float posy, float rep, float scale, int seed, int octaves, float weightingMultiplier)
+{
+	float normalX = posx*rep;
+	float normalY = posy*rep;
+	float sum=0;
+	float weighting = scale;
+
+	for (int i=0; i<octaves; i++)
+	{
+		int perlinScale = 2<<(i+1);
+
+		// calculate x axis position and y axis position
+		int x0 = imod(int(floor(normalX*float(perlinScale))), perlinScale);
+		float remainder = normalX*float(perlinScale) - float(floor(normalX*float(perlinScale)));
+		int x1 = imod(x0+1, perlinScale);
+
+		int y0 = imod(int(floor(normalY*float(perlinScale))), perlinScale);
+		float remaindery = normalY*float(perlinScale) - float(floor(normalY*float(perlinScale)));
+		int y1 = imod(y0+1, perlinScale);
+
+		float fx0y0 = GetValue(x0 + perlinScale*y0, seed, 0, i);
+		float fx1y0 = GetValue(x1 + perlinScale*y0, seed, 0, i);
+		float fx0y1 = GetValue(x0 + perlinScale*y1, seed, 0, i);
+		float fx1y1 = GetValue(x1 + perlinScale*y1, seed, 0, i);
+
+		float ftx = remainder * 3.1415927f;
+		float fx = (1 - cos(ftx)) * .5f;
+		float fty = remaindery * 3.1415927f;
+		float fy = (1 - cos(fty)) * .5f;
+
+		sum += ((fx0y0*(1-fx) + fx1y0*fx) * (1-fy)
+			+ (fx0y1*(1-fx) + fx1y1*fx) * fy)
+			* weighting;
+		weighting *= weightingMultiplier;
+	}
+
+	if (sum<-1) sum=-1;
+	if (sum>1) sum=1;
+
+	return sum;
+}";
+
+            frag += _FractalSettings._RenderOptions._Backgrounds[_FractalSettings._RenderOptions._Background]._Description;
+
+            frag += @"
+bool traceBackground(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out vec3 out_diff, out vec3 out_spec, out vec3 out_refl)
 {
  vec3 p = pos;
  float r = 0;
-out_diff = vec3(0.6,0.6,0.6);
-out_spec = vec3(0.3,0.3,0.3);
+ float distanceStep = 0.6;
+ 
+ backgroundInitialise(distanceStep);
  for (int j=0; j<200; j++)
  {
-  r = bkgScene(p);
+  r = backgroundDE(p);
   if (r>100)
    return false;
   if (r<0.001)
   {
     float normalTweak=0.0001f;
-	normal = vec3(bkgScene(p+vec3(normalTweak,0,0)) - bkgScene(p-vec3(normalTweak,0,0)),
-		bkgScene(p+vec3(0,normalTweak,0)) - bkgScene(p-vec3(0,normalTweak,0)),
-		bkgScene(p+vec3(0,0,normalTweak)) - bkgScene(p-vec3(0,0,normalTweak)));
+	normal = vec3(backgroundDE(p+vec3(normalTweak,0,0)) - backgroundDE(p-vec3(normalTweak,0,0)),
+		backgroundDE(p+vec3(0,normalTweak,0)) - backgroundDE(p-vec3(0,normalTweak,0)),
+		backgroundDE(p+vec3(0,0,normalTweak)) - backgroundDE(p-vec3(0,0,normalTweak)));
     float magSq = dot(normal, normal);
     if (magSq<=0.0000000001*normalTweak)
         normal = -dir;
@@ -164,6 +234,10 @@ out_spec = vec3(0.3,0.3,0.3);
 
    out_pos = p + normal*0.001;
    dist = length(out_pos - pos);
+
+   out_diff = vec3(0.6,0.6,0.6);
+   out_refl = vec3(0.2,0.2,0.2);
+   backgroundMaterial(out_pos, out_diff, out_refl);
    return true;
   }
   p += 0.6 * r * dir;
@@ -172,12 +246,12 @@ out_spec = vec3(0.3,0.3,0.3);
 }
 
 
-bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out vec3 out_diff, out vec3 out_spec)
+bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out vec3 out_diff, out vec3 out_spec, out vec3 out_refl)
 {
- vec3 bkgpos, bkgnormal, bkgdiff, bkgspec;
+ vec3 bkgpos, bkgnormal, bkgdiff, bkgspec, bkgrefl;
  float bkgdist=dist;
- bool hitFractal = traceFractal(pos, dir, dist, out_pos, normal, out_diff, out_spec);
- bool hitBkg = traceBackground(pos, dir, bkgdist, bkgpos, bkgnormal, bkgdiff, bkgspec);
+ bool hitFractal = traceFractal(pos, dir, dist, out_pos, normal, out_diff, out_spec, out_refl);
+ bool hitBkg = traceBackground(pos, dir, bkgdist, bkgpos, bkgnormal, bkgdiff, bkgspec, bkgrefl);
  if ((hitFractal && hitBkg && dist>bkgdist) || hitBkg && !hitFractal)
  {
   dist = bkgdist;
@@ -185,6 +259,7 @@ bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec
   normal = bkgnormal;
   out_diff = bkgdiff;
   out_spec = bkgspec;
+  out_refl = bkgrefl;
  }
  return (hitFractal || hitBkg);
 }";
@@ -217,16 +292,16 @@ void main(void)
 
   getcamera(pos, dir, q, depth);
   
-  vec3 out_pos, normal, out_diff, out_spec;
+  vec3 out_pos, normal, out_diff, out_spec, out_refl;
   float dist = 10000;
-  float factor = 1.0;
+  vec3 factor = vec3(1.0);
   vec4 oCol = vec4(0.0);
   vec3 iterpos = pos;
   vec3 iterdir = dir;
   
-  for (int i=0; i<(depth ? 1 : "+(1+raytracerOptions._Reflections).ToString()+@"); i++)
+  for (int i=0; i<(depth ? 1 : "+(1+raytracerOptions._Reflections).ToString()+ @"); i++)
   {
-   bool hit = trace(iterpos, iterdir, dist, out_pos, normal, out_diff, out_spec);
+   bool hit = trace(iterpos, iterdir, dist, out_pos, normal, out_diff, out_spec, out_refl);
 
    if (hit)
    {
@@ -237,16 +312,16 @@ void main(void)
     vec3 lightSpec = vec3(0,0,0);
     calculateLighting(out_pos, normal, reflection, 10, lightDiff, lightSpec);
 
-    vec3 col = out_diff*lightDiff;
-    oCol+=factor*vec4(col, 0.0);
+    vec3 col = out_diff*lightDiff + out_spec*lightSpec;
+    oCol+=vec4(factor,0.0)*vec4(col, 0.0);
 
     iterpos = out_pos;
     iterdir = reflection;
-    factor *= 0.6;
+    factor *= out_refl;
    }
    else
    {
-    oCol+=factor*getBackgroundColour(iterdir);
+    oCol+=vec4(factor,0.0)*getBackgroundColour(iterdir);
     break;
    }
   }

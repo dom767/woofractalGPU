@@ -50,6 +50,8 @@ namespace WooFractal
 
             // initialise post process settings
             _PostProcess = new PostProcess();
+            _PostProcess._PostProcessFilter = 1;
+            _FinalRTOptions._Progressive = true;
 
             // initialise the script objects
             LoadScratch();
@@ -325,9 +327,6 @@ namespace WooFractal
             MessageBox.Show("GotFocus");
         }
 
-        [DllImport(@"coretracer.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void GetDepth(ref float depth, int x, int y);
-
         bool _ImageDrag = false;
         double _Pitch;
         double _Yaw;
@@ -413,6 +412,7 @@ namespace WooFractal
         public void StopPreview()
         {
             _PreviewRender = false;
+            MainCanvas.Children.Remove(openGlCtrl);
             _Timer.Stop();
 //            _ImageRenderer.Stop();
 //            _ImageRenderer = null;
@@ -421,6 +421,7 @@ namespace WooFractal
         public void StartPreview()
         {
             _PreviewRender = true;
+            MainCanvas.Children.Add(openGlCtrl);
             Compile();
             _Timer.Start();
         }
@@ -715,6 +716,7 @@ namespace WooFractal
 
             //  Initialise the scene.
             _ShaderRenderer.Initialise(_GL, 1, 1);
+            _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
 
         private void OpenGL_Closing()
@@ -728,7 +730,8 @@ namespace WooFractal
             var gl = args.OpenGL;
   
             //  Initialise the scene.
-            _ShaderRenderer.Initialise(_GL, (int)ActualWidth, (int)ActualHeight);
+            _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth, (int)openGlCtrl.ActualHeight);
+            _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
 
         private void button1_Click_1(object sender, RoutedEventArgs e)
@@ -852,6 +855,9 @@ namespace WooFractal
             button3.Content = "Shadows : " + (_RaytracerOptions._ShadowsEnabled ? "On" : "Off");
             button6.Content = "Reflections : " + (_RaytracerOptions._Reflections.ToString());
             button7.Content = "Depth of Field : " + (_RaytracerOptions._DoFEnabled ? "On" : "Off");
+            button10.Content = "Progressive : " + (_RaytracerOptions._Progressive ? "On" : "Off");
+
+            _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
 
         private void button3_Click_1(object sender, RoutedEventArgs e)
@@ -890,6 +896,9 @@ namespace WooFractal
         private void button10_Click(object sender, RoutedEventArgs e)
         {
             // Progressive
+            _RaytracerOptions._Progressive = !_RaytracerOptions._Progressive;
+            _Dirty = true;
+            UpdateGUI();
         }
     }
 }

@@ -142,9 +142,6 @@
       <DependentUpon>OrbitColourControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Objects\OrbitColours.cs" />
-    <Compile Include="GUI\PostProcessSettings.xaml.cs">
-      <DependentUpon>PostProcessSettings.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GUI\RenderControls.xaml.cs">
       <DependentUpon>RenderControls.xaml</DependentUpon>
     </Compile>
@@ -156,7 +153,6 @@
     <Compile Include="Objects\ShaderRenderer.cs" />
     <Compile Include="Utils\Colour.cs" />
     <Compile Include="Utils\ColourFunction.cs" />
-    <Compile Include="Utils\ImageRenderer.cs" />
     <Compile Include="Objects\WooFractalIteration.cs" />
     <Compile Include="GUI\WooSlider.xaml.cs">
       <DependentUpon>WooSlider.xaml</DependentUpon>
@@ -226,10 +222,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\PostProcessSettings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GUI\RenderControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -276,6 +268,7 @@
     <AppDesigner Include="Properties\" />
     <EmbeddedResource Include="Shaders\RayMarch.frag" />
     <EmbeddedResource Include="Shaders\RayMarch.vert" />
+    <EmbeddedResource Include="Shaders\RayMarchProgressive.vert" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Shaders\favicon.ico" />

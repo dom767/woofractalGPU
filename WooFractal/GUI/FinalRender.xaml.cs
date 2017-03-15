@@ -49,13 +49,6 @@ namespace WooFractal
         RaytracerOptions _RaytracerOptions;
         ShaderRenderer _ShaderRenderer;
 
-        private void BuildXML()
-        {
-//            _XML = @"<VIEWPORT width=" + image1.Width + @" height=" + image1.Height + @"/>";
-//            _XML += _Camera.CreateElement().ToString();
-//            _XML += _Scene.CreateElement(false, false).ToString();
-        }
-
         public FinalRender(ref Scene scene, ref RaytracerOptions raytracerOptions, ref PostProcess postprocess)
         {
             _Scene = scene;
@@ -84,7 +77,7 @@ namespace WooFractal
             _PostProcess._GammaFactor = wooSlider3.GetSliderValue();
             _PostProcess._GammaContrast = wooSlider4.GetSliderValue();
             _PostProcess._ToneFactor = wooSlider1.GetSliderValue();
-
+            _PostProcess.Initialise(_GL);
             _ShaderRenderer.SetPostProcess(_PostProcess);
         }
 
@@ -96,17 +89,26 @@ namespace WooFractal
 
         OpenGL _GL;
 
-        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
+        private void InitialiseRenderer()
         {
-            _GL = args.OpenGL;
-
             //  Initialise the scene.
             _ShaderRenderer = new ShaderRenderer();
             string frag = "";
             _Scene.Compile(_RaytracerOptions, ref frag);
             _ShaderRenderer.Compile(_GL, frag);
-            _ShaderRenderer.Initialise(_GL, 1, 1);
+            int width, height;
+            GetWidthHeightSelection(out width, out height);
+            _ShaderRenderer.Initialise(_GL, width, height);
+            _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+            _ShaderRenderer.SetPostProcess(_PostProcess);
             _ShaderRenderer.Clean(_GL);
+        }
+
+        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
+        {
+            _GL = args.OpenGL;
+            _PostProcess.Initialise(_GL);
+            InitialiseRenderer();
         }
 
         private void OpenGL_Closing()
@@ -117,26 +119,18 @@ namespace WooFractal
         private void OpenGLControl_Resized(object sender, OpenGLEventArgs args)
         {
             //  Get the OpenGL instance.
-            var gl = args.OpenGL;
+            _GL = args.OpenGL;
 
-            //  Initialise the scene.
-            _ShaderRenderer = new ShaderRenderer();
-            string frag="";
-            _Scene.Compile(_RaytracerOptions, ref frag);
-            _ShaderRenderer.Compile(gl, frag);
-            _ShaderRenderer.Initialise(_GL, (int)ActualWidth, (int)ActualHeight);
-            _ShaderRenderer.SetPostProcess(_PostProcess);
+            InitialiseRenderer();
         }
         
         bool _ImageRendering;
         DispatcherTimer _Timer;
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void GetWidthHeightSelection(out int width, out int height)
         {
-            BuildXML();
-
-            int width = 960;
-            int height = 540;
+            width = 960;
+            height = 540;
             if (radioButton3.IsChecked.HasValue && radioButton3.IsChecked.Value)
             {
                 width = 480;
@@ -152,11 +146,18 @@ namespace WooFractal
                 width = _ImageWidth;
                 height = _ImageHeight;
             }
-//            _ImageRenderer = new ImageRenderer(image1, _XML, width, height, true);
-//            _ImageRendering = true;
+        }
 
-//            _ImageRenderer.SetPostProcess(_PostProcess);
-//            _ImageRenderer.Render();
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            int width, height;
+            GetWidthHeightSelection(out width, out height);
+
+            if (_ShaderRenderer.GetTargetWidth() != width
+                || _ShaderRenderer.GetTargetHeight() != height)
+            {
+                InitialiseRenderer();
+            }
 
             _ShaderRenderer.Start();
 
@@ -197,6 +198,8 @@ namespace WooFractal
 
         private void button3_Click(object sender, RoutedEventArgs e)
         {
+            // Save Image
+            _ShaderRenderer.Save();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -220,108 +223,35 @@ namespace WooFractal
             }
         }
 
-        private void button4_Click(object sender, RoutedEventArgs e)
-        {
-            PostProcessSettings ownedWindow = new PostProcessSettings(ref _PostProcess, this);
-
-            ownedWindow.Owner = Window.GetWindow(this);
-            ownedWindow.ShowDialog();
-
-            if (!_ImageRendering)
-            {
-                updateRender();
-            }
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void button5_Click(object sender, RoutedEventArgs e)
+        private void button12_Click(object sender, RoutedEventArgs e)
         {
-            // no blur
-            _PostProcess._Settings5x5._Enabled = false;
-            _PostProcess._SettingsFastGaussian._Enabled = false;
-
-            if (!_ImageRendering)
-            {
-                updateRender();
-            }
+            //reflections
+            _RaytracerOptions._Reflections++;
+            if (_RaytracerOptions._Reflections > 3)
+                _RaytracerOptions._Reflections = 0;
+//            _Dirty = true;
+            UpdateGUI();
         }
 
-        private void button8_Click(object sender, RoutedEventArgs e)
+        private void button11_Click(object sender, RoutedEventArgs e)
         {
-            // gaussian
-            _PostProcess._Settings5x5._Enabled = false;
-            _PostProcess._SettingsFastGaussian._Enabled = true;
-            _PostProcess._SettingsFastGaussian._BoostPower = 1;
-            _PostProcess._SettingsFastGaussian._Width = 50;
-            _PostProcess._SettingsFastGaussian._SourceWeight = 0;
-            _PostProcess._SettingsFastGaussian._TargetWeight = 1;
-
-            if (!_ImageRendering)
-            {
-                updateRender();
-            }
+            //shadows
+            _RaytracerOptions._ShadowsEnabled = !_RaytracerOptions._ShadowsEnabled;
+//            _Dirty = true;
+            UpdateGUI();
         }
 
-        private void button6_Click(object sender, RoutedEventArgs e)
+        private void button13_Click(object sender, RoutedEventArgs e)
         {
-            // linear
-            _PostProcess._Settings5x5._Enabled = true;
-            _PostProcess._Settings5x5.SetLinear();
-            _PostProcess._SettingsFastGaussian._Enabled = false;
-
-            if (!_ImageRendering)
-            {
-                updateRender();
-            }
-        }
-
-        private void button9_Click(object sender, RoutedEventArgs e)
-        {
-            // bloom
-            _PostProcess._Settings5x5._Enabled = false;
-            _PostProcess._SettingsFastGaussian._Enabled = true;
-            _PostProcess._SettingsFastGaussian._BoostPower = 8;
-            _PostProcess._SettingsFastGaussian._Width = 20;
-            _PostProcess._SettingsFastGaussian._SourceWeight = 1;
-            _PostProcess._SettingsFastGaussian._TargetWeight = 1;
-
-            if (!_ImageRendering)
-            {
-                updateRender();
-            }
-        }
-
-        private void button7_Click(object sender, RoutedEventArgs e)
-        {
-            // star
-            _PostProcess._Settings5x5._Enabled = true;
-            _PostProcess._Settings5x5.SetStar();
-            _PostProcess._SettingsFastGaussian._Enabled = false;
-
-            if (!_ImageRendering)
-            {
-                updateRender();
-            }
-        }
-
-        private void button10_Click(object sender, RoutedEventArgs e)
-        {
-            // bloom 2
-            _PostProcess._Settings5x5._Enabled = false;
-            _PostProcess._SettingsFastGaussian._Enabled = true;
-            _PostProcess._SettingsFastGaussian._BoostPower = 5;
-            _PostProcess._SettingsFastGaussian._Width = 40;
-            _PostProcess._SettingsFastGaussian._SourceWeight = 1;
-            _PostProcess._SettingsFastGaussian._TargetWeight = 2;
-
-            if (!_ImageRendering)
-            {
-                updateRender();
-            }
+            //dof
+            _RaytracerOptions._DoFEnabled = !_RaytracerOptions._DoFEnabled;
+//            _Dirty = true;
+            UpdateGUI();            
         }
     }
 }

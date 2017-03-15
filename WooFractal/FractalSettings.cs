@@ -244,10 +244,11 @@ void intersectAABB(in vec3 pos, in vec3 dir, out float tmin, out float tmax)
  tmax = min(min(tmax, tymax), tzmax);   
 }
 
-bool traceFractal(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out vec3 out_diff, out vec3 out_spec)
+bool traceFractal(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out vec3 out_diff, out vec3 out_spec, out vec3 out_refl)
 {
 out_diff = vec3(1,1,1);
 out_spec = vec3(0.3,0.3,0.3);
+out_refl = vec3(0.1,0.1,0.1);
   float minDistance = " + Math.Pow(10, -_RenderOptions._DistanceMinimum).ToString("0.#######") + @";
   
   // clip to AABB

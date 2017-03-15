@@ -7,6 +7,8 @@ using SharpGL.Shaders;
 using SharpGL.VertexBuffers;
 using System.Diagnostics;
 using System.IO;
+using System.Drawing;
+using Microsoft.Win32;
 
 namespace WooFractal
 {
@@ -17,9 +19,21 @@ namespace WooFractal
     {
         uint[] _FrameBuffer = new uint[2];
         uint[] _RaytracerBuffer = new uint[2];
+        uint[] _EffectFrameBuffer = new uint[2];
+        uint[] _EffectRaytracerBuffer = new uint[2];
+        uint[] _IntFrameBuffer = new uint[1];
+        uint[] _PostprocessBuffer = new uint[1];
         uint[] _RandomNumbers = new uint[1];
         uint[] _RenderBuffer = new uint[1];
         PostProcess _PostProcess;
+
+        int _TargetWidth;
+        int _TargetHeight;
+        int _ProgressiveSteps = 8;
+        int _ProgressiveIndex = 0;
+
+        public int GetTargetWidth() { return _TargetWidth; }
+        public int GetTargetHeight() { return _TargetHeight; }
 
         private void LoadRandomNumbers(OpenGL gl)
         {
@@ -66,12 +80,40 @@ namespace WooFractal
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
         }
 
+        private void CheckForError(OpenGL gl)
+        {
+            ErrorCode errorCode = gl.GetErrorCode();
+            if (errorCode != ErrorCode.NoError)
+            {
+                string errorDescription = gl.GetErrorDescription(gl.GetError());
+                Debug.WriteLine(errorDescription);
+            }
+        }
+        bool _Initialised = false;
+
+        public void SetProgressive(bool progressive)
+        {
+            _ProgressiveSteps = progressive ? 8 : 1;
+            _ProgressiveIndex = 0;
+        }
+
         /// <summary>
         /// Initialises the Scene.
         /// </summary>
         /// <param name="gl">The OpenGL instance.</param>
         public void Initialise(OpenGL gl, int width, int height)
         {
+            if (_Initialised)
+            {
+                Destroy(gl);
+                _Initialised = true;
+            }
+
+            _TargetWidth = width;
+            _TargetHeight = height;
+            _ProgressiveSteps = 1;
+            _ProgressiveIndex = 0;
+
             //  We're going to specify the attribute locations for the position and normal, 
             //  so that we can force both shaders to explicitly have the same locations.
             const uint positionAttribute = 0;
@@ -85,13 +127,13 @@ namespace WooFractal
             if (_Program == null)
             {
                 shaderRayMarch.Create(gl,
-                    ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarch.vert"),
+                    ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarchProgressive.vert"),
                     ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarch.frag"), attributeLocations);
             }
             else
             {
                 shaderRayMarch.Create(gl,
-                    ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarch.vert"),
+                    ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarchProgressive.vert"),
                     _Program, attributeLocations);
             }
 
@@ -121,7 +163,7 @@ void main()
 {
  vec4 rgb = texture(renderedTexture, vec2((texCoord.x+1)*0.5, (texCoord.y+1)*0.5));
  FragColor=rgb;
- FragColor.rgb /= FragColor.a;
+// FragColor.rgb /= FragColor.a;
  
  // brightness/contrast
  float luminance = dot(FragColor.rgb, vec3(0.2126,0.7152,0.0722));
@@ -155,6 +197,7 @@ else
             shaderTransfer.Create(gl,
                 ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarch.vert"),
                 fragShader, attributeLocations);
+            CheckForError(gl);
 
             fragShader = @"
 #version 130
@@ -169,6 +212,26 @@ FragColor=vec4(0,0,0,0);
             shaderClean.Create(gl,
                 ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarch.vert"),
                 fragShader, attributeLocations);
+            CheckForError(gl);
+
+            // Create the transfer shader
+            string fragShaderIntTransfer = @"
+#version 130
+in vec2 texCoord;
+out vec4 FragColor;
+uniform sampler2D renderedTexture;
+
+void main()
+{
+ vec4 rgb = texture(renderedTexture, vec2((texCoord.x+1)*0.5, (texCoord.y+1)*0.5));
+ FragColor=rgb;
+}
+";
+            shaderIntTransfer = new ShaderProgram();
+            shaderIntTransfer.Create(gl,
+                ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarch.vert"),
+                fragShaderIntTransfer, attributeLocations);
+            CheckForError(gl);
 
             LoadRandomNumbers(gl);
 
@@ -176,8 +239,10 @@ FragColor=vec4(0,0,0,0);
             gl.GetFloat(OpenGL.GL_VIEWPORT, viewport);
             
             gl.GenFramebuffersEXT(2, _FrameBuffer);
+            CheckForError(gl);
 
             gl.GenTextures(2, _RaytracerBuffer);
+            CheckForError(gl);
             for (int i = 0; i < 2; i++)
             {
                 gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _FrameBuffer[i]);
@@ -190,16 +255,61 @@ FragColor=vec4(0,0,0,0);
                 gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_GENERATE_MIPMAP_SGIS, OpenGL.GL_FALSE); // automatic mipmap
 //                gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA, (int)viewport[2], (int)viewport[3], 0,
   //                           OpenGL.GL_RGBA, OpenGL.GL_FLOAT, null);
-                gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA32F, (int)viewport[2], (int)viewport[3], 0,
+                gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA32F, _TargetWidth, _TargetHeight, 0,
                              OpenGL.GL_RGBA, OpenGL.GL_FLOAT, null);
+                CheckForError(gl);
 
                 gl.FramebufferTexture2DEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_COLOR_ATTACHMENT0_EXT, OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[i], 0);
                 gl.FramebufferRenderbufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_DEPTH_ATTACHMENT_EXT, OpenGL.GL_RENDERBUFFER_EXT, 0);
             }
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
 
-            _PostProcess = new PostProcess();
+            gl.GenFramebuffersEXT(2, _EffectFrameBuffer);
+            CheckForError(gl);
 
+            gl.GenTextures(2, _EffectRaytracerBuffer);
+            CheckForError(gl);
+            for (int i = 0; i < 2; i++)
+            {
+                gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _EffectFrameBuffer[i]);
+
+                gl.BindTexture(OpenGL.GL_TEXTURE_2D, _EffectRaytracerBuffer[i]);
+                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MAG_FILTER, OpenGL.GL_LINEAR);
+                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MIN_FILTER, OpenGL.GL_LINEAR);
+                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_S, OpenGL.GL_CLAMP_TO_EDGE);
+                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, OpenGL.GL_CLAMP_TO_EDGE);
+                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_GENERATE_MIPMAP_SGIS, OpenGL.GL_FALSE); // automatic mipmap
+                gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA32F, _TargetWidth, _TargetHeight, 0,
+                             OpenGL.GL_RGBA, OpenGL.GL_FLOAT, null);
+                CheckForError(gl);
+
+                gl.FramebufferTexture2DEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_COLOR_ATTACHMENT0_EXT, OpenGL.GL_TEXTURE_2D, _EffectRaytracerBuffer[i], 0);
+                gl.FramebufferRenderbufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_DEPTH_ATTACHMENT_EXT, OpenGL.GL_RENDERBUFFER_EXT, 0);
+            }
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
+
+            // and now initialise the integer framebuffer
+            gl.GenFramebuffersEXT(1, _IntFrameBuffer);
+            CheckForError(gl);
+            gl.GenTextures(1, _PostprocessBuffer);
+            CheckForError(gl);
+            gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _IntFrameBuffer[0]);
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, _PostprocessBuffer[0]);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MAG_FILTER, OpenGL.GL_LINEAR);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MIN_FILTER, OpenGL.GL_LINEAR);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_S, OpenGL.GL_CLAMP_TO_EDGE);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, OpenGL.GL_CLAMP_TO_EDGE);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_GENERATE_MIPMAP_SGIS, OpenGL.GL_FALSE); // automatic mipmap
+            gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA, _TargetWidth, _TargetHeight, 0, OpenGL.GL_RGBA, OpenGL.GL_UNSIGNED_BYTE, null);
+            CheckForError(gl);
+            gl.FramebufferTexture2DEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_COLOR_ATTACHMENT0_EXT, OpenGL.GL_TEXTURE_2D, _PostprocessBuffer[0], 0);
+            gl.FramebufferRenderbufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_DEPTH_ATTACHMENT_EXT, OpenGL.GL_RENDERBUFFER_EXT, 0);
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
+
+            _PostProcess = new PostProcess();
+            _PostProcess.Initialise(gl);
+
+            _Initialised = true;
             stopWatch = new Stopwatch();
             stopWatch.Start();
             
@@ -224,6 +334,9 @@ FragColor=vec4(0,0,0,0);
         {
             gl.DeleteRenderbuffersEXT(2, _RaytracerBuffer);
             gl.DeleteFramebuffersEXT(2, _FrameBuffer);
+            shaderTransfer.Delete(gl);
+            shaderClean.Delete(gl);
+            shaderRayMarch.Delete(gl);
         }
 
         string _Program = null;
@@ -240,23 +353,12 @@ FragColor=vec4(0,0,0,0);
             
             shaderRayMarch = new ShaderProgram();
             shaderRayMarch.Create(gl,
-                ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarch.vert"),
+                ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarchProgressive.vert"),
                 fragmentShader, attributeLocations);
         }
 
         private bool _PingPong = false;
         private float _FrameNumber = 0;
-        private bool _Progressive = false;
-        private int _ProgressiveInterval = 1;
-        private int _ProgressiveIntervalIndex = 0;
-
-        public void SetProgressive(bool enabled, int interval)
-        {
-            _Progressive = enabled;
-            _ProgressiveInterval = interval;
-            _ProgressiveIntervalIndex = 0;
-        }
-
         Stopwatch stopWatch;
         long _TotalTime;
         int _Frames;
@@ -295,6 +397,8 @@ FragColor=vec4(0,0,0,0);
             _Rendering = false;
         }
 
+        bool _SaveNextRender = false;
+
         /// <summary>
         /// Renders the scene in retained mode.
         /// </summary>
@@ -302,6 +406,10 @@ FragColor=vec4(0,0,0,0);
         /// <param name="useToonShader">if set to <c>true</c> use the toon shader, otherwise use a per-pixel shader.</param>
         public void Render(OpenGL gl)
         {
+            if (_SaveNextRender)
+            {
+                SaveInternal(gl);
+            }
             //  Clear the color and depth buffer.
             gl.ClearColor(0f, 0f, 0f, 0f);
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
@@ -322,6 +430,7 @@ FragColor=vec4(0,0,0,0);
 
             if (_Depth)
             {
+                gl.Viewport(0, 0, 1,1);
                 gl.GenFramebuffersEXT(1, frameBuffer);
                 gl.GenTextures(1, depthCalcBuffer);
 
@@ -339,16 +448,18 @@ FragColor=vec4(0,0,0,0);
             }
             else
             {
+                gl.Viewport(0, 0, _TargetWidth, _TargetHeight);
                 // setup first framebuffer (RGB32F)
                 gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _FrameBuffer[renderBuffer]);
             }
 
             shader.Bind(gl);
 
-            shader.SetUniform1(gl, "screenWidth", viewport[2]);
-            shader.SetUniform1(gl, "screenHeight", viewport[3]);
+            shader.SetUniform1(gl, "progressiveIndex", _ProgressiveIndex);
+
+            shader.SetUniform1(gl, "screenWidth", _TargetWidth);
+            shader.SetUniform1(gl, "screenHeight", _TargetHeight);
             shader.SetUniform1(gl, "frameNumber", _FrameNumber++);
-            shader.SetUniform1(gl, "progressiveInterval", _ProgressiveInterval);
 
             int rt1 = shader.GetUniformLocation(gl, "renderedTexture");
             int rn1 = shader.GetUniformLocation(gl, "randomNumbers");
@@ -358,7 +469,7 @@ FragColor=vec4(0,0,0,0);
             shader.SetUniform1(gl, "randomNumbers", 1);
             shader.SetUniform1(gl, "depth", _Depth ? 1 : 0);
             shader.SetUniform1(gl, "mouseX", _MouseX);
-            shader.SetUniform1(gl, "mouseY", viewport[3] - _MouseY);
+            shader.SetUniform1(gl, "mouseY", _TargetHeight - _MouseY);
 
             gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[_PingPong ? 0 : 1]);
@@ -366,11 +477,15 @@ FragColor=vec4(0,0,0,0);
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RandomNumbers[0]);
             gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             if (_Rendering)
-                gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
+            {
+                gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, (256/_ProgressiveSteps)*6);
+                CheckForError(gl);
+            }
             shader.Unbind(gl);
 
             if (_Depth)
             {
+                gl.Viewport(0, 0, (int)viewport[2], (int)viewport[3]);
                 gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, 0);
                 gl.BindTexture(OpenGL.GL_TEXTURE_2D, depthCalcBuffer[0]);
                 int[] pixels = new int[4];
@@ -385,13 +500,18 @@ FragColor=vec4(0,0,0,0);
             }
             else
             {
-                gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, 0);
+                int target = 0;
 
-                // get a reference to the transfer shader
+                _PostProcess.Render(gl, _TargetWidth, _TargetHeight, ref target, _EffectFrameBuffer, _RaytracerBuffer[renderBuffer], _EffectRaytracerBuffer);
+
+                // !!!!!!!!!!!!!!!! Tonemapping
+                gl.Viewport(0, 0, _TargetWidth, _TargetHeight);
+                gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _IntFrameBuffer[0]);
+
                 shader = shaderTransfer;
 
                 gl.ActiveTexture(OpenGL.GL_TEXTURE0);
-                gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[renderBuffer]);
+                gl.BindTexture(OpenGL.GL_TEXTURE_2D, _EffectRaytracerBuffer[target]);
 
                 shader.Bind(gl);
                 shader.SetUniform1(gl, "renderedTexture", 0);
@@ -401,11 +521,33 @@ FragColor=vec4(0,0,0,0);
                 shader.SetUniform1(gl, "toneFactor", (float)_PostProcess._ToneFactor);
 
                 gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
+                CheckForError(gl);
                 shader.Unbind(gl);
 
+                // !!!!!!!!!!!!!!!!! Int to final framebuffer
+                gl.Viewport(0, 0, (int)viewport[2], (int)viewport[3]);
+                gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, 0);
+
+                // get a reference to the transfer shader
+                shader = shaderIntTransfer;
+
+                gl.ActiveTexture(OpenGL.GL_TEXTURE0);
+                gl.BindTexture(OpenGL.GL_TEXTURE_2D, _PostprocessBuffer[0]);
+
+                shader.Bind(gl);
+                shader.SetUniform1(gl, "renderedTexture", 0);
+
+                gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
+
+
+                gl.Viewport(0, 0, (int)viewport[2], (int)viewport[3]);
+                CheckForError(gl);
+                shader.Unbind(gl);
+
+                // TIDY UP
                 gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
 
-                if (_Progressive)
+           /*     if (_Progressive)
                 {
                     if (_ProgressiveIntervalIndex == 0)
                     {
@@ -428,11 +570,61 @@ FragColor=vec4(0,0,0,0);
                     }
                 }
                 else
+                {*/
+                if (_Rendering)
                 {
-                    if (_Rendering)
+                    _ProgressiveIndex += 256/_ProgressiveSteps;
+                    if (_ProgressiveIndex >= 256)
+                    {
+                        _ProgressiveIndex = 0;
                         _PingPong = !_PingPong;
+                    }
+                }
+               // }
+            }
+        }
+
+        public void Save()
+        {
+            _SaveNextRender = true;
+        }
+
+        public void SaveInternal(OpenGL gl)
+        {
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, _PostprocessBuffer[0]);
+            int[] pixels = new int[_TargetWidth * _TargetHeight];
+            gl.GetTexImage(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA, OpenGL.GL_UNSIGNED_BYTE, pixels);
+
+            Bitmap bmp = new Bitmap(_TargetWidth, _TargetHeight);
+            int x, y;
+            for (y = 0; y < _TargetHeight; y++)
+            {
+                for (x = 0; x < _TargetWidth; x++)
+                {
+                    bmp.SetPixel(x, y, System.Drawing.Color.FromArgb((pixels[(x + ((_TargetHeight-1)-y) * _TargetWidth)]&0xFF),
+                        (pixels[(x + ((_TargetHeight - 1) - y) * _TargetWidth)] & 0xFF00) >> 8,
+                        (pixels[(x + ((_TargetHeight - 1) - y) * _TargetWidth)] & 0xFF0000) >> 16));
                 }
             }
+
+            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures) + "\\WooFractal\\Exports";
+            if (!System.IO.Directory.Exists(store))
+            {
+                System.IO.Directory.CreateDirectory(store);
+            }
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = store;
+            saveFileDialog1.Filter = "PNG (*.png)|*.png";
+            saveFileDialog1.FilterIndex = 1;
+
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                bmp.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                bmp.Save(saveFileDialog1.FileName.Replace(".png", ".jpg"), System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+
+            _SaveNextRender = false;
         }
 
         bool _Depth;
@@ -452,5 +644,6 @@ FragColor=vec4(0,0,0,0);
         private ShaderProgram shaderRayMarch;
         private ShaderProgram shaderTransfer;
         private ShaderProgram shaderClean;
+        private ShaderProgram shaderIntTransfer;
     }
 }

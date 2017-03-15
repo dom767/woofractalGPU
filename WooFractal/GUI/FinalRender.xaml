@@ -32,9 +32,9 @@
             </Grid>
         </GroupBox>
         <GroupBox Header="Postprocess filter" HorizontalAlignment="Left" Margin="670,540,0,0" VerticalAlignment="Top" Height="137" Width="268"></GroupBox>
-        <Button Content="Shadows : Off" Height="23" HorizontalAlignment="Left" Margin="8,0,0,87" Name="button11" VerticalAlignment="Bottom" Width="156" />
-        <Button Content="Reflections : Off" Height="23" HorizontalAlignment="Left" Margin="8,0,0,60" Name="button12" VerticalAlignment="Bottom" Width="156" />
-        <Button Content="Depth of Field : Off" Height="23" HorizontalAlignment="Left" Margin="8,0,0,33" Name="button13" VerticalAlignment="Bottom" Width="156" />
+        <Button Content="Shadows : Off" Height="23" HorizontalAlignment="Left" Margin="8,0,0,87" Name="button11" VerticalAlignment="Bottom" Width="156" Click="button11_Click" />
+        <Button Content="Reflections : Off" Height="23" HorizontalAlignment="Left" Margin="8,0,0,60" Name="button12" VerticalAlignment="Bottom" Width="156" Click="button12_Click" />
+        <Button Content="Depth of Field : Off" Height="23" HorizontalAlignment="Left" Margin="8,0,0,33" Name="button13" VerticalAlignment="Bottom" Width="156" Click="button13_Click" />
         <Grid Margin="674,557,31,6">
             <my:WooSlider Height="24" HorizontalAlignment="Left" Margin="80,5,0,0" x:Name="wooSlider5" VerticalAlignment="Top" Width="172" />
             <my:WooSlider Height="24" HorizontalAlignment="Left" Margin="80,35,0,0" x:Name="wooSlider6" VerticalAlignment="Top" Width="172" />
