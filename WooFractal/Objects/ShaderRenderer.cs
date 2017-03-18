@@ -97,12 +97,15 @@ namespace WooFractal
             _ProgressiveIndex = 0;
         }
 
+        OpenGL _GL = null;
+
         /// <summary>
         /// Initialises the Scene.
         /// </summary>
         /// <param name="gl">The OpenGL instance.</param>
         public void Initialise(OpenGL gl, int width, int height)
         {
+            _GL = gl;
             if (_Initialised)
             {
                 Destroy(gl);
@@ -328,6 +331,8 @@ void main()
         public void SetPostProcess(PostProcess postProcess)
         {
             _PostProcess = postProcess;
+            if (_GL!=null)
+                _PostProcess.Initialise(_GL);
         }
 
         public void Destroy(OpenGL gl)

@@ -50,3 +50,5 @@ Temporary Items
 \obj
 \bin
 *.suo
+*.cache
+WooFractal/obj/x86/Release/WooFractal.exe

@@ -69,6 +69,9 @@ namespace WooFractal
             wooSlider3.Set(_PostProcess._GammaFactor, 0.01, 5, this);
             wooSlider4.Set(_PostProcess._GammaContrast, 0.01, 5, this);
             wooSlider1.Set(_PostProcess._ToneFactor, 0.01, 5, this);
+            wooSlider5.Set(_PostProcess._GaussianExposure, 1, 10, this);
+            wooSlider6.Set(_PostProcess._GaussianSD, 2, 30, this);
+            wooSlider7.Set(_PostProcess._PostProcessAmount, 0, 8, this);
         }
 
         public void GUIUpdate()
@@ -77,6 +80,10 @@ namespace WooFractal
             _PostProcess._GammaFactor = wooSlider3.GetSliderValue();
             _PostProcess._GammaContrast = wooSlider4.GetSliderValue();
             _PostProcess._ToneFactor = wooSlider1.GetSliderValue();
+            _PostProcess._GaussianExposure = wooSlider5.GetSliderValue();
+            _PostProcess._GaussianSD = wooSlider6.GetSliderValue();
+            _PostProcess._PostProcessAmount = wooSlider7.GetSliderValue();
+
             _PostProcess.Initialise(_GL);
             _ShaderRenderer.SetPostProcess(_PostProcess);
         }
@@ -170,7 +177,7 @@ namespace WooFractal
 
         void timer_Tick(object sender, EventArgs e)
         {
-            updateRender();
+  //          updateRender();
         }
 
         public void updateRender()

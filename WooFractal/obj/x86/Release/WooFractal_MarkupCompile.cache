@@ -16,5 +16,5 @@ C:\Users\Dom\Documents\GitHub\woofractalGPU\WooFractal\App.xaml
 19-1821906037
 GUI\AddFractal.xaml;GUI\CameraControls.xaml;GUI\ColourSelector.xaml;GUI\FinalRender.xaml;GUI\FractalColourControl.xaml;GUI\FractalControl.xaml;GUI\KleinianGroupControl.xaml;MainWindow.xaml;GUI\MandelboxControl.xaml;GUI\MandelbulbControl.xaml;GUI\MaterialControl.xaml;GUI\MaterialEditor.xaml;GUI\OrbitColourControl.xaml;GUI\RenderControls.xaml;GUI\RPYEditor.xaml;GUI\WooSlider.xaml;GUI\WootracerControls.xaml;
 
-True
+False
 

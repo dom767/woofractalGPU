@@ -126,12 +126,12 @@ void main()
             shaderGaussianX = new ShaderProgram();
             shaderGaussianX.Create(gl,
                 ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarch.vert"),
-                gaussianShader.GetShader(16, 0, 0.005f), attributeLocations);
+                gaussianShader.GetShader((float)_GaussianSD, 0, 0.005f), attributeLocations);
 
             shaderGaussianY = new ShaderProgram();
             shaderGaussianY.Create(gl,
                 ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarch.vert"),
-                gaussianShader.GetShader(16, (float)Math.PI / 2, 0.005f), attributeLocations);
+                gaussianShader.GetShader((float)_GaussianSD, (float)Math.PI / 2, 0.005f), attributeLocations);
 
             string fragShaderBlend = @"
 #version 130
@@ -210,7 +210,7 @@ void main()
                 gl.ActiveTexture(OpenGL.GL_TEXTURE0);
                 gl.BindTexture(OpenGL.GL_TEXTURE_2D, effectRaytracerBuffer[target > 0 ? 0 : 1]);
                 shader.Bind(gl);
-                shader.SetUniform1(gl, "exponent", 10);
+                shader.SetUniform1(gl, "exponent", (float)_GaussianExposure);
                 shader.SetUniform1(gl, "renderedTexture", 0);
                 gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
                 shader.Unbind(gl);
@@ -254,7 +254,7 @@ void main()
                 gl.BindTexture(OpenGL.GL_TEXTURE_2D, effectRaytracerBuffer[target > 0 ? 0 : 1]);
                 shader.Bind(gl);
                 shader.SetUniform1(gl, "factor1", 1);
-                shader.SetUniform1(gl, "factor2", 0.1f);
+                shader.SetUniform1(gl, "factor2", (float)_PostProcessAmount);
                 int rte1 = shader.GetUniformLocation(gl, "renderedTexture1");
                 int rne1 = shader.GetUniformLocation(gl, "renderedTexture2");
                 gl.Uniform1(rte1, 0);

@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mandelbulbthumb.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("shaders/kleinianthumb.jpg")]
 
 
