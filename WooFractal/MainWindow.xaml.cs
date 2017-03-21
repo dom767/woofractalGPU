@@ -714,6 +714,8 @@ namespace WooFractal
         {
             _GL = args.OpenGL;
 
+            string version = _GL.GetString(OpenGL.GL_SHADING_LANGUAGE_VERSION);
+
             //  Initialise the scene.
             _ShaderRenderer.Initialise(_GL, 1, 1);
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);

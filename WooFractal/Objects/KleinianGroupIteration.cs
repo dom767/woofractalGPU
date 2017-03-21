@@ -35,7 +35,7 @@ namespace WooFractal
         {
             Matrix3 rot = new Matrix3();
             rot.MakeFromRPY(_Rotation.x, _Rotation.y, _Rotation.z);
-            frag += "Kleinian(pos, origPos, scale, " + _Scale + ", mat3(" + Utils.Matrix3ToString(rot) + "), " + _Multiplier + @");
+            frag += "Kleinian(pos, origPos, scale, float(" + _Scale + "), mat3(" + Utils.Matrix3ToString(rot) + "), " + _Multiplier + @");
             DEMode = 3;";
         }
 

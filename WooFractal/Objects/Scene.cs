@@ -64,17 +64,17 @@ void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float
 vec2 rand2d(vec3 co)
 {
 //    return vec2(fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453), fract(sin(dot(co.xy+vec2(243,71) ,vec2(12.9898,78.233))) * 43758.5453));
-	uint clamppixel = uint(co.x)%3592;
-	uint sequence = uint(uint(co.z)/1024)*4801 + uint(co.x)*uint(co.x) + uint(co.y);
+	uint clamppixel = uint(co.x)%uint(3592);
+	uint sequence = uint(uint(co.z)/uint(1024))*uint(4801) + uint(co.x)*uint(co.x) + uint(co.y);
 	
-	sequence = ((sequence >> 16) ^ sequence) * 0x45d9f3b;
-    sequence = ((sequence >> 16) ^ sequence) * 0x45d9f3b;
+	sequence = ((sequence >> 16) ^ sequence) * uint(0x45d9f3b);
+    sequence = ((sequence >> 16) ^ sequence) * uint(0x45d9f3b);
     sequence = ((sequence >> 16) ^ sequence);
 
 //  sequence = int(floor(fract(sin(dot(vec2(clamppixel, co.y*13) ,vec2(12.9898,78.233))) * 43758.5453)*1024));//floor(mod(sequence, 1024));
 
-  uint x = uint(co.z) % 1024;
-  uint y = sequence % 1024;
+  uint x = uint(co.z) % uint(1024);
+  uint y = sequence % uint(1024);
 
   vec4 rand = texture(randomNumbers, vec2((float(x)+0.5)/1024, (float(y)+0.5)/1024));
   return vec2(rand.x, rand.y);
@@ -151,21 +151,21 @@ vec3 repeatxz(vec3 p, vec3 c)
 }
 
 float GetValue(int x, int seed, int axis, int octave)
-{
-	int val = x + axis*789221 + octave*15731 + seed*761;
+{return 1.0;
+/*	int val = x + axis*789221 + octave*15731 + seed*761;
 	val = (val<<13) ^ val;
-	return 1.0f - ( float(val * (val * val * 15731 + 789221) + 1376312589 & 0x7fffffff) / 1073741824.0f);
+	return 1.0f - ( float(val * (val * val * 15731 + 789221) + 1376312589 & 0x7fffffff) / 1073741824.0f);*/
 }
 
 int imod(int arg, int mod)
-{
-	int ret = arg % mod;
+{return arg;
+/*	int ret = arg % mod;
 	if (ret<0) ret += mod;
-	return ret;
+	return ret;*/
 }
 float GetPerlin2d(float posx, float posy, float rep, float scale, int seed, int octaves, float weightingMultiplier)
-{
-	float normalX = posx*rep;
+{return 1.0;
+/*	float normalX = posx*rep;
 	float normalY = posy*rep;
 	float sum=0;
 	float weighting = scale;
@@ -202,7 +202,7 @@ float GetPerlin2d(float posx, float posy, float rep, float scale, int seed, int 
 	if (sum<-1) sum=-1;
 	if (sum>1) sum=1;
 
-	return sum;
+	return sum;*/
 }";
 
             frag += _FractalSettings._RenderOptions._Backgrounds[_FractalSettings._RenderOptions._Background]._Description;
