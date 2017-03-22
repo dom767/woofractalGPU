@@ -151,21 +151,21 @@ vec3 repeatxz(vec3 p, vec3 c)
 }
 
 float GetValue(int x, int seed, int axis, int octave)
-{return 1.0;
-/*	int val = x + axis*789221 + octave*15731 + seed*761;
+{
+	int val = x + axis*789221 + octave*15731 + seed*761;
 	val = (val<<13) ^ val;
-	return 1.0f - ( float(val * (val * val * 15731 + 789221) + 1376312589 & 0x7fffffff) / 1073741824.0f);*/
+	return 1.0f - ( float(val * (val * val * 15731 + 789221) + 1376312589 & 0x7fffffff) / 1073741824.0f);
 }
 
 int imod(int arg, int mod)
-{return arg;
-/*	int ret = arg % mod;
+{
+    int ret = arg % mod;
 	if (ret<0) ret += mod;
-	return ret;*/
+	return ret;
 }
 float GetPerlin2d(float posx, float posy, float rep, float scale, int seed, int octaves, float weightingMultiplier)
-{return 1.0;
-/*	float normalX = posx*rep;
+{
+    float normalX = posx*rep;
 	float normalY = posy*rep;
 	float sum=0;
 	float weighting = scale;
@@ -202,7 +202,7 @@ float GetPerlin2d(float posx, float posy, float rep, float scale, int seed, int 
 	if (sum<-1) sum=-1;
 	if (sum>1) sum=1;
 
-	return sum;*/
+	return sum;
 }";
 
             frag += _FractalSettings._RenderOptions._Backgrounds[_FractalSettings._RenderOptions._Background]._Description;
