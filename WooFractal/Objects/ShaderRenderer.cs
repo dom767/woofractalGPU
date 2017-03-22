@@ -323,8 +323,6 @@ void main()
             _PostProcess.Initialise(gl);
 
             _Initialised = true;
-            stopWatch = new Stopwatch();
-            stopWatch.Start();
             
         /*    
             gl.GenRenderbuffersEXT(2, _RaytracerBuffer);
@@ -336,6 +334,25 @@ void main()
        //     gl.GenRenderbuffersEXT(1, _RenderBuffer);
             //gl.BindRenderbufferEXT(OpenGL.GL_RENDERBUFFER_EXT, _RenderBuffer[0]);
             //gl.RenderbufferStorageEXT(OpenGL.GL_RENDERBUFFER_EXT, OpenGL.GL_RGBA, (int)viewport[2], (int)viewport[3]);
+        }
+
+        int _RaysPerPixel;
+        double _FramesRendered, _Rays;
+        Stopwatch _StopWatch;
+
+        public double GetFrameCount()
+        {
+            return _FramesRendered;
+        }
+
+        public double GetRayCount()
+        {
+            return _Rays * _RaysPerPixel;
+        }
+
+        public double GetElapsedTime()
+        {
+            return (double)_StopWatch.ElapsedMilliseconds / 1000.0;
         }
 
         public void SetPostProcess(PostProcess postProcess)
@@ -356,8 +373,12 @@ void main()
 
         string _Program = null;
 
-        public void Compile(OpenGL gl, string fragmentShader)
+        public void Compile(OpenGL gl, string fragmentShader, int raysPerPixel)
         {
+            _RaysPerPixel = raysPerPixel;
+            _FramesRendered = 0;
+            _Rays = 0;
+            _StopWatch = new Stopwatch();
             _Program = fragmentShader;
 
             const uint positionAttribute = 0;
@@ -374,10 +395,6 @@ void main()
 
         private bool _PingPong = false;
         private float _FrameNumber = 0;
-        Stopwatch stopWatch;
-        long _TotalTime;
-        int _Frames;
-
 
         public void CleanBuffers(OpenGL gl)
         {
@@ -405,11 +422,13 @@ void main()
         public void Start()
         {
             _Rendering = true;
+            _StopWatch.Start();
         }
 
         public void Stop()
         {
             _Rendering = false;
+            _StopWatch.Stop();
         }
 
         bool _SaveNextRender = false;
@@ -591,6 +610,8 @@ void main()
                 if (_Rendering)
                 {
                     _ProgressiveIndex += 256/_ProgressiveSteps;
+                    _FramesRendered += 1.0 / (double)_ProgressiveSteps;
+                    _Rays = _TargetHeight * _TargetHeight * _FramesRendered;
                     if (_ProgressiveIndex >= 256)
                     {
                         _ProgressiveIndex = 0;

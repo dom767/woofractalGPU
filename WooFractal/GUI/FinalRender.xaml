@@ -48,5 +48,8 @@
         <Button Content="Shadows : Off" Height="23" HorizontalAlignment="Left" Margin="8,0,0,87" Name="button11" VerticalAlignment="Bottom" Width="156" Click="button11_Click" />
         <Button Content="Reflections : Off" Height="23" HorizontalAlignment="Left" Margin="8,0,0,60" Name="button12" VerticalAlignment="Bottom" Width="156" Click="button12_Click" />
         <Button Content="Depth of Field : Off" Height="23" HorizontalAlignment="Left" Margin="8,0,0,33" Name="button13" VerticalAlignment="Bottom" Width="156" Click="button13_Click" />
+        <Label Content="Elapsed time : " Name="perf1" HorizontalAlignment="Left" Margin="291,535,0,0" VerticalAlignment="Top" Width="210"/>
+        <Label Content="Rays / sec : " Name="perf2" HorizontalAlignment="Left" Margin="516,535,0,0" VerticalAlignment="Top" Width="210"/>
+        <Label Content="Samples / pixel : " Name="perf3" HorizontalAlignment="Left" Margin="741,535,0,0" VerticalAlignment="Top" Width="210"/>
     </Grid>
 </Window>

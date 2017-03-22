@@ -170,7 +170,7 @@ namespace WooFractal
 
             string frag = "";
             _Scene.Compile(_RaytracerOptions, ref frag);
-            _ShaderRenderer.Compile(_GL, frag);
+            _ShaderRenderer.Compile(_GL, frag, _RaytracerOptions.GetRaysPerPixel());
 
             SaveStatus();
 
@@ -257,6 +257,7 @@ namespace WooFractal
             }
         }
 
+        bool _ReInitialise = false;
         bool _Dirty = true;
         bool _CameraDirty = false;
         DispatcherTimer _Timer;
@@ -303,6 +304,13 @@ namespace WooFractal
 //            _ImageRenderer._RampValue = 1;// _ImageRenderer._MaxValue;
 //            _ImageRenderer.TransferLatest(false);
             
+            if (_ReInitialise)
+            {
+                _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
+                _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+                _ReInitialise = false;
+            }
+
             if (_Dirty)
             {
                 Compile();
@@ -730,7 +738,7 @@ namespace WooFractal
             var gl = args.OpenGL;
   
             //  Initialise the scene.
-            _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth, (int)openGlCtrl.ActualHeight, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
+            _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
 
@@ -856,6 +864,7 @@ namespace WooFractal
             button6.Content = "Reflections : " + (_RaytracerOptions._Reflections.ToString());
             button7.Content = "Depth of Field : " + (_RaytracerOptions._DoFEnabled ? "On" : "Off");
             button10.Content = "Progressive : " + (_RaytracerOptions._Progressive ? "On" : "Off");
+            button9.Content = "Resolution : " + ((_RaytracerOptions._Resolution == 1) ? "1" : (_RaytracerOptions._Resolution == 2) ? "1/2" : "1/4");
 
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
@@ -890,7 +899,13 @@ namespace WooFractal
 
         private void button9_Click(object sender, RoutedEventArgs e)
         {
-            // Colours
+            // Resolution
+            _RaytracerOptions._Resolution *= 2;
+            if (_RaytracerOptions._Resolution > 4)
+                _RaytracerOptions._Resolution = 1;
+            _Dirty = true;
+            _ReInitialise = true;
+            UpdateGUI();
         }
 
         private void button10_Click(object sender, RoutedEventArgs e)

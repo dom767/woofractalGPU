@@ -70,7 +70,7 @@ namespace WooFractal
             wooSlider4.Set(_PostProcess._GammaContrast, 0.01, 5, this);
             wooSlider1.Set(_PostProcess._ToneFactor, 0.01, 5, this);
             wooSlider5.Set(_PostProcess._GaussianExposure, 1, 10, this);
-            wooSlider6.Set(_PostProcess._GaussianSD, 2, 30, this);
+            wooSlider6.Set(_PostProcess._GaussianSD, 2, 100, this);
             wooSlider7.Set(_PostProcess._PostProcessAmount, 0, 8, this);
         }
 
@@ -92,6 +92,15 @@ namespace WooFractal
         {
             var gl = args.OpenGL;
             _ShaderRenderer.Render(gl);
+            UpdatePerfStats();
+        }
+
+        private void UpdatePerfStats()
+        {
+            double time = _ShaderRenderer.GetElapsedTime();
+            perf1.Content = "Elapsed Time : " + time.ToString() + "s";
+            perf2.Content = "Rays / sec : " + (int)(time==0 ? 0 : _ShaderRenderer.GetRayCount()/time);
+            perf3.Content = "Samples / pixel : " + _ShaderRenderer.GetFrameCount();
         }
 
         OpenGL _GL;
@@ -102,7 +111,7 @@ namespace WooFractal
             _ShaderRenderer = new ShaderRenderer();
             string frag = "";
             _Scene.Compile(_RaytracerOptions, ref frag);
-            _ShaderRenderer.Compile(_GL, frag);
+            _ShaderRenderer.Compile(_GL, frag, _RaytracerOptions.GetRaysPerPixel());
             int width, height;
             GetWidthHeightSelection(out width, out height);
             _ShaderRenderer.Initialise(_GL, width, height, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
