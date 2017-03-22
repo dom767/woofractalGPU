@@ -46,17 +46,19 @@
             </TabItem>
             <TabItem Header="Camera" Name="tabItem2" IsSelected="False">
                 <Grid>
-                    <ScrollViewer Name="scrollViewer2" Margin="1,0,0,-1" VerticalScrollBarVisibility="Visible" Height="489">
+                    <ScrollViewer Name="scrollViewer2" Margin="1,0,0,-1" VerticalScrollBarVisibility="Visible">
                         <StackPanel HorizontalAlignment="Left" Name="stackPanel2" VerticalAlignment="Top" CanVerticallyScroll="True" >
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
             </TabItem>
             <TabItem Header="Colouring" Name="tabItem3">
-                <ScrollViewer Name="scrollViewer3" Margin="1,0,0,-1" VerticalScrollBarVisibility="Visible" Height="483">
-                    <StackPanel HorizontalAlignment="Left" Name="stackPanel3" VerticalAlignment="Top" CanVerticallyScroll="True" >
-                    </StackPanel>
-                </ScrollViewer>
+                <Grid>
+                    <ScrollViewer Name="scrollViewer3" Margin="1,0,0,-1" VerticalScrollBarVisibility="Visible">
+                        <StackPanel HorizontalAlignment="Left" Name="stackPanel3" VerticalAlignment="Top" CanVerticallyScroll="True" >
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
             </TabItem>
         </TabControl>
         <Button Content="Export GLSL" HorizontalAlignment="Left" Margin="928,0,0,40" Name="button5" Width="101" Click="button5_Click" Height="23" VerticalAlignment="Bottom" />
