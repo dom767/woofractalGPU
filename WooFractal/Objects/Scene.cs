@@ -64,25 +64,23 @@ void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float
 vec2 rand2d(vec3 co)
 {
 //    return vec2(fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453), fract(sin(dot(co.xy+vec2(243,71) ,vec2(12.9898,78.233))) * 43758.5453));
-	uint clamppixel = uint(co.x)%uint(3592);
-	uint sequence = uint(uint(co.z)/uint(1024))*uint(4801) + uint(co.x)*uint(co.x) + uint(co.y);
-	
-	sequence = ((sequence >> 16) ^ sequence) * uint(0x45d9f3b);
-    sequence = ((sequence >> 16) ^ sequence) * uint(0x45d9f3b);
-    sequence = ((sequence >> 16) ^ sequence);
+ uint clamppixel = uint(co.x)%uint(3592);
+ uint sequence = uint(uint(co.z)/uint(1024))*uint(4801) + uint(co.x)*uint(co.x) + uint(co.y);
+ 
+ sequence = ((sequence >> 16) ^ sequence) * uint(0x45d9f3b);
+ sequence = ((sequence >> 16) ^ sequence) * uint(0x45d9f3b);
+ sequence = ((sequence >> 16) ^ sequence);
 
-//  sequence = int(floor(fract(sin(dot(vec2(clamppixel, co.y*13) ,vec2(12.9898,78.233))) * 43758.5453)*1024));//floor(mod(sequence, 1024));
+ uint x = uint(co.z) % uint(1024);
+ uint y = sequence % uint(1024);
 
-  uint x = uint(co.z) % uint(1024);
-  uint y = sequence % uint(1024);
-
-  vec4 rand = texture(randomNumbers, vec2((float(x)+0.5)/1024, (float(y)+0.5)/1024));
-  return vec2(rand.x, rand.y);
+ vec4 rand = texture(randomNumbers, vec2((float(x)+0.5)/1024, (float(y)+0.5)/1024));
+ return vec2(rand.x, rand.y);
 }
 
 //  See : http://lolengine.net/blog/2013/09/21/picking-orthogonal-vector-combing-coconuts
 vec3 ortho(in vec3 v) {
-    return abs(v[0]) > abs(v[2]) ? vec3(-v[1], v[0], 0.0) : vec3(0.0, -v[2], v[1]);
+ return abs(v[0]) > abs(v[2]) ? vec3(-v[1], v[0], 0.0) : vec3(0.0, -v[2], v[1]);
 }
 
 vec3 getSampleBiased(in vec3 dir, in float power)
