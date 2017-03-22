@@ -105,7 +105,7 @@ namespace WooFractal
             _ShaderRenderer.Compile(_GL, frag);
             int width, height;
             GetWidthHeightSelection(out width, out height);
-            _ShaderRenderer.Initialise(_GL, width, height);
+            _ShaderRenderer.Initialise(_GL, width, height, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
             _ShaderRenderer.SetPostProcess(_PostProcess);
             _ShaderRenderer.Clean(_GL);

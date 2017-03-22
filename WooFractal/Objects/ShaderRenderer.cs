@@ -26,6 +26,8 @@ namespace WooFractal
         uint[] _RandomNumbers = new uint[1];
         uint[] _RenderBuffer = new uint[1];
         PostProcess _PostProcess;
+        mat4 _ViewMatrix;
+        vec3 _Position;
 
         int _TargetWidth;
         int _TargetHeight;
@@ -34,6 +36,12 @@ namespace WooFractal
 
         public int GetTargetWidth() { return _TargetWidth; }
         public int GetTargetHeight() { return _TargetHeight; }
+
+        public void SetCameraVars(mat4 viewMatrix, vec3 position)
+        {
+            _ViewMatrix = viewMatrix;
+            _Position = position;
+        }
 
         private void LoadRandomNumbers(OpenGL gl)
         {
@@ -103,7 +111,7 @@ namespace WooFractal
         /// Initialises the Scene.
         /// </summary>
         /// <param name="gl">The OpenGL instance.</param>
-        public void Initialise(OpenGL gl, int width, int height)
+        public void Initialise(OpenGL gl, int width, int height, mat4 viewMatrix, vec3 position)
         {
             _GL = gl;
             if (_Initialised)
@@ -112,6 +120,8 @@ namespace WooFractal
                 _Initialised = true;
             }
 
+            _ViewMatrix = viewMatrix;
+            _Position = position;
             _TargetWidth = width;
             _TargetHeight = height;
             _ProgressiveSteps = 1;
@@ -465,6 +475,8 @@ void main()
             shader.SetUniform1(gl, "screenWidth", _TargetWidth);
             shader.SetUniform1(gl, "screenHeight", _TargetHeight);
             shader.SetUniform1(gl, "frameNumber", _FrameNumber++);
+            shader.SetUniformMatrix4(gl, "viewMatrix", _ViewMatrix.to_array());
+            shader.SetUniform3(gl, "camPos", _Position.x, _Position.y, _Position.z);
 
             int rt1 = shader.GetUniformLocation(gl, "renderedTexture");
             int rn1 = shader.GetUniformLocation(gl, "randomNumbers");

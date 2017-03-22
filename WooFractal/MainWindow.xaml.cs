@@ -303,19 +303,15 @@ namespace WooFractal
 //            _ImageRenderer._RampValue = 1;// _ImageRenderer._MaxValue;
 //            _ImageRenderer.TransferLatest(false);
             
-            if (_Dirty || _CameraDirty || _Velocity.MagnitudeSquared() > 0.0001)// && _ImageRenderer != null)
+            if (_Dirty)
             {
-//                _ImageRenderer.Stop();
-                if (_Dirty)
-                {
-                    Compile();
-                }
-                else
-                {
-                    Compile();
-//                    _ImageRenderer.UpdateCamera(_Camera.CreateElement().ToString());
-                }
-//                _ImageRenderer.Render();
+                Compile();
+            }
+
+            if (_CameraDirty || _Velocity.MagnitudeSquared() > 0.0001)
+            {
+                _Clean = true;
+                _CameraDirty = false;
             }
 
             if (_Velocity.MagnitudeSquared() < 0.0001)
@@ -699,12 +695,14 @@ namespace WooFractal
                 _ShaderRenderer.Start();
             }
 
+            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.Render(gl);
 
             if (_ShaderRenderer._ImageDepthSet)
             {
                 SetFocusDistance(_ShaderRenderer._ImageDepth);
                 _ShaderRenderer._ImageDepthSet = false;
+                _Dirty = true;
             }
         }
 
@@ -717,7 +715,7 @@ namespace WooFractal
             string version = _GL.GetString(OpenGL.GL_SHADING_LANGUAGE_VERSION);
 
             //  Initialise the scene.
-            _ShaderRenderer.Initialise(_GL, 1, 1);
+            _ShaderRenderer.Initialise(_GL, 1, 1, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
 
@@ -732,7 +730,7 @@ namespace WooFractal
             var gl = args.OpenGL;
   
             //  Initialise the scene.
-            _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth, (int)openGlCtrl.ActualHeight);
+            _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth, (int)openGlCtrl.ActualHeight, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
 
