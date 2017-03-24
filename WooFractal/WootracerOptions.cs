@@ -49,7 +49,13 @@ namespace WooFractal
             reader.Read();
         }
 
+        public int GetRaysPerPixel()
+        {
+            return (1 + (_ShadowsEnabled?2:0)) * (1+_Reflections);
+        }
+
         public double _Exposure = 1;
+        public int _Resolution = 1;
         public bool _AutoExposure = true;
         public bool _ShadowsEnabled = true;
         public bool _DoFEnabled = true;

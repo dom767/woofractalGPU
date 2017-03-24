@@ -170,7 +170,7 @@ namespace WooFractal
 
             string frag = "";
             _Scene.Compile(_RaytracerOptions, ref frag);
-            _ShaderRenderer.Compile(_GL, frag);
+            _ShaderRenderer.Compile(_GL, frag, _RaytracerOptions.GetRaysPerPixel());
 
             SaveStatus();
 
@@ -257,6 +257,7 @@ namespace WooFractal
             }
         }
 
+        bool _ReInitialise = false;
         bool _Dirty = true;
         bool _CameraDirty = false;
         DispatcherTimer _Timer;
@@ -303,19 +304,22 @@ namespace WooFractal
 //            _ImageRenderer._RampValue = 1;// _ImageRenderer._MaxValue;
 //            _ImageRenderer.TransferLatest(false);
             
-            if (_Dirty || _CameraDirty || _Velocity.MagnitudeSquared() > 0.0001)// && _ImageRenderer != null)
+            if (_ReInitialise)
             {
-//                _ImageRenderer.Stop();
-                if (_Dirty)
-                {
-                    Compile();
-                }
-                else
-                {
-                    Compile();
-//                    _ImageRenderer.UpdateCamera(_Camera.CreateElement().ToString());
-                }
-//                _ImageRenderer.Render();
+                _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
+                _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+                _ReInitialise = false;
+            }
+
+            if (_Dirty)
+            {
+                Compile();
+            }
+
+            if (_CameraDirty || _Velocity.MagnitudeSquared() > 0.0001)
+            {
+                _Clean = true;
+                _CameraDirty = false;
             }
 
             if (_Velocity.MagnitudeSquared() < 0.0001)
@@ -699,12 +703,14 @@ namespace WooFractal
                 _ShaderRenderer.Start();
             }
 
+            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.Render(gl);
 
             if (_ShaderRenderer._ImageDepthSet)
             {
                 SetFocusDistance(_ShaderRenderer._ImageDepth);
                 _ShaderRenderer._ImageDepthSet = false;
+                _Dirty = true;
             }
         }
 
@@ -714,8 +720,10 @@ namespace WooFractal
         {
             _GL = args.OpenGL;
 
+            string version = _GL.GetString(OpenGL.GL_SHADING_LANGUAGE_VERSION);
+
             //  Initialise the scene.
-            _ShaderRenderer.Initialise(_GL, 1, 1);
+            _ShaderRenderer.Initialise(_GL, 1, 1, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
 
@@ -730,7 +738,7 @@ namespace WooFractal
             var gl = args.OpenGL;
   
             //  Initialise the scene.
-            _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth, (int)openGlCtrl.ActualHeight);
+            _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
 
@@ -856,6 +864,7 @@ namespace WooFractal
             button6.Content = "Reflections : " + (_RaytracerOptions._Reflections.ToString());
             button7.Content = "Depth of Field : " + (_RaytracerOptions._DoFEnabled ? "On" : "Off");
             button10.Content = "Progressive : " + (_RaytracerOptions._Progressive ? "On" : "Off");
+            button9.Content = "Resolution : " + ((_RaytracerOptions._Resolution == 1) ? "1" : (_RaytracerOptions._Resolution == 2) ? "1/2" : "1/4");
 
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
         }
@@ -890,7 +899,13 @@ namespace WooFractal
 
         private void button9_Click(object sender, RoutedEventArgs e)
         {
-            // Colours
+            // Resolution
+            _RaytracerOptions._Resolution *= 2;
+            if (_RaytracerOptions._Resolution > 4)
+                _RaytracerOptions._Resolution = 1;
+            _Dirty = true;
+            _ReInitialise = true;
+            UpdateGUI();
         }
 
         private void button10_Click(object sender, RoutedEventArgs e)

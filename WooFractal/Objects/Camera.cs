@@ -68,10 +68,12 @@ namespace WooFractal
             reader.Read();
         }
 
-        public void Compile(RaytracerOptions raytracerOptions, ref string frag)
+        public vec3 GetPosition()
         {
-//            _Position = new Vector3(0, 1, -2);
-//            _Target = new Vector3(0, 1, 0);
+            return new vec3((float)_Position.x, (float)_Position.y, (float)_Position.z);
+        }
+        public mat4 GetViewMatrix()
+        {
             Vector3 to = _Target - _Position;
             to.Normalise();
             Vector3 up = new Vector3(0, 1, 0);
@@ -80,7 +82,7 @@ namespace WooFractal
             right.Normalise();
             up = to.Cross(right);
             up.Normalise();
-          
+
             mat4 viewMatrix = mat4.identity();
             viewMatrix[0, 0] = (float)right.x;
             viewMatrix[0, 1] = (float)right.y;
@@ -98,7 +100,16 @@ namespace WooFractal
             viewMatrix[3, 1] = 0;
             viewMatrix[3, 2] = 0;
             viewMatrix[3, 3] = 1;
-            
+
+            return viewMatrix;
+        }
+
+        public void Compile(RaytracerOptions raytracerOptions, ref string frag)
+        {
+//            _Position = new Vector3(0, 1, -2);
+//            _Target = new Vector3(0, 1, 0);
+            mat4 viewMatrix = GetViewMatrix();
+
             frag += @"
 uniform vec3 camPos = vec3("+_Position.x+","+_Position.y+","+_Position.z+@");
 uniform mat4 viewMatrix = mat4(" + Utils.mat4ToString(viewMatrix) + @");
