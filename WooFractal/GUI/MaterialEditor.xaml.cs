@@ -10,6 +10,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SharpGL;
+using SharpGL.SceneGraph.Core;
+using SharpGL.SceneGraph.Primitives;
+using SharpGL.SceneGraph;
 
 namespace WooFractal
 {
@@ -112,5 +116,28 @@ namespace WooFractal
             this.Close();
         }
 
+        OpenGL _GL;
+        private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
+        {
+            _GL = args.OpenGL;
+//            _ShaderRenderer.Render(gl);
+        }
+
+        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
+        {
+            _GL = args.OpenGL;
+//            _PostProcess.Initialise(_GL);
+//            InitialiseRenderer();
+        }
+
+        private void OpenGL_Closing()
+        {
+//            _ShaderRenderer.Destroy(_GL);
+        }
+
+        private void OpenGLControl_Resized(object sender, OpenGLEventArgs args)
+        {
+            _GL = args.OpenGL;
+        }
     }
 }

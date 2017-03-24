@@ -42,7 +42,7 @@ namespace WooFractal
         public string Compile(RaytracerOptions raytracerOptions, ref string frag)
         {
             frag = @"
-#version 330
+#version 130
 uniform float screenWidth;
 uniform float screenHeight;
 uniform sampler2D renderedTexture;
@@ -59,25 +59,33 @@ float sampleIndex;
 in vec2 texCoord;
 out vec4 FragColor;
 
+struct material
+{
+ vec3 diff;
+ vec3 spec;
+ float specPower;
+ vec3 refl;
+ float gloss;
+ vec3 emi;
+};
+
 void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float specularPower, out vec3 lightDiff, out vec3 lightSpec);
 
 vec2 rand2d(vec3 co)
 {
-//    return vec2(fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453), fract(sin(dot(co.xy+vec2(243,71) ,vec2(12.9898,78.233))) * 43758.5453));
-	uint clamppixel = uint(co.x)%3592;
+    return vec2(fract(sin(dot(co.xyz ,vec3(12.9898,78.233,32.11))) * 43758.5453), fract(sin(dot(co.xyz+vec3(243,71,711) ,vec3(12.9898,78.233,32.11))) * 43758.5453));
+	/*uint clamppixel = uint(co.x)%3592;
 	uint sequence = uint(uint(co.z)/1024)*4801 + uint(co.x)*uint(co.x) + uint(co.y);
 	
 	sequence = ((sequence >> 16) ^ sequence) * 0x45d9f3b;
     sequence = ((sequence >> 16) ^ sequence) * 0x45d9f3b;
     sequence = ((sequence >> 16) ^ sequence);
 
-//  sequence = int(floor(fract(sin(dot(vec2(clamppixel, co.y*13) ,vec2(12.9898,78.233))) * 43758.5453)*1024));//floor(mod(sequence, 1024));
-
   uint x = uint(co.z) % 1024;
   uint y = sequence % 1024;
 
   vec4 rand = texture(randomNumbers, vec2((float(x)+0.5)/1024, (float(y)+0.5)/1024));
-  return vec2(rand.x, rand.y);
+  return vec2(rand.x, rand.y);*/
 }
 
 //  See : http://lolengine.net/blog/2013/09/21/picking-orthogonal-vector-combing-coconuts
@@ -152,20 +160,22 @@ vec3 repeatxz(vec3 p, vec3 c)
 
 float GetValue(int x, int seed, int axis, int octave)
 {
-	int val = x + axis*789221 + octave*15731 + seed*761;
-	val = (val<<13) ^ val;
-	return 1.0f - ( float(val * (val * val * 15731 + 789221) + 1376312589 & 0x7fffffff) / 1073741824.0f);
+return 1.0;
+//	int val = x + axis*789221 + octave*15731 + seed*761;
+//	val = (val<<13) ^ val;
+//	return 1.0f - ( float(val * (val * val * 15731 + 789221) + 1376312589 & 0x7fffffff) / 1073741824.0f);
 }
 
 int imod(int arg, int mod)
 {
-	int ret = arg % mod;
-	if (ret<0) ret += mod;
-	return ret;
+return arg;
+//    int ret = arg % mod;
+//	if (ret<0) ret += mod;
+//	return ret;
 }
 float GetPerlin2d(float posx, float posy, float rep, float scale, int seed, int octaves, float weightingMultiplier)
-{
-	float normalX = posx*rep;
+{return 1.0;
+/*	float normalX = posx*rep;
 	float normalY = posy*rep;
 	float sum=0;
 	float weighting = scale;
@@ -202,13 +212,13 @@ float GetPerlin2d(float posx, float posy, float rep, float scale, int seed, int 
 	if (sum<-1) sum=-1;
 	if (sum>1) sum=1;
 
-	return sum;
+	return sum;*/
 }";
 
             frag += _FractalSettings._RenderOptions._Backgrounds[_FractalSettings._RenderOptions._Background]._Description;
 
             frag += @"
-bool traceBackground(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out vec3 out_diff, out vec3 out_spec, out vec3 out_refl)
+bool traceBackground(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out material mat)
 {
  vec3 p = pos;
  float r = 0;
@@ -235,9 +245,12 @@ bool traceBackground(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_po
    out_pos = p + normal*0.001;
    dist = length(out_pos - pos);
 
-   out_diff = vec3(0.6,0.6,0.6);
-   out_refl = vec3(0.2,0.2,0.2);
-   backgroundMaterial(out_pos, out_diff, out_refl);
+   mat.diff = vec3(0.6,0.6,0.6);
+   mat.refl = vec3(0.2,0.2,0.2);
+   mat.spec = vec3(0.2,0.2,0.2);
+   mat.specPower = 50;
+   mat.gloss = 0.01;
+   backgroundMaterial(out_pos, mat);
    return true;
   }
   p += 0.6 * r * dir;
@@ -246,20 +259,19 @@ bool traceBackground(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_po
 }
 
 
-bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out vec3 out_diff, out vec3 out_spec, out vec3 out_refl)
+bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out material mat)
 {
- vec3 bkgpos, bkgnormal, bkgdiff, bkgspec, bkgrefl;
+ vec3 bkgpos, bkgnormal;
+ material bkgmat;
  float bkgdist=dist;
- bool hitFractal = traceFractal(pos, dir, dist, out_pos, normal, out_diff, out_spec, out_refl);
- bool hitBkg = traceBackground(pos, dir, bkgdist, bkgpos, bkgnormal, bkgdiff, bkgspec, bkgrefl);
+ bool hitFractal = traceFractal(pos, dir, dist, out_pos, normal, mat);
+ bool hitBkg = traceBackground(pos, dir, bkgdist, bkgpos, bkgnormal, bkgmat);
  if ((hitFractal && hitBkg && dist>bkgdist) || hitBkg && !hitFractal)
  {
   dist = bkgdist;
   out_pos = bkgpos;
   normal = bkgnormal;
-  out_diff = bkgdiff;
-  out_spec = bkgspec;
-  out_refl = bkgrefl;
+  mat = bkgmat;
  }
  return (hitFractal || hitBkg);
 }";
@@ -292,7 +304,8 @@ void main(void)
 
   getcamera(pos, dir, q, depth);
   
-  vec3 out_pos, normal, out_diff, out_spec, out_refl;
+  vec3 out_pos, normal;
+  material mat;
   float dist = 10000;
   vec3 factor = vec3(1.0);
   vec4 oCol = vec4(0.0);
@@ -301,23 +314,23 @@ void main(void)
   
   for (int i=0; i<(depth ? 1 : "+(1+raytracerOptions._Reflections).ToString()+ @"); i++)
   {
-   bool hit = trace(iterpos, iterdir, dist, out_pos, normal, out_diff, out_spec, out_refl);
+   bool hit = trace(iterpos, iterdir, dist, out_pos, normal, mat);
 
    if (hit)
    {
-    normal += 0.01 * getRandomDirection3d();
+    normal += mat.gloss * getRandomDirection3d();
     normal = normalize(normal);
     vec3 reflection = iterdir - normal*dot(normal,iterdir)*2.0f;
     vec3 lightDiff = vec3(0,0,0);
     vec3 lightSpec = vec3(0,0,0);
     calculateLighting(out_pos, normal, reflection, 10, lightDiff, lightSpec);
 
-    vec3 col = out_diff*lightDiff + out_spec*lightSpec;
+    vec3 col = mat.diff*lightDiff + mat.spec*lightSpec;
     oCol+=vec4(factor,0.0)*vec4(col, 0.0);
 
     iterpos = out_pos;
     iterdir = reflection;
-    factor *= out_refl;
+    factor *= mat.refl;
    }
    else
    {

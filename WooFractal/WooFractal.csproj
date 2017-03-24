@@ -307,6 +307,9 @@
     <Resource Include="Shaders\mandelboxthumb.jpg" />
     <Resource Include="Shaders\mandelbulbthumb.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Shaders\kleinianthumb.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

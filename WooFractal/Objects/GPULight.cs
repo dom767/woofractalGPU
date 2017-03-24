@@ -14,12 +14,13 @@ namespace WooFractal
 void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float specularPower, out vec3 lightDiff, out vec3 lightSpec)
 {
    vec3 direction = normalize(vec3(1, 1, 1));
-   vec3 opos, onor, odif, ospec, orefl;
+   vec3 opos, onor;
+   material omat;
    float dist = 1000;
    ";
             if (raytracerOptions._ShadowsEnabled)
             {
-                frag += @"if (trace(pos, direction, dist, opos, onor, odif, ospec, orefl))
+                frag += @"if (trace(pos, direction, dist, opos, onor, omat))
     lightDiff = vec3(0,0,0);
    else
    {
@@ -41,7 +42,7 @@ void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float
    ";
             if (raytracerOptions._ShadowsEnabled)
             {
-                frag += @"if (trace(pos, wdirection, dist, opos, onor, odif, ospec, orefl))
+                frag += @"if (trace(pos, wdirection, dist, opos, onor, omat))
     lightDiff = vec3(0,0,0);
    else
     ";

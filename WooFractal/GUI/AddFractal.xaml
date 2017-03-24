@@ -34,7 +34,7 @@
             </Button>
             <Button Height="58" HorizontalAlignment="Left" Margin="148,130,0,0" Name="button6" VerticalAlignment="Top" Width="58" Click="button6_Click">
                 <StackPanel>
-                    <Image Source="/WooFractal;component/Shaders/tetrathumb.jpg" />
+                    <Image Source="/WooFractal;component/Shaders/kleinianthumb.jpg" />
                 </StackPanel>
             </Button>            
             <Label Background="Black" Content="H Y B R I D I S E" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="-1,0,0,0" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="348" />

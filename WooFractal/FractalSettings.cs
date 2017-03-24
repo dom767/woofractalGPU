@@ -244,11 +244,14 @@ void intersectAABB(in vec3 pos, in vec3 dir, out float tmin, out float tmax)
  tmax = min(min(tmax, tymax), tzmax);   
 }
 
-bool traceFractal(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out vec3 out_diff, out vec3 out_spec, out vec3 out_refl)
+bool traceFractal(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out material mat)
 {
-out_diff = vec3(1,1,1);
-out_spec = vec3(0.3,0.3,0.3);
-out_refl = vec3(0.1,0.1,0.1);
+mat.diff = vec3(1,1,1);
+mat.spec = vec3(0.2,0.2,0.2);
+mat.refl = vec3(0.2,0.2,0.2);
+mat.specPower = 50;
+mat.gloss = 0.01;
+  
   float minDistance = " + Math.Pow(10, -_RenderOptions._DistanceMinimum).ToString("0.#######") + @";
   
   // clip to AABB
@@ -273,7 +276,7 @@ out_refl = vec3(0.1,0.1,0.1);
 
    if (DEdist<minDistance)
    {
-    out_diff = OrbitToColour(orbitTrap);
+    OrbitToColour(orbitTrap, mat);
 	float normalTweak=minDistance*0.1f;
 	normal = vec3(DE(dp+vec3(normalTweak,0,0),orbitTrap) - DE(dp-vec3(normalTweak,0,0),orbitTrap),
 		DE(dp+vec3(0,normalTweak,0),orbitTrap) - DE(dp-vec3(0,normalTweak,0),orbitTrap),
