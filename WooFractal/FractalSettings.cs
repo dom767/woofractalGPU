@@ -251,7 +251,7 @@ mat.spec = vec3(0.2,0.2,0.2);
 mat.refl = vec3(0.2,0.2,0.2);
 mat.specPower = 50;
 mat.gloss = 0.01;
-  
+  pos.y -= "+_RenderOptions._DistanceExtents+@";
   float minDistance = " + Math.Pow(10, -_RenderOptions._DistanceMinimum).ToString("0.#######") + @";
   
   // clip to AABB
@@ -287,7 +287,7 @@ mat.gloss = 0.01;
     else
         normal /= sqrt(magSq);
 
-    out_pos = dp + normal*minDistance;
+    out_pos = dp + normal*minDistance + vec3(0,"+_RenderOptions._DistanceExtents+@",0);
     dist = length(dp - pos);
     return true;
    }
