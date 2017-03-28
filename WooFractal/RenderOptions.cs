@@ -23,6 +23,7 @@ namespace WooFractal
     public class RenderOptions
     {
         public double _DistanceMinimum = 2;
+        public int _DistanceMinimumMode = 1;
         public double _DistanceIterations = 40;
         public double _StepSize = 0.7;
         public double _DistanceExtents = 1;
@@ -48,6 +49,7 @@ namespace WooFractal
         {
             XElement ret = new XElement("RENDEROPTIONS",
                 new XAttribute("distanceMinimum", _DistanceMinimum),
+                new XAttribute("distanceMinimumMode", _DistanceMinimumMode),
                 new XAttribute("distanceIterations", _DistanceIterations),
                 new XAttribute("stepSize", _StepSize),
                 new XAttribute("distanceExtents", _DistanceExtents),
@@ -98,6 +100,7 @@ namespace WooFractal
         public void LoadXML(XmlReader reader)
         {
             XMLHelpers.ReadDouble(reader, "distanceMinimum", ref _DistanceMinimum);
+            XMLHelpers.ReadInt(reader, "distanceMinimumMode", ref _DistanceMinimumMode);
             XMLHelpers.ReadDouble(reader, "distanceIterations", ref _DistanceIterations);
             XMLHelpers.ReadDouble(reader, "stepSize", ref _StepSize);
             XMLHelpers.ReadDouble(reader, "distanceExtents", ref _DistanceExtents);

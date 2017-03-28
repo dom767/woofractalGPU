@@ -7,7 +7,7 @@
              d:DesignHeight="525" d:DesignWidth="348" Margin="0,10,0,0" xmlns:my="clr-namespace:WooFractal">
     <Border BorderBrush="Black" BorderThickness="1">
         <Grid Width="348" Height="525">
-            <my:WooSlider HorizontalAlignment="Left" Margin="12,57,0,0" x:Name="wooSlider1" VerticalAlignment="Top" Width="324" />
+            <my:WooSlider HorizontalAlignment="Left" Margin="110,57,0,0" x:Name="wooSlider1" VerticalAlignment="Top" Width="226" />
             <Label Content="Minimum Distance" Height="24" HorizontalAlignment="Left" Margin="12,36,0,0" Name="label1" VerticalAlignment="Top" />
             <Label Background="Black" Content="F R A C T A L   C O N T R O L S" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="348" />
             <my:WooSlider HorizontalAlignment="Left" Margin="12,109,0,0" x:Name="wooSlider2" VerticalAlignment="Top" Width="324" />
@@ -28,6 +28,7 @@
             <Label Content="Distance Estimator Mode" Height="26" HorizontalAlignment="Left" Margin="13,403,0,0" Name="label10" VerticalAlignment="Top" />
             <CheckBox Content="Headlight Enabled" Height="16" HorizontalAlignment="Left" Margin="13,462,0,0" Name="checkBox1" VerticalAlignment="Top"  Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
             <my:WooSlider HorizontalAlignment="Left" Margin="13,481,0,0" x:Name="wooSlider7" VerticalAlignment="Top" Width="324" />
+            <ComboBox Height="25" HorizontalAlignment="Left" Margin="13,57,0,0" Name="comboBox4" VerticalAlignment="Top" Width="91" SelectionChanged="comboBox4_SelectionChanged" />
         </Grid>
     </Border>
 </UserControl>

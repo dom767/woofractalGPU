@@ -52,9 +52,14 @@ namespace WooFractal
             comboBox3.Items.Add("Last iteration");
             comboBox3.Items.Add("4-point Buddhi/Makin");
 
+            // minimum distance mode
+            comboBox4.Items.Add("Fixed");
+            comboBox4.Items.Add("Screenspace");
+
             comboBox1.SelectedIndex = _Parent._Background;
             comboBox2.SelectedIndex = _Parent._Lighting;
             comboBox3.SelectedIndex = _Parent._DEMode;
+            comboBox4.SelectedIndex = _Parent._DistanceMinimumMode;
         }
 
         public void RenderSliders()
@@ -104,6 +109,12 @@ namespace WooFractal
         private void checkBox1_Modified(object sender, RoutedEventArgs e)
         {
             GUIUpdate();
+        }
+
+        private void comboBox4_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _Parent._DistanceMinimumMode = comboBox4.SelectedIndex;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
         }
     }
 }

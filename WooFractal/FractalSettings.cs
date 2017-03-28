@@ -217,7 +217,7 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
             }
 //            Bulb(r, pos, origPos, scale, 8, mat3(1,0,0,0,1,0,0,0,1));
             //    Tetra(pos, origPos, scale, 2, 1, mat3(1,0,0,0,1,0,0,0,1), mat3(1,0,0,0,1,0,0,0,1));
-            
+
             frag2 += @"
   }
  // DEMode 0=KIFS, 1=BOX, 2=BULB, 3=kleinian
@@ -251,7 +251,9 @@ mat.spec = vec3(0.2,0.2,0.2);
 mat.refl = vec3(0.2,0.2,0.2);
 mat.specPower = 50;
 mat.gloss = 0.01;
-  pos.y -= "+_RenderOptions._DistanceExtents+@";
+  pos.y -= " + _RenderOptions._DistanceExtents + @";
+  vec3 srcPos = camPos;
+  srcPos.y -= " + _RenderOptions._DistanceExtents + @";
   float minDistance = " + Math.Pow(10, -_RenderOptions._DistanceMinimum).ToString("0.#######") + @";
   
   // clip to AABB
@@ -266,18 +268,25 @@ mat.gloss = 0.01;
   vec3 dp = pos + tmin*dir;
 
   // iterate...
-  for (int i=0; i<"+ _RenderOptions._DistanceIterations + @"; i++)
+  for (int i=0; i<" + _RenderOptions._DistanceIterations + @"; i++)
   {
    vec4 orbitTrap = vec4(10000,10000,10000,10000);
    float DEdist = DE(dp, orbitTrap);
-   dp += " + _RenderOptions._StepSize+@"*DEdist*dir;
+   dp += " + _RenderOptions._StepSize + @"*DEdist*dir;
    tmax -= " + _RenderOptions._StepSize + @"*DEdist; // not sure this is the most efficient tbh
    if (tmax<0) return false; // exiting the AABB, skip
+";
 
-   if (DEdist<minDistance)
+   if (_RenderOptions._DistanceMinimumMode==0)
+       frag2 += "float minDistance2 = minDistance;";
+   else
+       frag2 += "float minDistance2 = length(dp-srcPos) / screenWidth;";
+   
+            frag2 += @"
+   if (DEdist<minDistance2)
    {
     OrbitToColour(orbitTrap, mat);
-	float normalTweak=minDistance*0.1f;
+	float normalTweak=minDistance2*0.1f;
 	normal = vec3(DE(dp+vec3(normalTweak,0,0),orbitTrap) - DE(dp-vec3(normalTweak,0,0),orbitTrap),
 		DE(dp+vec3(0,normalTweak,0),orbitTrap) - DE(dp-vec3(0,normalTweak,0),orbitTrap),
 		DE(dp+vec3(0,0,normalTweak),orbitTrap) - DE(dp-vec3(0,0,normalTweak),orbitTrap));
@@ -287,7 +296,7 @@ mat.gloss = 0.01;
     else
         normal /= sqrt(magSq);
 
-    out_pos = dp + normal*minDistance + vec3(0,"+_RenderOptions._DistanceExtents+@",0);
+    out_pos = dp + normal*minDistance2 + vec3(0," + _RenderOptions._DistanceExtents+@",0);
     dist = length(dp - pos);
     return true;
    }

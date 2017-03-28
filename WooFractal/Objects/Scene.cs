@@ -292,15 +292,6 @@ void main(void)
 
   if (depth) q = vec2(2*((mouseX/screenWidth)-0.5), 2*((mouseY/screenHeight)-0.5));
 
-//  if (!clean && !depth && floor(rand(vec2(floor(xy.x/16), floor(xy.y/16)))*800.0f)!=mod(frameNumber, 800))
-//  float val = floor(rand2d(vec3(floor(xy.x/64), floor(xy.y/64), randomIndex)).x*progressiveInterval);//mod (floor(xy.x/64) + 1 * floor(xy.y/64), progressiveInterval);
-//  float comp = mod(frameNumber, progressiveInterval);
-//  if (!clean && !depth && (val>comp+0.1 || val<comp-0.1))
-//  {
-//    FragColor = texture(renderedTexture, vec2((texCoord.x+1)*0.5, (texCoord.y+1)*0.5));
-//    discard;
-//  }
-
   getcamera(pos, dir, q, depth);
   
   vec3 out_pos, normal;

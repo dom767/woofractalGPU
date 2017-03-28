@@ -25,6 +25,8 @@ namespace WooFractal
         uint[] _PostprocessBuffer = new uint[1];
         uint[] _RandomNumbers = new uint[1];
         uint[] _RenderBuffer = new uint[1];
+        uint[] _DepthFrameBuffer = new uint[1];
+        uint[] _DepthCalcBuffer = new uint[1];
         PostProcess _PostProcess;
         mat4 _ViewMatrix;
         vec3 _Position;
@@ -322,6 +324,21 @@ void main()
             _PostProcess = new PostProcess();
             _PostProcess.Initialise(gl);
 
+            gl.GenFramebuffersEXT(1, _DepthFrameBuffer);
+            gl.GenTextures(1, _DepthCalcBuffer);
+
+            gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _DepthFrameBuffer[0]);
+
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, _DepthCalcBuffer[0]);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MAG_FILTER, OpenGL.GL_LINEAR);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MIN_FILTER, OpenGL.GL_LINEAR_MIPMAP_LINEAR);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_S, OpenGL.GL_CLAMP_TO_EDGE);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, OpenGL.GL_CLAMP_TO_EDGE);
+            gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_GENERATE_MIPMAP_SGIS, OpenGL.GL_TRUE);
+            gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA32F, 1, 1, 0, OpenGL.GL_RGBA, OpenGL.GL_FLOAT, null);
+            gl.FramebufferTexture2DEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_COLOR_ATTACHMENT0_EXT, OpenGL.GL_TEXTURE_2D, _DepthCalcBuffer[0], 0);
+            gl.FramebufferRenderbufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_DEPTH_ATTACHMENT_EXT, OpenGL.GL_RENDERBUFFER_EXT, 0);
+
             _Initialised = true;
             
         /*    
@@ -366,6 +383,8 @@ void main()
         {
             gl.DeleteRenderbuffersEXT(2, _RaytracerBuffer);
             gl.DeleteFramebuffersEXT(2, _FrameBuffer);
+            gl.DeleteRenderbuffersEXT(1, _DepthCalcBuffer);
+            gl.DeleteFramebuffersEXT(1, _DepthFrameBuffer);
             shaderTransfer.Delete(gl);
             shaderClean.Delete(gl);
             shaderRayMarch.Delete(gl);
@@ -385,12 +404,16 @@ void main()
             var attributeLocations = new Dictionary<uint, string>
             {
                 {positionAttribute, "Position"}
-            }; 
-            
-            shaderRayMarch = new ShaderProgram();
-            shaderRayMarch.Create(gl,
+            };
+
+            try
+            {
+                shaderRayMarch = new ShaderProgram();
+                shaderRayMarch.Create(gl,
                 ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarchProgressive.vert"),
                 fragmentShader, attributeLocations);
+            }
+            catch (Exception /*e*/) { }
         }
 
         private bool _PingPong = false;
@@ -433,60 +456,10 @@ void main()
 
         bool _SaveNextRender = false;
 
-        /// <summary>
-        /// Renders the scene in retained mode.
-        /// </summary>
-        /// <param name="gl">The OpenGL instance.</param>
-        /// <param name="useToonShader">if set to <c>true</c> use the toon shader, otherwise use a per-pixel shader.</param>
-        public void Render(OpenGL gl)
+        private void SceneRender(OpenGL gl)
         {
-            if (_SaveNextRender)
-            {
-                SaveInternal(gl);
-            }
-            //  Clear the color and depth buffer.
-            gl.ClearColor(0f, 0f, 0f, 0f);
-            gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
-
-            float[] viewport = new float[4];
-            gl.GetFloat(OpenGL.GL_VIEWPORT, viewport);
-
             //  Get a reference to the raytracer shader.
             var shader = shaderRayMarch;
-
-            int renderBuffer = 0;
-            if (_PingPong) renderBuffer = 1;
-
-            Debug.WriteLine("Rendering renderbuffer : " + renderBuffer);
-
-            uint[] frameBuffer = new uint[1];
-            uint[] depthCalcBuffer = new uint[1];
-
-            if (_Depth)
-            {
-                gl.Viewport(0, 0, 1,1);
-                gl.GenFramebuffersEXT(1, frameBuffer);
-                gl.GenTextures(1, depthCalcBuffer);
-
-                gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, frameBuffer[0]);
-
-                gl.BindTexture(OpenGL.GL_TEXTURE_2D, depthCalcBuffer[0]);
-                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MAG_FILTER, OpenGL.GL_LINEAR);
-                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_MIN_FILTER, OpenGL.GL_LINEAR_MIPMAP_LINEAR);
-                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_S, OpenGL.GL_CLAMP_TO_EDGE);
-                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, OpenGL.GL_CLAMP_TO_EDGE);
-                gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_GENERATE_MIPMAP_SGIS, OpenGL.GL_TRUE);
-                gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA32F, 1, 1, 0, OpenGL.GL_RGBA, OpenGL.GL_FLOAT, null);
-                gl.FramebufferTexture2DEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_COLOR_ATTACHMENT0_EXT, OpenGL.GL_TEXTURE_2D, depthCalcBuffer[0], 0);
-                gl.FramebufferRenderbufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_DEPTH_ATTACHMENT_EXT, OpenGL.GL_RENDERBUFFER_EXT, 0);
-            }
-            else
-            {
-                gl.Viewport(0, 0, _TargetWidth, _TargetHeight);
-                // setup first framebuffer (RGB32F)
-                gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _FrameBuffer[renderBuffer]);
-            }
-
             shader.Bind(gl);
 
             shader.SetUniform1(gl, "progressiveIndex", _ProgressiveIndex);
@@ -514,111 +487,117 @@ void main()
             gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             if (_Rendering)
             {
-                gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, (256/_ProgressiveSteps)*6);
+                gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, (256 / _ProgressiveSteps) * 6);
                 CheckForError(gl);
             }
             shader.Unbind(gl);
+        }
+        /// <summary>
+        /// Renders the scene in retained mode.
+        /// </summary>
+        /// <param name="gl">The OpenGL instance.</param>
+        /// <param name="useToonShader">if set to <c>true</c> use the toon shader, otherwise use a per-pixel shader.</param>
+        public void Render(OpenGL gl)
+        {
+            if (_SaveNextRender)
+            {
+                SaveInternal(gl);
+            }
+            //  Clear the color and depth buffer.
+            gl.ClearColor(0f, 0f, 0f, 0f);
+            gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
+
+            int renderBuffer = 0;
+            if (_PingPong) renderBuffer = 1;
+
+            float[] viewport = new float[4];
+            gl.GetFloat(OpenGL.GL_VIEWPORT, viewport);
+
+            Debug.WriteLine("Rendering renderbuffer : " + renderBuffer);
 
             if (_Depth)
             {
+                gl.Viewport(0, 0, 1, 1);
+                gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _DepthFrameBuffer[0]);
+
+                SceneRender(gl);
+
                 gl.Viewport(0, 0, (int)viewport[2], (int)viewport[3]);
                 gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, 0);
-                gl.BindTexture(OpenGL.GL_TEXTURE_2D, depthCalcBuffer[0]);
+                gl.BindTexture(OpenGL.GL_TEXTURE_2D, _DepthCalcBuffer[0]);
                 int[] pixels = new int[4];
                 gl.GetTexImage(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA, OpenGL.GL_FLOAT, pixels);
                 float valr = BitConverter.ToSingle(BitConverter.GetBytes(pixels[0]), 0);
-//                float valg = BitConverter.ToSingle(BitConverter.GetBytes(pixels[1]), 0);
-//                float valb = BitConverter.ToSingle(BitConverter.GetBytes(pixels[2]), 0);
-//                float vala = BitConverter.ToSingle(BitConverter.GetBytes(pixels[3]), 0);
+                //                float valg = BitConverter.ToSingle(BitConverter.GetBytes(pixels[1]), 0);
+                //                float valb = BitConverter.ToSingle(BitConverter.GetBytes(pixels[2]), 0);
+                //                float vala = BitConverter.ToSingle(BitConverter.GetBytes(pixels[3]), 0);
                 _ImageDepth = valr;
                 _ImageDepthSet = true;
                 _Depth = false;
             }
-            else
+
+            gl.Viewport(0, 0, _TargetWidth, _TargetHeight);
+            gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _FrameBuffer[renderBuffer]);
+
+            SceneRender(gl);
+
+            int target = 0;
+
+            _PostProcess.Render(gl, _TargetWidth, _TargetHeight, ref target, _EffectFrameBuffer, _RaytracerBuffer[renderBuffer], _EffectRaytracerBuffer);
+
+            // !!!!!!!!!!!!!!!! Tonemapping
+            gl.Viewport(0, 0, _TargetWidth, _TargetHeight);
+            gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _IntFrameBuffer[0]);
+
+            var shader = shaderTransfer;
+
+            gl.ActiveTexture(OpenGL.GL_TEXTURE0);
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, _EffectRaytracerBuffer[target]);
+
+            shader.Bind(gl);
+            shader.SetUniform1(gl, "renderedTexture", 0);
+            shader.SetUniform1(gl, "gammaFactor", (float)_PostProcess._GammaFactor);
+            shader.SetUniform1(gl, "gammaContrast", (float)_PostProcess._GammaContrast);
+            shader.SetUniform1(gl, "mode", _PostProcess._ToneMappingMode);
+            shader.SetUniform1(gl, "toneFactor", (float)_PostProcess._ToneFactor);
+
+            gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
+            CheckForError(gl);
+            shader.Unbind(gl);
+
+            // !!!!!!!!!!!!!!!!! Int to final framebuffer
+            gl.Viewport(0, 0, (int)viewport[2], (int)viewport[3]);
+            gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, 0);
+
+            // get a reference to the transfer shader
+            shader = shaderIntTransfer;
+
+            gl.ActiveTexture(OpenGL.GL_TEXTURE0);
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, _PostprocessBuffer[0]);
+
+            shader.Bind(gl);
+            shader.SetUniform1(gl, "renderedTexture", 0);
+
+            gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
+
+
+            gl.Viewport(0, 0, (int)viewport[2], (int)viewport[3]);
+            CheckForError(gl);
+            shader.Unbind(gl);
+
+            // TIDY UP
+            gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
+           
+            if (_Rendering)
             {
-                int target = 0;
-
-                _PostProcess.Render(gl, _TargetWidth, _TargetHeight, ref target, _EffectFrameBuffer, _RaytracerBuffer[renderBuffer], _EffectRaytracerBuffer);
-
-                // !!!!!!!!!!!!!!!! Tonemapping
-                gl.Viewport(0, 0, _TargetWidth, _TargetHeight);
-                gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, _IntFrameBuffer[0]);
-
-                shader = shaderTransfer;
-
-                gl.ActiveTexture(OpenGL.GL_TEXTURE0);
-                gl.BindTexture(OpenGL.GL_TEXTURE_2D, _EffectRaytracerBuffer[target]);
-
-                shader.Bind(gl);
-                shader.SetUniform1(gl, "renderedTexture", 0);
-                shader.SetUniform1(gl, "gammaFactor", (float)_PostProcess._GammaFactor);
-                shader.SetUniform1(gl, "gammaContrast", (float)_PostProcess._GammaContrast);
-                shader.SetUniform1(gl, "mode", _PostProcess._ToneMappingMode);
-                shader.SetUniform1(gl, "toneFactor", (float)_PostProcess._ToneFactor);
-
-                gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
-                CheckForError(gl);
-                shader.Unbind(gl);
-
-                // !!!!!!!!!!!!!!!!! Int to final framebuffer
-                gl.Viewport(0, 0, (int)viewport[2], (int)viewport[3]);
-                gl.BindFramebufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, 0);
-
-                // get a reference to the transfer shader
-                shader = shaderIntTransfer;
-
-                gl.ActiveTexture(OpenGL.GL_TEXTURE0);
-                gl.BindTexture(OpenGL.GL_TEXTURE_2D, _PostprocessBuffer[0]);
-
-                shader.Bind(gl);
-                shader.SetUniform1(gl, "renderedTexture", 0);
-
-                gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
-
-
-                gl.Viewport(0, 0, (int)viewport[2], (int)viewport[3]);
-                CheckForError(gl);
-                shader.Unbind(gl);
-
-                // TIDY UP
-                gl.BindTexture(OpenGL.GL_TEXTURE_2D, 0);
-
-           /*     if (_Progressive)
+                _ProgressiveIndex += 256/_ProgressiveSteps;
+                _FramesRendered += 1.0 / (double)_ProgressiveSteps;
+                _Rays = _TargetHeight * _TargetHeight * _FramesRendered;
+                if (_ProgressiveIndex >= 256)
                 {
-                    if (_ProgressiveIntervalIndex == 0)
-                    {
-                        _Frames++;
-                        stopWatch.Stop();
-                        _TotalTime += stopWatch.ElapsedMilliseconds;
-                        Debug.WriteLine("Elapsed between pingpong : " + stopWatch.ElapsedMilliseconds + "Average time : " + _TotalTime / _Frames + "Frames : " + _Frames);
-                        stopWatch.Reset();
-                        stopWatch.Start();
-                        _PingPong = !_PingPong;
-                    }
-                    else
-                    {
-                        Debug.WriteLine("progIndex : " + _ProgressiveIntervalIndex);
-                    }
-                    _ProgressiveIntervalIndex++;
-                    if (_ProgressiveIntervalIndex > _ProgressiveInterval)
-                    {
-                        _ProgressiveIntervalIndex = 0;
-                    }
+                    _ProgressiveIndex = 0;
+                    _PingPong = !_PingPong;
                 }
-                else
-                {*/
-                if (_Rendering)
-                {
-                    _ProgressiveIndex += 256/_ProgressiveSteps;
-                    _FramesRendered += 1.0 / (double)_ProgressiveSteps;
-                    _Rays = _TargetHeight * _TargetHeight * _FramesRendered;
-                    if (_ProgressiveIndex >= 256)
-                    {
-                        _ProgressiveIndex = 0;
-                        _PingPong = !_PingPong;
-                    }
-                }
-               // }
             }
         }
 
