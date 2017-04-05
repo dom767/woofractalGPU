@@ -52,17 +52,12 @@ namespace WooFractal
             _PostProcess = new PostProcess();
             _PostProcess._PostProcessFilter = 1;
             _FinalRTOptions._Progressive = true;
+            _FinalRTOptions._MaxIterations = -1;
 
             // initialise the script objects
             LoadScratch();
 
             UpdateGUI();
-
-            BuildFractalList();
-
-            BuildOptionsList();
-
-            BuildColourList();
         }
 
         public void AddCuboid()
@@ -308,6 +303,7 @@ namespace WooFractal
             {
                 _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
                 _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+                _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
                 _ReInitialise = false;
             }
 
@@ -319,6 +315,7 @@ namespace WooFractal
             if (_CameraDirty || _Velocity.MagnitudeSquared() > 0.0001)
             {
                 _Clean = true;
+                _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
                 _CameraDirty = false;
             }
 
@@ -543,6 +540,12 @@ namespace WooFractal
                 }
                 sr.Close();
             }
+
+            BuildFractalList();
+
+            BuildOptionsList();
+
+            BuildColourList();
         }
         private void SaveContext(string name)
         {
@@ -683,6 +686,7 @@ namespace WooFractal
             {
                 string filename = dlg.FileName;
                 filename = filename.Substring(0, filename.IndexOf(".wsd"));
+                filename = filename.Substring(filename.LastIndexOf("\\")+1, filename.Length - (filename.LastIndexOf("\\")+1));
                 LoadContext(filename);
             }
         }
@@ -703,7 +707,6 @@ namespace WooFractal
                 _ShaderRenderer.Start();
             }
 
-            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.Render(gl);
 
             if (_ShaderRenderer._ImageDepthSet)
@@ -725,6 +728,7 @@ namespace WooFractal
             //  Initialise the scene.
             _ShaderRenderer.Initialise(_GL, 1, 1, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+            _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
         }
 
         private void OpenGL_Closing()
@@ -740,6 +744,7 @@ namespace WooFractal
             //  Initialise the scene.
             _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+            _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
         }
 
         private void button1_Click_1(object sender, RoutedEventArgs e)
@@ -760,19 +765,9 @@ namespace WooFractal
             {
                 // Save document
                 string filename = saveFileDialog1.FileName;
-                using (StreamWriter sw = new StreamWriter(filename))
-                {
-                    try
-                    {
-                        XElement sceneElement = _Scene.CreateElement();
-                        sw.Write(sceneElement.ToString());
-                        sw.Close();
-                    }
-                    catch (Exception /*e*/)
-                    {
-                        // lets not get overexcited...
-                    }
-                }
+                filename = filename.Substring(0, filename.IndexOf(".wsd"));
+                filename = filename.Substring(filename.LastIndexOf("\\") + 1, filename.Length - (filename.LastIndexOf("\\") + 1));
+                SaveContext(filename);
             }
         }
 
@@ -863,10 +858,12 @@ namespace WooFractal
             button3.Content = "Shadows : " + (_RaytracerOptions._ShadowsEnabled ? "On" : "Off");
             button6.Content = "Reflections : " + (_RaytracerOptions._Reflections.ToString());
             button7.Content = "Depth of Field : " + (_RaytracerOptions._DoFEnabled ? "On" : "Off");
+            button8.Content = "Max Iterations : " + (_RaytracerOptions._MaxIterations);
             button10.Content = "Progressive : " + (_RaytracerOptions._Progressive ? "On" : "Off");
             button9.Content = "Resolution : " + ((_RaytracerOptions._Resolution == 1) ? "1" : (_RaytracerOptions._Resolution == 2) ? "1/2" : "1/4");
 
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+            _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
         }
 
         private void button3_Click_1(object sender, RoutedEventArgs e)
@@ -895,6 +892,11 @@ namespace WooFractal
         private void button8_Click(object sender, RoutedEventArgs e)
         {
             // Headlight
+            _RaytracerOptions._MaxIterations = _RaytracerOptions._MaxIterations * 2;
+            if (_RaytracerOptions._MaxIterations > 16)
+                _RaytracerOptions._MaxIterations = 1;
+            _Dirty = true;
+            UpdateGUI();
         }
 
         private void button9_Click(object sender, RoutedEventArgs e)

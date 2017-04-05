@@ -121,18 +121,12 @@ namespace WooFractal
             if (_ZOrbitEnabled) frag += "mat.emi+=mix(vec3(" + _OrbitColoursZ._StartColour._EmissiveColour.ToString() + "), vec3(" + _OrbitColoursZ._EndColour._EmissiveColour.ToString() + "), trappos.z);\r\n";
             if (_DistOrbitEnabled) frag += "mat.emi+=mix(vec3(" + _OrbitColoursDist._StartColour._EmissiveColour.ToString() + "), vec3(" + _OrbitColoursDist._EndColour._EmissiveColour.ToString() + "), trappos.w);\r\n";
             frag += "mat.emi/=" + divisor.ToString() + @";";
-            frag += "mat.specPower=0;\r\n";
-            if (_XOrbitEnabled) frag += "mat.specPower+=mix(" + _OrbitColoursX._StartColour._SpecularPower.ToString() + ", " + _OrbitColoursX._EndColour._SpecularPower.ToString() + ", trappos.x);\r\n";
-            if (_YOrbitEnabled) frag += "mat.specPower+=mix(" + _OrbitColoursY._StartColour._SpecularPower.ToString() + ", " + _OrbitColoursY._EndColour._SpecularPower.ToString() + ", trappos.y);\r\n";
-            if (_ZOrbitEnabled) frag += "mat.specPower+=mix(" + _OrbitColoursZ._StartColour._SpecularPower.ToString() + ", " + _OrbitColoursZ._EndColour._SpecularPower.ToString() + ", trappos.z);\r\n";
-            if (_DistOrbitEnabled) frag += "mat.specPower+=mix(" + _OrbitColoursDist._StartColour._SpecularPower.ToString() + ", " + _OrbitColoursDist._EndColour._SpecularPower.ToString() + ", trappos.w);\r\n";
-            frag += "mat.specPower/=" + divisor.ToString() + @";";
-            frag += "mat.gloss=0;\r\n";
-            if (_XOrbitEnabled) frag += "mat.gloss+=mix(" + _OrbitColoursX._StartColour._Shininess.ToString() + ", " + _OrbitColoursX._EndColour._Shininess.ToString() + ", trappos.x);\r\n";
-            if (_YOrbitEnabled) frag += "mat.gloss+=mix(" + _OrbitColoursY._StartColour._Shininess.ToString() + ", " + _OrbitColoursY._EndColour._Shininess.ToString() + ", trappos.y);\r\n";
-            if (_ZOrbitEnabled) frag += "mat.gloss+=mix(" + _OrbitColoursZ._StartColour._Shininess.ToString() + ", " + _OrbitColoursZ._EndColour._Shininess.ToString() + ", trappos.z);\r\n";
-            if (_DistOrbitEnabled) frag += "mat.gloss+=mix(" + _OrbitColoursDist._StartColour._Shininess.ToString() + ", " + _OrbitColoursDist._EndColour._Shininess.ToString() + ", trappos.w);\r\n";
-            frag += "mat.gloss/=" + divisor.ToString() + @";";
+            frag += "mat.roughness=0;\r\n";
+            if (_XOrbitEnabled) frag += "mat.roughness+=mix(" + _OrbitColoursX._StartColour._Roughness.ToString() + ", " + _OrbitColoursX._EndColour._Roughness.ToString() + ", trappos.x);\r\n";
+            if (_YOrbitEnabled) frag += "mat.roughness+=mix(" + _OrbitColoursY._StartColour._Roughness.ToString() + ", " + _OrbitColoursY._EndColour._Roughness.ToString() + ", trappos.y);\r\n";
+            if (_ZOrbitEnabled) frag += "mat.roughness+=mix(" + _OrbitColoursZ._StartColour._Roughness.ToString() + ", " + _OrbitColoursZ._EndColour._Roughness.ToString() + ", trappos.z);\r\n";
+            if (_DistOrbitEnabled) frag += "mat.roughness+=mix(" + _OrbitColoursDist._StartColour._Roughness.ToString() + ", " + _OrbitColoursDist._EndColour._Roughness.ToString() + ", trappos.w);\r\n";
+            frag += "mat.roughness/=" + divisor.ToString() + @";";
   
             frag += "}";
         }
@@ -196,17 +190,11 @@ namespace WooFractal
             if (_ZOrbitEnabled) script += "emi+=lerp(vec(" + _OrbitColoursZ._StartColour._EmissiveColour.ToString() + "), vec(" + _OrbitColoursZ._EndColour._EmissiveColour.ToString() + "), trappos.z)\r\n";
             if (_DistOrbitEnabled) script += "emi+=lerp(vec(" + _OrbitColoursDist._StartColour._EmissiveColour.ToString() + "), vec(" + _OrbitColoursDist._EndColour._EmissiveColour.ToString() + "), distance)\r\n";
             script += "emi/=" + divisor.ToString() + "\r\n";
-            script += "power=0\r\n";
-            if (_XOrbitEnabled) script += "power+=lerp(" + _OrbitColoursX._StartColour._SpecularPower.ToString() + ", " + _OrbitColoursX._EndColour._SpecularPower.ToString() + ", trappos.x)\r\n";
-            if (_YOrbitEnabled) script += "power+=lerp(" + _OrbitColoursY._StartColour._SpecularPower.ToString() + ", " + _OrbitColoursY._EndColour._SpecularPower.ToString() + ", trappos.y)\r\n";
-            if (_ZOrbitEnabled) script += "power+=lerp(" + _OrbitColoursZ._StartColour._SpecularPower.ToString() + ", " + _OrbitColoursZ._EndColour._SpecularPower.ToString() + ", trappos.z)\r\n";
-            if (_DistOrbitEnabled) script += "power+=lerp(" + _OrbitColoursDist._StartColour._SpecularPower.ToString() + ", " + _OrbitColoursDist._EndColour._SpecularPower.ToString() + ", distance)\r\n";
-            script += "power/=" + divisor.ToString() + "\r\n";
             script += "gloss=0\r\n";
-            if (_XOrbitEnabled) script += "gloss+=lerp(" + _OrbitColoursX._StartColour._Shininess.ToString() + ", " + _OrbitColoursX._EndColour._Shininess.ToString() + ", trappos.x)\r\n";
-            if (_YOrbitEnabled) script += "gloss+=lerp(" + _OrbitColoursY._StartColour._Shininess.ToString() + ", " + _OrbitColoursY._EndColour._Shininess.ToString() + ", trappos.y)\r\n";
-            if (_ZOrbitEnabled) script += "gloss+=lerp(" + _OrbitColoursZ._StartColour._Shininess.ToString() + ", " + _OrbitColoursZ._EndColour._Shininess.ToString() + ", trappos.z)\r\n";
-            if (_DistOrbitEnabled) script += "gloss+=lerp(" + _OrbitColoursDist._StartColour._Shininess.ToString() + ", " + _OrbitColoursDist._EndColour._Shininess.ToString() + ", distance)\r\n";
+            if (_XOrbitEnabled) script += "gloss+=lerp(" + _OrbitColoursX._StartColour._Roughness.ToString() + ", " + _OrbitColoursX._EndColour._Roughness.ToString() + ", trappos.x)\r\n";
+            if (_YOrbitEnabled) script += "gloss+=lerp(" + _OrbitColoursY._StartColour._Roughness.ToString() + ", " + _OrbitColoursY._EndColour._Roughness.ToString() + ", trappos.y)\r\n";
+            if (_ZOrbitEnabled) script += "gloss+=lerp(" + _OrbitColoursZ._StartColour._Roughness.ToString() + ", " + _OrbitColoursZ._EndColour._Roughness.ToString() + ", trappos.z)\r\n";
+            if (_DistOrbitEnabled) script += "gloss+=lerp(" + _OrbitColoursDist._StartColour._Roughness.ToString() + ", " + _OrbitColoursDist._EndColour._Roughness.ToString() + ", distance)\r\n";
             script += "gloss/=" + divisor.ToString() + "\r\n";
             script += "}\r\n";
             return script;

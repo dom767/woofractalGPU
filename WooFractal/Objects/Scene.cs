@@ -63,13 +63,12 @@ struct material
 {
  vec3 diff;
  vec3 spec;
- float specPower;
  vec3 refl;
- float gloss;
+ float roughness;
  vec3 emi;
 };
 
-void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float specularPower, out vec3 lightDiff, out vec3 lightSpec);
+void calculateLighting(in vec3 pos, in vec3 normal, in vec3 eye, in vec3 reflection, in float roughness, out vec3 lightDiff, out vec3 lightSpec);
 
 vec2 rand2d(vec3 co)
 {
@@ -247,8 +246,7 @@ bool traceBackground(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_po
    mat.diff = vec3(0.6,0.6,0.6);
    mat.refl = vec3(0.2,0.2,0.2);
    mat.spec = vec3(0.2,0.2,0.2);
-   mat.specPower = 50;
-   mat.gloss = 0.01;
+   mat.roughness = 0.01;
    backgroundMaterial(out_pos, mat);
    return true;
   }
@@ -308,12 +306,12 @@ void main(void)
 
    if (hit)
    {
-    normal += mat.gloss * getRandomDirection3d();
+    normal += mat.roughness * mat.roughness * getRandomDirection3d();
     normal = normalize(normal);
     vec3 reflection = iterdir - normal*dot(normal,iterdir)*2.0f;
     vec3 lightDiff = vec3(0,0,0);
     vec3 lightSpec = vec3(0,0,0);
-    calculateLighting(out_pos, normal, reflection, 10, lightDiff, lightSpec);
+    calculateLighting(out_pos, normal, iterdir, reflection, mat.roughness*mat.roughness*mat.roughness*mat.roughness, lightDiff, lightSpec);
 
     vec3 col = mat.diff*lightDiff + mat.spec*lightSpec;
     oCol+=vec4(factor,0.0)*vec4(col, 0.0);

@@ -215,8 +215,6 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
                 for (int r=0; r<_FractalIterations[i]._Repeats; r++)
                     _FractalIterations[i].Compile(ref frag2);
             }
-//            Bulb(r, pos, origPos, scale, 8, mat3(1,0,0,0,1,0,0,0,1));
-            //    Tetra(pos, origPos, scale, 2, 1, mat3(1,0,0,0,1,0,0,0,1), mat3(1,0,0,0,1,0,0,0,1));
 
             frag2 += @"
   }
@@ -249,8 +247,7 @@ bool traceFractal(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, 
 mat.diff = vec3(1,1,1);
 mat.spec = vec3(0.2,0.2,0.2);
 mat.refl = vec3(0.2,0.2,0.2);
-mat.specPower = 50;
-mat.gloss = 0.01;
+mat.roughness = 0.01;
   pos.y -= " + _RenderOptions._DistanceExtents + @";
   vec3 srcPos = camPos;
   srcPos.y -= " + _RenderOptions._DistanceExtents + @";

@@ -11,30 +11,27 @@ namespace WooFractal
         {
             frag += @"
 
-void calculateLighting(in vec3 pos, in vec3 normal, in vec3 reflection, in float specularPower, out vec3 lightDiff, out vec3 lightSpec)
+void calculateLighting(in vec3 pos, in vec3 normal, in vec3 eye, in vec3 reflection, in float roughness, out vec3 lightDiff, out vec3 lightSpec)
 {
    vec3 direction = normalize(vec3(1, 1, 1));
    vec3 opos, onor;
    material omat;
    float dist = 1000;
+   vec3 shadow = vec3(1,1,1);
    ";
             if (raytracerOptions._ShadowsEnabled)
             {
                 frag += @"if (trace(pos, direction, dist, opos, onor, omat))
-    lightDiff = vec3(0,0,0);
-   else
-   {
-    ";
-            }
-            
-            frag += @"lightDiff = vec3(dot(direction, normal));";
-    
-            if (raytracerOptions._ShadowsEnabled)
-            {
-                frag += @"}";
+    shadow = vec3(0,0,0);
+";
             }
 
-            frag += @"
+            frag += @"lightDiff = shadow * vec3(max(dot(direction, normal),0));
+
+ vec3 halfVec = normalize(direction - eye);
+ float NdotH = max(dot(normal, halfVec),0);
+ float RdotL = max(dot(reflection, direction), 0);
+ lightSpec = vec3(pow(NdotH, 1.00001/(0.00001+roughness)));
 //lightDiff = vec3(dot(direction, normal));
 //
    vec3 wdirection = getSampleBiased(normal, 1);

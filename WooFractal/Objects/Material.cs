@@ -13,12 +13,11 @@ namespace WooFractal
     {
         public Material()
         {
-            _SpecularPower = 5;
             _Opacity = 1.0f;
             _RefractiveIndex = 1.0f;
             _Density = 1.0f;
             _TintDensity = 0.1f;
-            _Shininess = 1.0f;
+            _Roughness = 1.0f;
             _DiffuseColour = new Colour(1.0f, 0.5f, 0.0f);
             _SpecularColour = new Colour(0.4f, 0.4f, 0.4f);
             _EmissiveColour = new Colour(0.0f, 0.0f, 0.0f);
@@ -29,12 +28,11 @@ namespace WooFractal
 
         public Material(Material rhs)
         {
-            _SpecularPower = rhs._SpecularPower;
             _Opacity = rhs._Opacity;
             _RefractiveIndex = rhs._RefractiveIndex;
             _Density = rhs._Density;
             _TintDensity = rhs._TintDensity;
-            _Shininess = rhs._Shininess;
+            _Roughness = rhs._Roughness;
             _DiffuseColour = rhs._DiffuseColour.Clone();
             _SpecularColour = rhs._SpecularColour.Clone();
             _EmissiveColour = rhs._EmissiveColour.Clone();
@@ -55,11 +53,10 @@ namespace WooFractal
             {
                 Colour black = new Colour(0, 0, 0);
                 mat = new XElement(name,
-                    new XAttribute("specularPower", 10),
                     new XAttribute("opacity", 1),
                     new XAttribute("density", 1),
                     new XAttribute("tintdensity", 0.1),
-                    new XAttribute("shininess", 1),
+                    new XAttribute("roughness", 1),
                     new XAttribute("refractiveIndex", 1),
                     _DiffuseColour.CreateElement("DIFFUSECOLOUR"),
                     black.CreateElement("SPECULARCOLOUR"),
@@ -70,11 +67,10 @@ namespace WooFractal
             else
             {
                 mat = new XElement(name,
-                    new XAttribute("specularPower", _SpecularPower),
                     new XAttribute("opacity", _Opacity),
                     new XAttribute("density", _Density),
                     new XAttribute("tintdensity", _TintDensity),
-                    new XAttribute("shininess", _Shininess),
+                    new XAttribute("roughness", _Roughness),
                     new XAttribute("refractiveIndex", _RefractiveIndex),
                     _DiffuseColour.CreateElement("DIFFUSECOLOUR"),
                     _SpecularColour.CreateElement("SPECULARCOLOUR"),
@@ -90,11 +86,10 @@ namespace WooFractal
 
         public void LoadXML(XmlReader reader)
         {
-            XMLHelpers.ReadFloat(reader, "specularPower", ref _SpecularPower);
             XMLHelpers.ReadFloat(reader, "opacity", ref _Opacity);
             XMLHelpers.ReadFloat(reader, "density", ref _Density);
             XMLHelpers.ReadFloat(reader, "tintdensity", ref _TintDensity);
-            XMLHelpers.ReadFloat(reader, "shininess", ref _Shininess);
+            XMLHelpers.ReadFloat(reader, "roughness", ref _Roughness);
             XMLHelpers.ReadFloat(reader, "refractiveIndex", ref _RefractiveIndex);
 
             while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
@@ -129,11 +124,10 @@ namespace WooFractal
         public Colour _EmissiveColour;
         public Colour _Reflectivity;
         public Colour _AbsorptionColour;
-        public float _SpecularPower;
         public float _Opacity;
         public float _RefractiveIndex;
         public float _Density;
         public float _TintDensity;
-        public float _Shininess;
+        public float _Roughness;
     }
 }

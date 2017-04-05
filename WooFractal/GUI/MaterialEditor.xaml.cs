@@ -44,8 +44,7 @@ namespace WooFractal
 
         private void ConfigureGUI()
         {
-            wooSlider1.Set(-Math.Log10(1.00000001 - _Material._Shininess), 0, 5.0, this);
-            wooSlider2.Set(_Material._SpecularPower, 1, 80.0, this);
+            wooSlider1.Set(_Material._Roughness, 0, 1.0, this);
             colourSelector1.Set(_Material._DiffuseColour, 1, this);
             colourSelector2.Set(_Material._SpecularColour, 1, this);
             colourSelector3.Set(_Material._Reflectivity, 1, this);
@@ -54,8 +53,7 @@ namespace WooFractal
 
         public void GUIUpdate()
         {
-            _Material._Shininess = (float)(1 - Math.Pow(10, -wooSlider1.GetSliderValue()));
-            _Material._SpecularPower = (float)wooSlider2.GetSliderValue();
+            _Material._Roughness = (float)wooSlider1.GetSliderValue();
             _Material._DiffuseColour = colourSelector1.GetColour();
             _Material._SpecularColour = colourSelector2.GetColour();
             _Material._Reflectivity = colourSelector3.GetColour();

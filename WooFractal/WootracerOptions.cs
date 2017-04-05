@@ -63,5 +63,6 @@ namespace WooFractal
         public bool _Headlight = true;
         public bool _Colours = true;
         public bool _Progressive = false;
+        public int _MaxIterations = 2;
     }
 }

@@ -35,6 +35,7 @@ namespace WooFractal
         int _TargetHeight;
         int _ProgressiveSteps = 8;
         int _ProgressiveIndex = 0;
+        int _MaxIterations = -1;
 
         public int GetTargetWidth() { return _TargetWidth; }
         public int GetTargetHeight() { return _TargetHeight; }
@@ -43,6 +44,8 @@ namespace WooFractal
         {
             _ViewMatrix = viewMatrix;
             _Position = position;
+            _FramesRendered = 0;
+            _ProgressiveIndex = 0;
         }
 
         private void LoadRandomNumbers(OpenGL gl)
@@ -105,6 +108,11 @@ namespace WooFractal
         {
             _ProgressiveSteps = progressive ? 8 : 1;
             _ProgressiveIndex = 0;
+        }
+
+        public void SetMaxIterations(int maxIterations)
+        {
+            _MaxIterations = maxIterations;
         }
 
         OpenGL _GL = null;
@@ -528,6 +536,8 @@ void main()
                 int[] pixels = new int[4];
                 gl.GetTexImage(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA, OpenGL.GL_FLOAT, pixels);
                 float valr = BitConverter.ToSingle(BitConverter.GetBytes(pixels[0]), 0);
+                if (valr != valr)
+                    throw new Exception("Depth test failed");
                 //                float valg = BitConverter.ToSingle(BitConverter.GetBytes(pixels[1]), 0);
                 //                float valb = BitConverter.ToSingle(BitConverter.GetBytes(pixels[2]), 0);
                 //                float vala = BitConverter.ToSingle(BitConverter.GetBytes(pixels[3]), 0);
@@ -590,13 +600,19 @@ void main()
            
             if (_Rendering)
             {
-                _ProgressiveIndex += 256/_ProgressiveSteps;
                 _FramesRendered += 1.0 / (double)_ProgressiveSteps;
-                _Rays = _TargetHeight * _TargetHeight * _FramesRendered;
-                if (_ProgressiveIndex >= 256)
+
+                if (_MaxIterations > 0 && _FramesRendered > _MaxIterations-1)
+                    _Rendering = false;
+                else
                 {
-                    _ProgressiveIndex = 0;
-                    _PingPong = !_PingPong;
+                    _ProgressiveIndex += 256 / _ProgressiveSteps;
+                    _Rays = _TargetHeight * _TargetHeight * _FramesRendered;
+                    if (_ProgressiveIndex >= 256)
+                    {
+                        _ProgressiveIndex = 0;
+                        _PingPong = !_PingPong;
+                    }
                 }
             }
         }
