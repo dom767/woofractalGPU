@@ -205,15 +205,25 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
   {
     r = length(pos);
     if (r>100.0) continue;
-    if (j<"+_RenderOptions._ColourIterationCount+@") orbitTrap = min(orbitTrap, vec4(abs(pos),r));
-    if (fracIterations>" + _RenderOptions._FractalIterationCount + @") continue;";
+    if (j<"+_RenderOptions._ColourIterationCount+@") orbitTrap = min(orbitTrap, vec4(abs(pos),r));";
+
+            int totalIterations = 0,iterationIndex=0;
+            for (int i=0; i<_FractalIterations.Count; i++)
+            {
+                totalIterations += _FractalIterations[i]._Repeats;
+            }
+
+            frag2+=@"
+ int modj = j%"+totalIterations+@";";
 
             for (int i = 0; i < _FractalIterations.Count; i++)
             {
-                frag2 += @"fracIterations+="+_FractalIterations[i]._Repeats+@";
-";
-                for (int r=0; r<_FractalIterations[i]._Repeats; r++)
-                    _FractalIterations[i].Compile(ref frag2);
+                frag2 += @"
+ if (modj>=" + iterationIndex + " && modj<" + iterationIndex + _FractalIterations[i]._Repeats + @")
+ {";
+                _FractalIterations[i].Compile(ref frag2);
+                frag2 += @"
+}";
             }
 
             frag2 += @"
