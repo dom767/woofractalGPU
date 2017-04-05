@@ -671,6 +671,7 @@ void main()
             _Depth = true;
             _MouseX = mousex;
             _MouseY = mousey;
+            _Rendering = true;
         }
         
         //  The shaders we use.
