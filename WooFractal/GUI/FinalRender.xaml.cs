@@ -170,9 +170,11 @@ namespace WooFractal
             GetWidthHeightSelection(out width, out height);
 
             if (_ShaderRenderer.GetTargetWidth() != width
-                || _ShaderRenderer.GetTargetHeight() != height)
+                || _ShaderRenderer.GetTargetHeight() != height
+                || _Dirty)
             {
                 InitialiseRenderer();
+                _Dirty = false;
             }
 
             _ShaderRenderer.Start();
@@ -244,13 +246,14 @@ namespace WooFractal
 
         }
 
+        bool _Dirty = false;
         private void button12_Click(object sender, RoutedEventArgs e)
         {
             //reflections
             _RaytracerOptions._Reflections++;
             if (_RaytracerOptions._Reflections > 3)
                 _RaytracerOptions._Reflections = 0;
-//            _Dirty = true;
+            _Dirty = true;
             UpdateGUI();
         }
 
@@ -258,7 +261,7 @@ namespace WooFractal
         {
             //shadows
             _RaytracerOptions._ShadowsEnabled = !_RaytracerOptions._ShadowsEnabled;
-//            _Dirty = true;
+            _Dirty = true;
             UpdateGUI();
         }
 
@@ -266,7 +269,7 @@ namespace WooFractal
         {
             //dof
             _RaytracerOptions._DoFEnabled = !_RaytracerOptions._DoFEnabled;
-//            _Dirty = true;
+            _Dirty = true;
             UpdateGUI();            
         }
     }
