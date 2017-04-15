@@ -511,6 +511,10 @@ void main()
             {
                 SaveInternal(gl);
             }
+
+            if (_MaxIterations > 0 && _FramesRendered > _MaxIterations - 1 && _Rendering==false)
+                return;
+
             //  Clear the color and depth buffer.
             gl.ClearColor(0f, 0f, 0f, 0f);
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT | OpenGL.GL_STENCIL_BUFFER_BIT);
