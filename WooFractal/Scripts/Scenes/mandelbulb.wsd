@@ -1,0 +1,76 @@
+<CONTEXT>
+  <SCENE>
+    <FRACTAL>
+      <RENDEROPTIONS distanceMinimum="4.20353982300885" distanceMinimumMode="1" distanceIterations="698.78703703703707" stepSize="0.40722222222222232" distanceExtents="1.9074074074074072" fractalIterationCount="17" colourIterationCount="15" deMode="2" background="0" lighting="0" headlightEnabled="false" headlightStrength="1" />
+      <FRACTALCOLOURS xOrbitEnabled="false" yOrbitEnabled="false" zOrbitEnabled="false" distOrbitEnabled="true">
+        <ORBITCOLOURSX blendType="Linear" multiplier="3.2484076433121025" offset="0.643312101910828" power="0">
+          <STARTCOLOUR specularPower="5" opacity="1" density="1" tintdensity="0.1" shininess="0.99999" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="0, 0, 0" />
+            <SPECULARCOLOUR type="0" colour="0.400000005960464, 0.400000005960464, 0.400000005960464" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </STARTCOLOUR>
+          <ENDCOLOUR specularPower="5" opacity="1" density="1" tintdensity="0.1" shininess="0.99999" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="1, 1, 1" />
+            <SPECULARCOLOUR type="0" colour="0.400000005960464, 0.400000005960464, 0.400000005960464" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </ENDCOLOUR>
+        </ORBITCOLOURSX>
+        <ORBITCOLOURSY blendType="Linear" multiplier="1.910828025477707" offset="0" power="0">
+          <STARTCOLOUR specularPower="5" opacity="1" density="1" tintdensity="0.1" shininess="0.99999" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="0, 0, 0" />
+            <SPECULARCOLOUR type="0" colour="0.400000005960464, 0.400000005960464, 0.400000005960464" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </STARTCOLOUR>
+          <ENDCOLOUR specularPower="5" opacity="1" density="1" tintdensity="0.1" shininess="0.99999" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="1, 1, 1" />
+            <SPECULARCOLOUR type="0" colour="0.400000005960464, 0.400000005960464, 0.400000005960464" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </ENDCOLOUR>
+        </ORBITCOLOURSY>
+        <ORBITCOLOURSZ blendType="Linear" multiplier="1.3375796178343951" offset="0.92993630573248409" power="0">
+          <STARTCOLOUR specularPower="5" opacity="1" density="1" tintdensity="0.1" shininess="0.99999" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="1, 1, 1" />
+            <SPECULARCOLOUR type="0" colour="0.400000005960464, 0.400000005960464, 0.400000005960464" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </STARTCOLOUR>
+          <ENDCOLOUR specularPower="5" opacity="1" density="1" tintdensity="0.1" shininess="0.99999" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="0.838509321212769, 0.118012420833111, 0.0559006221592426" />
+            <SPECULARCOLOUR type="0" colour="0.400000005960464, 0.400000005960464, 0.400000005960464" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </ENDCOLOUR>
+        </ORBITCOLOURSZ>
+        <ORBITCOLOURSDIST blendType="Linear" multiplier="4.5222929936305736" offset="0.88535031847133749" power="0.03821656050955409">
+          <STARTCOLOUR specularPower="5" opacity="1" density="1" tintdensity="0.1" shininess="0.99999" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="0.453416138887405, 0.627329170703888, 0.819875776767731" />
+            <SPECULARCOLOUR type="0" colour="0.400000005960464, 0.400000005960464, 0.400000005960464" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </STARTCOLOUR>
+          <ENDCOLOUR specularPower="5" opacity="1" density="1" tintdensity="0.1" shininess="0.99999" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="1, 0.683229804039001, 0.527950286865234" />
+            <SPECULARCOLOUR type="0" colour="0.400000005960464, 0.400000005960464, 0.400000005960464" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </ENDCOLOUR>
+        </ORBITCOLOURSDIST>
+      </FRACTALCOLOURS>
+      <BULBFRACTAL rotation="0, 0, 0" scale="8" repeats="1" />
+    </FRACTAL>
+    <CAMERA from="1.75317377954766, 3.01666210995917, 0.82841407605422" target="1.63383168040094, 2.93879666005456, 0.776657224464611" fov="40" apertureSize="0.015825" spherical="0" stereographic="0" focusDepth="0.16114841401576996" />
+  </SCENE>
+  <OPTIONS exposure="1" autoExposure="true" shadowsEnabled="false" dofEnabled="true" reflections="0" headlight="true" colours="true" progressive="false" />
+</CONTEXT>

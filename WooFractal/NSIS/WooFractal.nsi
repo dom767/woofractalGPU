@@ -45,26 +45,24 @@ Section "WooFractal (required)"
   SetOutPath $INSTDIR
   
   ; Put file there
-  File /oname=coretracer.dll "..\bin\coretracer.dll"
   File /oname=woofractal.exe "..\bin\Release\woofractal.exe"
+  File /oname=randomSequences.vec2 "..\bin\Release\randomSequences.vec2"
+  File /oname=GlmNet.dll "..\bin\Release\GlmNet.dll"
+  File /oname=SharpGL.dll "..\bin\Release\SharpGL.dll"
+  File /oname=SharpGL.SceneGraph.dll "..\bin\Release\SharpGL.SceneGraph.dll"
+  File /oname=SharpGL.WPF.dll "..\bin\Release\SharpGL.WPF.dll"
 
   SetOutPath $DOCUMENTS
 
-  CreateDirectory $DOCUMENTS\WooFractal\Scripts\Background
-  CreateDirectory $DOCUMENTS\WooFractal\Scripts\Lighting
+  CreateDirectory $DOCUMENTS\WooFractal\Backgrounds
+  CreateDirectory $DOCUMENTS\WooFractal\Scenes
 
+  SetOutPath $DOCUMENTS\WooFractal\Backgrounds
   ; examples
-  File /oname=WooFractal\Scripts\Background\scratch.woo "..\Scripts\Background\boxes.woo"
-  File /oname=WooFractal\Scripts\Background\plain_white_circle.woo "..\Scripts\Background\plain_white_circle.woo"
-  File /oname=WooFractal\Scripts\Background\boxes.woo "..\Scripts\Background\boxes.woo"
+  File /r "..\Scripts\Backgrounds\*.*"
 
-  File /oname=WooFractal\Scripts\Lighting\scratch.woo "..\Scripts\Lighting\daylight.woo"
-  File /oname=WooFractal\Scripts\Lighting\examples.woo "..\Scripts\Lighting\examples.woo"
-  File /oname=WooFractal\Scripts\Lighting\bigsphere.woo "..\Scripts\Lighting\bigsphere.woo"
-  File /oname=WooFractal\Scripts\Lighting\daylight.woo "..\Scripts\Lighting\daylight.woo"
-  File /oname=WooFractal\Scripts\Lighting\plaindirectional.woo "..\Scripts\Lighting\plaindirectional.woo"
-  File /oname=WooFractal\Scripts\Lighting\ringoflight.woo "..\Scripts\Lighting\ringoflight.woo"
-  File /oname=WooFractal\Scripts\Lighting\sunset.woo "..\Scripts\Lighting\sunset.woo"
+  SetOutPath $DOCUMENTS\WooFractal\Scenes
+  File /r "..\Scripts\Scenes\*.*"
 
   ; Write the installation path into the registry
   WriteRegStr HKLM SOFTWARE\WooFractal "Install_Dir" "$INSTDIR"
