@@ -62,7 +62,7 @@ namespace WooFractal
 
             byte[] pixels = new byte[4 * 4 * 1024 * 1024]; // sizeof(int)
 
-            var fs = new FileStream(@"randomSequences.vec2", FileMode.Open);
+            var fs = new FileStream(@"randomSequences.vec2", FileMode.Open, FileAccess.Read);
             var len = (int)fs.Length;
             var bits = new byte[len];
             fs.Read(bits, 0, len);
@@ -123,6 +123,7 @@ namespace WooFractal
         /// <param name="gl">The OpenGL instance.</param>
         public void Initialise(OpenGL gl, int width, int height, mat4 viewMatrix, vec3 position)
         {
+            Logger.Log("ShaderRenderer.Initialise Started");
             _GL = gl;
             if (_Initialised)
             {
@@ -145,6 +146,7 @@ namespace WooFractal
                 {positionAttribute, "Position"}
             };
 
+            Logger.Log("ShaderRenderer.Initialise Loading shaders from manifest");
             //  Create the raymarch shader
             shaderRayMarch = new ShaderProgram();
             if (_Program == null)
@@ -256,7 +258,9 @@ void main()
                 fragShaderIntTransfer, attributeLocations);
             CheckForError(gl);
 
+            Logger.Log("ShaderRenderer.Initialise Loading random numbers");
             LoadRandomNumbers(gl);
+            Logger.Log("ShaderRenderer.Initialise Finished loading random numbers");
 
             float[] viewport = new float[4];
             gl.GetFloat(OpenGL.GL_VIEWPORT, viewport);
@@ -359,6 +363,7 @@ void main()
        //     gl.GenRenderbuffersEXT(1, _RenderBuffer);
             //gl.BindRenderbufferEXT(OpenGL.GL_RENDERBUFFER_EXT, _RenderBuffer[0]);
             //gl.RenderbufferStorageEXT(OpenGL.GL_RENDERBUFFER_EXT, OpenGL.GL_RGBA, (int)viewport[2], (int)viewport[3]);
+            Logger.Log("ShaderRenderer.Initialise Finished");
         }
 
         int _RaysPerPixel;

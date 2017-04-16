@@ -27,6 +27,19 @@ using SharpGL.SceneGraph;
 
 namespace WooFractal
 {
+    public class Logger
+    {
+        public static string filePath = @"Log.txt";
+        public static void Log(string message)
+        {
+            return;
+            using (StreamWriter streamWriter = new StreamWriter(filePath, true))
+            {
+                streamWriter.WriteLine(message);
+                streamWriter.Close();
+            }
+        }
+    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -44,7 +57,10 @@ namespace WooFractal
 
         public MainWindow()
         {
+            Logger.filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Log.txt";
+            Logger.Log("Starting");
             InitializeComponent();
+            Logger.Log("InitComp complete");
 
             DataContext = this;
 
@@ -56,8 +72,10 @@ namespace WooFractal
 
             // initialise the script objects
             LoadScratch();
+            Logger.Log("LoadScratch() complete");
 
             UpdateGUI();
+            Logger.Log("UpdateGUI() complete");
         }
 
         public void AddCuboid()
@@ -502,6 +520,7 @@ namespace WooFractal
 
         private void LoadContext(string name)
         {
+            Logger.Log("LoadContext() started");
             string filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes\\" + name + ".wsd";
             if (System.IO.File.Exists(filename))
             {
@@ -540,6 +559,8 @@ namespace WooFractal
                 }
                 sr.Close();
             }
+
+            Logger.Log("LoadContext() completed");
 
             BuildFractalList();
 
@@ -597,6 +618,7 @@ namespace WooFractal
         {
 //            image1.Height = imagebutton.ActualHeight;
 //            image1.Width = imagebutton.ActualWidth;
+            Logger.Log("Window_Loaded() started");
             Compile();
 
             // set up animation thread for the camera movement
@@ -604,6 +626,7 @@ namespace WooFractal
             _Timer.Interval = TimeSpan.FromMilliseconds(17);
             _Timer.Tick += this.timer_Tick;
             _Timer.Start();
+            Logger.Log("Window_Loaded() completed");
         }
 
         private void imagebutton_SizeChanged(object sender, SizeChangedEventArgs e)
