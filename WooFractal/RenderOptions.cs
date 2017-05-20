@@ -32,12 +32,21 @@ namespace WooFractal
         public int _DEMode = 2;
         public int _Background = 0;
         public int _Lighting = 0;
+        public double _SunHeight = 50; // degrees
+        public double _SunDirection = 0; // degrees
         public bool _Headlight = false;
         public double _HeadLightStrength = 1.0;
 
         public RenderOptions()
         {
             PopulateScenes();
+        }
+
+        public Vector3 GetSunVector3()
+        {
+            return new Vector3(Math.Sin(Math.PI*_SunHeight/180) * Math.Cos(Math.PI*_SunDirection/90),
+                Math.Cos(Math.PI * _SunHeight / 180),
+                Math.Sin(Math.PI * _SunHeight / 180) * Math.Sin(Math.PI * _SunDirection / 90));
         }
 
         public UserControl GetControl()
@@ -58,6 +67,8 @@ namespace WooFractal
                 new XAttribute("deMode", _DEMode),
                 new XAttribute("background", _Background),
                 new XAttribute("lighting", _Lighting),
+                new XAttribute("sunHeight", _SunHeight),
+                new XAttribute("sunDirection", _SunDirection),
                 new XAttribute("headlightEnabled", _Headlight),
                 new XAttribute("headlightStrength", _HeadLightStrength));
             parent.Add(ret);
@@ -109,6 +120,8 @@ namespace WooFractal
             XMLHelpers.ReadInt(reader, "deMode", ref _DEMode);
             XMLHelpers.ReadInt(reader, "background", ref _Background);
             XMLHelpers.ReadInt(reader, "lighting", ref _Lighting);
+            XMLHelpers.ReadDouble(reader, "sunHeight", ref _SunHeight);
+            XMLHelpers.ReadDouble(reader, "sunDirection", ref _SunDirection);
             XMLHelpers.ReadBool(reader, "headlightEnabled", ref _Headlight);
             XMLHelpers.ReadDouble(reader, "headlightStrength", ref _HeadLightStrength);
         }

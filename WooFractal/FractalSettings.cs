@@ -119,7 +119,7 @@ void Tetra(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, 
 	scale *= mScale;
 }
 
-void Bulb(in float r, inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in mat3 mRotate1Matrix)
+void Bulb(in float r, inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in mat3 mRotate1Matrix, in bool juliaEnabled, in vec3 julia)
 {
     float theta, phi;
     
@@ -133,7 +133,10 @@ void Bulb(in float r, inout vec3 pos, in vec3 origPos, inout float scale, in flo
 	phi = phi*mScale;
 
 	// convert back to cartesian coordinates
-	pos = zr * vec3(cos(theta)*cos(phi), sin(theta)*cos(phi), sin(phi)) + origPos;
+	pos = zr * vec3(cos(theta)*cos(phi), sin(theta)*cos(phi), sin(phi));
+
+    // julia Land?
+    pos += juliaEnabled ? julia : origPos;
 
 	pos = mRotate1Matrix * pos;
 }
@@ -204,7 +207,7 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
   for (int j=0; j<" + _RenderOptions._FractalIterationCount+@"; j++)
   {
     r = length(pos);
-    if (r>100.0) continue;
+    if (r>40.0) continue;
     if (j<"+_RenderOptions._ColourIterationCount+@") orbitTrap = min(orbitTrap, vec4(abs(pos),r));";
 
             int totalIterations = 0,iterationIndex=0;
@@ -218,12 +221,14 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
 
             for (int i = 0; i < _FractalIterations.Count; i++)
             {
+                int repeats = _FractalIterations[i]._Repeats;
                 frag2 += @"
- if (modj>=" + iterationIndex + " && modj<" + iterationIndex + _FractalIterations[i]._Repeats + @")
+ if (modj>=" + iterationIndex + " && modj<" + iterationIndex + repeats + @")
  {";
                 _FractalIterations[i].Compile(ref frag2);
                 frag2 += @"
 }";
+                iterationIndex += repeats;
             }
 
             frag2 += @"
@@ -274,36 +279,59 @@ mat.roughness = 0.01;
   tmin = max(0, tmin);
   vec3 dp = pos + tmin*dir;
 
+  vec4 orbitTrap = vec4(10000,10000,10000,10000);
+  float DEdist;
+  vec3 oldDp;
+  float minDistance2 = minDistance;
+
   // iterate...
   for (int i=0; i<" + _RenderOptions._DistanceIterations + @"; i++)
   {
-   vec4 orbitTrap = vec4(10000,10000,10000,10000);
-   float DEdist = DE(dp, orbitTrap);
+   DEdist = DE(dp, orbitTrap);
+   oldDp = dp;
    dp += " + _RenderOptions._StepSize + @"*DEdist*dir;
    tmax -= " + _RenderOptions._StepSize + @"*DEdist; // not sure this is the most efficient tbh
    if (tmax<0) return false; // exiting the AABB, skip
 ";
 
-   if (_RenderOptions._DistanceMinimumMode==0)
-       frag2 += "float minDistance2 = minDistance;";
-   else
-       frag2 += "float minDistance2 = length(dp-srcPos) / screenWidth;";
+   if (_RenderOptions._DistanceMinimumMode!=0)
+       frag2 += "minDistance2 = length(dp-srcPos) / screenWidth;";
    
             frag2 += @"
    if (DEdist<minDistance2)
    {
+    vec3 mid;
+    vec4 torbitTrap;
+    vec3 midInside;
+    for (int j=0; j<4; j++)
+    {
+     mid = (dp+oldDp)*0.5;
+     torbitTrap;
+";
+
+            if (_RenderOptions._DistanceMinimumMode != 0)
+                frag2 += "minDistance2 = length(mid-srcPos) / screenWidth;";
+
+            frag2 += @"
+     midInside.x = max(0,sign(DE(mid, torbitTrap)-minDistance2));
+     midInside.y = 1-midInside.x;
+     dp = midInside.xxx*dp + midInside.yyy*mid;
+     orbitTrap = midInside.xxxx*torbitTrap + midInside.yyyy*orbitTrap;
+     oldDp = midInside.xxx*mid + midInside.yyy*oldDp;
+    }
+
     OrbitToColour(orbitTrap, mat);
-	float normalTweak=minDistance2*0.1f;
-	normal = vec3(DE(dp+vec3(normalTweak,0,0),orbitTrap) - DE(dp-vec3(normalTweak,0,0),orbitTrap),
-		DE(dp+vec3(0,normalTweak,0),orbitTrap) - DE(dp-vec3(0,normalTweak,0),orbitTrap),
-		DE(dp+vec3(0,0,normalTweak),orbitTrap) - DE(dp-vec3(0,0,normalTweak),orbitTrap));
+	vec3 normalTweak=vec3(minDistance2*0.1f,0,0);
+	normal = vec3(DE(dp+normalTweak.xyy,orbitTrap) - DE(dp-normalTweak.xyy,orbitTrap),
+		DE(dp+normalTweak.yxy,orbitTrap) - DE(dp-normalTweak.yxy,orbitTrap),
+		DE(dp+normalTweak.yyx,orbitTrap) - DE(dp-normalTweak.yyx,orbitTrap));
     float magSq = dot(normal, normal);
-    if (magSq<=0.0000000001*normalTweak)
+    if (magSq<=0.001*minDistance2*minDistance2)
         normal = -dir;
     else
         normal /= sqrt(magSq);
 
-    out_pos = dp + normal*minDistance2 + vec3(0," + _RenderOptions._DistanceExtents+@",0);
+    out_pos = dp + normal*(4*minDistance2) + vec3(0," + _RenderOptions._DistanceExtents + @",0);
     dist = length(dp - pos);
     return true;
    }

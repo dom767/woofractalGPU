@@ -39,8 +39,9 @@ namespace WooFractal
             reader.Read(); // finish off reading the scene
         }
 
-        public string Compile(RaytracerOptions raytracerOptions, ref string frag)
+        public string Compile(RaytracerOptions raytracerOptions, RenderOptions renderOptions, ref string frag)
         {
+            Vector3 sunDirection = renderOptions.GetSunVector3();
             frag = @"
 #version 130
 uniform float screenWidth;
@@ -69,6 +70,7 @@ struct material
 };
 
 void calculateLighting(in vec3 pos, in vec3 normal, in vec3 eye, in vec3 reflection, in float roughness, out vec3 lightDiff, out vec3 lightSpec);
+bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec3 normal, out material mat);
 
 vec2 rand2d(vec3 co)
 {
@@ -122,9 +124,112 @@ vec2 getRandomDisc()
  return vec2(random.x * cos(random.y), random.x * sin(random.y));
 }
 
-vec4 getBackgroundColour(vec3 dir)
+bool raySphereIntersect(in vec3 origin, in vec3 dir, in float radius, out float t0, out float t1)
 {
-  return vec4(1,1,1,1);//vec4(0.5+0.5*dir.x, 0.5+0.5*dir.y, 0.5+0.5*dir.z, 0.0);
+ // geometric solution
+ float radius2 = radius*radius;
+ vec3 L = vec3(0,0,0) - origin; //centre - origin
+ float tca = dot(L, dir);
+ float d2 = dot(L, L) - tca*tca;
+ if (d2>radius2) return false;
+ float thc = sqrt(radius2 - d2);
+ t0 = tca - thc;
+ t1 = tca + thc;
+ 
+ // swap
+ if (t0>t1) {float tmp=t0;t0=t1;t1=tmp;}
+
+ return true;
+}
+
+vec3 getSkyColour(vec3 dir, vec3 pos, float tmin, float tmax)
+{
+ float scale = 2;
+ vec3 scalePos = pos*scale;
+ tmax *= scale;
+ vec3 betaR = vec3(0.0038, 0.0135, 0.0331);
+ vec3 betaM = vec3(0.031);
+ float atmosphereHeightR = 8; //km
+ float atmosphereHeightM = 1.2; //km
+ float planetRadius = 6000; //km
+ float cameraHeight = 0; //km
+ vec3 planetPos = vec3(0, planetRadius+cameraHeight, 0);
+ vec3 orig = planetPos + scalePos;
+ vec3 sunDirection = vec3(" + (sunDirection.x) + "," + (sunDirection.y) + "," + (sunDirection.z) + @");
+ float sphereHeight = planetRadius + atmosphereHeightR;
+
+ float t0, t1;
+ if (!raySphereIntersect(orig, dir, sphereHeight, t0, t1)) return vec3(0,0,0);
+ if (t0<0) t0=0;
+ t1 = min(t1, tmax);
+ if (t1<0) return vec3(0,0,0);
+
+ int numSamples = 4;
+ int numSamplesLight = 8;
+ float segmentLength = (t1-t0) / numSamples;
+ float tCurrent = t0;
+ vec3 sumR = vec3(0);
+ vec3 sumM = vec3(0);
+ float opticalDepthR = 0;
+ float opticalDepthM = 0;
+ float mu = dot(dir, sunDirection);
+ float phaseR = 3.0 / (16.0 * 3.14159265) * (1.0 + mu * mu); 
+ float g = 0.76;
+ float phaseM = 3.0 / (8.0 * 3.14159265) * ((1.0 - g * g) * (1.0 + mu * mu)) / ((2.0 + g * g) * pow(1.0 + g * g - 2.0 * g * mu, 1.0f)); 
+
+ vec3 ret;
+
+ for (int i=0; i<numSamples; i++)
+ {
+  vec3 samplePosition = orig + (tCurrent + segmentLength * rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x) * dir; 
+  float height = max(0,length(samplePosition) - planetRadius); 
+//  ret = vec3(height*10000);//(sumR * betaR * phaseR + sumM * betaM * phaseM) * 20; 
+
+  // compute optical depth for light
+  float hr = exp(-height / atmosphereHeightR) * segmentLength; 
+  float hm = exp(-height / atmosphereHeightM) * segmentLength; 
+   opticalDepthR += hr; 
+   opticalDepthM += hm;
+ 
+  // light optical depth
+  float t0Light, t1Light; 
+  raySphereIntersect(samplePosition, sunDirection, sphereHeight, t0Light, t1Light); 
+  float segmentLengthLight = t1Light / numSamplesLight, tCurrentLight = 0; 
+  float opticalDepthLightR = 0, opticalDepthLightM = 0; 
+  int j; 
+  for (j = 0; j < numSamplesLight; j++)
+  { 
+   vec3 samplePositionLight = samplePosition + (tCurrentLight + segmentLengthLight * rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x) * sunDirection; 
+   float heightLight = max(0,length(samplePositionLight) - planetRadius);
+//   if (heightLight < 0) break; 
+   opticalDepthLightR += exp(-heightLight / atmosphereHeightR) * segmentLengthLight; 
+   opticalDepthLightM += exp(-heightLight / atmosphereHeightM) * segmentLengthLight; 
+   tCurrentLight += segmentLengthLight; 
+  } 
+  if (j == numSamplesLight)
+  {
+   vec3 tau = betaR * (opticalDepthR + opticalDepthLightR) + betaM * 1.1f * (opticalDepthM + opticalDepthLightM); 
+   vec3 attenuation = exp(-tau); 
+   material omat;
+   vec3 opos, onor;
+   float odist;
+   if (!trace((samplePosition-planetPos)/scale, sunDirection, odist, opos, onor, omat))
+   {
+    sumR += attenuation * hr; 
+    sumM += attenuation * hm; 
+   }
+  } 
+  tCurrent += segmentLength;
+ }
+
+ return vec3(20*(sumR*betaR*phaseR + sumM*betaM*phaseM));
+}
+
+// https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/simulating-sky/simulating-colors-of-the-sky
+vec4 getBackgroundColour(vec3 dir, vec3 pos)
+{
+ vec3 skyColour = getSkyColour(dir, pos, 0, 10000000);
+ return vec4(skyColour,1);
 }
 
 ";
@@ -273,7 +378,7 @@ bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec
  return (hitFractal || hitBkg);
 }";
 
-            _GPULight.Compile(raytracerOptions, ref frag);
+            _GPULight.Compile(raytracerOptions, renderOptions, ref frag);
 
             frag += @"
 void main(void)
@@ -313,7 +418,7 @@ void main(void)
     vec3 lightSpec = vec3(0,0,0);
     calculateLighting(out_pos, normal, iterdir, reflection, mat.roughness*mat.roughness*mat.roughness*mat.roughness, lightDiff, lightSpec);
 
-    vec3 col = mat.diff*lightDiff + mat.spec*lightSpec;
+    vec3 col = mat.diff*lightDiff + mat.spec*lightSpec + getSkyColour(iterdir, iterpos, 0, length(out_pos-iterpos));
     oCol+=vec4(factor,0.0)*vec4(col, 0.0);
 
     iterpos = out_pos;
@@ -322,7 +427,7 @@ void main(void)
    }
    else
    {
-    oCol+=vec4(factor,0.0)*getBackgroundColour(iterdir);
+    oCol+=vec4(factor,0.0)*getBackgroundColour(iterdir, iterpos);
     break;
    }
   }

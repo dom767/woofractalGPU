@@ -109,6 +109,9 @@
     <Compile Include="GUI\FractalColourControl.xaml.cs">
       <DependentUpon>FractalColourControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Vec3Control.xaml.cs">
+      <DependentUpon>Vec3Control.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Objects\FractalColours.cs" />
     <Compile Include="GUI\FractalControl.xaml.cs">
       <DependentUpon>FractalControl.xaml</DependentUpon>
@@ -187,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\KleinianGroupControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Vec3Control.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

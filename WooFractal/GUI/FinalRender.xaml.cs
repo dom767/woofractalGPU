@@ -110,7 +110,7 @@ namespace WooFractal
             //  Initialise the scene.
             _ShaderRenderer = new ShaderRenderer();
             string frag = "";
-            _Scene.Compile(_RaytracerOptions, ref frag);
+            _Scene.Compile(_RaytracerOptions, _Scene._FractalSettings._RenderOptions, ref frag);
             _ShaderRenderer.Compile(_GL, frag, _RaytracerOptions.GetRaysPerPixel());
             int width, height;
             GetWidthHeightSelection(out width, out height);

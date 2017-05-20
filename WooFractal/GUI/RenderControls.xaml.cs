@@ -71,6 +71,8 @@ namespace WooFractal
             wooSlider5.Set(_Parent._FractalIterationCount, 1, 250, this);
             wooSlider6.Set(_Parent._ColourIterationCount, 1, 250, this);
             wooSlider7.Set(_Parent._HeadLightStrength, 0, 2, this);
+            wooSlider8.Set(_Parent._SunHeight, 0, 90, this);
+            wooSlider9.Set(_Parent._SunDirection, 0, 360, this);
             checkBox1.IsChecked = _Parent._Headlight;
         }
 
@@ -83,6 +85,8 @@ namespace WooFractal
             _Parent._FractalIterationCount = (int)(wooSlider5.GetSliderValue() + 0.5);
             _Parent._ColourIterationCount = (int)(wooSlider6.GetSliderValue() + 0.5);
             _Parent._HeadLightStrength = wooSlider7.GetSliderValue();
+            _Parent._SunHeight = wooSlider8.GetSliderValue();
+            _Parent._SunDirection = wooSlider9.GetSliderValue();
             _Parent._Headlight = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
 
             ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();

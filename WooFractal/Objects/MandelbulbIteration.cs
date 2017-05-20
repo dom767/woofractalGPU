@@ -12,6 +12,8 @@ namespace WooFractal
     {
         public Vector3 _Rotation = new Vector3(0,0,0);
         public double _Scale = 1;
+        public bool _JuliaMode = false;
+        public Vector3 _Julia = new Vector3(0, 0, 0);
  
         public MandelbulbIteration()
         {
@@ -32,7 +34,7 @@ namespace WooFractal
         {
             Matrix3 rot = new Matrix3();
             rot.MakeFromRPY(_Rotation.x, _Rotation.y, _Rotation.z);
-            frag += "Bulb(r, pos, origPos, scale, float("+_Scale+"), mat3("+Utils.Matrix3ToString(rot)+@"));
+            frag += "Bulb(r, pos, origPos, scale, float("+_Scale+"), mat3("+Utils.Matrix3ToString(rot)+@"), "+(_JuliaMode?"true":"false")+", vec3("+Utils.Vector3ToString(_Julia)+@"));
             DEMode = 2;";
         }
 
@@ -54,6 +56,8 @@ namespace WooFractal
             XElement ret = new XElement("BULBFRACTAL",
                 new XAttribute("rotation", _Rotation),
                 new XAttribute("scale", _Scale),
+                new XAttribute("juliaMode", _JuliaMode),
+                new XAttribute("julia", _Julia),
                 new XAttribute("repeats", _Repeats));
             parent.Add(ret);
             return;
@@ -63,6 +67,8 @@ namespace WooFractal
         {
             XMLHelpers.ReadVector3(reader, "rotation", ref _Rotation);
             XMLHelpers.ReadDouble(reader, "scale", ref _Scale);
+            XMLHelpers.ReadBool(reader, "juliaMode", ref _JuliaMode);
+            XMLHelpers.ReadVector3(reader, "julia", ref _Julia);
             XMLHelpers.ReadInt(reader, "repeats", ref _Repeats);
             reader.Read();
         }

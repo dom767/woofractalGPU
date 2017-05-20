@@ -36,6 +36,12 @@ namespace WooFractal
 
             wooSlider10.Set(_Parent._Scale, -16, 16, this);
 
+            checkBox1.IsChecked = _Parent._JuliaMode;
+
+            wooSlider4.Set(_Parent._Julia.x, -4, 4, this);
+            wooSlider5.Set(_Parent._Julia.y, -4, 4, this);
+            wooSlider6.Set(_Parent._Julia.z, -4, 4, this);
+
             textBox1.Text = _Parent._Repeats.ToString();
         }
         private void button3_Click(object sender, RoutedEventArgs e)
@@ -65,6 +71,12 @@ namespace WooFractal
             _Parent._Rotation.z = wooSlider3.GetSliderValue();
 
             _Parent._Scale = wooSlider10.GetSliderValue();
+
+            _Parent._Julia.x = wooSlider4.GetSliderValue();
+            _Parent._Julia.y = wooSlider5.GetSliderValue();
+            _Parent._Julia.z = wooSlider6.GetSliderValue();
+
+            _Parent._JuliaMode = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
 
             int repeats;
             if (int.TryParse(textBox1.Text, out repeats)

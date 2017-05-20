@@ -30,10 +30,14 @@ namespace WooFractal
             orbitColourControl2.SetOrbitColours(_FractalColours._OrbitColoursY, this);
             orbitColourControl3.SetOrbitColours(_FractalColours._OrbitColoursZ, this);
             orbitColourControl4.SetOrbitColours(_FractalColours._OrbitColoursDist, this);
-            checkBox1.IsChecked = _FractalColours._XOrbitEnabled;
-            checkBox2.IsChecked = _FractalColours._YOrbitEnabled;
-            checkBox3.IsChecked = _FractalColours._ZOrbitEnabled;
-            checkBox4.IsChecked = _FractalColours._DistOrbitEnabled;
+            bool xorbit = _FractalColours._XOrbitEnabled;
+            bool yorbit = _FractalColours._YOrbitEnabled;
+            bool zorbit = _FractalColours._ZOrbitEnabled;
+            bool dorbit = _FractalColours._DistOrbitEnabled;
+            checkBox1.IsChecked = xorbit;
+            checkBox2.IsChecked = yorbit;
+            checkBox3.IsChecked = zorbit;
+            checkBox4.IsChecked = dorbit;
         }
 
         public void GUIUpdate()

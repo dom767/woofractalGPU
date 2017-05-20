@@ -182,7 +182,7 @@ namespace WooFractal
             _Clean = true; // indicate to the OpenGL draw loop that it needs to clean the backbuffer
 
             string frag = "";
-            _Scene.Compile(_RaytracerOptions, ref frag);
+            _Scene.Compile(_RaytracerOptions, _Scene._FractalSettings._RenderOptions, ref frag);
             _ShaderRenderer.Compile(_GL, frag, _RaytracerOptions.GetRaysPerPixel());
 
             SaveStatus();
