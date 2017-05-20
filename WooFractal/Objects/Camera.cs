@@ -167,7 +167,7 @@ if (!depth)
 vec3 offset = vec3(";
             
             if (raytracerOptions._DoFEnabled)
-                frag += (_ApertureSize * _FocusDepth).ToString();
+                frag += "focusDepth";
             else
                 frag += "0.0";
 

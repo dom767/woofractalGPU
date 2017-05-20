@@ -31,6 +31,7 @@ namespace WooFractal
         mat4 _ViewMatrix;
         vec3 _Position;
         vec3 _SunDirection;
+        float _FocusDepth;
 
         int _TargetWidth;
         int _TargetHeight;
@@ -41,11 +42,12 @@ namespace WooFractal
         public int GetTargetWidth() { return _TargetWidth; }
         public int GetTargetHeight() { return _TargetHeight; }
 
-        public void SetCameraVars(mat4 viewMatrix, vec3 position, vec3 sunDirection)
+        public void SetCameraVars(mat4 viewMatrix, vec3 position, vec3 sunDirection, float focusDepth)
         {
             _ViewMatrix = viewMatrix;
             _Position = position;
             _SunDirection = sunDirection;
+            _FocusDepth = focusDepth;
             _FramesRendered = 0;
             _ProgressiveIndex = 0;
         }
@@ -495,6 +497,7 @@ void main()
             shader.SetUniform1(gl, "mouseX", _MouseX);
             shader.SetUniform1(gl, "mouseY", _TargetHeight - _MouseY);
             shader.SetUniform3(gl, "sunDirection", _SunDirection.x, _SunDirection.y, _SunDirection.z);
+            shader.SetUniform1(gl, "focusDepth", _FocusDepth);
 
             gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[_PingPong ? 0 : 1]);

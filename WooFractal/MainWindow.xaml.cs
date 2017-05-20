@@ -724,7 +724,7 @@ namespace WooFractal
             if (!_PreviewRender)
                 return;
 
-            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3());
+            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), (float)(_Scene._Camera._FocusDepth * _Scene._Camera._ApertureSize));
             
             var gl = args.OpenGL;
 
@@ -741,7 +741,7 @@ namespace WooFractal
             {
                 SetFocusDistance(_ShaderRenderer._ImageDepth);
                 _ShaderRenderer._ImageDepthSet = false;
-                _Dirty = true;
+                _CameraDirty = true;
             }
         }
 

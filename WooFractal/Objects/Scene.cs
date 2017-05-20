@@ -53,6 +53,7 @@ uniform float mouseX;
 uniform float mouseY;
 uniform float progressiveInterval;
 uniform vec3 sunDirection;
+uniform float focusDepth;
 float randomIndex;
 float pixelIndex;
 float sampleIndex;
