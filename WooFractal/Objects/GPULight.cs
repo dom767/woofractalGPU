@@ -23,8 +23,6 @@ namespace WooFractal
     {
         public void Compile(RaytracerOptions raytracerOptions, RenderOptions renderOptions, ref string frag)
         {
-            Vector3 sunDirection = renderOptions.GetSunVector3();
-
             frag += @"
 void calculateDirectionalLight(in vec3 pos, in vec3 normal, in vec3 eye, in vec3 direction, in vec3 reflection, in float roughness, in bool shadows, out vec3 lightDiff, out vec3 lightSpec)
 {
@@ -66,7 +64,7 @@ void calculateLighting(in vec3 pos, in vec3 normal, in vec3 eye, in vec3 reflect
  lightDiff = vec3(0,0,0);
  lightSpec = vec3(0,0,0);
  
- calculateDirectionalLight(pos, normal, eye, vec3(" + (sunDirection.x) + "," + (sunDirection.y) + "," + (sunDirection.z) + @"), reflection, roughness, " + (raytracerOptions._ShadowsEnabled ? "true" : "false") + @", lightDiff, lightSpec);
+ calculateDirectionalLight(pos, normal, eye, sunDirection, reflection, roughness, " + (raytracerOptions._ShadowsEnabled ? "true" : "false") + @", lightDiff, lightSpec);
 
  //calculateWorldLight(pos, normal, eye, reflection, roughness, " + (raytracerOptions._ShadowsEnabled ? "true" : "false") + @", lightDiff, lightSpec);
  

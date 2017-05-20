@@ -41,7 +41,6 @@ namespace WooFractal
 
         public string Compile(RaytracerOptions raytracerOptions, RenderOptions renderOptions, ref string frag)
         {
-            Vector3 sunDirection = renderOptions.GetSunVector3();
             frag = @"
 #version 130
 uniform float screenWidth;
@@ -53,6 +52,7 @@ uniform bool depth;
 uniform float mouseX;
 uniform float mouseY;
 uniform float progressiveInterval;
+uniform vec3 sunDirection;
 float randomIndex;
 float pixelIndex;
 float sampleIndex;
@@ -144,7 +144,7 @@ bool raySphereIntersect(in vec3 origin, in vec3 dir, in float radius, out float 
 
 vec3 getSkyColour(vec3 dir, vec3 pos, float tmin, float tmax)
 {
- float scale = 2;
+ float scale = 0.001;
  vec3 scalePos = pos*scale;
  tmax *= scale;
  vec3 betaR = vec3(0.0038, 0.0135, 0.0331);
@@ -155,7 +155,6 @@ vec3 getSkyColour(vec3 dir, vec3 pos, float tmin, float tmax)
  float cameraHeight = 0; //km
  vec3 planetPos = vec3(0, planetRadius+cameraHeight, 0);
  vec3 orig = planetPos + scalePos;
- vec3 sunDirection = vec3(" + (sunDirection.x) + "," + (sunDirection.y) + "," + (sunDirection.z) + @");
  float sphereHeight = planetRadius + atmosphereHeightR;
 
  float t0, t1;

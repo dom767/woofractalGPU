@@ -279,6 +279,10 @@ namespace WooFractal
         {
             _Dirty = true;
         }
+        public void SetCameraDirty()
+        {
+            _CameraDirty = true;
+        }
         void timer_Tick(object sender, EventArgs e)
         {
             Vector3 to = _Scene._Camera._Target - _Scene._Camera._Position;
@@ -333,7 +337,6 @@ namespace WooFractal
             if (_CameraDirty || _Velocity.MagnitudeSquared() > 0.0001)
             {
                 _Clean = true;
-                _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
                 _CameraDirty = false;
             }
 
@@ -721,6 +724,8 @@ namespace WooFractal
             if (!_PreviewRender)
                 return;
 
+            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3());
+            
             var gl = args.OpenGL;
 
             if (_Clean)

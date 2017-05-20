@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GlmNet;
 using System.Linq;
 using System.Text;
 using System.Windows.Controls;
@@ -42,11 +43,11 @@ namespace WooFractal
             PopulateScenes();
         }
 
-        public Vector3 GetSunVector3()
+        public vec3 GetSunVec3()
         {
-            return new Vector3(Math.Sin(Math.PI*_SunHeight/180) * Math.Cos(Math.PI*_SunDirection/90),
-                Math.Cos(Math.PI * _SunHeight / 180),
-                Math.Sin(Math.PI * _SunHeight / 180) * Math.Sin(Math.PI * _SunDirection / 90));
+            return new vec3((float)(Math.Sin(Math.PI*_SunHeight/180) * Math.Cos(Math.PI*_SunDirection/90)),
+                (float)(Math.Cos(Math.PI * _SunHeight / 180)),
+                (float)(Math.Sin(Math.PI * _SunHeight / 180) * Math.Sin(Math.PI * _SunDirection / 90)));
         }
 
         public UserControl GetControl()
