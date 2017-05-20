@@ -78,6 +78,7 @@ namespace WooFractal
 
         public void GUIUpdate()
         {
+            RenderOptions old = _Parent;
             _Parent._DistanceMinimum = wooSlider1.GetSliderValue();
             _Parent._DistanceIterations = wooSlider2.GetSliderValue();
             _Parent._StepSize = wooSlider3.GetSliderValue();
@@ -89,7 +90,17 @@ namespace WooFractal
             _Parent._SunDirection = wooSlider9.GetSliderValue();
             _Parent._Headlight = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
+            if (_Parent._DistanceMinimum != old._DistanceMinimum
+                || _Parent._DistanceIterations != old._DistanceIterations
+                || _Parent._StepSize != old._StepSize
+                || _Parent._DistanceExtents != old._DistanceExtents
+                || _Parent._FractalIterationCount != old._FractalIterationCount
+                || _Parent._ColourIterationCount != old._ColourIterationCount
+                || _Parent._HeadLightStrength != old._HeadLightStrength
+                || _Parent._Headlight != old._Headlight)
+                ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
+            else
+                ((MainWindow)System.Windows.Application.Current.MainWindow).SetCameraDirty();
         }
 
         private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
