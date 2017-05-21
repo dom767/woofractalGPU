@@ -22,7 +22,7 @@
         <Button Content="Save Image" Height="23" HorizontalAlignment="Left" Margin="8,650,0,0" Name="button3" VerticalAlignment="Top" Width="156" Click="button3_Click" />
         <GroupBox Header="Tone-mapping type" Height="116" HorizontalAlignment="Left" Margin="291,559,0,0" Name="groupBox2" VerticalAlignment="Top" Width="322">
             <Grid>
-                <ComboBox Height="23" HorizontalAlignment="Left" Margin="6,7,0,0" Name="comboBox1" VerticalAlignment="Top" Width="103" >
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="6,7,0,0" Name="comboBox1" VerticalAlignment="Top" Width="103" SelectionChanged="comboBox1_SelectionChanged">
                     <ComboBoxItem Name="Linear" IsSelected="True">Linear</ComboBoxItem>
                     <ComboBoxItem Name="Exposure">Exposure</ComboBoxItem>
                     <ComboBoxItem Name="Reinhard">Reinhard</ComboBoxItem>

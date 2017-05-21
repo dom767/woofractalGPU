@@ -51,11 +51,12 @@ namespace WooFractal
 
         public FinalRender(ref Scene scene, ref RaytracerOptions raytracerOptions, ref PostProcess postprocess)
         {
+            DataContext = this;
+            InitializeComponent();
+
             _Scene = scene;
             _RaytracerOptions = raytracerOptions;
             _PostProcess = postprocess;
-            DataContext = this;
-            InitializeComponent();
 
             UpdateGUI();
         }
@@ -72,11 +73,11 @@ namespace WooFractal
             wooSlider5.Set(_PostProcess._GaussianExposure, 1, 10, this);
             wooSlider6.Set(_PostProcess._GaussianSD, 2, 100, this);
             wooSlider7.Set(_PostProcess._PostProcessAmount, 0, 8, this);
+            comboBox1.SelectedIndex = _PostProcess._ToneMappingMode;
         }
 
         public void GUIUpdate()
         {
-            _PostProcess._ToneMappingMode = comboBox1.SelectedIndex;
             _PostProcess._GammaFactor = wooSlider3.GetSliderValue();
             _PostProcess._GammaContrast = wooSlider4.GetSliderValue();
             _PostProcess._ToneFactor = wooSlider1.GetSliderValue();
@@ -272,6 +273,12 @@ namespace WooFractal
             _RaytracerOptions._DoFEnabled = !_RaytracerOptions._DoFEnabled;
             _Dirty = true;
             UpdateGUI();            
+        }
+
+        private void comboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_PostProcess!=null)
+                _PostProcess._ToneMappingMode = comboBox1.SelectedIndex;
         }
     }
 }
