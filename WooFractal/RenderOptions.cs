@@ -38,6 +38,11 @@ namespace WooFractal
         public bool _Headlight = false;
         public double _HeadLightStrength = 1.0;
 
+        public RenderOptions GetClone()
+        {
+            return (RenderOptions)this.MemberwiseClone();
+        }
+
         public RenderOptions()
         {
             PopulateScenes();

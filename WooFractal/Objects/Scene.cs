@@ -225,10 +225,92 @@ vec3 getSkyColour(vec3 dir, vec3 pos, float tmin, float tmax)
  return vec3(20*(sumR*betaR*phaseR + sumM*betaM*phaseM));
 }
 
+vec3 getSkyColour2(vec3 dir, vec3 pos, float tmin, float tmax)
+{
+ float scale = 2;
+ vec3 scalePos = pos*scale;
+ tmax *= scale;
+ vec3 betaR = vec3(0.0038, 0.0135, 0.0331);
+ vec3 betaM = vec3(0.031);
+ float atmosphereHeightR = 8; //km
+ float atmosphereHeightM = 1.2; //km
+ float planetRadius = 6000; //km
+ float cameraHeight = 0; //km
+ vec3 planetPos = vec3(0, planetRadius+cameraHeight, 0);
+ vec3 orig = planetPos + scalePos;
+ float sphereHeight = planetRadius + atmosphereHeightR;
+
+ float t0, t1;
+ if (!raySphereIntersect(orig, dir, sphereHeight, t0, t1)) return vec3(0,0,0);
+ if (t0<0) t0=0;
+ t1 = min(t1, tmax);
+ if (t1<0) return vec3(0,0,0);
+
+ int numSamples = 4;
+ int numSamplesLight = 8;
+ float segmentLength = (t1-t0) / numSamples;
+ float tCurrent = t0;
+ vec3 sumR = vec3(0);
+ vec3 sumM = vec3(0);
+ float opticalDepthR = 0;
+ float opticalDepthM = 0;
+ float mu = dot(dir, sunDirection);
+ float phaseR = 3.0 / (16.0 * 3.14159265) * (1.0 + mu * mu); 
+ float g = 0.76;
+ float phaseM = 3.0 / (8.0 * 3.14159265) * ((1.0 - g * g) * (1.0 + mu * mu)) / ((2.0 + g * g) * pow(1.0 + g * g - 2.0 * g * mu, 1.0f)); 
+
+ vec3 ret;
+
+ for (int i=0; i<numSamples; i++)
+ {
+  vec3 samplePosition = orig + (tCurrent + segmentLength * rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x) * dir; 
+  float height = max(0,length(samplePosition) - planetRadius); 
+//  ret = vec3(height*10000);//(sumR * betaR * phaseR + sumM * betaM * phaseM) * 20; 
+
+  // compute optical depth for light
+  float hr = exp(-height / atmosphereHeightR) * segmentLength; 
+  float hm = exp(-height / atmosphereHeightM) * segmentLength; 
+   opticalDepthR += hr; 
+   opticalDepthM += hm;
+ 
+  // light optical depth
+  float t0Light, t1Light; 
+  raySphereIntersect(samplePosition, sunDirection, sphereHeight, t0Light, t1Light); 
+  float segmentLengthLight = t1Light / numSamplesLight, tCurrentLight = 0; 
+  float opticalDepthLightR = 0, opticalDepthLightM = 0; 
+  int j; 
+  for (j = 0; j < numSamplesLight; j++)
+  { 
+   vec3 samplePositionLight = samplePosition + (tCurrentLight + segmentLengthLight * rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x) * sunDirection; 
+   float heightLight = max(0,length(samplePositionLight) - planetRadius);
+//   if (heightLight < 0) break; 
+   opticalDepthLightR += exp(-heightLight / atmosphereHeightR) * segmentLengthLight; 
+   opticalDepthLightM += exp(-heightLight / atmosphereHeightM) * segmentLengthLight; 
+   tCurrentLight += segmentLengthLight; 
+  } 
+  if (j == numSamplesLight)
+  {
+   vec3 tau = betaR * (opticalDepthR + opticalDepthLightR) + betaM * 1.1f * (opticalDepthM + opticalDepthLightM); 
+   vec3 attenuation = exp(-tau); 
+   material omat;
+   vec3 opos, onor;
+   float odist;
+   if (!trace((samplePosition-planetPos)/scale, sunDirection, odist, opos, onor, omat))
+   {
+    sumR += attenuation * hr; 
+    sumM += attenuation * hm; 
+   }
+  } 
+  tCurrent += segmentLength;
+ }
+
+ return vec3(20*(sumR*betaR*phaseR + sumM*betaM*phaseM));
+}
+
 // https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/simulating-sky/simulating-colors-of-the-sky
 vec4 getBackgroundColour(vec3 dir, vec3 pos)
 {
- vec3 skyColour = getSkyColour(dir, pos, 0, 10000000);
+ vec3 skyColour = getSkyColour2(dir, pos, 0, 10000000);
  return vec4(skyColour,1);
 }
 
@@ -418,7 +500,7 @@ void main(void)
     vec3 lightSpec = vec3(0,0,0);
     calculateLighting(out_pos, normal, iterdir, reflection, mat.roughness*mat.roughness*mat.roughness*mat.roughness, lightDiff, lightSpec);
 
-    vec3 col = mat.diff*lightDiff + mat.spec*lightSpec + getSkyColour(iterdir, iterpos, 0, length(out_pos-iterpos));
+    vec3 col = mat.diff*lightDiff + mat.spec*lightSpec + getSkyColour2(iterdir, iterpos, 0, length(out_pos-iterpos));
     oCol+=vec4(factor,0.0)*vec4(col, 0.0);
 
     iterpos = out_pos;

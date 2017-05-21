@@ -78,7 +78,7 @@ namespace WooFractal
 
         public void GUIUpdate()
         {
-            RenderOptions old = _Parent;
+            RenderOptions old = (RenderOptions) _Parent.GetClone();
             _Parent._DistanceMinimum = wooSlider1.GetSliderValue();
             _Parent._DistanceIterations = wooSlider2.GetSliderValue();
             _Parent._StepSize = wooSlider3.GetSliderValue();
