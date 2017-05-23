@@ -98,7 +98,7 @@ namespace WooFractal
                 Thickness marg = rectangle2.Margin;
                 marg.Left = 0;
                 rectangle2.Margin = marg;
-                rectangle2.Width = _Value * this.ActualWidth / range;
+                rectangle2.Width = (_Value-_Min) * this.ActualWidth / range;
             }
 
             if (updateGUI)
