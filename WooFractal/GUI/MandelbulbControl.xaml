@@ -22,7 +22,7 @@
             <my:WooSlider HorizontalAlignment="Left" Margin="30,172,0,0" x:Name="wooSlider4" VerticalAlignment="Top" />
             <my:WooSlider HorizontalAlignment="Left" Margin="135,172,0,0" x:Name="wooSlider5" VerticalAlignment="Top" />
             <my:WooSlider HorizontalAlignment="Left" Margin="240,172,0,0" x:Name="wooSlider6" VerticalAlignment="Top" />
-            <CheckBox Content="Julia" Height="16" HorizontalAlignment="Left" Margin="30,153,0,0" Name="checkBox1" VerticalAlignment="Top" />
+            <CheckBox Content="Julia" Height="16" HorizontalAlignment="Left" Margin="30,153,0,0" Name="checkBox1" VerticalAlignment="Top" Checked="checkBox1_Checked" Unchecked="checkBox1_Checked" />
         </Grid>
     </Border>
 </UserControl>

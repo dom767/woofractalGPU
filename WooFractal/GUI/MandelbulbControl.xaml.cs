@@ -36,11 +36,11 @@ namespace WooFractal
 
             wooSlider10.Set(_Parent._Scale, -16, 16, this);
 
-            checkBox1.IsChecked = _Parent._JuliaMode;
-
             wooSlider4.Set(_Parent._Julia.x, -4, 4, this);
             wooSlider5.Set(_Parent._Julia.y, -4, 4, this);
             wooSlider6.Set(_Parent._Julia.z, -4, 4, this);
+
+            checkBox1.IsChecked = _Parent._JuliaMode;
 
             textBox1.Text = _Parent._Repeats.ToString();
         }
@@ -89,5 +89,11 @@ namespace WooFractal
         }
 
         public MandelbulbIteration _Parent;
+
+        private void checkBox1_Checked(object sender, RoutedEventArgs e)
+        {
+            _Parent._JuliaMode = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
+        }
     }
 }
