@@ -105,7 +105,7 @@ namespace WooFractal
 
         public void AddMandelbox()
         {
-            _Scene._FractalSettings._FractalIterations.Add(new MandelboxIteration(new Vector3(0, 0, 0), 2.1, 0.5, 1));
+            _Scene._FractalSettings._FractalIterations.Add(new MandelboxIteration(new Vector3(0, 0, 0), new Vector3(2.1), 0.5, 1));
             BuildFractalList();
         }
 
@@ -132,7 +132,6 @@ namespace WooFractal
             stackPanel2.Children.Clear();
 
             stackPanel2.Children.Add(_Scene._FractalSettings._RenderOptions.GetControl());
-            stackPanel2.Children.Add(_RaytracerOptions.GetControl());
             stackPanel2.Children.Add(_Scene._Camera.GetControl());
         }
 
@@ -187,6 +186,7 @@ namespace WooFractal
 
             SaveStatus();
 
+            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), (float)(_Scene._Camera._FocusDepth), (float)(_Scene._Camera._ApertureSize));
             TriggerPreview();
 
             _Dirty = false;
@@ -336,6 +336,7 @@ namespace WooFractal
 
             if (_CameraDirty || _Velocity.MagnitudeSquared() > 0.0001)
             {
+                _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), (float)(_Scene._Camera._FocusDepth), (float)(_Scene._Camera._ApertureSize));
                 _Clean = true;
                 _CameraDirty = false;
             }
@@ -724,8 +725,6 @@ namespace WooFractal
             if (!_PreviewRender)
                 return;
 
-            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), (float)(_Scene._Camera._FocusDepth * _Scene._Camera._ApertureSize));
-            
             var gl = args.OpenGL;
 
             if (_Clean)

@@ -11,14 +11,14 @@ namespace WooFractal
     public class MandelboxIteration : WooFractalIteration
     {
         public Vector3 _Rotation = new Vector3(0, 0, 0);
-        public double _Scale = 1;
+        public Vector3 _Scale = new Vector3(1, 1, 1);
         public double _MinRadius = 0.5;
 
         public MandelboxIteration()
         {
         }
 
-        public MandelboxIteration(Vector3 rotation, double scale, double minRadius, int repeats)
+        public MandelboxIteration(Vector3 rotation, Vector3 scale, double minRadius, int repeats)
         {
             _Rotation = rotation;
             _Scale = scale;
@@ -35,7 +35,7 @@ namespace WooFractal
         {
             Matrix3 rot = new Matrix3();
             rot.MakeFromRPY(_Rotation.x, _Rotation.y, _Rotation.z);
-            frag += "Box(pos, origPos, scale, float(" + _Scale + "), mat3(" + Utils.Matrix3ToString(rot) + "), " + _MinRadius + @");
+            frag += "Box(pos, origPos, scale, vec3(" + Utils.Vector3ToString(_Scale) + "), mat3(" + Utils.Matrix3ToString(rot) + "), " + _MinRadius + @");
             DEMode = 1;";
         }
 
@@ -66,7 +66,7 @@ namespace WooFractal
         public void LoadXML(XmlReader reader)
         {
             XMLHelpers.ReadVector3(reader, "rotation", ref _Rotation);
-            XMLHelpers.ReadDouble(reader, "scale", ref _Scale);
+            XMLHelpers.ReadVector3(reader, "scale", ref _Scale);
             XMLHelpers.ReadDouble(reader, "minradius", ref _MinRadius);
             XMLHelpers.ReadInt(reader, "repeats", ref _Repeats);
             reader.Read();

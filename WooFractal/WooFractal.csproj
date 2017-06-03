@@ -103,8 +103,14 @@
     <Compile Include="GUI\ColourSelector.xaml.cs">
       <DependentUpon>ColourSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Vec3Editor.xaml.cs">
+      <DependentUpon>Vec3Editor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\FinalRender.xaml.cs">
       <DependentUpon>FinalRender.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\FloatEditor.xaml.cs">
+      <DependentUpon>FloatEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\FractalColourControl.xaml.cs">
       <DependentUpon>FractalColourControl.xaml</DependentUpon>
@@ -160,9 +166,6 @@
     <Compile Include="GUI\WooSlider.xaml.cs">
       <DependentUpon>WooSlider.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\WootracerControls.xaml.cs">
-      <DependentUpon>WootracerControls.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WootracerOptions.cs" />
     <Compile Include="XMLHelpers.cs" />
     <Page Include="GUI\AddFractal.xaml">
@@ -177,7 +180,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\Vec3Editor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GUI\FinalRender.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\FloatEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -238,10 +249,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\WooSlider.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\WootracerControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

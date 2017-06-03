@@ -6,8 +6,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="25" d:DesignWidth="100" Loaded="UserControl_Loaded">
     <Grid Name="grid" Height="25" Width="100">
-        <Rectangle Name="rectangle1" Stroke="Black" Fill="#00000000" PreviewMouseLeftButtonUp="rectangle1_PreviewMouseLeftButtonUp" PreviewMouseLeftButtonDown="rectangle1_PreviewMouseLeftButtonDown" PreviewMouseMove="rectangle1_PreviewMouseMove" />
-        <Rectangle Fill="#FF6E9FF5" Height="25" HorizontalAlignment="Left" Margin="49,0,0,0" Name="rectangle2" Stroke="Black" VerticalAlignment="Top" Width="33" IsHitTestVisible="False" />
+        <Rectangle Name="rectangle1" Stroke="Black" Fill="#00000000" PreviewMouseLeftButtonUp="rectangle1_PreviewMouseLeftButtonUp" PreviewMouseLeftButtonDown="rectangle1_PreviewMouseLeftButtonDown" PreviewMouseMove="rectangle1_PreviewMouseMove" SnapsToDevicePixels="True" />
+        <Rectangle Fill="#FF6E9FF5" Height="25" HorizontalAlignment="Left" Margin="49,0,0,0" Name="rectangle2" Stroke="Black" VerticalAlignment="Top" Width="33" IsHitTestVisible="False" SnapsToDevicePixels="True" />
 
     </Grid>
 </UserControl>

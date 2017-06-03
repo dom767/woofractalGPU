@@ -12,6 +12,7 @@ namespace WooFractal
         public Vector3() { }
         public Vector3(double ix, double iy, double iz) { x = ix; y = iy; z = iz; }
         public Vector3(Vector3 rhs) { x = rhs.x; y = rhs.y; z = rhs.z; }
+        public Vector3(double rhs) { x = rhs; y = rhs; z = rhs; }
         public Vector3(Colour rhs) { x = rhs._Red; y = rhs._Green; z = rhs._Blue; }
 
         public void LoadString(string vec)

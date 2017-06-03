@@ -31,18 +31,20 @@ namespace WooFractal
 
         public void CreateGUI()
         {
-            wooSlider2.Set(_Parent._ApertureSize, 0.0001, 0.1, this);
-            wooSlider3.Set(_Parent._FOV, 1, 360, this);
-            wooSlider4.Set(_Parent._Spherical, 0, 1, this);
-            wooSlider5.Set(_Parent._Stereographic, 0, 1, this);
+            floatEditor1.Set("Aperture Size", _Parent._ApertureSize, 0.0001, 0.1, FloatEditorFlags.None, this);
+            floatEditor2.Set("Field Of View", _Parent._FOV, 1, 360, FloatEditorFlags.None, this);
+            floatEditor3.Set("Spherical Projection", _Parent._Spherical, 0, 1, FloatEditorFlags.None, this);
+            floatEditor4.Set("Stereographic", _Parent._Stereographic, 0, 1, FloatEditorFlags.None, this);
+            floatEditor5.Set("Exposure", _Parent._Exposure, 0.1, 10, FloatEditorFlags.None, this);
         }
 
         public void GUIUpdate()
         {
-            _Parent._ApertureSize = wooSlider2.GetSliderValue();
-            _Parent._FOV = wooSlider3.GetSliderValue();
-            _Parent._Spherical = wooSlider4.GetSliderValue();
-            _Parent._Stereographic = wooSlider5.GetSliderValue();
+            _Parent._ApertureSize = floatEditor1.GetSliderValue();
+            _Parent._FOV = floatEditor2.GetSliderValue();
+            _Parent._Spherical = floatEditor3.GetSliderValue();
+            _Parent._Stereographic = floatEditor4.GetSliderValue();
+            _Parent._Exposure = floatEditor5.GetSliderValue();
 
             ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
         }

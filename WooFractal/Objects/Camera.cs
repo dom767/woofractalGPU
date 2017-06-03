@@ -32,6 +32,7 @@ namespace WooFractal
         public double _ApertureSize;
         public double _Spherical;
         public double _Stereographic;
+        public double _Exposure;
 
         public Camera()
         {
@@ -42,6 +43,7 @@ namespace WooFractal
             _ApertureSize = 0.1;
             _Spherical = 0;
             _Stereographic = 0;
+            _Exposure = 1;
         }
 
         public XElement CreateElement()
@@ -53,7 +55,8 @@ namespace WooFractal
                 new XAttribute("apertureSize", _ApertureSize),
                 new XAttribute("spherical", _Spherical),
                 new XAttribute("stereographic", _Stereographic),
-                new XAttribute("focusDepth", _FocusDepth));
+                new XAttribute("focusDepth", _FocusDepth),
+                new XAttribute("exposure", _Exposure));
         }
 
         public void LoadXML(XmlReader reader)
@@ -65,6 +68,7 @@ namespace WooFractal
             XMLHelpers.ReadDouble(reader, "spherical", ref _Spherical);
             XMLHelpers.ReadDouble(reader, "stereographic", ref _Stereographic);
             XMLHelpers.ReadDouble(reader, "focusDepth", ref _FocusDepth);
+            XMLHelpers.ReadDouble(reader, "exposure", ref _Exposure);
             reader.Read();
         }
 
@@ -113,6 +117,7 @@ namespace WooFractal
             frag += @"
 uniform vec3 camPos = vec3(" + _Position.x + "," + _Position.y + "," + _Position.z + @");
 uniform mat4 viewMatrix = mat4(" + Utils.mat4ToString(viewMatrix) + @");
+uniform float apertureSize;
 
 void getcamera(out vec3 pos, out vec3 dir, in vec2 q, in bool depth)
 {
@@ -167,14 +172,14 @@ if (!depth)
 vec3 offset = vec3(";
             
             if (raytracerOptions._DoFEnabled)
-                frag += "focusDepth";
+                frag += "focusDepth*apertureSize";
             else
                 frag += "0.0";
 
             frag += @"*(getRandomDisc()*0.5), 0);
 
 // get the focal point
-vec3 focusedPoint = direction * " +_FocusDepth+ @";
+vec3 focusedPoint = direction * focusDepth;
 	
 // Calculate new direction from origin to focus point
 direction = focusedPoint - offset;

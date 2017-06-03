@@ -11,22 +11,9 @@ namespace WooFractal
 {
     public class RaytracerOptions
     {
-        RaytracerControls _Controls;
-        public UserControl GetControl()
-        {
-            _Controls = new RaytracerControls(this);
-            return _Controls;
-        }
-
-        public void UpdateGUI()
-        {
-            _Controls.CreateGUI();
-        }
-
         public XElement CreateElement()
         {
             return new XElement("OPTIONS",
-                new XAttribute("exposure", _Exposure),
                 new XAttribute("autoExposure", _AutoExposure),
                 new XAttribute("shadowsEnabled", _ShadowsEnabled),
                 new XAttribute("dofEnabled", _DoFEnabled),
@@ -39,7 +26,6 @@ namespace WooFractal
         
         public void LoadXML(XmlReader reader)
         {
-            XMLHelpers.ReadDouble(reader, "exposure", ref _Exposure);
             XMLHelpers.ReadBool(reader, "autoExposure", ref _AutoExposure);
             XMLHelpers.ReadBool(reader, "shadowsEnabled", ref _ShadowsEnabled);
             XMLHelpers.ReadBool(reader, "dofEnabled", ref _DoFEnabled);
@@ -56,7 +42,6 @@ namespace WooFractal
             return (1 + (_ShadowsEnabled?2:0)) * (1+_Reflections);
         }
 
-        public double _Exposure = 1;
         public int _Resolution = 1;
         public bool _AutoExposure = true;
         public bool _ShadowsEnabled = true;

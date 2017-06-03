@@ -155,9 +155,9 @@ void Kleinian(inout vec3 pos, in vec3 origPos, inout float scale, in float mScal
 //	pos = mRotate1Matrix * pos;
 }
 
-void Box(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in mat3 mRotate1Matrix, in float mMinRadius )
+void Box(inout vec3 pos, in vec3 origPos, inout float scale, in vec3 mScale, in mat3 mRotate1Matrix, in float mMinRadius )
 {
-//	pos *= mRotate1Matrix;
+	pos *= mRotate1Matrix;
 	float fixedRadius = 1.0;
 	float fR2 = fixedRadius * fixedRadius;
 	float mR2 = mMinRadius * mMinRadius;
@@ -177,8 +177,8 @@ void Box(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in
 		scale*= fR2 / r2;
 	}
 			
-    pos = pos * mScale + origPos;
-	scale = scale * mScale + 1.0f;
+    pos = (pos * mScale) + origPos;
+	scale = scale * max(mScale.x, max(mScale.y,mScale.z)) + 1.0f;
 }
 
 void Cuboid(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in vec3 mPOffset, in mat3 mRotate1Matrix, in mat3 mRotate2Matrix )

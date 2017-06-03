@@ -30,15 +30,9 @@ namespace WooFractal
 
         private void RenderSwatches()
         {
-            wooSlider1.Set(_Parent._Rotation.x, -Math.PI, Math.PI, this);
-            wooSlider2.Set(_Parent._Rotation.y, -Math.PI, Math.PI, this);
-            wooSlider3.Set(_Parent._Rotation.z, -Math.PI, Math.PI, this);
-
-            wooSlider10.Set(_Parent._Scale, -16, 16, this);
-
-            wooSlider4.Set(_Parent._Julia.x, -4, 4, this);
-            wooSlider5.Set(_Parent._Julia.y, -4, 4, this);
-            wooSlider6.Set(_Parent._Julia.z, -4, 4, this);
+            vectorEditor1.Set("Rotation", _Parent._Rotation, new Vector3(-Math.PI), new Vector3(Math.PI), VectorEditorFlags.Rotation, this);
+            floatEditor1.Set("Scale", _Parent._Scale, -16, 16, FloatEditorFlags.None, this);
+            vectorEditor2.Set("Julia", _Parent._Julia, new Vector3(-2), new Vector3(2), VectorEditorFlags.None, this);
 
             checkBox1.IsChecked = _Parent._JuliaMode;
 
@@ -66,15 +60,9 @@ namespace WooFractal
 
         public void GUIUpdate()
         {
-            _Parent._Rotation.x = wooSlider1.GetSliderValue();
-            _Parent._Rotation.y = wooSlider2.GetSliderValue();
-            _Parent._Rotation.z = wooSlider3.GetSliderValue();
-
-            _Parent._Scale = wooSlider10.GetSliderValue();
-
-            _Parent._Julia.x = wooSlider4.GetSliderValue();
-            _Parent._Julia.y = wooSlider5.GetSliderValue();
-            _Parent._Julia.z = wooSlider6.GetSliderValue();
+            _Parent._Rotation = vectorEditor1.GetSliderValue();
+            _Parent._Scale = floatEditor1.GetSliderValue();
+            _Parent._Julia = vectorEditor2.GetSliderValue();
 
             _Parent._JuliaMode = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
 

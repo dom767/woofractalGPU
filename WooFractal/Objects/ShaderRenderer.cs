@@ -32,6 +32,7 @@ namespace WooFractal
         vec3 _Position;
         vec3 _SunDirection;
         float _FocusDepth;
+        float _ApertureSize;
 
         int _TargetWidth;
         int _TargetHeight;
@@ -42,12 +43,13 @@ namespace WooFractal
         public int GetTargetWidth() { return _TargetWidth; }
         public int GetTargetHeight() { return _TargetHeight; }
 
-        public void SetCameraVars(mat4 viewMatrix, vec3 position, vec3 sunDirection, float focusDepth)
+        public void SetCameraVars(mat4 viewMatrix, vec3 position, vec3 sunDirection, float focusDepth, float apertureSize)
         {
             _ViewMatrix = viewMatrix;
             _Position = position;
             _SunDirection = sunDirection;
             _FocusDepth = focusDepth;
+            _ApertureSize = apertureSize;
             _FramesRendered = 0;
             _ProgressiveIndex = 0;
         }
@@ -498,6 +500,7 @@ void main()
             shader.SetUniform1(gl, "mouseY", _TargetHeight - _MouseY);
             shader.SetUniform3(gl, "sunDirection", _SunDirection.x, _SunDirection.y, _SunDirection.z);
             shader.SetUniform1(gl, "focusDepth", _FocusDepth);
+            shader.SetUniform1(gl, "apertureSize", _ApertureSize);
 
             gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[_PingPong ? 0 : 1]);
@@ -551,8 +554,8 @@ void main()
                 int[] pixels = new int[4];
                 gl.GetTexImage(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA, OpenGL.GL_FLOAT, pixels);
                 float valr = BitConverter.ToSingle(BitConverter.GetBytes(pixels[0]), 0);
-                if (valr != valr)
-                    throw new Exception("Depth test failed");
+//                if (valr != valr)
+  //                  throw new Exception("Depth test failed");
                 //                float valg = BitConverter.ToSingle(BitConverter.GetBytes(pixels[1]), 0);
                 //                float valb = BitConverter.ToSingle(BitConverter.GetBytes(pixels[2]), 0);
                 //                float vala = BitConverter.ToSingle(BitConverter.GetBytes(pixels[3]), 0);

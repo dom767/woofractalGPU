@@ -49,6 +49,12 @@ namespace WooFractal
                 return _Value;
         }
 
+        public void SetSliderValue(double value)
+        {
+            SetValue(value);
+            ValueUpdated(true);
+        }
+
         bool _ValueDrag;
         Point _LastPos;
 

@@ -227,7 +227,7 @@ vec3 getSkyColour(vec3 dir, vec3 pos, float tmin, float tmax)
 
 vec3 getSkyColour2(vec3 dir, vec3 pos, float tmin, float tmax)
 {
- float scale = 2;
+ float scale = 0.001;
  vec3 scalePos = pos*scale;
  tmax *= scale;
  vec3 betaR = vec3(0.0038, 0.0135, 0.0331);
@@ -270,7 +270,7 @@ vec3 getSkyColour2(vec3 dir, vec3 pos, float tmin, float tmax)
   // compute optical depth for light
   float hr = exp(-height / atmosphereHeightR) * segmentLength; 
   float hm = exp(-height / atmosphereHeightM) * segmentLength; 
-   opticalDepthR += hr; 
+   opticalDepthR = hr; 
    opticalDepthM += hm;
  
   // light optical depth
@@ -290,8 +290,13 @@ vec3 getSkyColour2(vec3 dir, vec3 pos, float tmin, float tmax)
   } 
   if (j == numSamplesLight)
   {
-   vec3 tau = betaR * (opticalDepthR + opticalDepthLightR) + betaM * 1.1f * (opticalDepthM + opticalDepthLightM); 
-   vec3 attenuation = exp(-tau); 
+   vec3 rayleighColour = vec3(0.5,0.72,1.0);
+   vec3 rColour = rayleighColour * 0.008*pow(opticalDepthR, 0.15);
+   sumR += rColour;
+//   vec3 tau = betaR * (opticalDepthR + opticalDepthLightR) + betaM * 1.1f * (opticalDepthM + opticalDepthLightM); 
+//   vec3 attenuation = exp(-tau); 
+/*   
+
    material omat;
    vec3 opos, onor;
    float odist;
@@ -299,12 +304,14 @@ vec3 getSkyColour2(vec3 dir, vec3 pos, float tmin, float tmax)
    {
     sumR += attenuation * hr; 
     sumM += attenuation * hm; 
-   }
+   }*/
   } 
   tCurrent += segmentLength;
  }
 
- return vec3(20*(sumR*betaR*phaseR + sumM*betaM*phaseM));
+ 
+
+ return vec3(20*(sumR));
 }
 
 // https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/simulating-sky/simulating-colors-of-the-sky

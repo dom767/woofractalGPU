@@ -4,26 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="633" d:DesignWidth="348" Margin="0,10,0,0" xmlns:my="clr-namespace:WooFractal">
+             d:DesignHeight="633" d:DesignWidth="348" Margin="0,10,0,0" xmlns:my="clr-namespace:WooFractal" xmlns:my1="clr-namespace:WooFractal.GUI">
     <Border BorderBrush="Black" BorderThickness="1">
-        <Grid Width="348" Height="633">
-            <my:WooSlider HorizontalAlignment="Left" Margin="110,57,0,0" x:Name="wooSlider1" VerticalAlignment="Top" Width="226" />
-            <Label Content="Minimum Distance" Height="24" HorizontalAlignment="Left" Margin="12,36,0,0" Name="label1" VerticalAlignment="Top" />
+        <Grid Width="348" Height="633" Background="White">
             <Label Background="Black" Content="F R A C T A L   C O N T R O L S" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="348" />
-            <my:WooSlider HorizontalAlignment="Left" Margin="12,109,0,0" x:Name="wooSlider2" VerticalAlignment="Top" Width="324" />
-            <Label Content="Distance Iterations" Height="24" HorizontalAlignment="Left" Margin="12,88,0,0" Name="label2" VerticalAlignment="Top" />
-            <my:WooSlider HorizontalAlignment="Left" Margin="12,162,0,0" x:Name="wooSlider3" VerticalAlignment="Top" Width="324" />
-            <Label Content="Step Size" Height="24" HorizontalAlignment="Left" Margin="13,140,0,0" Name="label3" VerticalAlignment="Top" />
-            <Label Content="Distance Extents" Height="24" HorizontalAlignment="Left" Margin="13,193,0,0" Name="label4" VerticalAlignment="Top" />
-            <my:WooSlider HorizontalAlignment="Left" Margin="12,213,0,0" x:Name="wooSlider4" VerticalAlignment="Top" Width="324" />
-            <Label Content="Fractal Iterations" Height="24" HorizontalAlignment="Left" Margin="13,244,0,0" Name="label6" VerticalAlignment="Top" />
-            <my:WooSlider HorizontalAlignment="Left" Margin="12,265,0,0" x:Name="wooSlider5" VerticalAlignment="Top" Width="324" />
-            <Label Content="Colour Iterations" Height="24" HorizontalAlignment="Left" Margin="13,296,0,0" Name="label7" VerticalAlignment="Top" />
-            <my:WooSlider HorizontalAlignment="Left" Margin="12,318,0,0" x:Name="wooSlider6" VerticalAlignment="Top" Width="324" />
             <ComboBox Height="25" HorizontalAlignment="Left" Margin="12,372,0,0" Name="comboBox1" VerticalAlignment="Top" Width="159" SelectionChanged="comboBox1_SelectionChanged" />
             <ComboBox Height="25" HorizontalAlignment="Left" Margin="177,372,0,0" Name="comboBox2" VerticalAlignment="Top" Width="159" SelectionChanged="comboBox2_SelectionChanged" />
-            <Label Content="Background" Height="26" HorizontalAlignment="Left" Margin="13,349,0,0" Name="label8" VerticalAlignment="Top" />
-            <Label Content="Lighting" Height="26" HorizontalAlignment="Left" Margin="177,349,0,0" Name="label9" VerticalAlignment="Top" />
+            <Label Content="Background" Height="26" HorizontalAlignment="Left" Margin="14,345,0,0" Name="label8" VerticalAlignment="Top" />
+            <Label Content="Lighting" Height="26" HorizontalAlignment="Left" Margin="178,345,0,0" Name="label9" VerticalAlignment="Top" />
             <ComboBox Height="25" HorizontalAlignment="Left" Margin="12,534,0,0" Name="comboBox3" VerticalAlignment="Top" Width="324" SelectionChanged="comboBox3_SelectionChanged" />
             <Label Content="Sun Height" Height="26" HorizontalAlignment="Left" Margin="13,404,0,0" Name="label12" VerticalAlignment="Top" />
             <my:WooSlider HorizontalAlignment="Left" Margin="12,426,0,0" x:Name="wooSlider8" VerticalAlignment="Top" Width="324" />
@@ -32,7 +20,13 @@
             <Label Content="Distance Estimator Mode" Height="26" HorizontalAlignment="Left" Margin="13,512,0,0" Name="label10" VerticalAlignment="Top" />
             <CheckBox Content="Headlight Enabled" Height="16" HorizontalAlignment="Left" Margin="13,570,0,0" Name="checkBox1" VerticalAlignment="Top"  Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
             <my:WooSlider HorizontalAlignment="Left" Margin="13,589,0,0" x:Name="wooSlider7" VerticalAlignment="Top" Width="324" />
-            <ComboBox Height="25" HorizontalAlignment="Left" Margin="13,57,0,0" Name="comboBox4" VerticalAlignment="Top" Width="91" SelectionChanged="comboBox4_SelectionChanged" />
+            <ComboBox Height="25" HorizontalAlignment="Left" Margin="14,58,0,0" Name="comboBox4" VerticalAlignment="Top" Width="101" SelectionChanged="comboBox4_SelectionChanged" />
+            <my1:FloatEditor HorizontalAlignment="Left" Margin="13,89,0,0" x:Name="floatEditor1" VerticalAlignment="Top" Width="323" />
+            <my1:FloatEditor HorizontalAlignment="Left" Margin="13,142,0,0" x:Name="floatEditor2" VerticalAlignment="Top" Width="323" />
+            <my1:FloatEditor HorizontalAlignment="Right" Margin="0,36,12,0" x:Name="floatEditor3" VerticalAlignment="Top" Width="215" />
+            <my1:FloatEditor HorizontalAlignment="Left" Margin="13,195,0,0" x:Name="floatEditor4" VerticalAlignment="Top" Width="323" />
+            <my1:FloatEditor HorizontalAlignment="Left" Margin="14,248,0,0" x:Name="floatEditor5" VerticalAlignment="Top" Width="323" />
+            <my1:FloatEditor HorizontalAlignment="Left" Margin="14,301,0,0" x:Name="floatEditor6" VerticalAlignment="Top" Width="323" />
         </Grid>
     </Border>
 </UserControl>
