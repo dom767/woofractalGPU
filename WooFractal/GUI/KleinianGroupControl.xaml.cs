@@ -30,13 +30,9 @@ namespace WooFractal
 
         private void RenderSwatches()
         {
-            wooSlider1.Set(_Parent._Rotation.x, -Math.PI, Math.PI, this);
-            wooSlider2.Set(_Parent._Rotation.y, -Math.PI, Math.PI, this);
-            wooSlider3.Set(_Parent._Rotation.z, -Math.PI, Math.PI, this);
-
-            wooSlider4.Set(_Parent._Multiplier, 0.01, 0.99, this);
-
-            wooSlider10.Set(_Parent._Scale, -2, 2, this);
+            floatEditor1.Set("Scale", _Parent._Scale, -2, 2, FloatEditorFlags.None, this);
+            vectorEditor1.Set("Constant Size", _Parent._CSize, new Vector3(-4), new Vector3(4), VectorEditorFlags.None, this);
+            vectorEditor2.Set("Julia", _Parent._Julia, new Vector3(-3), new Vector3(3), VectorEditorFlags.None, this);
 
             textBox1.Text = _Parent._Repeats.ToString();
         }
@@ -62,13 +58,9 @@ namespace WooFractal
 
         public void GUIUpdate()
         {
-            _Parent._Rotation.x = wooSlider1.GetSliderValue();
-            _Parent._Rotation.y = wooSlider2.GetSliderValue();
-            _Parent._Rotation.z = wooSlider3.GetSliderValue();
-
-            _Parent._Scale = wooSlider10.GetSliderValue();
-
-            _Parent._Multiplier = wooSlider4.GetSliderValue();
+            _Parent._Scale = floatEditor1.GetSliderValue();
+            _Parent._CSize = vectorEditor1.GetSliderValue();
+            _Parent._Julia = vectorEditor2.GetSliderValue();
 
             int repeats;
             if (int.TryParse(textBox1.Text, out repeats)

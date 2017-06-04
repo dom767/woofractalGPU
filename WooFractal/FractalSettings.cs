@@ -141,18 +141,16 @@ void Bulb(in float r, inout vec3 pos, in vec3 origPos, inout float scale, in flo
 	pos = mRotate1Matrix * pos;
 }
 
-void Kleinian(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in mat3 mRotate1Matrix, in float mMultiplier)//, in float mMinRadius )
+void Kleinian(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in vec3 mCSize, in vec3 mJulia)
 {
-	float m = 0.5;//mMultiplier;
-
-	pos = vec3(-1.0,-1,-1) + 2.0*fract(pos*m + vec3((1-m),(1-m),(1-m)));
+	pos = 2.0*clamp(pos, -mCSize, mCSize) - pos;
 
 	float r2 = dot(pos, pos);
-	float k = mScale/r2;
+	float k = max(mScale/r2, 1);
 	pos *= k;
 	scale *= k;
 
-//	pos = mRotate1Matrix * pos;
+	pos += mJulia;
 }
 
 void Box(inout vec3 pos, in vec3 origPos, inout float scale, in vec3 mScale, in mat3 mRotate1Matrix, in float mMinRadius )
@@ -237,7 +235,7 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
  if (DEMode==1) return (r - 1) / abs(scale);
  if (DEMode==2) return 0.5*log(r)*r/scale;
  if (DEMode==0) return (r - 1) / abs(scale);
- if (DEMode==3) return 0.25*abs(pos.z)/scale;
+ if (DEMode==3) return 0.5*abs(pos.z)/scale;
  // return length(origPos-vec3(0,0,0))-1;
 }
 

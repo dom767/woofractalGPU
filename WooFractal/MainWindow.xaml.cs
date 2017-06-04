@@ -111,7 +111,7 @@ namespace WooFractal
 
         public void AddKleinianGroup()
         {
-            _Scene._FractalSettings._FractalIterations.Add(new KleinianGroupIteration(new Vector3(0, 0, 0), 1, 0.5, 1));
+            _Scene._FractalSettings._FractalIterations.Add(new KleinianGroupIteration(1, new Vector3(1,1,1), new Vector3(0, 0, 0), 1));
             BuildFractalList();
         }
 
