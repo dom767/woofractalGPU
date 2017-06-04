@@ -59,19 +59,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Apex">
-      <HintPath>..\..\sharpgl\source\SharpGL\Core\SharpGL.WPF\bin\Debug\Apex.dll</HintPath>
+      <HintPath>Libs\Apex.dll</HintPath>
     </Reference>
     <Reference Include="GlmNet">
-      <HintPath>..\Dependencies\GlmNet.dll</HintPath>
+      <HintPath>Libs\GlmNet.dll</HintPath>
     </Reference>
     <Reference Include="SharpGL">
-      <HintPath>..\..\sharpgl\source\SharpGL\Core\SharpGL.WPF\bin\Debug\SharpGL.dll</HintPath>
+      <HintPath>Libs\SharpGL.dll</HintPath>
     </Reference>
     <Reference Include="SharpGL.SceneGraph">
-      <HintPath>..\..\sharpgl\source\SharpGL\Core\SharpGL.WPF\bin\Debug\SharpGL.SceneGraph.dll</HintPath>
+      <HintPath>Libs\SharpGL.SceneGraph.dll</HintPath>
     </Reference>
     <Reference Include="SharpGL.WPF">
-      <HintPath>..\..\sharpgl\source\SharpGL\Core\SharpGL.WPF\bin\Debug\SharpGL.WPF.dll</HintPath>
+      <HintPath>Libs\SharpGL.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
