@@ -59,6 +59,27 @@ namespace WooFractal.GUI
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            Thickness marg = label2.Margin;
+            marg.Left = 0;
+            label2.Margin = marg;
+            wooSlider1.Width = this.ActualWidth * 0.333f - 14;
+            
+            marg = label3.Margin;
+            marg.Left = this.ActualWidth * 0.333f;
+            label3.Margin = marg;
+            marg = wooSlider2.Margin;
+            marg.Left = 14 + this.ActualWidth * 0.333f;
+            wooSlider2.Margin = marg;
+            wooSlider2.Width = this.ActualWidth * 0.333f - 14;
+            
+            marg = label4.Margin;
+            marg.Left = this.ActualWidth * 0.667f;
+            label4.Margin = marg;
+            marg = wooSlider3.Margin;
+            marg.Left = 14 + this.ActualWidth * 0.667f;
+            wooSlider3.Margin = marg;
+            wooSlider3.Width = this.ActualWidth * 0.333f - 14;
+
             ValueUpdated(false);
         }
 

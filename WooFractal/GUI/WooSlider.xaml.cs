@@ -146,5 +146,10 @@ namespace WooFractal
         {
             ValueUpdated(false);
         }
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ValueUpdated(false);
+        }
     }
 }

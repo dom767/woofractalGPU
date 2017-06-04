@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="25" d:DesignWidth="100" Loaded="UserControl_Loaded">
+             d:DesignHeight="25" d:DesignWidth="100" Loaded="UserControl_Loaded" SizeChanged="UserControl_SizeChanged">
     <Grid Name="grid" Height="25" Width="100">
         <Rectangle Name="rectangle1" Stroke="Black" Fill="#00000000" PreviewMouseLeftButtonUp="rectangle1_PreviewMouseLeftButtonUp" PreviewMouseLeftButtonDown="rectangle1_PreviewMouseLeftButtonDown" PreviewMouseMove="rectangle1_PreviewMouseMove" SnapsToDevicePixels="True" />
         <Rectangle Fill="#FF6E9FF5" Height="25" HorizontalAlignment="Left" Margin="49,0,0,0" Name="rectangle2" Stroke="Black" VerticalAlignment="Top" Width="33" IsHitTestVisible="False" SnapsToDevicePixels="True" />
