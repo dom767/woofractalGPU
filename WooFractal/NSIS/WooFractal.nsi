@@ -46,11 +46,14 @@ Section "WooFractal (required)"
   
   ; Put file there
   File /oname=woofractal.exe "..\bin\Release\woofractal.exe"
-  File /oname=randomSequences.vec2 "..\bin\Release\randomSequences.vec2"
   File /oname=GlmNet.dll "..\bin\Release\GlmNet.dll"
   File /oname=SharpGL.dll "..\bin\Release\SharpGL.dll"
   File /oname=SharpGL.SceneGraph.dll "..\bin\Release\SharpGL.SceneGraph.dll"
   File /oname=SharpGL.WPF.dll "..\bin\Release\SharpGL.WPF.dll"
+
+  SetShellVarContext all
+  SetOutPath $APPDATA\WooFractal
+  File /oname=randomSequences.vec2 "..\bin\Release\randomSequences.vec2"
 
   SetOutPath $DOCUMENTS
 

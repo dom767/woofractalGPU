@@ -68,7 +68,7 @@ namespace WooFractal
 
             byte[] pixels = new byte[4 * 4 * 1024 * 1024]; // sizeof(int)
 
-            var fs = new FileStream(@"randomSequences.vec2", FileMode.Open, FileAccess.Read);
+            var fs = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\WooFractal\\" + "randomSequences.vec2", FileMode.Open, FileAccess.Read);
             var len = (int)fs.Length;
             var bits = new byte[len];
             fs.Read(bits, 0, len);
