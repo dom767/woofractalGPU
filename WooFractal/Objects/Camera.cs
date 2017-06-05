@@ -118,6 +118,9 @@ namespace WooFractal
 uniform vec3 camPos = vec3(" + _Position.x + "," + _Position.y + "," + _Position.z + @");
 uniform mat4 viewMatrix = mat4(" + Utils.mat4ToString(viewMatrix) + @");
 uniform float apertureSize;
+uniform float spherical;
+uniform float stereographic;
+uniform float fov;
 
 void getcamera(out vec3 pos, out vec3 dir, in vec2 q, in bool depth)
 {
@@ -128,13 +131,12 @@ vec2 r = rand2d(vec3(pixelIndex, sampleIndex++, randomIndex))-vec2(0.5,0.5);
 q.x += r.x/screenWidth;
 q.y += r.y/screenHeight;
 }
-vec3 direction = vec3(q.x*" + _FOV + ", q.y*" + _FOV + @"*aspect, 45);
+vec3 direction = vec3(q.x*fov, q.y*fov*aspect, 45);
 direction = normalize(direction);
-pos = camPos;";
+pos = camPos;
 
-            if (_Spherical > 0.0001f)
-            {
-                frag += @"
+if (spherical > 0.0001f)
+{
 float sx = 0.5*q.x;
 float sy = 0.5*q.y*aspect;
 float mag = sqrt(sx*sx + sy*sy);
@@ -142,29 +144,26 @@ float mag = sqrt(sx*sx + sy*sy);
 sx /= mag;
 sy /= mag;
 
-mag *= " + (_FOV*3.14159254f/90).ToString()+@";
+mag *= fov * 3.14159254f / 90;
 
 vec3 sDirection = vec3(sx*sin(mag), sy*sin(mag), cos(mag));
 sDirection = normalize(sDirection);
-direction += (sDirection - direction) * "+_Spherical+@";
+direction += (sDirection - direction) * spherical;
+}
 
-";
-            }
-
-            if (_Stereographic > 0.0001f)
-            {
-                frag += @"
-float ex = q.x*" + (_FOV / 30).ToString() + @";
-float ey = q.y*aspect*" + (_FOV / 30).ToString() + @";
+if (stereographic > 0.0001f)
+{
+float ex = q.x*fov/30;
+float ey = q.y*aspect*fov/30;
 
 float s = 4 / (ex*ex + ey*ey + 1);
 
 vec3 edirection = vec3(s*ex, s*ey, 2*s - 1);
 edirection = normalize(edirection);
-direction += (edirection - direction) * "+_Stereographic+@";
+direction += (edirection - direction) * stereographic;
+}
 
 ";
-            }
 
             frag += @"
 if (!depth)

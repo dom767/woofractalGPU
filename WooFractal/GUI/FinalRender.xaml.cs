@@ -116,7 +116,7 @@ namespace WooFractal
             int width, height;
             GetWidthHeightSelection(out width, out height);
             _ShaderRenderer.Initialise(_GL, width, height, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
-            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), (float)(_Scene._Camera._FocusDepth), (float)(_Scene._Camera._ApertureSize));
+            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), _Scene._Camera);
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
             _ShaderRenderer.SetPostProcess(_PostProcess);
             _ShaderRenderer.Clean(_GL);

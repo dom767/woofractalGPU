@@ -31,8 +31,7 @@ namespace WooFractal
         mat4 _ViewMatrix;
         vec3 _Position;
         vec3 _SunDirection;
-        float _FocusDepth;
-        float _ApertureSize;
+        Camera _Camera;
 
         int _TargetWidth;
         int _TargetHeight;
@@ -43,13 +42,12 @@ namespace WooFractal
         public int GetTargetWidth() { return _TargetWidth; }
         public int GetTargetHeight() { return _TargetHeight; }
 
-        public void SetCameraVars(mat4 viewMatrix, vec3 position, vec3 sunDirection, float focusDepth, float apertureSize)
+        public void SetCameraVars(mat4 viewMatrix, vec3 position, vec3 sunDirection, Camera camera)
         {
             _ViewMatrix = viewMatrix;
             _Position = position;
             _SunDirection = sunDirection;
-            _FocusDepth = focusDepth;
-            _ApertureSize = apertureSize;
+            _Camera = camera;
             _FramesRendered = 0;
             _ProgressiveIndex = 0;
         }
@@ -499,8 +497,11 @@ void main()
             shader.SetUniform1(gl, "mouseX", _MouseX);
             shader.SetUniform1(gl, "mouseY", _TargetHeight - _MouseY);
             shader.SetUniform3(gl, "sunDirection", _SunDirection.x, _SunDirection.y, _SunDirection.z);
-            shader.SetUniform1(gl, "focusDepth", _FocusDepth);
-            shader.SetUniform1(gl, "apertureSize", _ApertureSize);
+            shader.SetUniform1(gl, "focusDepth", (float)_Camera._FocusDepth);
+            shader.SetUniform1(gl, "apertureSize", (float)_Camera._ApertureSize);
+            shader.SetUniform1(gl, "fov", (float)_Camera._FOV);
+            shader.SetUniform1(gl, "spherical", (float)_Camera._Spherical);
+            shader.SetUniform1(gl, "stereographic", (float)_Camera._Stereographic);
 
             gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[_PingPong ? 0 : 1]);

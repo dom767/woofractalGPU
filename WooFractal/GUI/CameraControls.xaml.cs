@@ -46,7 +46,7 @@ namespace WooFractal
             _Parent._Stereographic = floatEditor4.GetSliderValue();
             _Parent._Exposure = floatEditor5.GetSliderValue();
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).SetCameraDirty();
         }
     }
 }
