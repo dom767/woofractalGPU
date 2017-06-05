@@ -60,6 +60,11 @@ namespace WooFractal
             return new RenderControls(this);
         }
 
+        public UserControl GetEnvironmentControl()
+        {
+            return new EnvironmentControls(this);
+        }
+
         public void CreateElement(XElement parent)
         {
             XElement ret = new XElement("RENDEROPTIONS",

@@ -486,11 +486,6 @@ void main()
             shader.SetUniform1(gl, "frameNumber", _FrameNumber++);
             shader.SetUniformMatrix4(gl, "viewMatrix", _ViewMatrix.to_array());
             shader.SetUniform3(gl, "camPos", _Position.x, _Position.y, _Position.z);
-
-            int rt1 = shader.GetUniformLocation(gl, "renderedTexture");
-            int rn1 = shader.GetUniformLocation(gl, "randomNumbers");
-            gl.Uniform1(rt1, 0);
-            gl.Uniform1(rn1, 1);
             shader.SetUniform1(gl, "renderedTexture", 0);
             shader.SetUniform1(gl, "randomNumbers", 1);
             shader.SetUniform1(gl, "depth", _Depth ? 1 : 0);
@@ -502,6 +497,11 @@ void main()
             shader.SetUniform1(gl, "fov", (float)_Camera._FOV);
             shader.SetUniform1(gl, "spherical", (float)_Camera._Spherical);
             shader.SetUniform1(gl, "stereographic", (float)_Camera._Stereographic);
+
+            int rt1 = shader.GetUniformLocation(gl, "renderedTexture");
+            int rn1 = shader.GetUniformLocation(gl, "randomNumbers");
+            gl.Uniform1(rt1, 0);
+            gl.Uniform1(rn1, 1);
 
             gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[_PingPong ? 0 : 1]);

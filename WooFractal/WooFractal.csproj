@@ -103,6 +103,9 @@
     <Compile Include="GUI\ColourSelector.xaml.cs">
       <DependentUpon>ColourSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\EnvironmentControls.xaml.cs">
+      <DependentUpon>EnvironmentControls.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Vec3Editor.xaml.cs">
       <DependentUpon>Vec3Editor.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
     <Page Include="GUI\ColourSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\EnvironmentControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="GUI\Vec3Editor.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -75,7 +75,8 @@ bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec
 
 vec2 rand2d(vec3 co)
 {
-//    return vec2(fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453), fract(sin(dot(co.xy+vec2(243,71) ,vec2(12.9898,78.233))) * 43758.5453));
+// if (texCoord.x<0)
+//  return vec2(fract(sin(dot(co.xyz ,vec3(12.9898,78.233,267))) * 43758.5453), fract(sin(dot(co.xyz+vec3(243,71,741) ,vec3(12.9898,78.233, 267))) * 43758.5453));
  uint clamppixel = uint(co.x)%uint(3592);
  uint sequence = uint(uint(co.z)/uint(1024))*uint(4801) + uint(co.x)*uint(co.x) + uint(co.y);
  

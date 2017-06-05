@@ -148,6 +148,13 @@ namespace WooFractal
             stackPanel4.Children.Add(_Scene._FractalSettings._FractalColours.GetControl());
         }
 
+        private void BuildEnvironmentList()
+        {
+            stackPanel5.Children.Clear();
+
+            stackPanel5.Children.Add(_Scene._FractalSettings._RenderOptions.GetEnvironmentControl());
+        }
+
 //        ImageRenderer _ImageRenderer;
         private void button2_Click(object sender, RoutedEventArgs e)
         {
@@ -576,6 +583,7 @@ namespace WooFractal
             BuildOptionsList();
             BuildCameraList();
             BuildColourList();
+            BuildEnvironmentList();
         }
         private void SaveContext(string name)
         {
@@ -758,9 +766,9 @@ namespace WooFractal
             string version = _GL.GetString(OpenGL.GL_SHADING_LANGUAGE_VERSION);
 
             //  Initialise the scene.
-            _ShaderRenderer.Initialise(_GL, 1, 1, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
-            _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
-            _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
+    //        _ShaderRenderer.Initialise(_GL, 1, 1, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
+    //        _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+    //        _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
         }
 
         private void OpenGL_Closing()

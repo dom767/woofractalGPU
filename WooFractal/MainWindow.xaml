@@ -33,9 +33,9 @@
     <Grid Name="MainCanvas">
         <sharpGL:OpenGLControl x:Name="openGlCtrl"
             OpenGLDraw="OpenGLControl_OpenGLDraw" OpenGLInitialized="OpenGLControl_OpenGLInitialized" 
-            RenderContextType="FBO" Resized="OpenGLControl_Resized" Margin="395,0,0,69" MouseDown="openGlCtrl_MouseDown" MouseUp="openGlCtrl_MouseUp" PreviewMouseMove="openGlCtrl_PreviewMouseMove" />
-        <Button Content="Final Render" HorizontalAlignment="Left" Margin="752,0,0,13" Name="button4" Width="170" Click="button4_Click" Height="50" VerticalAlignment="Bottom" />
-        <TabControl HorizontalAlignment="Left" Name="tabControl1" Width="389" Margin="0,0,0,2">
+            RenderContextType="FBO" Resized="OpenGLControl_Resized" Margin="383,0,0,69" MouseDown="openGlCtrl_MouseDown" MouseUp="openGlCtrl_MouseUp" PreviewMouseMove="openGlCtrl_PreviewMouseMove" />
+        <Button Content="Final Render" HorizontalAlignment="Left" Margin="744,0,0,13" Name="button4" Width="178" Click="button4_Click" Height="50" VerticalAlignment="Bottom" />
+        <TabControl HorizontalAlignment="Left" Name="tabControl1" Width="380" Margin="0,0,0,2">
             <TabItem Header="Fractal" Name="tabItem1" IsSelected="True">
                 <Grid>
                     <ScrollViewer Name="scrollViewer1" Margin="1,0,0,0" VerticalScrollBarVisibility="Visible">
@@ -68,15 +68,23 @@
                     </ScrollViewer>
                 </Grid>
             </TabItem>
+            <TabItem Header="Environment" Name="tabItem5">
+                <Grid>
+                    <ScrollViewer Name="scrollViewer5" Margin="1,0,0,0" VerticalScrollBarVisibility="Visible">
+                        <StackPanel HorizontalAlignment="Left" Name="stackPanel5" VerticalAlignment="Top" CanVerticallyScroll="True" >
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
         </TabControl>
         <Button Content="Export GLSL" HorizontalAlignment="Left" Margin="928,0,0,40" Name="button5" Width="101" Click="button5_Click" Height="23" VerticalAlignment="Bottom" />
         <Button Content="Save Fractal" Height="23" HorizontalAlignment="Left" Margin="1035,0,0,12" Name="button1" VerticalAlignment="Bottom" Width="101" Click="button1_Click_1" />
         <Button Content="Load Fractal" Height="23" HorizontalAlignment="Left" Margin="928,0,0,13" Name="button2" VerticalAlignment="Bottom" Width="101" Click="button2_Click_1" />
-        <Button Content="Shadows : Off" Height="23" HorizontalAlignment="Left" Margin="395,0,0,40" Name="button3" VerticalAlignment="Bottom" Width="113" Click="button3_Click_1" />
-        <Button Content="Reflections : Off" Height="23" HorizontalAlignment="Left" Margin="395,0,0,13" Name="button6" VerticalAlignment="Bottom" Width="113" Click="button6_Click" />
-        <Button Content="Depth of Field : Off" HorizontalAlignment="Left" Margin="514,0,0,40" Name="button7" Width="113" Click="button7_Click" Height="23" VerticalAlignment="Bottom" />
-        <Button Content="Headlight : Off" Height="23" HorizontalAlignment="Left" Margin="514,0,0,13" Name="button8" VerticalAlignment="Bottom" Width="113" Click="button8_Click" />
-        <Button Content="Colours : Off" Height="23" HorizontalAlignment="Left" Margin="633,0,0,40" Name="button9" VerticalAlignment="Bottom" Width="113" Click="button9_Click" />
-        <Button Content="Progressive : Off" Height="23" HorizontalAlignment="Left" Margin="633,0,0,13" Name="button10" VerticalAlignment="Bottom" Width="113" Click="button10_Click" />
+        <Button Content="Shadows : Off" Height="23" HorizontalAlignment="Left" Margin="387,0,0,40" Name="button3" VerticalAlignment="Bottom" Width="113" Click="button3_Click_1" />
+        <Button Content="Reflections : Off" Height="23" HorizontalAlignment="Left" Margin="387,0,0,13" Name="button6" VerticalAlignment="Bottom" Width="113" Click="button6_Click" />
+        <Button Content="Depth of Field : Off" HorizontalAlignment="Left" Margin="506,0,0,40" Name="button7" Width="113" Click="button7_Click" Height="23" VerticalAlignment="Bottom" />
+        <Button Content="Headlight : Off" Height="23" HorizontalAlignment="Left" Margin="506,0,0,13" Name="button8" VerticalAlignment="Bottom" Width="113" Click="button8_Click" />
+        <Button Content="Colours : Off" Height="23" HorizontalAlignment="Left" Margin="625,0,0,40" Name="button9" VerticalAlignment="Bottom" Width="113" Click="button9_Click" />
+        <Button Content="Progressive : Off" Height="23" HorizontalAlignment="Left" Margin="625,0,0,13" Name="button10" VerticalAlignment="Bottom" Width="113" Click="button10_Click" />
     </Grid>
 </Window>
