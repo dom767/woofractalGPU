@@ -37,7 +37,7 @@
                     <Image Source="/WooFractal;component/Shaders/kleinianthumb.jpg" />
                 </StackPanel>
             </Button>            
-            <Label Background="Black" Content="H Y B R I D I S E" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="-1,0,0,0" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="348" />
+            <Label Background="Black" Content="H Y B R I D I S E" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalContentAlignment="Right" Margin="0,0" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" />
         </Grid>
     </Border>
 </UserControl>

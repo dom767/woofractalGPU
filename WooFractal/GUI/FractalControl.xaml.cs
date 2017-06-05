@@ -64,19 +64,10 @@ namespace WooFractal
 
         private void RenderSwatches()
         {
-            wooSlider1.Set(_Parent._PreRotation.x, -Math.PI, Math.PI, this);
-            wooSlider2.Set(_Parent._PreRotation.y, -Math.PI, Math.PI, this);
-            wooSlider3.Set(_Parent._PreRotation.z, -Math.PI, Math.PI, this);
-
-            wooSlider4.Set(_Parent._PostRotation.x, -Math.PI, Math.PI, this);
-            wooSlider5.Set(_Parent._PostRotation.y, -Math.PI, Math.PI, this);
-            wooSlider6.Set(_Parent._PostRotation.z, -Math.PI, Math.PI, this);
-
-            wooSlider7.Set(_Parent._Offset.x, 0, 3, this);
-            wooSlider8.Set(_Parent._Offset.y, 0, 3, this);
-            wooSlider9.Set(_Parent._Offset.z, 0, 3, this);
-
-            wooSlider10.Set(_Parent._Scale, 0, 4, this);
+            vectorEditor1.Set("Rotation pre transform", _Parent._PreRotation, new Vector3(-Math.PI), new Vector3(Math.PI), VectorEditorFlags.Rotation, this);
+            vectorEditor2.Set("Rotation post transform", _Parent._PostRotation, new Vector3(-Math.PI), new Vector3(Math.PI), VectorEditorFlags.Rotation, this);
+            vectorEditor3.Set("Offset", _Parent._Offset, new Vector3(0), new Vector3(4), VectorEditorFlags.None, this);
+            floatEditor1.Set("Scale", _Parent._Scale, 0, 4, FloatEditorFlags.None, this);
 
             SetName(_Parent._FractalType);
 
@@ -112,19 +103,10 @@ namespace WooFractal
 
         public void GUIUpdate()
         {
-            _Parent._PreRotation.x = wooSlider1.GetSliderValue();
-            _Parent._PreRotation.y = wooSlider2.GetSliderValue();
-            _Parent._PreRotation.z = wooSlider3.GetSliderValue();
-            
-            _Parent._PostRotation.x = wooSlider4.GetSliderValue();
-            _Parent._PostRotation.y = wooSlider5.GetSliderValue();
-            _Parent._PostRotation.z = wooSlider6.GetSliderValue();
-
-            _Parent._Offset.x = wooSlider7.GetSliderValue();
-            _Parent._Offset.y = wooSlider8.GetSliderValue();
-            _Parent._Offset.z = wooSlider9.GetSliderValue();
-
-            _Parent._Scale = wooSlider10.GetSliderValue();
+            _Parent._PreRotation = vectorEditor1.GetSliderValue();
+            _Parent._PostRotation = vectorEditor2.GetSliderValue();
+            _Parent._Offset = vectorEditor3.GetSliderValue();
+            _Parent._Scale = floatEditor1.GetSliderValue();
 
             int repeats;
             if (int.TryParse(textBox1.Text, out repeats)

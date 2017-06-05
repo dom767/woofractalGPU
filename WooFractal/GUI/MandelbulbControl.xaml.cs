@@ -83,5 +83,10 @@ namespace WooFractal
             _Parent._JuliaMode = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
             ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
         }
+
+        private void floatEditor1_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -38,24 +38,32 @@
         <TabControl HorizontalAlignment="Left" Name="tabControl1" Width="389" Margin="0,0,0,2">
             <TabItem Header="Fractal" Name="tabItem1" IsSelected="True">
                 <Grid>
-                    <ScrollViewer Name="scrollViewer1" Margin="1,0,0,-1" VerticalScrollBarVisibility="Visible">
+                    <ScrollViewer Name="scrollViewer1" Margin="1,0,0,0" VerticalScrollBarVisibility="Visible">
                         <StackPanel HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" CanVerticallyScroll="True" >
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
             </TabItem>
-            <TabItem Header="Camera" Name="tabItem2" IsSelected="False">
+            <TabItem Header="Render" Name="tabItem2" IsSelected="False">
                 <Grid>
-                    <ScrollViewer Name="scrollViewer2" Margin="1,0,0,-1" VerticalScrollBarVisibility="Visible">
+                    <ScrollViewer Name="scrollViewer2" Margin="1,0,0,0" VerticalScrollBarVisibility="Visible">
                         <StackPanel HorizontalAlignment="Left" Name="stackPanel2" VerticalAlignment="Top" CanVerticallyScroll="True" >
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
             </TabItem>
-            <TabItem Header="Colouring" Name="tabItem3">
+            <TabItem Header="Camera" Name="tabItem3" IsSelected="False">
                 <Grid>
-                    <ScrollViewer Name="scrollViewer3" Margin="1,0,0,-1" VerticalScrollBarVisibility="Visible">
+                    <ScrollViewer Name="scrollViewer3" Margin="1,0,0,0" VerticalScrollBarVisibility="Visible">
                         <StackPanel HorizontalAlignment="Left" Name="stackPanel3" VerticalAlignment="Top" CanVerticallyScroll="True" >
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Colouring" Name="tabItem4">
+                <Grid>
+                    <ScrollViewer Name="scrollViewer4" Margin="1,0,0,0" VerticalScrollBarVisibility="Visible">
+                        <StackPanel HorizontalAlignment="Left" Name="stackPanel4" VerticalAlignment="Top" CanVerticallyScroll="True" >
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>

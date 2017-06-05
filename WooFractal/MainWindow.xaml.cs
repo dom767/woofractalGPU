@@ -132,14 +132,20 @@ namespace WooFractal
             stackPanel2.Children.Clear();
 
             stackPanel2.Children.Add(_Scene._FractalSettings._RenderOptions.GetControl());
-            stackPanel2.Children.Add(_Scene._Camera.GetControl());
+        }
+
+        private void BuildCameraList()
+        {
+            stackPanel3.Children.Clear();
+
+            stackPanel3.Children.Add(_Scene._Camera.GetControl());
         }
 
         private void BuildColourList()
         {
-            stackPanel3.Children.Clear();
+            stackPanel4.Children.Clear();
 
-            stackPanel3.Children.Add(_Scene._FractalSettings._FractalColours.GetControl());
+            stackPanel4.Children.Add(_Scene._FractalSettings._FractalColours.GetControl());
         }
 
 //        ImageRenderer _ImageRenderer;
@@ -567,9 +573,8 @@ namespace WooFractal
             Logger.Log("LoadContext() completed");
 
             BuildFractalList();
-
             BuildOptionsList();
-
+            BuildCameraList();
             BuildColourList();
         }
         private void SaveContext(string name)
