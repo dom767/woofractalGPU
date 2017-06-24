@@ -129,15 +129,15 @@ namespace WooFractal.GUI
             double value;
             if (double.TryParse(textBox1.Text, out value))
             {
-                wooSlider1.SetSliderValue(value);
+                wooSlider1.SetSliderValue(value, true);
             }
             if (double.TryParse(textBox2.Text, out value))
             {
-                wooSlider2.SetSliderValue(value);
+                wooSlider2.SetSliderValue(value, true);
             }
             if (double.TryParse(textBox3.Text, out value))
             {
-                wooSlider3.SetSliderValue(value);
+                wooSlider3.SetSliderValue(value, true);
             }
         }
     }

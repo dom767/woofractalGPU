@@ -65,5 +65,13 @@ namespace WooFractal
         {
             return _Colour;
         }
+
+        public void SetColour(Colour colour, bool guiUpdate)
+        {
+            _Colour = colour;
+            wooSlider1.SetSliderValue(_Colour._Red, guiUpdate);
+            wooSlider2.SetSliderValue(_Colour._Green, guiUpdate);
+            wooSlider3.SetSliderValue(_Colour._Blue, guiUpdate);
+        }
     }
 }

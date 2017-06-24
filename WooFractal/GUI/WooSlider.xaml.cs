@@ -49,10 +49,10 @@ namespace WooFractal
                 return _Value;
         }
 
-        public void SetSliderValue(double value)
+        public void SetSliderValue(double value, bool updateGUI)
         {
             SetValue(value);
-            ValueUpdated(true);
+            ValueUpdated(updateGUI);
         }
 
         bool _ValueDrag;
@@ -109,7 +109,8 @@ namespace WooFractal
 
             if (updateGUI)
             {
-                _GUIUpdateTarget.GUIUpdate();
+                if (_GUIUpdateTarget != null)
+                    _GUIUpdateTarget.GUIUpdate();
             }
         }
 

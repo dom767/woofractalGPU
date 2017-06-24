@@ -38,6 +38,13 @@ namespace WooFractal
             _Green = green;
             _Blue = blue;
         }
+
+        public Colour(double val)
+        {
+            _Red = val;
+            _Green = val;
+            _Blue = val;
+        }
         
         public override string ToString()
         {
@@ -72,6 +79,12 @@ namespace WooFractal
             return new Colour(arg1._Red + arg2._Red,
                 arg1._Green + arg2._Green,
                 arg1._Blue + arg2._Red);
+        }
+        public static Colour operator *(Colour arg1, float arg2)
+        {
+            return new Colour(arg1._Red * arg2,
+                arg1._Green * arg2,
+                arg1._Blue * arg2);
         }
 
         public XElement CreateElement(string name)

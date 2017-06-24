@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="WooFractal.GUI.MaterialSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="70" d:DesignWidth="164" Loaded="UserControl_Loaded">
+    <Border BorderBrush="Black" BorderThickness="1">
+        <Grid>
+            <Button Content="Edit" Height="26" HorizontalAlignment="Left" Margin="132,38,0,0" Name="button1" VerticalAlignment="Top" Width="26" Click="button1_Click" />
+            <Image Height="26" HorizontalAlignment="Left" Margin="132,6,0,0" Name="current" Stretch="Fill" VerticalAlignment="Top" Width="26" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="6,6,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="27,6,0,0" Name="image2" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="48,6,0,0" Name="image3" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="69,6,0,0" Name="image4" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="90,6,0,0" Name="image5" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" Margin="111,6,0,0" Name="image6" Stretch="Fill" VerticalAlignment="Top" HorizontalAlignment="Left" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="6,27,0,0" Name="image7" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="27,27,0,0" Name="image8" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="48,27,0,0" Name="image9" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="69,27,0,0" Name="image10" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="90,27,0,0" Name="image11" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="111,27,0,0" Name="image12" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="6,48,0,0" Name="image13" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="27,48,0,0" Name="image14" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="48,48,0,0" Name="image15" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="69,48,0,0" Name="image16" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="90,48,0,0" Name="image17" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+            <Image Height="17" HorizontalAlignment="Left" Margin="111,48,0,0" Name="image18" Stretch="Fill" VerticalAlignment="Top" Width="17" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        </Grid>
+    </Border>
+</UserControl>

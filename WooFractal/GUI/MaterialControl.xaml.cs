@@ -65,20 +65,6 @@ namespace WooFractal
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)System.Windows.Application.Current.MainWindow).StopPreview();
-
-            MaterialEditor ownedWindow = new MaterialEditor(_Material);
-
-            ownedWindow.Owner = Window.GetWindow(this);
-            ownedWindow.ShowDialog();
-            if (ownedWindow._OK)
-            {
-                _Material = ownedWindow._Material;
-                _GUIUpdateable.GUIUpdate();
-                RenderMaterial();
-            }
-
-            ((MainWindow)System.Windows.Application.Current.MainWindow).StartPreview();
         }
 
         public Material GetMaterial()

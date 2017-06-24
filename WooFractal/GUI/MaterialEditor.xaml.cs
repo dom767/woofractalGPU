@@ -14,6 +14,7 @@ using SharpGL;
 using SharpGL.SceneGraph.Core;
 using SharpGL.SceneGraph.Primitives;
 using SharpGL.SceneGraph;
+using WooFractal.Objects;
 
 namespace WooFractal
 {
@@ -22,14 +23,17 @@ namespace WooFractal
     /// </summary>
     public partial class MaterialEditor : Window, IGUIUpdateable
     {
-        public Material _Material;
+        public MaterialSelection _MaterialSelection;
+        private Material _Material;
         public bool _OK;
+        public bool _Clean = false;
 
-        public MaterialEditor(Material material)
+        public MaterialEditor(MaterialSelection materialSelection)
         {
             InitializeComponent();
 
-            _Material = material;
+            _MaterialSelection = materialSelection;
+            _Material = _MaterialSelection._Defaults[0];
             _OK = false;
 
             ConfigureGUI();
@@ -37,62 +41,76 @@ namespace WooFractal
             RenderPreview();
         }
 
-        public Material GetMaterial()
+        public MaterialSelection GetMaterialSelection()
         {
-            return _Material;
+            return _MaterialSelection;
         }
 
         private void ConfigureGUI()
         {
-            wooSlider1.Set(_Material._Roughness, 0, 1.0, this);
+            floatEditor1.Set("Roughness", _Material._Roughness, 0, 1.0, FloatEditorFlags.None, this);
+
             colourSelector1.Set(_Material._DiffuseColour, 1, this);
             colourSelector2.Set(_Material._SpecularColour, 1, this);
             colourSelector3.Set(_Material._Reflectivity, 1, this);
-            colourSelector4.Set(_Material._EmissiveColour, 1000, this);
+
+            RenderThumbs();
+
+            RenderPreview();
+        }
+
+        private void RenderThumbs()
+        {
+            _MaterialSelection._Defaults[0].RenderThumb(image1);
+            _MaterialSelection._Defaults[1].RenderThumb(image2);
+            _MaterialSelection._Defaults[2].RenderThumb(image3);
+            _MaterialSelection._Defaults[3].RenderThumb(image4);
+            _MaterialSelection._Defaults[4].RenderThumb(image5);
+            _MaterialSelection._Defaults[5].RenderThumb(image6);
+
+            _MaterialSelection._Defaults[6].RenderThumb(image7);
+            _MaterialSelection._Defaults[7].RenderThumb(image8);
+            _MaterialSelection._Defaults[8].RenderThumb(image9);
+            _MaterialSelection._Defaults[9].RenderThumb(image10);
+            _MaterialSelection._Defaults[10].RenderThumb(image11);
+            _MaterialSelection._Defaults[11].RenderThumb(image12);
+
+            _MaterialSelection._Defaults[12].RenderThumb(image13);
+            _MaterialSelection._Defaults[13].RenderThumb(image14);
+            _MaterialSelection._Defaults[14].RenderThumb(image15);
+            _MaterialSelection._Defaults[15].RenderThumb(image16);
+            _MaterialSelection._Defaults[16].RenderThumb(image17);
+            _MaterialSelection._Defaults[17].RenderThumb(image18);
+        }
+
+        private void UpdateGUI()
+        {
+            floatEditor1.SetSliderValue(_Material._Roughness, false);
+
+            colourSelector1.SetColour(_Material._DiffuseColour, false);
+            colourSelector2.SetColour(_Material._SpecularColour, false);
+            colourSelector3.SetColour(_Material._Reflectivity, false);
+
+            RenderThumbs();
+
+            RenderPreview();
         }
 
         public void GUIUpdate()
         {
-            _Material._Roughness = (float)wooSlider1.GetSliderValue();
+            _Material._Roughness = (float)floatEditor1.GetSliderValue();
             _Material._DiffuseColour = colourSelector1.GetColour();
             _Material._SpecularColour = colourSelector2.GetColour();
             _Material._Reflectivity = colourSelector3.GetColour();
-            _Material._EmissiveColour = colourSelector4.GetColour();
+
+            RenderThumbs();
 
             RenderPreview();
         }
 
         public void RenderPreview()
         {
-//            _Camera = new Camera(new Vector3(0, 0.4, -0.75), new Vector3(0, 0.5, 0), 40, 1, 1, 0, 0);
-
-/*            string log = "", error = "";
-            _BackgroundScript = new WooScript();
-            _BackgroundScript._Program = "rule main {pos.y -= 1 box}";
-            _BackgroundScript.Parse(ref log, ref error);
-            _PreviewScript = new WooScript();
-            _PreviewScript._Program = "rule main {diff=vec("+_Material._DiffuseColour.ToString()+")\r\n"
-                + "spec=vec(" + _Material._SpecularColour.ToString() + ")\r\n"
-                + "refl=vec(" + _Material._Reflectivity.ToString() + ")\r\n"
-                + "emi=vec(" + _Material._EmissiveColour.ToString() + ")\r\n"
-                + "power=" + _Material._SpecularPower.ToString() + "\r\n"
-                + "gloss=" + _Material._Shininess.ToString() + "\r\n"
-                + "sphere}";
-            _PreviewScript.Parse(ref log, ref error);
-            _LightingScript = new WooScript();
-            _LightingScript._Program = "rule main {directionalLight(vec(1.0, 1.0, 1.0), vec(-0.7, 1.0, -0.6), 0.02, 1) background(vec(0.0,0.0,0.0))}";
-            _LightingScript.Parse(ref log, ref error);
-*/
-//            _Scene = new Scene(_Camera);
-//            _Scene.AddRenderObject(_BackgroundScript);
-            //_Scene.AddRenderObject(_PreviewScript);
-            //_Scene.AddRenderObject(_LightingScript);
-            //BuildXML();
-//            _ImageRenderer = new ImageRenderer(image1, _XML, (int)image1.Width, (int)image1.Height, false);
-//            _ImageRenderer.Render();
-//            _ImageRenderer.SetPostProcess(new PostProcess());
-            //_ImageRenderer.TransferLatest(false);
-
+            _Clean = true;
         }
 
         private void BuildXML()
@@ -115,27 +133,93 @@ namespace WooFractal
         }
 
         OpenGL _GL;
+        PostProcess _PostProcess;
+        Scene _Scene;
+        RaytracerOptions _RaytracerOptions;
+        ShaderRenderer _ShaderRenderer;
+
+        
+        private void InitialiseRenderer()
+        {
+            _RaytracerOptions = new RaytracerOptions();
+            _RaytracerOptions._DoFEnabled = false;
+            _RaytracerOptions._ShadowsEnabled = true;
+            _RaytracerOptions._Reflections = 1;
+
+            _Scene = new Scene();
+            _Scene._FractalSettings._FractalIterations.Clear();
+            _Scene._FractalSettings._FractalColours.Clear();
+            _Scene._FractalSettings._RenderOptions._Background = 1;
+            FractalGradient preview = new FractalGradient();
+            preview._StartColour = _Material;
+            preview._Multiplier = 0.0f;
+            _Scene._FractalSettings._FractalColours.Add(preview);
+            _Scene._Camera._Position = new Vector3(0, 1.5, 1.5);
+            _Scene._Camera._Target = new Vector3(0, 1, 0);
+
+            _PostProcess = new PostProcess();
+//            _PostProcess._ToneMappingMode = 3;
+            _PostProcess.Initialise(_GL);
+
+            //  Initialise the scene.
+            string frag = "";
+            _Scene.Compile(_RaytracerOptions, _Scene._FractalSettings._RenderOptions, ref frag);
+            
+            _ShaderRenderer = new ShaderRenderer();
+            _ShaderRenderer.Compile(_GL, frag, 16);
+            
+            int width, height;
+            width = (int)openGlCtrl.ActualWidth;
+            height = (int)openGlCtrl.ActualHeight;
+            _ShaderRenderer.Initialise(_GL, width, height, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
+            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), _Scene._Camera);
+            _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+            _ShaderRenderer.SetPostProcess(_PostProcess);
+            _ShaderRenderer.Clean(_GL);
+            _ShaderRenderer.Start();
+        }
+
+
         private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
-            _GL = args.OpenGL;
-//            _ShaderRenderer.Render(gl);
+            var gl = args.OpenGL;
+            if (_Clean)
+            {
+                InitialiseRenderer();
+                _ShaderRenderer.Clean(gl);
+                _Clean = false;
+                _ShaderRenderer.Start();
+            }
+            _ShaderRenderer.Render(gl);
         }
 
         private void OpenGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
         {
             _GL = args.OpenGL;
-//            _PostProcess.Initialise(_GL);
-//            InitialiseRenderer();
+            InitialiseRenderer();
         }
 
         private void OpenGL_Closing()
         {
-//            _ShaderRenderer.Destroy(_GL);
+            _ShaderRenderer.Destroy(_GL);
         }
 
         private void OpenGLControl_Resized(object sender, OpenGLEventArgs args)
         {
             _GL = args.OpenGL;
+            InitialiseRenderer();
+        }
+
+        private void image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Image clicked = (Image)sender;
+            int number;
+            bool parsed = int.TryParse(clicked.Name.Remove(0, 5), out number);
+            if (parsed)
+            {
+                _Material = _MaterialSelection._Defaults[number - 1];
+            }
+            UpdateGUI();
         }
     }
 }

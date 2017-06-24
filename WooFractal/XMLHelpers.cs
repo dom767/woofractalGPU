@@ -55,6 +55,15 @@ namespace WooFractal
             }
         }
 
+        public static void ReadOrbitType(XmlReader reader, string name, ref WooFractal.FractalGradient.EOrbitType blendType)
+        {
+            string attr = reader.GetAttribute(name);
+            if (attr != null)
+            {
+                blendType = (WooFractal.FractalGradient.EOrbitType)Enum.Parse(typeof(WooFractal.FractalGradient.EOrbitType), attr);
+            }
+        }
+
         public static void ReadColour(XmlReader reader, ref Colour colour)
         {
             string attr = reader.GetAttribute("colour");

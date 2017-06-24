@@ -1,38 +1,54 @@
 ﻿<Window x:Class="WooFractal.MaterialEditor"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MaterialEditor" xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF" Height="514" Width="717" xmlns:my="clr-namespace:WooFractal" ResizeMode="NoResize">
-    <Grid>
+        Title="MaterialEditor" xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF" Height="572" Width="717" xmlns:my="clr-namespace:WooFractal" ResizeMode="NoResize" xmlns:my1="clr-namespace:WooFractal.GUI">
+    <Grid Width="695">
         <sharpGL:OpenGLControl x:Name="openGlCtrl"
             OpenGLDraw="OpenGLControl_OpenGLDraw" OpenGLInitialized="OpenGLControl_OpenGLInitialized" 
-            RenderContextType="FBO" Resized="OpenGLControl_Resized" Margin="355,0,0,135" />
-        <Label Background="Black" Content="D I F F U S E" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="114" Margin="30,0,0,0" IsHitTestVisible="False">
+            RenderContextType="FBO" Resized="OpenGLControl_Resized" Margin="355,65,0,0" Height="382" VerticalAlignment="Top" HorizontalAlignment="Left" Width="340" />
+        <Label Background="Black" Content="D I F F U S E" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="114" Margin="30,65,0,0" IsHitTestVisible="False">
             <Label.RenderTransform>
                 <RotateTransform Angle="90"></RotateTransform>
             </Label.RenderTransform>
         </Label>
-        <my:ColourSelector HorizontalAlignment="Left" Margin="30,0,0,0" x:Name="colourSelector1" VerticalAlignment="Top" />
-        <my:ColourSelector HorizontalAlignment="Left" Margin="30,120,0,0" x:Name="colourSelector2" VerticalAlignment="Top" />
-        <my:ColourSelector HorizontalAlignment="Left" Margin="30,240,0,0" x:Name="colourSelector3" VerticalAlignment="Top" />
-        <my:ColourSelector HorizontalAlignment="Left" Margin="30,360,0,0" x:Name="colourSelector4" VerticalAlignment="Top" />
-        <Label Background="Black" Content="S P E C U L A R" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="30,120,0,0" Name="label1" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="114" IsHitTestVisible="False">
+        <my:ColourSelector HorizontalAlignment="Left" Margin="30,65,0,0" x:Name="colourSelector1" VerticalAlignment="Top" />
+        <my:ColourSelector HorizontalAlignment="Left" Margin="30,185,0,0" x:Name="colourSelector2" VerticalAlignment="Top" />
+        <my:ColourSelector HorizontalAlignment="Left" Margin="30,333,0,0" x:Name="colourSelector3" VerticalAlignment="Top" />
+        <Label Background="Black" Content="S P E C U L A R" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="30,185,0,0" Name="label1" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="114" IsHitTestVisible="False">
             <Label.RenderTransform>
                 <RotateTransform Angle="90" />
             </Label.RenderTransform>
         </Label>
-        <Label Background="Black" Content="REFLECTIVITY" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="30,240,0,0" Name="label2" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="114" IsHitTestVisible="False">
+        <Label Background="Black" Content="REFLECTIVITY" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="30,333,0,0" Name="label2" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="114" IsHitTestVisible="False">
             <Label.RenderTransform>
                 <RotateTransform Angle="90" />
             </Label.RenderTransform>
         </Label>
-        <Label Background="Black" Content="E M I S S I O N" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="30,360,0,0" Name="label3" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="114" IsHitTestVisible="False">
-            <Label.RenderTransform>
-                <RotateTransform Angle="90" />
-            </Label.RenderTransform>
-        </Label>
-        <my:WooSlider HorizontalAlignment="Left" Margin="363,361,0,0" x:Name="wooSlider1" VerticalAlignment="Top" Height="27" Width="320" />
-        <Label Content="Roughness" Height="28" HorizontalAlignment="Left" Margin="363,338,0,0" Name="label4" VerticalAlignment="Top" />
-        <Button Content="OK" Height="23" HorizontalAlignment="Left" Margin="527,451,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
-        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="608,451,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="button2_Click" />
+        <Button Content="OK" Height="23" HorizontalAlignment="Left" Margin="539,510,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click" />
+        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="620,510,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="button2_Click" />
+        <my1:FloatEditor HorizontalAlignment="Left" Margin="0,453,0,0" x:Name="floatEditor1" VerticalAlignment="Top" Width="348" />
+        <my1:FloatEditor HorizontalAlignment="Left" Margin="355,453,0,0" x:Name="floatEditor2" VerticalAlignment="Top" Width="340" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="11,36,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="39,36,0,0" Name="image2" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="67,36,0,0" Name="image3" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="95,36,0,0" Name="image4" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="123,36,0,0" Name="image5" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="151,36,0,0" Name="image6" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="179,36,0,0" Name="image7" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="207,36,0,0" Name="image8" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="235,36,0,0" Name="image9" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="263,36,0,0" Name="image10" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="291,36,0,0" Name="image11" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="319,36,0,0" Name="image12" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="347,36,0,0" Name="image13" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="375,36,0,0" Name="image14" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="403,36,0,0" Name="image15" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="431,36,0,0" Name="image16" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="459,36,0,0" Name="image17" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Image Height="23" HorizontalAlignment="Left" Margin="487,36,0,0" Name="image18" Stretch="Fill" VerticalAlignment="Top" Width="22" MouseLeftButtonUp="image_MouseLeftButtonUp" />
+        <Label Content="PALETTE COLOUR SELECTION" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" Name="label3" VerticalAlignment="Top" Width="695" Padding="3,0,0,0" VerticalContentAlignment="Center" Background="Black" />
+        <Button Content="Load Palette" Height="23" HorizontalAlignment="Left" Margin="527,36,0,0" Name="button21" VerticalAlignment="Top" Width="75" />
+        <Button Content="Save Palette" HorizontalAlignment="Left" Margin="608,36,0,0" Name="button22" Width="75" Height="23" VerticalAlignment="Top" />
+        <Button Content="Copy Specular to Reflectivity" Height="23" HorizontalAlignment="Left" Margin="11,305,0,0" Name="button23" VerticalAlignment="Top" Width="330" />
     </Grid>
 </Window>

@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using System.Xml.Linq;
 using System.Xml;
 using System.IO;
+using WooFractal.Objects;
 
 namespace WooFractal
 {
@@ -15,29 +16,41 @@ namespace WooFractal
         {
             _FractalIterations = new List<WooFractalIteration>();
             _RenderOptions = new RenderOptions();
-            _FractalColours = new FractalColours();
+            _FractalColours = new List<FractalGradient>();
+            FractalGradient fractalGradient = new FractalGradient();
+            _FractalColours.Add(fractalGradient);
+            _MaterialSelection = new MaterialSelection();
         }
 
-        public void Set(RenderOptions renderOptions, FractalColours fractalColours, List<WooFractalIteration> fractalIterations)
+        public void Set(RenderOptions renderOptions, List<FractalGradient> fractalColours, List<WooFractalIteration> fractalIterations, MaterialSelection materialSelection)
         {
             _RenderOptions = renderOptions;
             _FractalColours = fractalColours;
             _FractalIterations = fractalIterations;
+            _MaterialSelection = materialSelection;
         }
         public void CreateElement(XElement parent)
         {
             XElement ret = new XElement("FRACTAL");
             _RenderOptions.CreateElement(ret);
-            _FractalColours.CreateElement(ret);
+            for (int i = 0; i < _FractalColours.Count; i++)
+                _FractalColours[i].CreateElement(ret);
             for (int i = 0; i < _FractalIterations.Count; i++)
                 _FractalIterations[i].CreateElement(ret);
+            _MaterialSelection.CreateElement(ret);
             parent.Add(ret);
         }
         public void LoadXML(XmlReader reader)
         {
+            _FractalColours.Clear();
             _FractalIterations = new List<WooFractalIteration>();
             while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
             {
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "MATERIALSELECTION")
+                {
+                    _MaterialSelection = new MaterialSelection();
+                    _MaterialSelection.LoadXML(reader);
+                }
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "RENDEROPTIONS")
                 {
                     _RenderOptions = new RenderOptions();
@@ -45,8 +58,9 @@ namespace WooFractal
                 }
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "FRACTALCOLOURS")
                 {
-                    _FractalColours = new FractalColours();
-                    _FractalColours.LoadXML(reader);
+                    FractalGradient fractalColour = new FractalGradient();
+                    fractalColour.LoadXML(reader);
+                    _FractalColours.Add(fractalColour);
                 }
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "KIFSFRACTAL")
                 {
@@ -74,6 +88,42 @@ namespace WooFractal
                 }
             }
             reader.Read();
+        }
+        public void CompileColours(ref string frag)
+        {
+            int divisor = _FractalColours.Count();
+
+            frag += @"void OrbitToColour(in vec4 orbitTrap, inout material mat) {
+vec4 trappos;
+
+mat.diff = vec3(0,0,0);
+mat.spec = vec3(0,0,0);
+mat.refl = vec3(0,0,0);
+mat.emi = vec3(0,0,0);
+mat.roughness = 0.2;
+";
+
+            for (int i = 0; i < _FractalColours.Count(); i++)
+            {
+                frag += "trappos = vec4(";
+                frag += (_FractalColours[i]._BlendType == EBlendType.Chop) ? "round(" : "";
+                frag += "pow(mod((orbitTrap." + _FractalColours[i].GetOrbitTypeString() + "*" + _FractalColours[i]._Multiplier.ToString() + ")+" + _FractalColours[i]._Offset.ToString() + ",1.0)," + Math.Pow(10, _FractalColours[i]._Power).ToString() + ")";
+                frag += (_FractalColours[i]._BlendType == EBlendType.Chop) ? ")" : "";
+                frag += ",0,0,0);\r\n";
+
+                frag += "mat.diff+=mix(vec3(" + _FractalColours[i]._StartColour._DiffuseColour.ToString() + "), vec3(" + _FractalColours[i]._EndColour._DiffuseColour.ToString() + "), trappos.x);\r\n";
+                frag += "mat.spec+=mix(vec3(" + _FractalColours[i]._StartColour._SpecularColour.ToString() + "), vec3(" + _FractalColours[i]._EndColour._SpecularColour.ToString() + "), trappos.x);\r\n";
+                frag += "mat.refl+=mix(vec3(" + _FractalColours[i]._StartColour._Reflectivity.ToString() + "), vec3(" + _FractalColours[i]._EndColour._Reflectivity.ToString() + "), trappos.x);\r\n";
+                frag += "mat.emi+=mix(vec3(" + _FractalColours[i]._StartColour._EmissiveColour.ToString() + "), vec3(" + _FractalColours[i]._EndColour._EmissiveColour.ToString() + "), trappos.x);\r\n";
+                frag += "mat.roughness+=mix(" + _FractalColours[i]._StartColour._Roughness.ToString() + ", " + _FractalColours[i]._EndColour._Roughness.ToString() + ", trappos.x);\r\n";
+            }
+
+            frag += "mat.diff/=" + divisor.ToString() + @";";
+            frag += "mat.spec/=" + divisor.ToString() + @";";
+            frag += "mat.refl/=" + divisor.ToString() + @";";
+            frag += "mat.emi/=" + divisor.ToString() + @";";
+            frag += "mat.roughness/=" + divisor.ToString() + @";
+}";
         }
         public void Compile(ref string frag)
         {
@@ -340,7 +390,8 @@ mat.roughness = 0.01;
             frag += frag2;
         }
         public RenderOptions _RenderOptions;
-        public FractalColours _FractalColours;
+        public List<FractalGradient> _FractalColours;
         public List<WooFractalIteration> _FractalIterations;
+        public MaterialSelection _MaterialSelection;
     }
 }

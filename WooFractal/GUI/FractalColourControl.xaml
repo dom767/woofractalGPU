@@ -4,18 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="789" d:DesignWidth="348" xmlns:my="clr-namespace:WooFractal">
+             d:DesignHeight="390" d:DesignWidth="348" Margin="0,10,0,0" xmlns:my="clr-namespace:WooFractal" xmlns:my1="clr-namespace:WooFractal.GUI">
     <Border BorderBrush="Black" BorderThickness="1">
-        <Grid>
-            <CheckBox Content="X Orbit Gradient" Height="16" HorizontalAlignment="Left" Margin="12,36,0,0" Name="checkBox1" VerticalAlignment="Top" Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
+        <Grid Height="390">
             <Label Background="Black" Content="F R A C T A L   C O L O U R" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="348" />
-            <my:OrbitColourControl HorizontalAlignment="Left" Margin="0,58,0,0" x:Name="orbitColourControl1" VerticalAlignment="Top" Height="159" Width="348" />
-            <CheckBox Content="Y Orbit Gradient" Height="16" HorizontalAlignment="Left" Margin="12,222,0,0" Name="checkBox2" VerticalAlignment="Top" Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
-            <my:OrbitColourControl Height="159" HorizontalAlignment="Left" Margin="0,244,0,0" x:Name="orbitColourControl2" VerticalAlignment="Top" Width="348" />
-            <CheckBox Content="Z Orbit Gradient" Height="16" HorizontalAlignment="Left" Margin="12,410,0,0" Name="checkBox3" VerticalAlignment="Top" Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
-            <my:OrbitColourControl Height="159" HorizontalAlignment="Left" Margin="0,432,0,0" x:Name="orbitColourControl3" VerticalAlignment="Top" Width="348" />
-            <CheckBox Content="Distance Orbit Gradient" Height="16" HorizontalAlignment="Left" Margin="12,597,0,0" Name="checkBox4" VerticalAlignment="Top" Checked="checkBox1_Modified" Unchecked="checkBox1_Modified" />
-            <my:OrbitColourControl Height="159" HorizontalAlignment="Left" Margin="0,619,0,0" x:Name="orbitColourControl4" VerticalAlignment="Top" Width="348" />
+            <Image Height="76" HorizontalAlignment="Left" Margin="16,70,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="314" />
+            <Rectangle HorizontalAlignment="Left" Margin="6,176,0,0" Name="rectangle1" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top" />
+            <Rectangle HorizontalAlignment="Left" Margin="320,176,0,0" Name="rectangle3" Stroke="Black" Width="20" Height="20" VerticalAlignment="Top" />
+            <Button Content="+" Height="20" HorizontalAlignment="Left" Margin="163,176,0,0" Name="button1" VerticalAlignment="Top" Width="20" Padding="0" VerticalContentAlignment="Center" BorderThickness="1" />
+            <my1:FloatEditor HorizontalAlignment="Left" Margin="6,280,0,0" x:Name="floatEditor1" VerticalAlignment="Top" Width="164" />
+            <my1:FloatEditor HorizontalAlignment="Left" Margin="176,280,0,0" x:Name="floatEditor2" VerticalAlignment="Top" Width="164" />
+            <my1:FloatEditor HorizontalAlignment="Left" Margin="176,333,0,0" x:Name="floatEditor3" VerticalAlignment="Top" Width="164" />
+            <ComboBox Height="25" HorizontalAlignment="Left" Margin="4,355,0,0" Name="comboBox1" VerticalAlignment="Top" Width="166">
+                <ComboBoxItem Content="Linear" IsSelected="True" Name="Linear" />
+                <ComboBoxItem Content="Chop" Name="Chop" />
+            </ComboBox>
+            <Label Content="Blend Function" Height="28" HorizontalAlignment="Left" Margin="6,332,0,0" Name="label4" VerticalAlignment="Top" />
+            <ComboBox Height="25" HorizontalAlignment="Left" Margin="230,36,0,0" Name="comboBox2" VerticalAlignment="Top" Width="105" SelectionChanged="comboBox2_SelectionChanged">
+                <ComboBoxItem Content="X Distance" Name="comboBoxItem1" />
+                <ComboBoxItem Content="Y Distance" Name="comboBoxItem2" />
+                <ComboBoxItem Content="Z Distance" Name="comboBoxItem3" />
+                <ComboBoxItem Content="Total Distance" IsSelected="True" Name="comboBoxItem4" />
+            </ComboBox>
+            <Label Content="Type of Gradient" Height="28" HorizontalAlignment="Left" Margin="126,36,0,0" Name="label3" VerticalAlignment="Top" />
+            <my1:MaterialSelector HorizontalAlignment="Left" Margin="6,202,0,0" x:Name="materialSelector1" VerticalAlignment="Top" Width="164" Height="72" />
+            <my1:MaterialSelector Height="72" HorizontalAlignment="Left" Margin="176,202,0,0" x:Name="materialSelector2" VerticalAlignment="Top" Width="164" />
         </Grid>
     </Border>
 </UserControl>

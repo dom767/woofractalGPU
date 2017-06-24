@@ -5,6 +5,10 @@ using System.Text;
 using System.Xml.Linq;
 using System.Xml;
 using System.IO;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace WooFractal
 {
@@ -116,6 +120,45 @@ namespace WooFractal
                 }
             }
             reader.Read();
+        }
+
+        public void RenderThumb(Image image)
+        {
+            int width = (int)image.Width;
+            int height = (int)image.Height;
+
+            byte[] pixels = new byte[4 * height * width];
+            WriteableBitmap writeableBitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgra32, null);
+
+            float lightPos = 0.7f;
+            int p = 0;
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    float floatx = (float)x / (float)(width - 1);
+                    float floaty = 1.0f - (float)y / (float)(width - 1); // deliberate width to keep aspect ratio 1:1
+
+                    float dx = lightPos - floatx;
+                    float dy = lightPos - floaty;
+                    float dist = (float)Math.Sqrt((double)(dx * dx + dy * dy));
+
+                    float highlight = (float)Math.Exp((float)(-dist) / Math.Sqrt((double)_Roughness));// (float)Math.Pow((double)dist, (double)(material._Roughness));
+                    Colour pixelColour = _DiffuseColour + _SpecularColour * highlight;
+                    pixelColour.Clamp(0, 1);
+                    pixels[p * 4] = (byte)(pixelColour._Blue * 255.99f);
+                    pixels[p * 4 + 1] = (byte)(pixelColour._Green * 255.99f);
+                    pixels[p * 4 + 2] = (byte)(pixelColour._Red * 255.99f);
+                    pixels[p * 4 + 3] = 255;
+                    p++;
+                }
+            }
+
+            Int32Rect rect = new Int32Rect(0, 0, width, height);
+
+            writeableBitmap.WritePixels(rect, pixels, width * 4, (int)0);
+
+            image.Source = writeableBitmap;
         }
         
         public string _MaterialFunction;

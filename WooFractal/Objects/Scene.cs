@@ -326,7 +326,7 @@ vec4 getBackgroundColour(vec3 dir, vec3 pos)
 
             _Camera.Compile(raytracerOptions, ref frag);
 
-            _FractalSettings._FractalColours.Compile(ref frag);
+            _FractalSettings.CompileColours(ref frag);
 
             _FractalSettings.Compile(ref frag);
 
@@ -508,7 +508,7 @@ void main(void)
     vec3 lightSpec = vec3(0,0,0);
     calculateLighting(out_pos, normal, iterdir, reflection, mat.roughness*mat.roughness*mat.roughness*mat.roughness, lightDiff, lightSpec);
 
-    vec3 col = mat.diff*lightDiff + mat.spec*lightSpec + getSkyColour2(iterdir, iterpos, 0, length(out_pos-iterpos));
+    vec3 col = mat.diff*lightDiff + mat.spec*lightSpec;// + getSkyColour2(iterdir, iterpos, 0, length(out_pos-iterpos));
     oCol+=vec4(factor,0.0)*vec4(col, 0.0);
 
     iterpos = out_pos;

@@ -145,7 +145,10 @@ namespace WooFractal
         {
             stackPanel4.Children.Clear();
 
-            stackPanel4.Children.Add(_Scene._FractalSettings._FractalColours.GetControl());
+            for (int i = 0; i < _Scene._FractalSettings._FractalColours.Count(); i++)
+            {
+                stackPanel4.Children.Add(_Scene._FractalSettings._FractalColours[i].GetControl(_Scene._FractalSettings._MaterialSelection));
+            }
         }
 
         private void BuildEnvironmentList()

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WooFractal.Objects;
 
 namespace WooFractal
 {
@@ -19,38 +20,51 @@ namespace WooFractal
     /// </summary>
     public partial class FractalColourControl : UserControl, IGUIUpdateable
     {
-        FractalColours _FractalColours;
+        FractalGradient _FractalColours = new FractalGradient();
+        MaterialSelection _MaterialSelection;
 
-        public FractalColourControl(FractalColours fractalColours)
+        public FractalColourControl(FractalGradient fractalColours, MaterialSelection materialSelection)
         {
             InitializeComponent();
 
             _FractalColours = fractalColours;
-            orbitColourControl1.SetOrbitColours(_FractalColours._OrbitColoursX, this);
-            orbitColourControl2.SetOrbitColours(_FractalColours._OrbitColoursY, this);
-            orbitColourControl3.SetOrbitColours(_FractalColours._OrbitColoursZ, this);
-            orbitColourControl4.SetOrbitColours(_FractalColours._OrbitColoursDist, this);
-            bool xorbit = _FractalColours._XOrbitEnabled;
-            bool yorbit = _FractalColours._YOrbitEnabled;
-            bool zorbit = _FractalColours._ZOrbitEnabled;
-            bool dorbit = _FractalColours._DistOrbitEnabled;
-            checkBox1.IsChecked = xorbit;
-            checkBox2.IsChecked = yorbit;
-            checkBox3.IsChecked = zorbit;
-            checkBox4.IsChecked = dorbit;
+            _MaterialSelection = materialSelection;
+
+            SetupGUI();
+        }
+
+        public void SetupGUI()
+        {
+            comboBox2.SelectedIndex = _FractalColours.GetOrbitTypeIndex();
+            floatEditor1.Set("Multiplier", _FractalColours._Multiplier, 0, 10, FloatEditorFlags.None, this);
+            floatEditor2.Set("Offset", _FractalColours._Offset, 0, 1, FloatEditorFlags.None, this);
+            floatEditor3.Set("Power", _FractalColours._Power, -2, 2, FloatEditorFlags.None, this);
+
+            materialSelector1.Set(_MaterialSelection, _FractalColours._StartColour, this);
+            materialSelector2.Set(_MaterialSelection, _FractalColours._EndColour, this);
         }
 
         public void GUIUpdate()
         {
-            _FractalColours._OrbitColoursX = orbitColourControl1.GetOrbitColours();
-            _FractalColours._OrbitColoursY = orbitColourControl2.GetOrbitColours();
-            _FractalColours._OrbitColoursZ = orbitColourControl3.GetOrbitColours();
-            _FractalColours._OrbitColoursDist = orbitColourControl4.GetOrbitColours();
+            _FractalColours.SetOrbitTypeIndex(comboBox2.SelectedIndex);
+            _FractalColours._Multiplier = floatEditor1.GetSliderValue();
+            _FractalColours._Offset = floatEditor2.GetSliderValue();
+            _FractalColours._Power = floatEditor3.GetSliderValue();
 
-            _FractalColours._XOrbitEnabled = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
-            _FractalColours._YOrbitEnabled = checkBox2.IsChecked.HasValue ? checkBox2.IsChecked.Value : false;
-            _FractalColours._ZOrbitEnabled = checkBox3.IsChecked.HasValue ? checkBox3.IsChecked.Value : false;
-            _FractalColours._DistOrbitEnabled = checkBox4.IsChecked.HasValue ? checkBox4.IsChecked.Value : false;
+            _FractalColours._StartColour = materialSelector1.GetSelectedMaterial();
+            _FractalColours._EndColour = materialSelector2.GetSelectedMaterial();
+
+            _MaterialSelection = materialSelector1.GetMaterialSelection();
+
+            //           _FractalColours._OrbitColoursX = orbitColourControl1.GetOrbitColours();
+ //           _FractalColours._OrbitColoursY = orbitColourControl2.GetOrbitColours();
+ //           _FractalColours._OrbitColoursZ = orbitColourControl3.GetOrbitColours();
+ //           _FractalColours._OrbitColoursDist = orbitColourControl4.GetOrbitColours();
+
+ //           _FractalColours._XOrbitEnabled = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
+ //           _FractalColours._YOrbitEnabled = checkBox2.IsChecked.HasValue ? checkBox2.IsChecked.Value : false;
+ //           _FractalColours._ZOrbitEnabled = checkBox3.IsChecked.HasValue ? checkBox3.IsChecked.Value : false;
+ //           _FractalColours._DistOrbitEnabled = checkBox4.IsChecked.HasValue ? checkBox4.IsChecked.Value : false;
 
             ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
         }
@@ -58,6 +72,12 @@ namespace WooFractal
         private void checkBox1_Modified(object sender, RoutedEventArgs e)
         {
             GUIUpdate();
+        }
+
+        private void comboBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _FractalColours.SetOrbitTypeIndex(comboBox2.SelectedIndex);
+            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
         }
     }
 }

@@ -69,6 +69,11 @@ namespace WooFractal.GUI
             return wooSlider1.GetSliderValue();
         }
 
+        public void SetSliderValue(float value, bool guiUpdate)
+        {
+            wooSlider1.SetSliderValue(value, guiUpdate);
+        }
+
         bool _ValueDrag;
         Point _LastPos;
 
@@ -89,7 +94,7 @@ namespace WooFractal.GUI
             double value;
             if (double.TryParse(textBox1.Text, out value))
             {
-                wooSlider1.SetSliderValue(value);
+                wooSlider1.SetSliderValue(value, true);
             }
         }
     }

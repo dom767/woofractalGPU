@@ -14,7 +14,7 @@
             <ComboBoxItem Name="Linear" IsSelected="True">Linear</ComboBoxItem>
             <ComboBoxItem Name="Chop">Chop</ComboBoxItem>
         </ComboBox>
-        <Label Content="Blend Function" Height="28" HorizontalAlignment="Left" Margin="14,96,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="Blend Function" HorizontalAlignment="Left" Margin="14,96,0,0" Name="label4" Height="28" VerticalAlignment="Top" />
         <my:WooSlider HorizontalAlignment="Left" Margin="179,120,0,0" x:Name="wooSlider2" VerticalAlignment="Top" Width="157" />
         <my:MaterialControl HorizontalAlignment="Left" Margin="13,23,0,0" x:Name="materialControl1" VerticalAlignment="Top" Height="27" Width="156" />
         <my:MaterialControl Height="27" HorizontalAlignment="Left" Margin="179,23,0,0" x:Name="materialControl2" VerticalAlignment="Top" Width="156" />

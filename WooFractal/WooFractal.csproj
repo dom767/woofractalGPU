@@ -106,6 +106,9 @@
     <Compile Include="GUI\EnvironmentControls.xaml.cs">
       <DependentUpon>EnvironmentControls.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\MaterialSelector.xaml.cs">
+      <DependentUpon>MaterialSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Vec3Editor.xaml.cs">
       <DependentUpon>Vec3Editor.xaml</DependentUpon>
     </Compile>
@@ -121,7 +124,7 @@
     <Compile Include="GUI\Vec3Control.xaml.cs">
       <DependentUpon>Vec3Control.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Objects\FractalColours.cs" />
+    <Compile Include="Objects\FractalGradient.cs" />
     <Compile Include="GUI\FractalControl.xaml.cs">
       <DependentUpon>FractalControl.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,7 @@
     </Compile>
     <Compile Include="Maths\Utils.cs" />
     <Compile Include="Objects\Material.cs" />
+    <Compile Include="Objects\MaterialSelection.cs" />
     <Compile Include="Objects\PostProcess.cs" />
     <Compile Include="GUI\OrbitColourControl.xaml.cs">
       <DependentUpon>OrbitColourControl.xaml</DependentUpon>
@@ -186,6 +190,10 @@
     <Page Include="GUI\EnvironmentControls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\MaterialSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\Vec3Editor.xaml">
       <Generator>MSBuild:Compile</Generator>
