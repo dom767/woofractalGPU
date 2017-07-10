@@ -36,7 +36,7 @@ namespace WooFractal
 
         public Camera()
         {
-            _Position = new Vector3(-2,0,0);
+            _Position = new Vector3(-2,2,0);
             _Target = new Vector3(0, 0, 0);
             _FOV = 40;
             _FocusDepth = 1;

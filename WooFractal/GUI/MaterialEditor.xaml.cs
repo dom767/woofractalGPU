@@ -49,10 +49,11 @@ namespace WooFractal
         private void ConfigureGUI()
         {
             floatEditor1.Set("Roughness", _Material._Roughness, 0, 1.0, FloatEditorFlags.None, this);
+            floatEditor2.Set("Dielectric", _Material._DiElectric, 0, 1, FloatEditorFlags.None, this);
 
-            colourSelector1.Set(_Material._DiffuseColour, 1, this);
-            colourSelector2.Set(_Material._SpecularColour, 1, this);
-            colourSelector3.Set(_Material._Reflectivity, 1, this);
+            colourSelector1.Set(_Material._DiffuseColour, this);
+            colourSelector2.Set(_Material._SpecularColour, this);
+            colourSelector3.Set(_Material._Reflectivity, this);
 
             RenderThumbs();
 
@@ -86,6 +87,7 @@ namespace WooFractal
         private void UpdateGUI()
         {
             floatEditor1.SetSliderValue(_Material._Roughness, false);
+            floatEditor2.SetSliderValue(_Material._DiElectric, false);
 
             colourSelector1.SetColour(_Material._DiffuseColour, false);
             colourSelector2.SetColour(_Material._SpecularColour, false);
@@ -99,6 +101,7 @@ namespace WooFractal
         public void GUIUpdate()
         {
             _Material._Roughness = (float)floatEditor1.GetSliderValue();
+            _Material._DiElectric = (float)floatEditor2.GetSliderValue();
             _Material._DiffuseColour = colourSelector1.GetColour();
             _Material._SpecularColour = colourSelector2.GetColour();
             _Material._Reflectivity = colourSelector3.GetColour();
@@ -151,7 +154,7 @@ namespace WooFractal
             _Scene._FractalSettings._FractalColours.Clear();
             _Scene._FractalSettings._RenderOptions._Background = 1;
             FractalGradient preview = new FractalGradient();
-            preview._StartColour = _Material;
+            preview._GradientSegments[0]._StartColour = _Material;
             preview._Multiplier = 0.0f;
             _Scene._FractalSettings._FractalColours.Add(preview);
             _Scene._Camera._Position = new Vector3(0, 1.5, 1.5);
@@ -172,7 +175,7 @@ namespace WooFractal
             width = (int)openGlCtrl.ActualWidth;
             height = (int)openGlCtrl.ActualHeight;
             _ShaderRenderer.Initialise(_GL, width, height, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
-            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), _Scene._Camera);
+            _ShaderRenderer.SetShaderVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), _Scene._Camera, _Scene._FractalSettings);
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
             _ShaderRenderer.SetPostProcess(_PostProcess);
             _ShaderRenderer.Clean(_GL);
@@ -220,6 +223,17 @@ namespace WooFractal
                 _Material = _MaterialSelection._Defaults[number - 1];
             }
             UpdateGUI();
+        }
+
+        private void button23_Click(object sender, RoutedEventArgs e)
+        {
+            _Material._Reflectivity = _Material._SpecularColour.Clone();
+            colourSelector2.SetColour(_Material._SpecularColour, false);
+            colourSelector3.SetColour(_Material._Reflectivity, false);
+
+            RenderThumbs();
+
+            RenderPreview();
         }
     }
 }

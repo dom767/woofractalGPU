@@ -73,7 +73,7 @@ namespace WooFractal
                 _Parent._Repeats = repeats;
             }
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).SetCameraDirty();
         }
 
         public MandelbulbIteration _Parent;

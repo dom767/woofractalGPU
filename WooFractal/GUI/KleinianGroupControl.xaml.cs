@@ -69,7 +69,7 @@ namespace WooFractal
                 _Parent._Repeats = repeats;
             }
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).SetCameraDirty();
         }
 
         public KleinianGroupIteration _Parent;

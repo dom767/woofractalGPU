@@ -94,6 +94,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GUI\AddColour.xaml.cs">
+      <DependentUpon>AddColour.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\AddFractal.xaml.cs">
       <DependentUpon>AddFractal.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
     </Compile>
     <Compile Include="WootracerOptions.cs" />
     <Compile Include="XMLHelpers.cs" />
+    <Page Include="GUI\AddColour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\AddFractal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

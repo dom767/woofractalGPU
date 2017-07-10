@@ -11,9 +11,9 @@
                 <RotateTransform Angle="90"></RotateTransform>
             </Label.RenderTransform>
         </Label>
-        <my:ColourSelector HorizontalAlignment="Left" Margin="30,65,0,0" x:Name="colourSelector1" VerticalAlignment="Top" />
-        <my:ColourSelector HorizontalAlignment="Left" Margin="30,185,0,0" x:Name="colourSelector2" VerticalAlignment="Top" />
-        <my:ColourSelector HorizontalAlignment="Left" Margin="30,333,0,0" x:Name="colourSelector3" VerticalAlignment="Top" />
+        <my:ColourSelector HorizontalAlignment="Left" Margin="30,65,0,0" x:Name="colourSelector1" VerticalAlignment="Top" Width="318" Height="114" />
+        <my:ColourSelector HorizontalAlignment="Left" Margin="30,185,0,0" x:Name="colourSelector2" VerticalAlignment="Top" Width="318" Height="114" />
+        <my:ColourSelector HorizontalAlignment="Left" Margin="30,333,0,0" x:Name="colourSelector3" VerticalAlignment="Top" Width="318" Height="114" />
         <Label Background="Black" Content="S P E C U L A R" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="30,185,0,0" Name="label1" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="114" IsHitTestVisible="False">
             <Label.RenderTransform>
                 <RotateTransform Angle="90" />
@@ -49,6 +49,6 @@
         <Label Content="PALETTE COLOUR SELECTION" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" Name="label3" VerticalAlignment="Top" Width="695" Padding="3,0,0,0" VerticalContentAlignment="Center" Background="Black" />
         <Button Content="Load Palette" Height="23" HorizontalAlignment="Left" Margin="527,36,0,0" Name="button21" VerticalAlignment="Top" Width="75" />
         <Button Content="Save Palette" HorizontalAlignment="Left" Margin="608,36,0,0" Name="button22" Width="75" Height="23" VerticalAlignment="Top" />
-        <Button Content="Copy Specular to Reflectivity" Height="23" HorizontalAlignment="Left" Margin="11,305,0,0" Name="button23" VerticalAlignment="Top" Width="330" />
+        <Button Content="Copy Specular to Reflectivity" Height="23" HorizontalAlignment="Left" Margin="11,305,0,0" Name="button23" VerticalAlignment="Top" Width="330" Click="button23_Click" />
     </Grid>
 </Window>

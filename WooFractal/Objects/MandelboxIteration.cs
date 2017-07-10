@@ -5,6 +5,9 @@ using System.Text;
 using System.Windows.Controls;
 using System.Xml.Linq;
 using System.Xml;
+using SharpGL.Shaders;
+using SharpGL;
+using GlmNet;
 
 namespace WooFractal
 {
@@ -31,11 +34,31 @@ namespace WooFractal
             return new MandelboxControl(this);
         }
 
-        public override void Compile(ref string frag)
+        private int _Iteration = -1;
+        public override void CompileDeclerations(ref string frag, int iteration)
+        {
+            frag += "uniform vec3 fracScale" + iteration + ";";
+            frag += "uniform mat3 fracRot" + iteration + ";";
+            frag += "uniform float fracMinRad" + iteration + ";";
+            _Iteration = iteration;
+        }
+
+        public override void SetDeclarations(ShaderProgram shader, OpenGL gl)
         {
             Matrix3 rot = new Matrix3();
             rot.MakeFromRPY(_Rotation.x, _Rotation.y, _Rotation.z);
-            frag += "Box(pos, origPos, scale, vec3(" + Utils.Vector3ToString(_Scale) + "), mat3(" + Utils.Matrix3ToString(rot) + "), " + _MinRadius + @");
+            mat3 glRot = rot.GetGLMat3();
+
+            shader.SetUniform3(gl, "fracScale" + _Iteration, (float)_Scale.x, (float)_Scale.y, (float)_Scale.z);
+            shader.SetUniformMatrix3(gl, "fracRot" + _Iteration, glRot.to_array());
+            shader.SetUniform1(gl, "fracMinRad" + _Iteration, (float)_MinRadius);
+        }
+
+        public override void Compile(ref string frag, int iteration)
+        {
+            Matrix3 rot = new Matrix3();
+            rot.MakeFromRPY(_Rotation.x, _Rotation.y, _Rotation.z);
+            frag += "Box(pos, origPos, scale, fracScale" + iteration + ", fracRot" + iteration + ", fracMinRad" + iteration + @");
             DEMode = 1;";
         }
 

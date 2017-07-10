@@ -17,6 +17,7 @@ namespace WooFractal.Objects
             temp._DiffuseColour = new Colour(0.8, 0.3, 0.3);
             temp._Reflectivity = new Colour(0.3);
             temp._SpecularColour = new Colour(0.3);
+            temp._DiElectric = 0.5f;
             temp._Roughness = 0.2f;
             _Defaults[0] = new Material(temp);
             temp._DiffuseColour = new Colour(0.8, 0.8, 0.3);

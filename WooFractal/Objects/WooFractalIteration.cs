@@ -5,6 +5,8 @@ using System.Text;
 using System.Windows.Controls;
 using System.Xml.Linq;
 using System.Xml;
+using SharpGL.Shaders;
+using SharpGL;
 
 namespace WooFractal
 {
@@ -18,7 +20,9 @@ namespace WooFractal
     {
         public abstract UserControl GetControl();
         public abstract string GetFractalString();
-        public abstract void Compile(ref string frag);
+        public abstract void SetDeclarations(ShaderProgram shader, OpenGL gl);
+        public abstract void CompileDeclerations(ref string frag, int iteration);
+        public abstract void Compile(ref string frag, int iteration);
         public abstract void CreateElement(XElement parent);
         public int _Repeats = 1;
     };

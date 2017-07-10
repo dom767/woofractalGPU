@@ -34,6 +34,11 @@ namespace WooFractal.GUI
             return _Selected;
         }
 
+        public void SetSelectedMaterial(Material material)
+        {
+            _Selected = material;
+        }
+
         public MaterialSelection GetMaterialSelection()
         {
             return _MaterialSelection;

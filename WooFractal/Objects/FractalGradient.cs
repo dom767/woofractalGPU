@@ -9,6 +9,66 @@ using WooFractal.Objects;
 
 namespace WooFractal
 {
+    public class GradientSegment
+    {
+        public Material _StartColour = new Material();
+        public Material _EndColour = new Material();
+        public float _StartX = 0.0f;
+        public float _EndX = 1.0f;
+
+        public float Width()
+        {
+            return _EndX - _StartX;
+        }
+
+        public Material GetMaterial(float left)
+        {
+            float gradx = (left - _StartX) / Width();
+            if (gradx > 1.0)
+            {
+                gradx = 1.0f;
+            }
+            Material mat = new Material();
+            mat._DiElectric = _StartColour._DiElectric * (1 - gradx) + _EndColour._DiElectric * gradx;
+            mat._Roughness = _StartColour._Roughness * (1 - gradx) + _EndColour._Roughness * gradx;
+            mat._DiffuseColour = _StartColour._DiffuseColour * (1 - gradx) + _EndColour._DiffuseColour * gradx;
+            mat._SpecularColour = _StartColour._SpecularColour * (1 - gradx) + _EndColour._SpecularColour * gradx;
+            mat._Reflectivity = _StartColour._Reflectivity * (1 - gradx) + _EndColour._Reflectivity * gradx;
+            return mat;
+        }
+        
+        public void CreateElement(XElement parent)
+        {
+            XElement ret;
+
+            ret = new XElement("GRADIENTSEGMENT",
+                _StartColour.CreateElement("STARTCOLOUR", false),
+                _EndColour.CreateElement("ENDCOLOUR", false),
+                new XAttribute("startX", _StartX),
+                new XAttribute("endX", _EndX));
+
+            parent.Add(ret);
+        }
+
+        public void LoadXML(XmlReader reader)
+        {
+            XMLHelpers.ReadFloat(reader, "startX", ref _StartX);
+            XMLHelpers.ReadFloat(reader, "endX", ref _EndX);
+
+            while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "STARTCOLOUR")
+                {
+                    _StartColour.LoadXML(reader);
+                }
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "ENDCOLOUR")
+                {
+                    _EndColour.LoadXML(reader);
+                }
+            }
+            reader.Read();
+        }
+    }
     public class FractalGradient
     {
         public enum EOrbitType
@@ -23,9 +83,13 @@ namespace WooFractal
         public double _Offset = 0.0;
         public double _Power = 0.0;
         public EBlendType _BlendType = EBlendType.Linear;
-        public Material _StartColour = new Material();
-        public Material _EndColour = new Material();
+        public List<GradientSegment> _GradientSegments = new List<GradientSegment>();
         public EOrbitType _OrbitType = EOrbitType.x;
+
+        public FractalGradient()
+        {
+            _GradientSegments.Add(new GradientSegment());
+        }
 
         public string GetOrbitTypeString()
         {
@@ -83,7 +147,7 @@ namespace WooFractal
             }
         }
 
-        public UserControl GetControl(MaterialSelection materialSelection)
+        public FractalColourControl GetControl(MaterialSelection materialSelection)
         {
             return new FractalColourControl(this, materialSelection);
         }
@@ -95,17 +159,21 @@ namespace WooFractal
             ret = new XElement("FRACTALCOLOURS",
                 new XAttribute("orbitType", _OrbitType),
                 new XAttribute("blendType", _BlendType),
-                _StartColour.CreateElement("STARTCOLOUR", false),
-                _EndColour.CreateElement("ENDCOLOUR", false),
                 new XAttribute("multiplier", _Multiplier),
                 new XAttribute("offset", _Offset),
                 new XAttribute("power", _Power));
+
+            for (int i = 0; i < _GradientSegments.Count(); i++)
+            {
+                _GradientSegments[i].CreateElement(ret);
+            }
 
             parent.Add(ret);
         }
 
         public void LoadXML(XmlReader reader)
         {
+            _GradientSegments.Clear();
             XMLHelpers.ReadOrbitType(reader, "orbitType", ref _OrbitType);
             XMLHelpers.ReadBlendType(reader, "blendType", ref _BlendType);
             XMLHelpers.ReadDouble(reader, "multiplier", ref _Multiplier);
@@ -114,15 +182,20 @@ namespace WooFractal
 
             while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
             {
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "STARTCOLOUR")
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "GRADIENTSEGMENT")
                 {
-                    _StartColour.LoadXML(reader);
-                }
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "ENDCOLOUR")
-                {
-                    _EndColour.LoadXML(reader);
+                    GradientSegment seg = new GradientSegment();
+                    seg.LoadXML(reader);
+                    _GradientSegments.Add(seg);
                 }
             }
+
+            // backwards compatability
+            if (_GradientSegments.Count() == 0)
+            {
+                _GradientSegments.Add(new GradientSegment());
+            }
+
             reader.Read();
         }
     }

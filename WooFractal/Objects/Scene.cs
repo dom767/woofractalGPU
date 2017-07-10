@@ -67,7 +67,7 @@ struct material
  vec3 spec;
  vec3 refl;
  float roughness;
- vec3 emi;
+ float dlc;
 };
 
 void calculateLighting(in vec3 pos, in vec3 normal, in vec3 eye, in vec3 reflection, in float roughness, out vec3 lightDiff, out vec3 lightSpec);
@@ -471,6 +471,23 @@ bool trace(in vec3 pos, in vec3 dir, inout float dist, out vec3 out_pos, out vec
             _GPULight.Compile(raytracerOptions, renderOptions, ref frag);
 
             frag += @"
+
+float calculateSS( in vec3 ro, in vec3 rd, float mint, float k )
+{
+    float res = 1.0;
+    float t = mint;
+    for( int i=0; i<64; i++ )
+    {
+        vec4 kk;
+        float h = backgroundDE(ro + rd*t);
+        h = min(h, DE(ro + rd*t, kk));
+        res = min( res, k*h/t );
+        if( res<0.001 ) break;
+        t += clamp( h, 0.01, 0.2 );
+    }
+    return clamp( res, 0.0, 1.0 );
+}
+
 void main(void)
 {
   vec2 q = texCoord.xy;
@@ -495,7 +512,7 @@ void main(void)
   vec3 iterpos = pos;
   vec3 iterdir = dir;
   
-  for (int i=0; i<(depth ? 1 : "+(1+raytracerOptions._Reflections).ToString()+ @"); i++)
+  for (int i=0; i<(depth ? 1 : " + (1+raytracerOptions._Reflections).ToString()+ @"); i++)
   {
    bool hit = trace(iterpos, iterdir, dist, out_pos, normal, mat);
 
@@ -507,13 +524,23 @@ void main(void)
     vec3 lightDiff = vec3(0,0,0);
     vec3 lightSpec = vec3(0,0,0);
     calculateLighting(out_pos, normal, iterdir, reflection, mat.roughness*mat.roughness*mat.roughness*mat.roughness, lightDiff, lightSpec);
+    vec3 lightSS = vec3(1.0);
+    float minDistance3 = length(out_pos-camPos) / screenWidth;
+    if (" + (raytracerOptions._ShadowsEnabled ? "false" : "true") + @")
+     lightSS = vec3(calculateSS(out_pos, normal, minDistance3, 1));
 
-    vec3 col = mat.diff*lightDiff + mat.spec*lightSpec;// + getSkyColour2(iterdir, iterpos, 0, length(out_pos-iterpos));
+    vec3 col = lightSS*mat.diff*lightDiff + lightSS*mat.spec*lightSpec;// + getSkyColour2(iterdir, iterpos, 0, length(out_pos-iterpos));
     oCol+=vec4(factor,0.0)*vec4(col, 0.0);
+
+    float r0 = 0.2; // glass
+    r0 = r0 * r0;
+    float cosX = dot(iterdir, normal);
+    float fresnelreflection = r0 + (1-r0) * pow(1+cosX, 5);
+    fresnelreflection = max(0, min(1, fresnelreflection));
 
     iterpos = out_pos;
     iterdir = reflection;
-    factor *= mat.refl;
+    factor *= mix(fresnelreflection, 1, mat.dlc) * mat.refl;
    }
    else
    {

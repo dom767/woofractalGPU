@@ -115,7 +115,7 @@ namespace WooFractal
                 _Parent._Repeats = repeats;
             }
 
-            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).SetCameraDirty();
         }
 
         private void button3_Click(object sender, RoutedEventArgs e)

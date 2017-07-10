@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GlmNet;
 
 namespace WooFractal
 {
@@ -54,6 +55,21 @@ namespace WooFractal
             _Component[2][0] = -sp;
             _Component[2][1] = sr * cp;
             _Component[2][2] = cr * cp;
+        }
+
+        public mat3 GetGLMat3()
+        {
+            mat3 ret = new mat3(1);
+            ret[0,0] = (float)_Component[0][0];
+            ret[0,1] = (float)_Component[0][1];
+            ret[0,2] = (float)_Component[0][2];
+            ret[1,0] = (float)_Component[1][0];
+            ret[1,1] = (float)_Component[1][1];
+            ret[1,2] = (float)_Component[1][2];
+            ret[2,0] = (float)_Component[2][0];
+            ret[2,1] = (float)_Component[2][1];
+            ret[2,2] = (float)_Component[2][2];
+            return ret;
         }
 
         public void Mul(Matrix3 arg)

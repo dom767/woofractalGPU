@@ -24,22 +24,10 @@ using SharpGL;
 using SharpGL.SceneGraph.Core;
 using SharpGL.SceneGraph.Primitives;
 using SharpGL.SceneGraph;
+using WooFractal.GUI;
 
 namespace WooFractal
 {
-    public class Logger
-    {
-        public static string filePath = @"Log.txt";
-        public static void Log(string message)
-        {
-            return;
-            using (StreamWriter streamWriter = new StreamWriter(filePath, true))
-            {
-                streamWriter.WriteLine(message);
-                streamWriter.Close();
-            }
-        }
-    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -125,6 +113,8 @@ namespace WooFractal
             }
 
             stackPanel1.Children.Add(new AddFractal());
+
+            SetDirty();
         }
 
         private void BuildOptionsList()
@@ -141,14 +131,31 @@ namespace WooFractal
             stackPanel3.Children.Add(_Scene._Camera.GetControl());
         }
 
+        FractalColourControl _FractalColourControl;
+
+        public void AddFractalColours()
+        {
+            _Scene._FractalSettings._FractalColours.Add(new FractalGradient());
+            BuildColourList();
+        }
+
+        public void RemoveFractalColour(FractalGradient fractalGradient)
+        {
+            _Scene._FractalSettings._FractalColours.Remove(fractalGradient);
+            BuildColourList();
+        }
+
         private void BuildColourList()
         {
             stackPanel4.Children.Clear();
 
             for (int i = 0; i < _Scene._FractalSettings._FractalColours.Count(); i++)
             {
-                stackPanel4.Children.Add(_Scene._FractalSettings._FractalColours[i].GetControl(_Scene._FractalSettings._MaterialSelection));
+                _FractalColourControl = _Scene._FractalSettings._FractalColours[i].GetControl(_Scene._FractalSettings._MaterialSelection);
+                stackPanel4.Children.Add(_FractalColourControl);
             }
+
+            stackPanel4.Children.Add(new AddColour());
         }
 
         private void BuildEnvironmentList()
@@ -202,7 +209,7 @@ namespace WooFractal
 
             SaveStatus();
 
-            _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), _Scene._Camera);
+            _ShaderRenderer.SetShaderVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), _Scene._Camera, _Scene._FractalSettings);
             TriggerPreview();
 
             _Dirty = false;
@@ -232,6 +239,13 @@ namespace WooFractal
 //            Button source = e.Source as Button;
             if (sender != null)
             {
+                if (e.Key == Key.Delete)
+                {
+                    if (tabControl1.SelectedIndex == 3)
+                    {
+                        _FractalColourControl.DeleteSelectedGradient();
+                    }
+                }
                 double Multiplier = 0.1;
                 if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
                 {
@@ -352,7 +366,7 @@ namespace WooFractal
 
             if (_CameraDirty || _Velocity.MagnitudeSquared() > 0.0001)
             {
-                _ShaderRenderer.SetCameraVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), _Scene._Camera);
+                _ShaderRenderer.SetShaderVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), _Scene._Camera, _Scene._FractalSettings);
                 _Clean = true;
                 _CameraDirty = false;
             }
@@ -538,6 +552,76 @@ namespace WooFractal
             SaveContext("scratch");
         }
 
+        private void LoadColoursFile(string name)
+        {
+            string filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Colours\\" + name + ".wcd";
+            if (System.IO.File.Exists(filename))
+            {
+                StreamReader sr = new StreamReader(filename);
+                string colourDescriptor = sr.ReadToEnd();
+                _Scene._FractalSettings._FractalColours.Clear();
+
+                using (XmlReader reader = XmlReader.Create(new StringReader(colourDescriptor)))
+                {
+                    try
+                    {
+                        while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
+                        {
+                            if (reader.NodeType == XmlNodeType.Element && reader.Name == "CONTEXT")
+                            {
+                                reader.Read();
+                                while (reader.NodeType != XmlNodeType.EndElement && reader.Read())
+                                {
+                                    if (reader.NodeType == XmlNodeType.Element && reader.Name == "FRACTALCOLOURS")
+                                    {
+                                        FractalGradient fractalColour = new FractalGradient();
+                                        fractalColour.LoadXML(reader);
+                                        _Scene._FractalSettings._FractalColours.Add(fractalColour);
+                                    }
+                                }
+                                reader.Read();
+                            }
+                        }
+                    }
+                    catch (XmlException /*e*/)
+                    {
+                        _Scene = new Scene();
+                    }
+                }
+                sr.Close();
+            }
+
+            BuildColourList();
+       }
+
+        private void SaveColoursFile(string name)
+        {
+            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Colours";
+            if (!System.IO.Directory.Exists(store))
+            {
+                System.IO.Directory.CreateDirectory(store);
+            }
+            string filename = store + "\\" + name + ".wcd";
+
+            using (StreamWriter sw = new StreamWriter(filename))
+            {
+                try
+                {
+                    XElement context = new XElement("CONTEXT");
+                    for (int i = 0; i < _Scene._FractalSettings._FractalColours.Count; i++)
+                    {
+                        _Scene._FractalSettings._FractalColours[i].CreateElement(context);
+                    }
+                    sw.Write(context.ToString());
+                    sw.Close();
+                }
+                catch (Exception /*e*/)
+                {
+                    // lets not get overexcited...
+                }
+            }
+        }
+
         private void LoadContext(string name)
         {
             Logger.Log("LoadContext() started");
@@ -588,6 +672,7 @@ namespace WooFractal
             BuildColourList();
             BuildEnvironmentList();
         }
+
         private void SaveContext(string name)
         {
             string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes";
@@ -709,6 +794,79 @@ namespace WooFractal
             BuildFractalList();
         }
 
+        public void SaveColours()
+        {
+            // save colours
+            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Colours";
+            if (!System.IO.Directory.Exists(store))
+            {
+                System.IO.Directory.CreateDirectory(store);
+            }
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = store;
+            saveFileDialog1.Filter = "Colour Gradients (*.wcd)|*.wcd";
+            saveFileDialog1.FilterIndex = 1;
+
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                // Save document
+                string filename = saveFileDialog1.FileName;
+                filename = filename.Substring(0, filename.IndexOf(".wcd"));
+                filename = filename.Substring(filename.LastIndexOf("\\") + 1, filename.Length - (filename.LastIndexOf("\\") + 1));
+                SaveColoursFile(filename);
+            }
+        }
+
+        public void LoadColours()
+        {
+            // load fractal
+            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooScripter\\Colours";
+
+            // Configure open file dialog box
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.FileName = "scene"; // Default file name
+            dlg.DefaultExt = ".wcd"; // Default file extension
+            dlg.Filter = "Colour Gradients|*.wcd"; // Filter files by extension
+            dlg.InitialDirectory = store;
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // get name of file
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                filename = filename.Substring(0, filename.IndexOf(".wcd"));
+                filename = filename.Substring(filename.LastIndexOf("\\") + 1, filename.Length - (filename.LastIndexOf("\\") + 1));
+                LoadColoursFile(filename);
+            }
+        }
+
+        private void button1_Click_1(object sender, RoutedEventArgs e)
+        {
+            // save fractal
+            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes";
+            if (!System.IO.Directory.Exists(store))
+            {
+                System.IO.Directory.CreateDirectory(store);
+            }
+
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = store;
+            saveFileDialog1.Filter = "Scene Descriptor (*.wsd)|*.wsd";
+            saveFileDialog1.FilterIndex = 1;
+
+            if (saveFileDialog1.ShowDialog() == true)
+            {
+                // Save document
+                string filename = saveFileDialog1.FileName;
+                filename = filename.Substring(0, filename.IndexOf(".wsd"));
+                filename = filename.Substring(filename.LastIndexOf("\\") + 1, filename.Length - (filename.LastIndexOf("\\") + 1));
+                SaveContext(filename);
+            }
+        }
+        
         private void button2_Click_1(object sender, RoutedEventArgs e)
         {
             // load fractal
@@ -788,30 +946,6 @@ namespace WooFractal
             _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
             _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
-        }
-
-        private void button1_Click_1(object sender, RoutedEventArgs e)
-        {
-            // save fractal
-            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes";
-            if (!System.IO.Directory.Exists(store))
-            {
-                System.IO.Directory.CreateDirectory(store);
-            }
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.InitialDirectory = store;
-            saveFileDialog1.Filter = "Scene Descriptor (*.wsd)|*.wsd";
-            saveFileDialog1.FilterIndex = 1;
-
-            if (saveFileDialog1.ShowDialog() == true)
-            {
-                // Save document
-                string filename = saveFileDialog1.FileName;
-                filename = filename.Substring(0, filename.IndexOf(".wsd"));
-                filename = filename.Substring(filename.LastIndexOf("\\") + 1, filename.Length - (filename.LastIndexOf("\\") + 1));
-                SaveContext(filename);
-            }
         }
 
         private void openGlCtrl_MouseDown(object sender, MouseButtonEventArgs e)
@@ -959,6 +1093,19 @@ namespace WooFractal
             _RaytracerOptions._Progressive = !_RaytracerOptions._Progressive;
             _Dirty = true;
             UpdateGUI();
+        }
+    }
+    public class Logger
+    {
+        public static string filePath = @"Log.txt";
+        public static void Log(string message)
+        {
+            return;
+            using (StreamWriter streamWriter = new StreamWriter(filePath, true))
+            {
+                streamWriter.WriteLine(message);
+                streamWriter.Close();
+            }
         }
     }
 }

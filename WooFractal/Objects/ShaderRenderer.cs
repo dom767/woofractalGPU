@@ -32,6 +32,7 @@ namespace WooFractal
         vec3 _Position;
         vec3 _SunDirection;
         Camera _Camera;
+        FractalSettings _FractalSettings;
 
         int _TargetWidth;
         int _TargetHeight;
@@ -42,7 +43,7 @@ namespace WooFractal
         public int GetTargetWidth() { return _TargetWidth; }
         public int GetTargetHeight() { return _TargetHeight; }
 
-        public void SetCameraVars(mat4 viewMatrix, vec3 position, vec3 sunDirection, Camera camera)
+        public void SetShaderVars(mat4 viewMatrix, vec3 position, vec3 sunDirection, Camera camera, FractalSettings fractalSettings)
         {
             _ViewMatrix = viewMatrix;
             _Position = position;
@@ -50,6 +51,7 @@ namespace WooFractal
             _Camera = camera;
             _FramesRendered = 0;
             _ProgressiveIndex = 0;
+            _FractalSettings = fractalSettings;
         }
 
         private void LoadRandomNumbers(OpenGL gl)
@@ -497,6 +499,11 @@ void main()
             shader.SetUniform1(gl, "fov", (float)_Camera._FOV);
             shader.SetUniform1(gl, "spherical", (float)_Camera._Spherical);
             shader.SetUniform1(gl, "stereographic", (float)_Camera._Stereographic);
+
+            for (int i = 0; i < _FractalSettings._FractalIterations.Count; i++)
+            {
+                _FractalSettings._FractalIterations[i].SetDeclarations(shader, gl);
+            }
 
             int rt1 = shader.GetUniformLocation(gl, "renderedTexture");
             int rn1 = shader.GetUniformLocation(gl, "randomNumbers");

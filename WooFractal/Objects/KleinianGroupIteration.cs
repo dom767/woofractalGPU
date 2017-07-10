@@ -5,6 +5,8 @@ using System.Text;
 using System.Windows.Controls;
 using System.Xml.Linq;
 using System.Xml;
+using SharpGL.Shaders;
+using SharpGL;
 
 namespace WooFractal
 {
@@ -31,9 +33,25 @@ namespace WooFractal
             return new KleinianGroupControl(this);
         }
 
-        public override void Compile(ref string frag)
+        private int _Iteration = -1;
+        public override void CompileDeclerations(ref string frag, int iteration)
         {
-            frag += "Kleinian(pos, origPos, scale, float(" + _Scale + "), vec3(" + Utils.Vector3ToString(_CSize) + "), vec3(" + Utils.Vector3ToString(_Julia) + @"));
+            frag += "uniform float fracScale" + iteration + ";";
+            frag += "uniform vec3 fracCSize" + iteration + ";";
+            frag += "uniform vec3 fracJulia" + iteration + ";";
+            _Iteration = iteration;
+        }
+
+        public override void SetDeclarations(ShaderProgram shader, OpenGL gl)
+        {
+            shader.SetUniform1(gl, "fracScale" + _Iteration, (float)_Scale);
+            shader.SetUniform3(gl, "fracCSize" + _Iteration, (float)_CSize.x, (float)_CSize.y, (float)_CSize.z);
+            shader.SetUniform3(gl, "fracJulia" + _Iteration, (float)_Julia.x, (float)_Julia.y, (float)_Julia.z);
+        }
+
+        public override void Compile(ref string frag, int iteration)
+        {
+            frag += "Kleinian(pos, origPos, scale, fracScale" + iteration + ", fracCSize" + iteration + ", fracJulia" + iteration + @");
             DEMode = 3;";
         }
 
