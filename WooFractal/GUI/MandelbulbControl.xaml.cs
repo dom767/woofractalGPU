@@ -68,9 +68,11 @@ namespace WooFractal
 
             int repeats;
             if (int.TryParse(textBox1.Text, out repeats)
-                && repeats >= 1 && repeats < 10)
+                && repeats >= 1 && repeats < 10
+                && repeats != _Parent._Repeats)
             {
                 _Parent._Repeats = repeats;
+                ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
             }
 
             ((MainWindow)System.Windows.Application.Current.MainWindow).SetCameraDirty();
