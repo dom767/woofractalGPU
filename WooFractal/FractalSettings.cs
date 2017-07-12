@@ -336,12 +336,15 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
 
             frag2 += @"
   }
+ float ret=0;
  // DEMode 0=KIFS, 1=BOX, 2=BULB, 3=kleinian
- if (DEMode==1) return (r - 1) / abs(scale);
- if (DEMode==2) return 0.5*log(r)*r/scale;
- if (DEMode==0) return (r - 1) / abs(scale);
- if (DEMode==3) return 0.5*abs(pos.z)/scale;
- // return length(origPos-vec3(0,0,0))-1;
+ if (DEMode==1) ret = (r - 1) / abs(scale);
+ if (DEMode==2) ret = 0.5*log(r)*r/scale;
+ if (DEMode==0) ret = (r - 1) / abs(scale);
+ if (DEMode==3) ret = 0.5*abs(pos.z)/scale;
+ float bbdist = length(origPos - clamp(origPos, vec3(-" + _RenderOptions._DistanceExtents + "), vec3(" + _RenderOptions._DistanceExtents + @")));
+ ret = max(ret, bbdist);
+ return ret;
 }
 
 // https://github.com/hpicgs/cgsee/wiki/Ray-Box-Intersection-on-the-GPU

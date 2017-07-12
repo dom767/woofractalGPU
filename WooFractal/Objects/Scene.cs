@@ -479,8 +479,9 @@ float calculateSS( in vec3 ro, in vec3 rd, float mint, float k )
     for( int i=0; i<64; i++ )
     {
         vec4 kk;
-        float h = backgroundDE(ro + rd*t);
-        h = min(h, DE(ro + rd*t, kk));
+        vec3 pos = ro + rd*t;
+        float h = DE(pos, kk);
+        h = min(h, backgroundDE(pos));
         res = min( res, k*h/t );
         if( res<0.001 ) break;
         t += clamp( h, 0.01, 0.2 );
@@ -525,11 +526,12 @@ void main(void)
     vec3 lightSpec = vec3(0,0,0);
     calculateLighting(out_pos, normal, iterdir, reflection, mat.roughness*mat.roughness*mat.roughness*mat.roughness, lightDiff, lightSpec);
     vec3 lightSS = vec3(1.0);
-    float minDistance3 = length(out_pos-camPos) / screenWidth;
-    if (" + (raytracerOptions._ShadowsEnabled ? "false" : "true") + @")
-     lightSS = vec3(calculateSS(out_pos, normal, minDistance3, 1));
+    float minDistance3 = length(out_pos-camPos) / screenWidth;";
 
-    vec3 col = lightSS*mat.diff*lightDiff + lightSS*mat.spec*lightSpec;// + getSkyColour2(iterdir, iterpos, 0, length(out_pos-iterpos));
+            if (!raytracerOptions._ShadowsEnabled)
+                frag += "    lightSS = vec3(calculateSS(out_pos, normal, minDistance3, 1));";
+
+            frag += @"    vec3 col = lightSS*mat.diff*lightDiff + lightSS*mat.spec*lightSpec;// + getSkyColour2(iterdir, iterpos, 0, length(out_pos-iterpos));
     oCol+=vec4(factor,0.0)*vec4(col, 0.0);
 
     float r0 = 0.2; // glass
