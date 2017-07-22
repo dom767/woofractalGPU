@@ -351,8 +351,8 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
 void intersectAABB(in vec3 pos, in vec3 dir, out float tmin, out float tmax)
 {
  float tymin, tymax, tzmin, tzmax;
- vec3 invdir = vec3(1)/dir;
- vec3 sign = vec3(dir.x>0?" + _RenderOptions._DistanceExtents + @":-" + _RenderOptions._DistanceExtents + @", dir.y>0?" + _RenderOptions._DistanceExtents + @":-" + _RenderOptions._DistanceExtents + @", dir.z>0?" + _RenderOptions._DistanceExtents + @":-" + _RenderOptions._DistanceExtents + @");
+ vec3 invdir = vec3(1)/(dir);
+ vec3 sign = vec3(dir.x>=0?" + _RenderOptions._DistanceExtents + @":-" + _RenderOptions._DistanceExtents + @", dir.y>=0?" + _RenderOptions._DistanceExtents + @":-" + _RenderOptions._DistanceExtents + @", dir.z>=0?" + _RenderOptions._DistanceExtents + @":-" + _RenderOptions._DistanceExtents + @");
  tmin = (-sign.x - pos.x) * invdir.x;
  tmax = (sign.x - pos.x) * invdir.x;
  tymin = (-sign.y - pos.y) * invdir.y;
