@@ -190,18 +190,21 @@ namespace WooFractal
 
             if (e.ClickCount == 2)
             {
-                Material mat = _FractalColours._GradientSegments[_CurrentSegment].GetMaterial(left);
+                if (GetNearestEdge(left) == -1)
+                {
+                    Material mat = _FractalColours._GradientSegments[_CurrentSegment].GetMaterial(left);
 
-                GradientSegment segment = new GradientSegment();
-                segment._StartX = _FractalColours._GradientSegments[_CurrentSegment]._StartX;
-                segment._StartColour = _FractalColours._GradientSegments[_CurrentSegment]._StartColour.Clone();
-                segment._EndX = left;
-                segment._EndColour = mat.Clone();
-                
-                _FractalColours._GradientSegments[_CurrentSegment]._StartX = left;
-                _FractalColours._GradientSegments[_CurrentSegment]._StartColour = mat.Clone();
+                    GradientSegment segment = new GradientSegment();
+                    segment._StartX = _FractalColours._GradientSegments[_CurrentSegment]._StartX;
+                    segment._StartColour = _FractalColours._GradientSegments[_CurrentSegment]._StartColour.Clone();
+                    segment._EndX = left;
+                    segment._EndColour = mat.Clone();
 
-                _FractalColours._GradientSegments.Insert(_CurrentSegment, segment);
+                    _FractalColours._GradientSegments[_CurrentSegment]._StartX = left;
+                    _FractalColours._GradientSegments[_CurrentSegment]._StartColour = mat.Clone();
+
+                    _FractalColours._GradientSegments.Insert(_CurrentSegment, segment);
+                }
             }
 
             materialSelector1.SetSelectedMaterial(_FractalColours._GradientSegments[_CurrentSegment]._StartColour);

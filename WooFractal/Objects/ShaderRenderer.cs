@@ -499,7 +499,12 @@ void main()
             shader.SetUniform1(gl, "fov", (float)_Camera._FOV);
             shader.SetUniform1(gl, "spherical", (float)_Camera._Spherical);
             shader.SetUniform1(gl, "stereographic", (float)_Camera._Stereographic);
-
+            shader.SetUniform1(gl, "fogStrength", (float)_FractalSettings._RenderOptions._FogStrength);
+            shader.SetUniform1(gl, "fogSamples", (float)_FractalSettings._RenderOptions._FogSamples);
+            shader.SetUniform3(gl, "fogColour", (float)_FractalSettings._RenderOptions._FogColour._Red,
+                (float)_FractalSettings._RenderOptions._FogColour._Green,
+                (float)_FractalSettings._RenderOptions._FogColour._Blue);
+            
             for (int i = 0; i < _FractalSettings._FractalIterations.Count; i++)
             {
                 _FractalSettings._FractalIterations[i].SetDeclarations(shader, gl);

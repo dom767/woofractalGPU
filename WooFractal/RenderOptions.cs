@@ -37,6 +37,9 @@ namespace WooFractal
         public double _SunDirection = 0; // degrees
         public bool _Headlight = false;
         public double _HeadLightStrength = 1.0;
+        public double _FogStrength = 0.0;
+        public Colour _FogColour = new Colour(0.7, 0.8, 0.9);
+        public int _FogSamples = 1;
 
         public RenderOptions GetClone()
         {
@@ -81,7 +84,10 @@ namespace WooFractal
                 new XAttribute("sunHeight", _SunHeight),
                 new XAttribute("sunDirection", _SunDirection),
                 new XAttribute("headlightEnabled", _Headlight),
-                new XAttribute("headlightStrength", _HeadLightStrength));
+                new XAttribute("headlightStrength", _HeadLightStrength),
+                new XAttribute("fogStrength", _FogStrength),
+                new XAttribute("fogColour", _FogColour),
+                new XAttribute("fogSamples", _FogSamples));
             parent.Add(ret);
         }
 

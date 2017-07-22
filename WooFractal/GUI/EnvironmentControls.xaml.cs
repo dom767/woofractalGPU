@@ -53,6 +53,9 @@ namespace WooFractal
             floatEditor1.Set("Sun Height", _Parent._SunHeight, 0, 90, FloatEditorFlags.None, this);
             floatEditor2.Set("Sun Direction", _Parent._SunDirection, 0, 360, FloatEditorFlags.None, this);
             floatEditor3.Set("Headlight", _Parent._HeadLightStrength, 0, 2, FloatEditorFlags.None, this);
+            floatEditor4.Set("Fog Strength", _Parent._FogStrength, 0, 2, FloatEditorFlags.None, this);
+            floatEditor5.Set("Fog Shadow Samples", _Parent._FogSamples, 0, 8, FloatEditorFlags.Integer, this);
+            colourSelector1.Set(_Parent._FogColour, this);
             checkBox1.IsChecked = _Parent._Headlight;
         }
 
@@ -63,6 +66,9 @@ namespace WooFractal
             _Parent._SunDirection = floatEditor2.GetSliderValue();
             _Parent._HeadLightStrength = floatEditor3.GetSliderValue();
             _Parent._Headlight = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
+            _Parent._FogStrength = floatEditor4.GetSliderValue();
+            _Parent._FogSamples = (int)floatEditor5.GetSliderValue();
+            _Parent._FogColour = colourSelector1.GetColour();
 
             if (_Parent._HeadLightStrength != old._HeadLightStrength
                 || _Parent._Headlight != old._Headlight)

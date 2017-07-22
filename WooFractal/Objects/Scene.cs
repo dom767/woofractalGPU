@@ -54,6 +54,9 @@ uniform float mouseY;
 uniform float progressiveInterval;
 uniform vec3 sunDirection;
 uniform float focusDepth;
+uniform float fogStrength;
+uniform float fogSamples;
+uniform vec3 fogColour;
 float randomIndex;
 float pixelIndex;
 float sampleIndex;
@@ -315,10 +318,46 @@ vec3 getSkyColour2(vec3 dir, vec3 pos, float tmin, float tmax)
  return vec3(20*(sumR));
 }
 
+vec3 getVolume(vec3 spos, vec3 sdir, float distance, vec3 colour)
+{
+ if (fogStrength<0.00001)
+  return colour;
+
+ float mu = dot(sdir, sunDirection);
+ float g = 0.76;
+ float phaseM = 3.0 / (8.0 * 3.14159265) * ((1.0 - g * g) * (1.0 + mu * mu)) / ((2.0 + g * g) * pow(1.0 + g * g - 2.0 * g * mu, 1.0f)); 
+ float density = fogStrength / focusDepth;
+
+// failed experiments with exponential sampling
+//float val = (exp(density*distance*rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x)-1)/(exp(density*distance)-1);
+//float val = (1-exp(-density*distance*rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x))/(1-exp(-density*distance));
+
+ float val = rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x;
+ vec3 shadowsample = spos + (sdir * distance*val);
+ float outdist=1000;
+ vec3 outpos, outnormal;
+ material outmat;";
+            if (raytracerOptions._ShadowsEnabled)
+            {
+                frag += @"bool shadow = trace(shadowsample, normalize(sunDirection), outdist, outpos, outnormal, outmat);
+";
+            }
+            else
+            {
+                frag += @"bool shadow = false;
+";
+            }
+            frag +=@"
+ float thickness = 1-exp(-density*distance);
+ vec3 fogcolour = shadow?vec3(0):fogColour;
+ return mix(colour, fogcolour, thickness) + phaseM*(shadow?vec3(0):vec3(1))*thickness*1;
+}
+
 // https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/simulating-sky/simulating-colors-of-the-sky
 vec4 getBackgroundColour(vec3 dir, vec3 pos)
 {
- vec3 skyColour = getSkyColour2(dir, pos, 0, 10000000);
+ vec3 skyColour = getSkyColour(dir, pos, 0, 10000000);
+ skyColour = getVolume(pos, dir, 1000, skyColour);
  return vec4(skyColour,1);
 }
 
@@ -531,7 +570,9 @@ void main(void)
             if (!raytracerOptions._ShadowsEnabled)
                 frag += "    lightSS = vec3(calculateSS(out_pos, normal, minDistance3, 1));";
 
-            frag += @"    vec3 col = lightSS*mat.diff*lightDiff + lightSS*mat.spec*lightSpec;// + getSkyColour2(iterdir, iterpos, 0, length(out_pos-iterpos));
+            frag += @"    vec3 col = lightSS*mat.diff*lightDiff + lightSS*mat.spec*lightSpec;
+    
+    col = getVolume(iterpos, iterdir, dist, col);
     oCol+=vec4(factor,0.0)*vec4(col, 0.0);
 
     float r0 = 0.2; // glass
