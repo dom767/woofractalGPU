@@ -328,18 +328,25 @@ vec3 getVolume(vec3 spos, vec3 sdir, float distance, vec3 colour)
  float phaseM = 3.0 / (8.0 * 3.14159265) * ((1.0 - g * g) * (1.0 + mu * mu)) / ((2.0 + g * g) * pow(1.0 + g * g - 2.0 * g * mu, 1.0f)); 
  float density = fogStrength / focusDepth;
 
-// failed experiments with exponential sampling
-//float val = (exp(density*distance*rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x)-1)/(exp(density*distance)-1);
-//float val = (1-exp(-density*distance*rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x))/(1-exp(-density*distance));
-
- float val = rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x;
- vec3 shadowsample = spos + (sdir * distance*val);
- float outdist=1000;
- vec3 outpos, outnormal;
- material outmat;";
+ vec3 ret = colour;
+ bool calcShadow = true;
+ float fogSamples2 = fogSamples;
+ if (fogSamples==0)
+ {
+  fogSamples2=1;
+  calcShadow = false;
+ }
+ for (float i=fogSamples2-1; i>=0; i--)
+ {
+  float val = (i + rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x) / fogSamples2;
+  vec3 shadowsample = spos + (sdir * distance*val);
+  float outdist=1000;
+  vec3 outpos, outnormal;
+  material outmat;";
             if (raytracerOptions._ShadowsEnabled)
             {
-                frag += @"bool shadow = trace(shadowsample, normalize(sunDirection), outdist, outpos, outnormal, outmat);
+                frag += @"bool shadow = false;
+  if (calcShadow) shadow = trace(shadowsample, normalize(sunDirection), outdist, outpos, outnormal, outmat);
 ";
             }
             else
@@ -347,10 +354,12 @@ vec3 getVolume(vec3 spos, vec3 sdir, float distance, vec3 colour)
                 frag += @"bool shadow = false;
 ";
             }
-            frag +=@"
- float thickness = 1-exp(-density*distance);
- vec3 fogcolour = shadow?vec3(0):fogColour;
- return mix(colour, fogcolour, thickness) + phaseM*(shadow?vec3(0):vec3(1))*thickness*1;
+            frag += @"
+  float thickness = 1-exp(-density*(distance/fogSamples2));
+  vec3 fogcolour = shadow?vec3(0):fogColour;
+  ret = mix(ret, fogcolour, thickness) + phaseM*(shadow?vec3(0):vec3(1))*thickness*1;
+ }
+ return ret;
 }
 
 // https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/simulating-sky/simulating-colors-of-the-sky

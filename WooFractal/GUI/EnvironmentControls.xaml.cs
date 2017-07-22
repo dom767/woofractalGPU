@@ -67,7 +67,7 @@ namespace WooFractal
             _Parent._HeadLightStrength = floatEditor3.GetSliderValue();
             _Parent._Headlight = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
             _Parent._FogStrength = floatEditor4.GetSliderValue();
-            _Parent._FogSamples = (int)floatEditor5.GetSliderValue();
+            _Parent._FogSamples = (int)(floatEditor5.GetSliderValue()+0.5);
             _Parent._FogColour = colourSelector1.GetColour();
 
             if (_Parent._HeadLightStrength != old._HeadLightStrength

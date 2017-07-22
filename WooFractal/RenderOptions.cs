@@ -141,6 +141,9 @@ namespace WooFractal
             XMLHelpers.ReadDouble(reader, "sunDirection", ref _SunDirection);
             XMLHelpers.ReadBool(reader, "headlightEnabled", ref _Headlight);
             XMLHelpers.ReadDouble(reader, "headlightStrength", ref _HeadLightStrength);
+            XMLHelpers.ReadDouble(reader, "fogStrength", ref _FogStrength);
+            XMLHelpers.ReadColour(reader, "fogColour", ref _FogColour);
+            XMLHelpers.ReadInt(reader, "fogSamples", ref _FogSamples);
         }
     }
 }

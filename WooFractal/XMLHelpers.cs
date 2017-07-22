@@ -66,7 +66,12 @@ namespace WooFractal
 
         public static void ReadColour(XmlReader reader, ref Colour colour)
         {
-            string attr = reader.GetAttribute("colour");
+            ReadColour(reader, "colour", ref colour);
+        }
+
+        public static void ReadColour(XmlReader reader, string name, ref Colour colour)
+        {
+            string attr = reader.GetAttribute(name);
             if (attr != null)
             {
                 string[] rgb = attr.Split(',');

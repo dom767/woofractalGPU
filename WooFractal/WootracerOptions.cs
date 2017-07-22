@@ -21,7 +21,8 @@ namespace WooFractal
                 new XAttribute("headlight", _Headlight),
                 new XAttribute("colours", _Colours),
                 new XAttribute("progressive", _Progressive),
-                new XAttribute("maxIterations", _MaxIterations));
+                new XAttribute("maxIterations", _MaxIterations),
+                new XAttribute("resolution", _Resolution));
         }
         
         public void LoadXML(XmlReader reader)
@@ -34,6 +35,7 @@ namespace WooFractal
             XMLHelpers.ReadBool(reader, "colours", ref _Colours);
             XMLHelpers.ReadBool(reader, "progressive", ref _Progressive);
             XMLHelpers.ReadInt(reader, "maxIterations", ref _MaxIterations);
+            XMLHelpers.ReadInt(reader, "resolution", ref _Resolution);
             reader.Read();
         }
 
