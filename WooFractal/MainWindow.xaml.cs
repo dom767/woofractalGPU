@@ -946,6 +946,7 @@ namespace WooFractal
             _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
             _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
+            SetDirty();
         }
 
         private void openGlCtrl_MouseDown(object sender, MouseButtonEventArgs e)
