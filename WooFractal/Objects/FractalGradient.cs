@@ -16,6 +16,21 @@ namespace WooFractal
         public float _StartX = 0.0f;
         public float _EndX = 1.0f;
 
+        public GradientSegment()
+        {
+            _StartColour._DiElectric = 0.5f;
+            _StartColour._Reflectivity = new Colour(0.5);
+            _StartColour._SpecularColour = new Colour(0.5);
+            _StartColour._Roughness = 0.12f;
+            _StartColour._DiffuseColour = new Colour(0.7, 0.2, 0.2);
+
+            _EndColour._Reflectivity = new Colour(0.3);
+            _EndColour._SpecularColour = new Colour(0.3);
+            _EndColour._DiElectric = 0.5f;
+            _EndColour._Roughness = 0.2f;
+            _EndColour._DiffuseColour = new Colour(0.3, 0.8, 0.3);
+        }
+
         public float Width()
         {
             return _EndX - _StartX;

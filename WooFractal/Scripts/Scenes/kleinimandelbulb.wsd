@@ -1,0 +1,173 @@
+<CONTEXT>
+  <SCENE>
+    <FRACTAL>
+      <RENDEROPTIONS distanceMinimum="4.668141592920354" distanceMinimumMode="1" distanceIterations="215.40119760479041" stepSize="0.41638888888888875" distanceExtents="1.5239520958083832" fractalIterationCount="20" colourIterationCount="15" deMode="2" background="3" lighting="0" sunHeight="50" sunDirection="225" headlightEnabled="false" headlightStrength="1" fogStrength="0" fogColour="0.699999988079071, 0.800000011920929, 0.899999976158142" fogSamples="1" />
+      <FRACTALCOLOURS orbitType="y" blendType="Linear" multiplier="3.9024390243902438" offset="0" power="0">
+        <GRADIENTSEGMENT startX="0" endX="0.7957958">
+          <STARTCOLOUR opacity="1" density="1" tintdensity="0.1" roughness="0.3" dielectric="0.5" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="0.899999976158142, 0.899999976158142, 0.899999976158142" />
+            <SPECULARCOLOUR type="0" colour="0.0299999993294477, 0.0299999993294477, 0.0299999993294477" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.0299999993294477, 0.0299999993294477, 0.0299999993294477" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </STARTCOLOUR>
+          <ENDCOLOUR opacity="1" density="1" tintdensity="0.1" roughness="0.3" dielectric="0.5" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="0.899999976158142, 0.899999976158142, 0.899999976158142" />
+            <SPECULARCOLOUR type="0" colour="0.0299999993294477, 0.0299999993294477, 0.0299999993294477" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.0299999993294477, 0.0299999993294477, 0.0299999993294477" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </ENDCOLOUR>
+        </GRADIENTSEGMENT>
+        <GRADIENTSEGMENT startX="0.7957958" endX="1">
+          <STARTCOLOUR opacity="1" density="1" tintdensity="0.1" roughness="0.002" dielectric="0.5" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="0.100000001490116, 0.100000001490116, 0.100000001490116" />
+            <SPECULARCOLOUR type="0" colour="0.899999976158142, 0.600000023841858, 0.300000011920929" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.899999976158142, 0.600000023841858, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </STARTCOLOUR>
+          <ENDCOLOUR opacity="1" density="1" tintdensity="0.1" roughness="0.002" dielectric="0.5" refractiveIndex="1">
+            <DIFFUSECOLOUR type="0" colour="0.100000001490116, 0.100000001490116, 0.100000001490116" />
+            <SPECULARCOLOUR type="0" colour="0.899999976158142, 0.600000023841858, 0.300000011920929" />
+            <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+            <REFLECTIVITYCOLOUR type="0" colour="0.899999976158142, 0.600000023841858, 0.300000011920929" />
+            <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+          </ENDCOLOUR>
+        </GRADIENTSEGMENT>
+      </FRACTALCOLOURS>
+      <KLEINIANGROUP scale="1.7870967741935482" csize="1, 1, 1" julia="-1.2180881135337, 1.45612446586828, 0.00773286989621669" repeats="3" />
+      <BULBFRACTAL rotation="0, 0, 0" scale="7.7935483870967719" juliaMode="true" julia="0.56075813734821, 1.01216947890678, -0.512893499266935" repeats="1" />
+      <MATERIALSELECTION>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.2" dielectric="0.885294139" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.800000011920929, 0.300000011920929, 0.300000011920929" />
+          <SPECULARCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.2" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.800000011920929, 0.800000011920929, 0.300000011920929" />
+          <SPECULARCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.2" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.300000011920929, 0.800000011920929, 0.300000011920929" />
+          <SPECULARCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.2" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.300000011920929, 0.800000011920929, 0.800000011920929" />
+          <SPECULARCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.2" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.800000011920929" />
+          <SPECULARCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.2" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.800000011920929, 0.300000011920929, 0.800000011920929" />
+          <SPECULARCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.12" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.699999988079071, 0.200000002980232, 0.200000002980232" />
+          <SPECULARCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.12" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.699999988079071, 0.699999988079071, 0.200000002980232" />
+          <SPECULARCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.12" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.200000002980232, 0.699999988079071, 0.200000002980232" />
+          <SPECULARCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.12" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.200000002980232, 0.699999988079071, 0.699999988079071" />
+          <SPECULARCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.12" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.200000002980232, 0.200000002980232, 0.699999988079071" />
+          <SPECULARCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.12" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.699999988079071, 0.200000002980232, 0.699999988079071" />
+          <SPECULARCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.002" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.100000001490116, 0.100000001490116, 0.100000001490116" />
+          <SPECULARCOLOUR type="0" colour="0.800000011920929, 0.800000011920929, 0.800000011920929" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.800000011920929, 0.800000011920929, 0.800000011920929" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.002" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.300000011920929, 0.300000011920929, 0.300000011920929" />
+          <SPECULARCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.5, 0.5, 0.5" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.002" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.100000001490116, 0.100000001490116, 0.100000001490116" />
+          <SPECULARCOLOUR type="0" colour="0.899999976158142, 0.600000023841858, 0.300000011920929" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.899999976158142, 0.600000023841858, 0.300000011920929" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.002" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.100000001490116, 0.100000001490116, 0.100000001490116" />
+          <SPECULARCOLOUR type="0" colour="0.899999976158142, 0.800000011920929, 0.300000011920929" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.899999976158142, 0.800000011920929, 0.300000011920929" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.3" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.100000001490116, 0.100000001490116, 0.100000001490116" />
+          <SPECULARCOLOUR type="0" colour="0.0299999993294477, 0.0299999993294477, 0.0299999993294477" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.0299999993294477, 0.0299999993294477, 0.0299999993294477" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+        <MATERIAL opacity="1" density="1" tintdensity="0.1" roughness="0.3" dielectric="0.5" refractiveIndex="1">
+          <DIFFUSECOLOUR type="0" colour="0.899999976158142, 0.899999976158142, 0.899999976158142" />
+          <SPECULARCOLOUR type="0" colour="0.0299999993294477, 0.0299999993294477, 0.0299999993294477" />
+          <EMISSIVECOLOUR type="0" colour="0, 0, 0" />
+          <REFLECTIVITYCOLOUR type="0" colour="0.0299999993294477, 0.0299999993294477, 0.0299999993294477" />
+          <ABSORPTIONCOLOUR type="0" colour="0, 0, 0" />
+        </MATERIAL>
+      </MATERIALSELECTION>
+    </FRACTAL>
+    <CAMERA from="-0.64782878262023, 2.89653329356369, 0.127326345859678" target="-0.559030763287417, 2.82874298619069, 0.0935322177271607" fov="40" apertureSize="0.019541616766467065" spherical="0" stereographic="0" focusDepth="0.12019264698028565" exposure="1" />
+  </SCENE>
+  <OPTIONS autoExposure="true" shadowsEnabled="false" dofEnabled="false" reflections="1" headlight="true" colours="true" progressive="false" maxIterations="8" resolution="1" />
+</CONTEXT>

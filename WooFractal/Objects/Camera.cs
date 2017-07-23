@@ -36,11 +36,11 @@ namespace WooFractal
 
         public Camera()
         {
-            _Position = new Vector3(-2,2,0);
-            _Target = new Vector3(0, 0, 0);
+            _Position = new Vector3(-2,3,1);
+            _Target = new Vector3(0, 1, 0);
             _FOV = 40;
-            _FocusDepth = 1;
-            _ApertureSize = 0.1;
+            _FocusDepth = 2.16;
+            _ApertureSize = 0.035;
             _Spherical = 0;
             _Stereographic = 0;
             _Exposure = 1;

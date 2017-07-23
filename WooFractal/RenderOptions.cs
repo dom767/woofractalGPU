@@ -25,16 +25,16 @@ namespace WooFractal
     {
         public double _DistanceMinimum = 2;
         public int _DistanceMinimumMode = 1;
-        public double _DistanceIterations = 40;
+        public double _DistanceIterations = 100;
         public double _StepSize = 0.7;
         public double _DistanceExtents = 1;
         public int _FractalIterationCount = 15;
         public int _ColourIterationCount = 15;
         public int _DEMode = 2;
-        public int _Background = 0;
+        public int _Background = 1;
         public int _Lighting = 0;
         public double _SunHeight = 50; // degrees
-        public double _SunDirection = 0; // degrees
+        public double _SunDirection = 225; // degrees
         public bool _Headlight = false;
         public double _HeadLightStrength = 1.0;
         public double _FogStrength = 0.0;
@@ -53,9 +53,9 @@ namespace WooFractal
 
         public vec3 GetSunVec3()
         {
-            return new vec3((float)(Math.Sin(Math.PI*_SunHeight/180) * Math.Cos(Math.PI*_SunDirection/90)),
+            return new vec3((float)(Math.Sin(Math.PI*_SunHeight/180) * Math.Cos(Math.PI*_SunDirection/180)),
                 (float)(Math.Cos(Math.PI * _SunHeight / 180)),
-                (float)(Math.Sin(Math.PI * _SunHeight / 180) * Math.Sin(Math.PI * _SunDirection / 90)));
+                (float)(Math.Sin(Math.PI * _SunHeight / 180) * Math.Sin(Math.PI * _SunDirection / 180)));
         }
 
         public UserControl GetControl()

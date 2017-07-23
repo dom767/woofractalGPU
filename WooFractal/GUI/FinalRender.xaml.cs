@@ -117,7 +117,7 @@ namespace WooFractal
             GetWidthHeightSelection(out width, out height);
             _ShaderRenderer.Initialise(_GL, width, height, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
             _ShaderRenderer.SetShaderVars(_Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), _Scene._FractalSettings._RenderOptions.GetSunVec3(), _Scene._Camera, _Scene._FractalSettings);
-            _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
+            _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive, progressiveSteps);
             _ShaderRenderer.SetPostProcess(_PostProcess);
             _ShaderRenderer.Clean(_GL);
         }
@@ -144,6 +144,7 @@ namespace WooFractal
         
         bool _ImageRendering;
         DispatcherTimer _Timer;
+        int progressiveSteps;
 
         private void GetWidthHeightSelection(out int width, out int height)
         {
@@ -164,6 +165,7 @@ namespace WooFractal
                 width = _ImageWidth;
                 height = _ImageHeight;
             }
+            progressiveSteps = 8 * (width / 960) * (width / 960);
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)

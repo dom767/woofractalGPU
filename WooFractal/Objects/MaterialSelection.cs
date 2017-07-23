@@ -49,6 +49,7 @@ namespace WooFractal.Objects
             _Defaults[11] = new Material(temp);
 
             temp._Roughness = 0.002f;
+            temp._DiElectric = 0.94f;
 
             temp._Reflectivity = new Colour(0.8);
             temp._SpecularColour = temp._Reflectivity;

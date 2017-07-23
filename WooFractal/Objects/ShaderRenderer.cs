@@ -116,6 +116,12 @@ namespace WooFractal
             _ProgressiveIndex = 0;
         }
 
+        public void SetProgressive(bool progressive, int progressiveSteps)
+        {
+            _ProgressiveSteps = progressive ? progressiveSteps : 1;
+            _ProgressiveIndex = 0;
+        }
+
         public void SetMaxIterations(int maxIterations)
         {
             _MaxIterations = maxIterations;
