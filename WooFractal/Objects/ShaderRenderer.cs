@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Drawing;
 using Microsoft.Win32;
+using System.Windows;
 
 namespace WooFractal
 {
@@ -128,6 +129,7 @@ namespace WooFractal
         }
 
         OpenGL _GL = null;
+        bool _ShaderError = false;
 
         /// <summary>
         /// Initialises the Scene.
@@ -169,9 +171,18 @@ namespace WooFractal
             }
             else
             {
-                shaderRayMarch.Create(gl,
+                _ShaderError = false;
+                try
+                {
+                    shaderRayMarch.Create(gl,
                     ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarchProgressive.vert"),
                     _Program, attributeLocations);
+                }
+                catch (ShaderCompilationException exception)
+                {
+                    _ShaderError = true;
+                    MessageBox.Show(exception.Message +"\r\n" + exception.CompilerOutput);
+                }
             }
 
             // Create the transfer shader

@@ -15,6 +15,10 @@ Getting Started)
 
 Version log)
 
+v1.01
+- Fix for window resizing (refresh on resize)
+- Show compiler errors on failed scripts
+
 v1.0
 - Glitches
  . lots, including the name of the window!
