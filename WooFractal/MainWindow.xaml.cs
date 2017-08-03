@@ -956,7 +956,7 @@ namespace WooFractal
   
             Point mousePos = e.GetPosition(openGlCtrl);
 
-            _ShaderRenderer.GetDepth((int)(mousePos.X), (int)(mousePos.Y));
+            _ShaderRenderer.GetDepth((int)(mousePos.X) / _RaytracerOptions._Resolution, (int)(mousePos.Y) / _RaytracerOptions._Resolution);
 
             Debug.WriteLine("click (x = " + mousePos.X + ", y=" + mousePos.Y + ")");
 
