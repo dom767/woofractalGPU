@@ -326,7 +326,7 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
             {
                 int repeats = _FractalIterations[i]._Repeats;
                 frag2 += @"
- if (modj>=" + iterationIndex + " && modj<" + iterationIndex + repeats + @")
+ if (modj>=" + iterationIndex + " && modj<" + (iterationIndex + repeats).ToString() + @")
  {";
                 _FractalIterations[i].Compile(ref frag2, i);
                 frag2 += @"
