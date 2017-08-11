@@ -673,6 +673,10 @@ namespace WooFractal
             BuildEnvironmentList();
         }
 
+        public void SaveImageScene(string filename)
+        {
+            SaveContextInternal(filename);
+        }
         private void SaveContext(string name)
         {
             string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes";
@@ -680,8 +684,11 @@ namespace WooFractal
             {
                 System.IO.Directory.CreateDirectory(store);
             }
-            string filename = store + "\\" + name + ".wsd";
-
+            store = store + "\\" + name + ".wsd";
+            SaveContextInternal(store);
+        }
+        private void SaveContextInternal(string filename)
+        {
             using (StreamWriter sw = new StreamWriter(filename))
             {
                 try

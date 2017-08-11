@@ -703,6 +703,7 @@ void main()
             {
                 bmp.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png);
                 bmp.Save(saveFileDialog1.FileName.Replace(".png", ".jpg"), System.Drawing.Imaging.ImageFormat.Jpeg);
+                ((MainWindow)System.Windows.Application.Current.MainWindow).SaveImageScene(saveFileDialog1.FileName.Replace(".png", ".wsd"));
             }
 
             _SaveNextRender = false;
