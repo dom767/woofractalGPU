@@ -62,19 +62,6 @@ namespace WooFractal
             DEMode = 1;";
         }
 
-        public override string GetFractalString()
-        {
-            string fracstring = "fractal_mandelbox(vec(" + _Rotation.ToString() + "), " + _Scale.ToString() + ", " + _MinRadius.ToString() + ")\r\n";
-
-            string repstring = "";
-            for (int i = 0; i < _Repeats; i++)
-            {
-                repstring += fracstring;
-            }
-
-            return repstring;
-        }
-
         public override void CreateElement(XElement parent)
         {
             XElement ret = new XElement("BOXFRACTAL",

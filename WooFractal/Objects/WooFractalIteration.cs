@@ -19,7 +19,6 @@ namespace WooFractal
     public abstract class WooFractalIteration
     {
         public abstract UserControl GetControl();
-        public abstract string GetFractalString();
         public abstract void SetDeclarations(ShaderProgram shader, OpenGL gl);
         public abstract void CompileDeclerations(ref string frag, int iteration);
         public abstract void Compile(ref string frag, int iteration);

@@ -55,13 +55,6 @@ namespace WooFractal
             DEMode = 3;";
         }
 
-        public override string GetFractalString()
-        {
-            string repstring = "";
-
-            return repstring;
-        }
-
         public override void CreateElement(XElement parent)
         {
             XElement ret = new XElement("KLEINIANGROUP",
