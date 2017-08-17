@@ -1108,7 +1108,6 @@ namespace WooFractal
         public static string filePath = @"Log.txt";
         public static void Log(string message)
         {
-            return;
             using (StreamWriter streamWriter = new StreamWriter(filePath, true))
             {
                 streamWriter.WriteLine(message);
