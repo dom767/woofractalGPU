@@ -55,8 +55,10 @@ Section "WooFractal (required)"
   SetOutPath $APPDATA\WooFractal
   File /oname=randomSequences.vec2 "..\bin\Release\randomSequences.vec2"
 
+  SetShellVarContext current
   SetOutPath $DOCUMENTS
 
+  CreateDirectory $DOCUMENTS\WooFractal
   CreateDirectory $DOCUMENTS\WooFractal\Backgrounds
   CreateDirectory $DOCUMENTS\WooFractal\Scenes
 
