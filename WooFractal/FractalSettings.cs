@@ -156,7 +156,7 @@ segEnd[" + s + "] = " + _FractalColours[i]._GradientSegments[s]._EndX.ToString()
 currS = 0;
 for (int i=0; i<" + _FractalColours[i]._GradientSegments.Count()+ @"; i++)
 {
- currS = int(max(currS, i * min(1, floor(1+(trappos.x-segStart[i])) * min(1, floor(1+(segEnd[i]-trappos.x))))));
+ currS = int(max(currS, i * min(1.0, floor(1.0+(trappos.x-segStart[i])) * min(1.0, floor(1.0+(segEnd[i]-trappos.x))))));
 }
 
 gradX = (trappos.x - segStart[currS]) / (segEnd[currS] - segStart[currS]);
