@@ -15,6 +15,13 @@ Getting Started)
 
 Version log)
 
+v1.04
+- Optimised final render window (20% faster on AMD burning in uniforms)
+- Save GLSL button now saves shader fragment
+
+v1.03
+- Support for negative mandelbox scales
+
 v1.02
 - Depth selection works for non 1/1 resolutions
 - Repeat code works for >10 repeats
