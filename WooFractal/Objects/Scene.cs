@@ -330,15 +330,15 @@ vec3 getVolume(vec3 spos, vec3 sdir, float distance, vec3 colour)
 
  vec3 ret = colour;
  bool calcShadow = true;
- float fogSamples2 = fogSamples;
+ float fs2 = fogSamples;
  if (fogSamples==0)
  {
-  fogSamples2=1;
+  fs2=1;
   calcShadow = false;
  }
- for (float i=fogSamples2-1; i>=0; i--)
+ for (float i=fs2-1; i>=0; i--)
  {
-  float val = (i + rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x) / fogSamples2;
+  float val = (i + rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x) / fs2;
   vec3 shadowsample = spos + (sdir * distance*val);
   float outdist=1000;
   vec3 outpos, outnormal;
@@ -355,7 +355,7 @@ vec3 getVolume(vec3 spos, vec3 sdir, float distance, vec3 colour)
 ";
             }
             frag += @"
-  float thickness = 1-exp(-density*(distance/fogSamples2));
+  float thickness = 1-exp(-density*(distance/fs2));
   vec3 fogcolour = shadow?vec3(0):fogColour;
   ret = mix(ret, fogcolour, thickness) + phaseM*(shadow?vec3(0):vec3(1))*thickness*1;
  }

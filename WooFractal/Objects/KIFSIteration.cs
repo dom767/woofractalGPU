@@ -8,6 +8,7 @@ using System.Xml;
 using SharpGL.Shaders;
 using SharpGL;
 using GlmNet;
+using WooFractal.Objects;
 
 namespace WooFractal
 {
@@ -64,14 +65,18 @@ namespace WooFractal
         private int _Iteration = -1;
         public override void CompileDeclerations(ref string frag, int iteration)
         {
-            frag += "uniform float fracScale" + iteration + ";";
-            frag += "uniform vec3 fracOffset" + iteration + ";";
-            frag += "uniform mat3 fracPreRot" + iteration + ";";
-            frag += "uniform mat3 fracPostRot" + iteration + ";";
+            frag += @"
+uniform float fracScale" + iteration + ";";
+            frag += @"
+uniform vec3 fracOffset" + iteration + ";";
+            frag += @"
+uniform mat3 fracPreRot" + iteration + ";";
+            frag += @"
+uniform mat3 fracPostRot" + iteration + ";";
             _Iteration = iteration;
         }
 
-        public override void SetDeclarations(ShaderProgram shader, OpenGL gl)
+        public override void SetDeclarations(ref ShaderVariables shaderVars)
         {
             Matrix3 preRot = new Matrix3();
             preRot.MakeFromRPY(_PreRotation.x, _PreRotation.y, _PreRotation.z);
@@ -80,10 +85,10 @@ namespace WooFractal
             postRot.MakeFromRPY(_PostRotation.x, _PostRotation.y, _PostRotation.z);
             mat3 glPostRot = postRot.GetGLMat3();
             
-            shader.SetUniform1(gl, "fracScale" + _Iteration, (float)_Scale);
-            shader.SetUniform3(gl, "fracOffset" + _Iteration, (float)_Offset.x, (float)_Offset.y, (float)_Offset.z);
-            shader.SetUniformMatrix3(gl, "fracPreRot" + _Iteration, glPreRot.to_array());
-            shader.SetUniformMatrix3(gl, "fracPostRot" + _Iteration, glPostRot.to_array());
+            shaderVars.Add("fracScale" + _Iteration, (float)_Scale);
+            shaderVars.Add("fracOffset" + _Iteration, _Offset);
+            shaderVars.Add("fracPreRot" + _Iteration, glPreRot);
+            shaderVars.Add("fracPostRot" + _Iteration, glPostRot);
         }
 
         public override void Compile(ref string frag, int iteration)

@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using System.Xml;
 using SharpGL.Shaders;
 using SharpGL;
+using WooFractal.Objects;
 
 namespace WooFractal
 {
@@ -19,7 +20,7 @@ namespace WooFractal
     public abstract class WooFractalIteration
     {
         public abstract UserControl GetControl();
-        public abstract void SetDeclarations(ShaderProgram shader, OpenGL gl);
+        public abstract void SetDeclarations(ref ShaderVariables shaderVars);
         public abstract void CompileDeclerations(ref string frag, int iteration);
         public abstract void Compile(ref string frag, int iteration);
         public abstract void CreateElement(XElement parent);

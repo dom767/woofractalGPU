@@ -353,7 +353,7 @@ namespace WooFractal
             
             if (_ReInitialise)
             {
-                _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
+                _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), false);
                 _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
                 _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
                 _ReInitialise = false;
@@ -510,7 +510,7 @@ namespace WooFractal
 
         private void button5_Click(object sender, RoutedEventArgs e)
         {
-/*            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\XML";
+            string store = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\GLSL";
             if (!System.IO.Directory.Exists(store))
             {
                 System.IO.Directory.CreateDirectory(store);
@@ -518,17 +518,19 @@ namespace WooFractal
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.InitialDirectory = store;
-            saveFileDialog1.Filter = "Scene XML (*.xml)|*.xml";
+            saveFileDialog1.Filter = "GLSL Shader (*.frag)|*.frag";
             saveFileDialog1.FilterIndex = 1;
 
             if (saveFileDialog1.ShowDialog() == true)
             {
+                string frag = _ShaderRenderer.GetShader();
+            
                 // Save document
                 string filename = saveFileDialog1.FileName;
                 StreamWriter sw = new StreamWriter(filename);
-                sw.Write(XML);
+                sw.Write(frag);
                 sw.Close();
-            }*/
+            }
         }
 
         private bool getShadowsEnabled()
@@ -950,7 +952,7 @@ namespace WooFractal
             var gl = args.OpenGL;
   
             //  Initialise the scene.
-            _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition());
+            _ShaderRenderer.Initialise(_GL, (int)openGlCtrl.ActualWidth / _RaytracerOptions._Resolution, (int)openGlCtrl.ActualHeight / _RaytracerOptions._Resolution, _Scene._Camera.GetViewMatrix(), _Scene._Camera.GetPosition(), false);
             _ShaderRenderer.SetProgressive(_RaytracerOptions._Progressive);
             _ShaderRenderer.SetMaxIterations(_RaytracerOptions._MaxIterations);
             SetDirty();

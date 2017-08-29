@@ -10,6 +10,7 @@ using System.IO;
 using System.Drawing;
 using Microsoft.Win32;
 using System.Windows;
+using WooFractal.Objects;
 
 namespace WooFractal
 {
@@ -128,14 +129,23 @@ namespace WooFractal
             _MaxIterations = maxIterations;
         }
 
+        public string GetShader()
+        {
+            string program = _Program;
+            ShaderVariables shaderVars = GetShaderVars();
+            shaderVars.BurnVariables(ref program);
+            return program;
+        }
+
         OpenGL _GL = null;
         bool _ShaderError = false;
+        bool _BurnVariables = false;
 
         /// <summary>
         /// Initialises the Scene.
         /// </summary>
         /// <param name="gl">The OpenGL instance.</param>
-        public void Initialise(OpenGL gl, int width, int height, mat4 viewMatrix, vec3 position)
+        public void Initialise(OpenGL gl, int width, int height, mat4 viewMatrix, vec3 position, bool burnVariables)
         {
             Logger.Log("ShaderRenderer.Initialise Started");
             _GL = gl;
@@ -151,6 +161,7 @@ namespace WooFractal
             _TargetHeight = height;
             _ProgressiveSteps = 1;
             _ProgressiveIndex = 0;
+            _BurnVariables = burnVariables;
 
             //  We're going to specify the attribute locations for the position and normal, 
             //  so that we can force both shaders to explicitly have the same locations.
@@ -171,6 +182,11 @@ namespace WooFractal
             }
             else
             {
+                if (_BurnVariables)
+                {
+                    ShaderVariables shaderVars = GetShaderVars();
+                    shaderVars.BurnVariables(ref _Program);
+                }
                 _ShaderError = false;
                 try
                 {
@@ -444,6 +460,12 @@ void main()
 
             try
             {
+                if (_BurnVariables)
+                {
+                    ShaderVariables shaderVars = GetShaderVars();
+                    shaderVars.BurnVariables(ref fragmentShader);
+                }
+
                 shaderRayMarch = new ShaderProgram();
                 shaderRayMarch.Create(gl,
                 ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarchProgressive.vert"),
@@ -492,45 +514,56 @@ void main()
 
         bool _SaveNextRender = false;
 
+        ShaderVariables GetShaderVars()
+        {
+            ShaderVariables shaderVars = new ShaderVariables();
+
+            shaderVars.Add("progressiveIndex", _ProgressiveIndex);
+   //         shaderVars.Add("screenWidth", _TargetWidth);
+    //        shaderVars.Add("screenHeight", _TargetHeight);
+            shaderVars.Add("frameNumber", _FrameNumber++);
+            shaderVars.Add("viewMatrix", _ViewMatrix);
+            shaderVars.Add("camPos", _Position);
+//            shaderVars.Add("renderedTexture", 0);
+//            shaderVars.Add("randomNumbers", 1);
+//            shaderVars.Add("depth", _Depth ? 1 : 0);
+            shaderVars.Add("mouseX", _MouseX);
+            shaderVars.Add("mouseY", _TargetHeight - _MouseY);
+            shaderVars.Add("sunDirection", _SunDirection);
+            shaderVars.Add("focusDepth", (float)_Camera._FocusDepth);
+            shaderVars.Add("apertureSize", (float)_Camera._ApertureSize);
+            shaderVars.Add("fov", (float)_Camera._FOV);
+            shaderVars.Add("spherical", (float)_Camera._Spherical);
+            shaderVars.Add("stereographic", (float)_Camera._Stereographic);
+            shaderVars.Add("fogStrength", (float)_FractalSettings._RenderOptions._FogStrength);
+            shaderVars.Add("fogSamples", (float)_FractalSettings._RenderOptions._FogSamples);
+            shaderVars.Add("fogColour", _FractalSettings._RenderOptions._FogColour);
+            
+            for (int i = 0; i < _FractalSettings._FractalIterations.Count; i++)
+            {
+                _FractalSettings._FractalIterations[i].SetDeclarations(ref shaderVars);
+            } 
+            
+            return shaderVars;
+        }
+
         private void SceneRender(OpenGL gl)
         {
+            ShaderVariables shaderVars = GetShaderVars();
+
             //  Get a reference to the raytracer shader.
             var shader = shaderRayMarch;
             shader.Bind(gl);
 
-            shader.SetUniform1(gl, "progressiveIndex", _ProgressiveIndex);
-
-            shader.SetUniform1(gl, "screenWidth", _TargetWidth);
-            shader.SetUniform1(gl, "screenHeight", _TargetHeight);
-            shader.SetUniform1(gl, "frameNumber", _FrameNumber++);
-            shader.SetUniformMatrix4(gl, "viewMatrix", _ViewMatrix.to_array());
-            shader.SetUniform3(gl, "camPos", _Position.x, _Position.y, _Position.z);
-            shader.SetUniform1(gl, "renderedTexture", 0);
-            shader.SetUniform1(gl, "randomNumbers", 1);
-            shader.SetUniform1(gl, "depth", _Depth ? 1 : 0);
-            shader.SetUniform1(gl, "mouseX", _MouseX);
-            shader.SetUniform1(gl, "mouseY", _TargetHeight - _MouseY);
-            shader.SetUniform3(gl, "sunDirection", _SunDirection.x, _SunDirection.y, _SunDirection.z);
-            shader.SetUniform1(gl, "focusDepth", (float)_Camera._FocusDepth);
-            shader.SetUniform1(gl, "apertureSize", (float)_Camera._ApertureSize);
-            shader.SetUniform1(gl, "fov", (float)_Camera._FOV);
-            shader.SetUniform1(gl, "spherical", (float)_Camera._Spherical);
-            shader.SetUniform1(gl, "stereographic", (float)_Camera._Stereographic);
-            shader.SetUniform1(gl, "fogStrength", (float)_FractalSettings._RenderOptions._FogStrength);
-            shader.SetUniform1(gl, "fogSamples", (float)_FractalSettings._RenderOptions._FogSamples);
-            shader.SetUniform3(gl, "fogColour", (float)_FractalSettings._RenderOptions._FogColour._Red,
-                (float)_FractalSettings._RenderOptions._FogColour._Green,
-                (float)_FractalSettings._RenderOptions._FogColour._Blue);
-            
-            for (int i = 0; i < _FractalSettings._FractalIterations.Count; i++)
-            {
-                _FractalSettings._FractalIterations[i].SetDeclarations(shader, gl);
-            }
+            shaderVars.Set(gl, shader);
 
             int rt1 = shader.GetUniformLocation(gl, "renderedTexture");
             int rn1 = shader.GetUniformLocation(gl, "randomNumbers");
             gl.Uniform1(rt1, 0);
             gl.Uniform1(rn1, 1);
+            shader.SetUniform1(gl, "depth", _Depth ? 1 : 0);
+            shader.SetUniform1(gl, "screenWidth", _TargetWidth);
+            shader.SetUniform1(gl, "screenHeight", _TargetHeight);
 
             gl.ActiveTexture(OpenGL.GL_TEXTURE0);
             gl.BindTexture(OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[_PingPong ? 0 : 1]);

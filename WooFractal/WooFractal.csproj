@@ -100,6 +100,9 @@
     <Compile Include="GUI\AddFractal.xaml.cs">
       <DependentUpon>AddFractal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\BoxFold.xaml.cs">
+      <DependentUpon>BoxFold.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\CameraControls.xaml.cs">
       <DependentUpon>CameraControls.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,7 @@
     <Compile Include="GUI\Vec3Control.xaml.cs">
       <DependentUpon>Vec3Control.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Objects\BoxfoldIteration.cs" />
     <Compile Include="Objects\FractalGradient.cs" />
     <Compile Include="GUI\FractalControl.xaml.cs">
       <DependentUpon>FractalControl.xaml</DependentUpon>
@@ -165,6 +169,7 @@
       <DependentUpon>RenderControls.xaml</DependentUpon>
     </Compile>
     <Compile Include="Objects\Scene.cs" />
+    <Compile Include="Objects\ShaderVariables.cs" />
     <Compile Include="RenderOptions.cs" />
     <Compile Include="GUI\RPYEditor.xaml.cs">
       <DependentUpon>RPYEditor.xaml</DependentUpon>
@@ -183,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\AddFractal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\BoxFold.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

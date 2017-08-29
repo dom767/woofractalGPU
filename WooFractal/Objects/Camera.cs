@@ -115,8 +115,8 @@ namespace WooFractal
             mat4 viewMatrix = GetViewMatrix();
 
             frag += @"
-uniform vec3 camPos = vec3(" + _Position.x + "," + _Position.y + "," + _Position.z + @");
-uniform mat4 viewMatrix = mat4(" + Utils.mat4ToString(viewMatrix) + @");
+uniform vec3 camPos;
+uniform mat4 viewMatrix;
 uniform float apertureSize;
 uniform float spherical;
 uniform float stereographic;

@@ -7,6 +7,7 @@ using System.Xml.Linq;
 using System.Xml;
 using SharpGL.Shaders;
 using SharpGL;
+using WooFractal.Objects;
 
 namespace WooFractal
 {
@@ -36,17 +37,20 @@ namespace WooFractal
         private int _Iteration = -1;
         public override void CompileDeclerations(ref string frag, int iteration)
         {
-            frag += "uniform float fracScale" + iteration + ";";
-            frag += "uniform vec3 fracCSize" + iteration + ";";
-            frag += "uniform vec3 fracJulia" + iteration + ";";
+            frag += @"
+uniform float fracScale" + iteration + ";";
+            frag += @"
+uniform vec3 fracCSize" + iteration + ";";
+            frag += @"
+uniform vec3 fracJulia" + iteration + ";";
             _Iteration = iteration;
         }
 
-        public override void SetDeclarations(ShaderProgram shader, OpenGL gl)
+        public override void SetDeclarations(ref ShaderVariables shaderVars)
         {
-            shader.SetUniform1(gl, "fracScale" + _Iteration, (float)_Scale);
-            shader.SetUniform3(gl, "fracCSize" + _Iteration, (float)_CSize.x, (float)_CSize.y, (float)_CSize.z);
-            shader.SetUniform3(gl, "fracJulia" + _Iteration, (float)_Julia.x, (float)_Julia.y, (float)_Julia.z);
+            shaderVars.Add("fracScale" + _Iteration, (float)_Scale);
+            shaderVars.Add("fracCSize" + _Iteration, _CSize);
+            shaderVars.Add("fracJulia" + _Iteration, _Julia);
         }
 
         public override void Compile(ref string frag, int iteration)

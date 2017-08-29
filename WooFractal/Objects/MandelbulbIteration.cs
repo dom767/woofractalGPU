@@ -8,6 +8,7 @@ using System.Xml;
 using SharpGL.Shaders;
 using SharpGL;
 using GlmNet;
+using WooFractal.Objects;
 
 namespace WooFractal
 {
@@ -36,23 +37,27 @@ namespace WooFractal
         private int _Iteration = -1;
         public override void CompileDeclerations(ref string frag, int iteration)
         {
-            frag += "uniform float fracScale" + iteration + ";";
-            frag += "uniform mat3 fracRot" + iteration + ";";
-            frag += "uniform bool fracJMode" + iteration + ";";
-            frag += "uniform vec3 fracJulia" + iteration + ";";
+            frag += @"
+uniform float fracScale" + iteration + ";";
+            frag += @"
+uniform mat3 fracRot" + iteration + ";";
+            frag += @"
+uniform bool fracJMode" + iteration + ";";
+            frag += @"
+uniform vec3 fracJulia" + iteration + ";";
             _Iteration = iteration;
         }
 
-        public override void SetDeclarations(ShaderProgram shader, OpenGL gl)
+        public override void SetDeclarations(ref ShaderVariables shaderVars)
         {
             Matrix3 rot = new Matrix3();
             rot.MakeFromRPY(_Rotation.x, _Rotation.y, _Rotation.z);
             mat3 glRot = rot.GetGLMat3();
 
-            shader.SetUniform1(gl, "fracScale" + _Iteration, (float)_Scale);
-            shader.SetUniformMatrix3(gl, "fracRot" + _Iteration, glRot.to_array());
-            shader.SetUniform1(gl, "fracJMode" + _Iteration, _JuliaMode ? 1 : 0);
-            shader.SetUniform3(gl, "fracJulia" + _Iteration, (float)_Julia.x, (float)_Julia.y, (float)_Julia.z);
+            shaderVars.Add("fracScale" + _Iteration, (float)_Scale);
+            shaderVars.Add("fracRot" + _Iteration, glRot);
+            shaderVars.Add("fracJMode" + _Iteration, _JuliaMode ? 1 : 0);
+            shaderVars.Add("fracJulia" + _Iteration, _Julia);
         }
 
         public override void Compile(ref string frag, int iteration)
