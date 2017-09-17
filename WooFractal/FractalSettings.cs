@@ -277,9 +277,9 @@ void Box(inout vec3 pos, in vec3 origPos, inout float scale, in vec3 mScale, in 
 			
     pos = (pos * mScale) + origPos;
     if (dot(mScale,vec3(1))>0)
-    	scale = scale * max(mScale.x, max(mScale.y,mScale.z)) + 1.0f;
+    	scale = scale * abs(max(mScale.x, max(mScale.y,mScale.z))) + 1.0f;
     else
-    	scale = scale * min(mScale.x, min(mScale.y,mScale.z)) - 1.0f;
+    	scale = scale * abs(min(mScale.x, min(mScale.y,mScale.z))) + 1.0f;
 }
 
 void Cuboid(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in vec3 mPOffset, in mat3 mRotate1Matrix, in mat3 mRotate2Matrix )

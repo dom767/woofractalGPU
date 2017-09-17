@@ -466,12 +466,20 @@ void main()
                     shaderVars.BurnVariables(ref fragmentShader);
                 }
 
+                DateTime start = DateTime.Now; 
                 shaderRayMarch = new ShaderProgram();
                 shaderRayMarch.Create(gl,
-                ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarchProgressive.vert"),
-                fragmentShader, attributeLocations);
+                    ManifestResourceLoader.LoadTextFile(@"Shaders\RayMarchProgressive.vert"),
+                    fragmentShader, attributeLocations);
+                DateTime end = DateTime.Now;
+                TimeSpan duration = end - start;
+                Console.WriteLine(duration.ToString());
             }
-            catch (Exception /*e*/) { }
+            catch (ShaderCompilationException exception)
+            {
+                _ShaderError = true;
+                MessageBox.Show(exception.Message + "\r\n" + exception.CompilerOutput);
+            }
         }
 
         private bool _PingPong = false;
@@ -573,7 +581,7 @@ void main()
             if (_Rendering)
             {
                 gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, (256 / _ProgressiveSteps) * 6);
-                CheckForError(gl);
+    //            CheckForError(gl);
             }
             shader.Unbind(gl);
         }
@@ -653,7 +661,7 @@ void main()
             shader.SetUniform1(gl, "toneFactor", (float)_PostProcess._ToneFactor);
 
             gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
-            CheckForError(gl);
+//            CheckForError(gl);
             shader.Unbind(gl);
 
             // !!!!!!!!!!!!!!!!! Int to final framebuffer
@@ -673,7 +681,7 @@ void main()
 
 
             gl.Viewport(0, 0, (int)viewport[2], (int)viewport[3]);
-            CheckForError(gl);
+     //       CheckForError(gl);
             shader.Unbind(gl);
 
             // TIDY UP

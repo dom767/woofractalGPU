@@ -25,6 +25,7 @@ using SharpGL.SceneGraph.Core;
 using SharpGL.SceneGraph.Primitives;
 using SharpGL.SceneGraph;
 using WooFractal.GUI;
+using System.Reflection;
 
 namespace WooFractal
 {
@@ -49,6 +50,12 @@ namespace WooFractal
             Logger.Log("Starting");
             InitializeComponent();
             Logger.Log("InitComp complete");
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string version = fileVersionInfo.ProductVersion;
+
+            this.Title = "WooFractal (GPU Edition) " + version;
 
             DataContext = this;
 
