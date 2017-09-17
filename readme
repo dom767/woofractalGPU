@@ -18,6 +18,8 @@ Version log)
 v1.04
 - Optimised final render window (20% faster on AMD burning in uniforms)
 - Save GLSL button now saves shader fragment
+- Fix for random nVidia driver errors
+- Fix for possible to parse incorrectly code on AMD drivers
 
 v1.03
 - Support for negative mandelbox scales

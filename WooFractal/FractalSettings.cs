@@ -416,7 +416,6 @@ mat.roughness = 0.01;
     for (int j=0; j<4; j++)
     {
      mid = (dp+oldDp)*0.5;
-     torbitTrap;
 ";
 
             if (_RenderOptions._DistanceMinimumMode != 0)
