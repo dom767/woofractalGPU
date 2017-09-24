@@ -165,7 +165,8 @@ namespace WooFractal
                 width = _ImageWidth;
                 height = _ImageHeight;
             }
-            progressiveSteps = 8 * (width / 960) * (width / 960);
+            progressiveSteps = 8 * (width / 960) * (height / 960);
+            if (progressiveSteps < 1) progressiveSteps = 1;
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
