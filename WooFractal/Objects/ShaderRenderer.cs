@@ -129,11 +129,14 @@ namespace WooFractal
             _MaxIterations = maxIterations;
         }
 
-        public string GetShader()
+        public string GetShader(bool burnVariables)
         {
             string program = _Program;
-            ShaderVariables shaderVars = GetShaderVars();
-            shaderVars.BurnVariables(ref program);
+            if (burnVariables)
+            {
+                ShaderVariables shaderVars = GetShaderVars();
+                shaderVars.BurnVariables(ref program);
+            }
             return program;
         }
 

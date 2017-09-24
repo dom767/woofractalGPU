@@ -530,7 +530,7 @@ namespace WooFractal
 
             if (saveFileDialog1.ShowDialog() == true)
             {
-                string frag = _ShaderRenderer.GetShader();
+                string frag = _ShaderRenderer.GetShader(false);
             
                 // Save document
                 string filename = saveFileDialog1.FileName;
