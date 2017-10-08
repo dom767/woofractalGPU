@@ -165,7 +165,7 @@ namespace WooFractal
                 width = _ImageWidth;
                 height = _ImageHeight;
             }
-            progressiveSteps = 8 * (width / 960) * (height / 960);
+            progressiveSteps = (int)(8.0 * ((float)width / 640.0) * ((float)height / 640.0));
             if (progressiveSteps < 1) progressiveSteps = 1;
         }
 
