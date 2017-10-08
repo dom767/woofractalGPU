@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Xml.Linq;
 using System.Xml;
 using WooFractal.Objects;
+using GlmNet;
 
 namespace WooFractal
 {
@@ -212,6 +213,76 @@ namespace WooFractal
             }
 
             reader.Read();
+        }
+
+        public void CompileDeclerations(ref string frag, int iteration)
+        {
+        }
+
+        public void SetDeclarations(ref ShaderVariables shaderVars, int iteration)
+        {
+            vec3[] diffStart = new vec3[_GradientSegments.Count];
+            vec3[] diffEnd = new vec3[_GradientSegments.Count];
+            vec3[] specStart = new vec3[_GradientSegments.Count];
+            vec3[] specEnd = new vec3[_GradientSegments.Count];
+            vec3[] reflStart = new vec3[_GradientSegments.Count];
+            vec3[] reflEnd = new vec3[_GradientSegments.Count];
+            float[] roughStart = new float[_GradientSegments.Count];
+            float[] roughEnd = new float[_GradientSegments.Count];
+            float[] dlcStart = new float[_GradientSegments.Count];
+            float[] dlcEnd = new float[_GradientSegments.Count];
+            float[] segStart = new float[_GradientSegments.Count];
+            float[] segEnd = new float[_GradientSegments.Count];
+            
+            for (int i = 0; i < _GradientSegments.Count; i++)
+            {
+                diffStart[i].x = (float)_GradientSegments[i]._StartColour._DiffuseColour._Red;
+                diffStart[i].y = (float)_GradientSegments[i]._StartColour._DiffuseColour._Green;
+                diffStart[i].z = (float)_GradientSegments[i]._StartColour._DiffuseColour._Blue;
+                diffEnd[i].x = (float)_GradientSegments[i]._EndColour._DiffuseColour._Red;
+                diffEnd[i].y = (float)_GradientSegments[i]._EndColour._DiffuseColour._Green;
+                diffEnd[i].z = (float)_GradientSegments[i]._EndColour._DiffuseColour._Blue;
+
+                specStart[i].x = (float)_GradientSegments[i]._StartColour._SpecularColour._Red;
+                specStart[i].y = (float)_GradientSegments[i]._StartColour._SpecularColour._Green;
+                specStart[i].z = (float)_GradientSegments[i]._StartColour._SpecularColour._Blue;
+                specEnd[i].x = (float)_GradientSegments[i]._EndColour._SpecularColour._Red;
+                specEnd[i].y = (float)_GradientSegments[i]._EndColour._SpecularColour._Green;
+                specEnd[i].z = (float)_GradientSegments[i]._EndColour._SpecularColour._Blue;
+
+                reflStart[i].x = (float)_GradientSegments[i]._StartColour._Reflectivity._Red;
+                reflStart[i].y = (float)_GradientSegments[i]._StartColour._Reflectivity._Green;
+                reflStart[i].z = (float)_GradientSegments[i]._StartColour._Reflectivity._Blue;
+                reflEnd[i].x = (float)_GradientSegments[i]._EndColour._Reflectivity._Red;
+                reflEnd[i].y = (float)_GradientSegments[i]._EndColour._Reflectivity._Green;
+                reflEnd[i].z = (float)_GradientSegments[i]._EndColour._Reflectivity._Blue;
+
+                roughStart[i] = (float)_GradientSegments[i]._StartColour._Roughness;
+                roughEnd[i] = (float)_GradientSegments[i]._EndColour._Roughness;
+
+                dlcStart[i] = (float)_GradientSegments[i]._StartColour._DiElectric;
+                dlcEnd[i] = (float)_GradientSegments[i]._EndColour._DiElectric;
+
+                segStart[i] = (float)_GradientSegments[i]._StartX;
+                segEnd[i] = (float)_GradientSegments[i]._EndX;
+            }
+
+            shaderVars.Add("diffStart" + iteration.ToString(), diffStart);
+            shaderVars.Add("diffEnd" + iteration.ToString(), diffEnd);
+            shaderVars.Add("specStart" + iteration.ToString(), specStart);
+            shaderVars.Add("specEnd" + iteration.ToString(), specEnd);
+            shaderVars.Add("reflStart" + iteration.ToString(), reflStart);
+            shaderVars.Add("reflEnd" + iteration.ToString(), reflEnd);
+            shaderVars.Add("roughStart" + iteration.ToString(), roughStart);
+            shaderVars.Add("roughEnd" + iteration.ToString(), roughEnd);
+            shaderVars.Add("dlcStart" + iteration.ToString(), dlcStart);
+            shaderVars.Add("dlcEnd" + iteration.ToString(), dlcEnd);
+            shaderVars.Add("segStart" + iteration.ToString(), segStart);
+            shaderVars.Add("segEnd" + iteration.ToString(), segEnd);
+            shaderVars.Add("orbitType" + iteration.ToString(), GetOrbitTypeIndex());
+            shaderVars.Add("multiplier" + iteration.ToString(), (float)_Multiplier);
+            shaderVars.Add("offset" + iteration.ToString(), (float)_Offset);
+            shaderVars.Add("segments" + iteration.ToString(), _GradientSegments.Count());
         }
     }
 }

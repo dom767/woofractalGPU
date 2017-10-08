@@ -549,11 +549,11 @@ void main()
             shaderVars.Add("fogStrength", (float)_FractalSettings._RenderOptions._FogStrength);
             shaderVars.Add("fogSamples", (float)_FractalSettings._RenderOptions._FogSamples);
             shaderVars.Add("fogColour", _FractalSettings._RenderOptions._FogColour);
-            
-            for (int i = 0; i < _FractalSettings._FractalIterations.Count; i++)
-            {
-                _FractalSettings._FractalIterations[i].SetDeclarations(ref shaderVars);
-            } 
+            shaderVars.Add("fogType", (_FractalSettings._RenderOptions._FogType == EFogType.Vanilla) ? 0.0f : 1.0f);
+            shaderVars.Add("distanceExtents", (float)_FractalSettings._RenderOptions._DistanceExtents);
+
+            _FractalSettings.SetFractalDeclerations(ref shaderVars);
+            _FractalSettings.SetColourDeclerations(ref shaderVars);
             
             return shaderVars;
         }

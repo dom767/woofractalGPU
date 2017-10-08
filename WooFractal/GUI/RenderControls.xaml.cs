@@ -72,7 +72,6 @@ namespace WooFractal
             if (_Parent._DistanceMinimum != old._DistanceMinimum
                 || _Parent._DistanceIterations != old._DistanceIterations
                 || _Parent._StepSize != old._StepSize
-                || _Parent._DistanceExtents != old._DistanceExtents
                 || _Parent._FractalIterationCount != old._FractalIterationCount
                 || _Parent._ColourIterationCount != old._ColourIterationCount)
                 ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();

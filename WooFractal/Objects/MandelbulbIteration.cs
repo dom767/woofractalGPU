@@ -42,7 +42,7 @@ uniform float fracScale" + iteration + ";";
             frag += @"
 uniform mat3 fracRot" + iteration + ";";
             frag += @"
-uniform bool fracJMode" + iteration + ";";
+uniform float fracJMode" + iteration + ";";
             frag += @"
 uniform vec3 fracJulia" + iteration + ";";
             _Iteration = iteration;

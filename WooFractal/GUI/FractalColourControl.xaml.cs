@@ -62,16 +62,16 @@ namespace WooFractal
 
             RenderGradient();
 
-            //           _FractalColours._OrbitColoursX = orbitColourControl1.GetOrbitColours();
-            //           _FractalColours._OrbitColoursY = orbitColourControl2.GetOrbitColours();
-            //           _FractalColours._OrbitColoursZ = orbitColourControl3.GetOrbitColours();
-            //           _FractalColours._OrbitColoursDist = orbitColourControl4.GetOrbitColours();
+            SetCameraDirty();
+        }
 
-            //           _FractalColours._XOrbitEnabled = checkBox1.IsChecked.HasValue ? checkBox1.IsChecked.Value : false;
-            //           _FractalColours._YOrbitEnabled = checkBox2.IsChecked.HasValue ? checkBox2.IsChecked.Value : false;
-            //           _FractalColours._ZOrbitEnabled = checkBox3.IsChecked.HasValue ? checkBox3.IsChecked.Value : false;
-            //           _FractalColours._DistOrbitEnabled = checkBox4.IsChecked.HasValue ? checkBox4.IsChecked.Value : false;
+        private void SetCameraDirty()
+        {
+            ((MainWindow)System.Windows.Application.Current.MainWindow).SetCameraDirty();
+        }
 
+        private void SetDirty()
+        {
             ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
         }
 
@@ -131,15 +131,10 @@ namespace WooFractal
             image1.Source = writeableBitmap;
         }
 
-        private void checkBox1_Modified(object sender, RoutedEventArgs e)
-        {
-            GUIUpdate();
-        }
-
         private void comboBox2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             _FractalColours.SetOrbitTypeIndex(comboBox2.SelectedIndex);
-            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
+            SetDirty();
         }
 
         float _DragStart = 0.0f;
@@ -204,11 +199,14 @@ namespace WooFractal
                     _FractalColours._GradientSegments[_CurrentSegment]._StartColour = mat.Clone();
 
                     _FractalColours._GradientSegments.Insert(_CurrentSegment, segment);
+
+                    SetDirty();
                 }
             }
 
             materialSelector1.SetSelectedMaterial(_FractalColours._GradientSegments[_CurrentSegment]._StartColour);
             materialSelector2.SetSelectedMaterial(_FractalColours._GradientSegments[_CurrentSegment]._EndColour);
+
 
             GUIUpdate();
         }
@@ -273,6 +271,7 @@ namespace WooFractal
                     _FractalColours._GradientSegments.RemoveAt(_CurrentSegment);
                 }
 
+                SetDirty();
                 GUIUpdate();
             }
         }
@@ -280,6 +279,7 @@ namespace WooFractal
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)System.Windows.Application.Current.MainWindow).RemoveFractalColour(_FractalColours);
+            SetDirty();
         }
     }
  }

@@ -99,82 +99,81 @@ namespace WooFractal
                 int segCount = _FractalColours[i]._GradientSegments.Count();
                 if (segCount > maxSegments)
                     maxSegments = segCount;
+                frag += @"
+uniform vec3 diffStart"+i.ToString()+"[" + segCount + @"];
+uniform vec3 diffEnd" + i.ToString() + "[" + segCount + @"];
+uniform vec3 specStart" + i.ToString() + "[" + segCount + @"];
+uniform vec3 specEnd" + i.ToString() + "[" + segCount + @"];
+uniform vec3 reflStart" + i.ToString() + "[" + segCount + @"];
+uniform vec3 reflEnd" + i.ToString() + "[" + segCount + @"];
+uniform float roughStart" + i.ToString() + "[" + segCount + @"];
+uniform float roughEnd" + i.ToString() + "[" + segCount + @"];
+uniform float dlcStart" + i.ToString() + "[" + segCount + @"];
+uniform float dlcEnd" + i.ToString() + "[" + segCount + @"];
+uniform float segStart" + i.ToString() + "[" + segCount + @"];
+uniform float segEnd" + i.ToString() + "[" + segCount + @"];
+uniform float orbitType" + i.ToString() + @";
+uniform float multiplier" + i.ToString() + @";
+uniform float offset" + i.ToString() + @";
+uniform float segments" + i.ToString() + @";
+
+";
             }
 
-            frag += @"void OrbitToColour(in vec4 orbitTrap, inout material mat) {
-vec4 trappos;
-vec3 diffStart[" + maxSegments + @"];
-vec3 diffEnd[" + maxSegments + @"];
-vec3 specStart[" + maxSegments + @"];
-vec3 specEnd[" + maxSegments + @"];
-vec3 reflStart[" + maxSegments + @"];
-vec3 reflEnd[" + maxSegments + @"];
-float roughStart[" + maxSegments + @"];
-float roughEnd[" + maxSegments + @"];
-float dlcStart[" + maxSegments + @"];
-float dlcEnd[" + maxSegments + @"];
-float segStart[" + maxSegments + @"];
-float segEnd[" + maxSegments + @"];
+            frag += @"
+uniform float divisor;
 
+float GetTrapPos(vec4 orbitTrap, float orbitType, float multiplier, float offset)
+{
+ float val = 0;
+ if (orbitType==0) val = orbitTrap.x;
+ if (orbitType==1) val = orbitTrap.y;
+ if (orbitType==2) val = orbitTrap.z;
+ if (orbitType==3) val = orbitTrap.w;
+ return mod((val*multiplier)+offset,1.0);
+}
+
+void OrbitToColour(in vec4 orbitTrap, inout material mat)
+{
 mat.diff = vec3(0,0,0);
 mat.spec = vec3(0,0,0);
 mat.refl = vec3(0,0,0);
 mat.dlc = 0.0;
 mat.roughness = 0.0;
 
+float trappos;
+
 int currS;
-float gradX;
-";
-
-            for (int i = 0; i < _FractalColours.Count(); i++)
+float gradX;";
+            for (int i=0; i<_FractalColours.Count(); i++)
             {
-                frag += "trappos = vec4(";
-                frag += (_FractalColours[i]._BlendType == EBlendType.Chop) ? "round(" : "";
-                frag += "pow(mod((orbitTrap." + _FractalColours[i].GetOrbitTypeString() + "*" + _FractalColours[i]._Multiplier.ToString() + ")+" + _FractalColours[i]._Offset.ToString() + ",1.0)," + Math.Pow(10, _FractalColours[i]._Power).ToString() + ")";
-                frag += (_FractalColours[i]._BlendType == EBlendType.Chop) ? ")" : "";
-                frag += ",0,0,0);\r\n";
-
-                for (int s=0; s<_FractalColours[i]._GradientSegments.Count(); s++)
-                {
-                    frag += @"
-diffStart["+s+"] = vec3("+_FractalColours[i]._GradientSegments[s]._StartColour._DiffuseColour.ToString()+@");
-diffEnd["+s+"] = vec3("+_FractalColours[i]._GradientSegments[s]._EndColour._DiffuseColour.ToString()+@");
-specStart["+s+"] = vec3("+_FractalColours[i]._GradientSegments[s]._StartColour._SpecularColour.ToString()+@");
-specEnd["+s+"] = vec3("+_FractalColours[i]._GradientSegments[s]._EndColour._SpecularColour.ToString()+@");
-reflStart["+s+"] = vec3("+_FractalColours[i]._GradientSegments[s]._StartColour._Reflectivity.ToString()+@");
-reflEnd["+s+"] = vec3("+_FractalColours[i]._GradientSegments[s]._EndColour._Reflectivity.ToString()+@");
-roughStart[" + s + "] = " + _FractalColours[i]._GradientSegments[s]._StartColour._Roughness.ToString() + @";
-roughEnd[" + s + "] = " + _FractalColours[i]._GradientSegments[s]._EndColour._Roughness.ToString() + @";
-dlcStart[" + s + "] = " + _FractalColours[i]._GradientSegments[s]._StartColour._DiElectric.ToString() + @";
-dlcEnd[" + s + "] = " + _FractalColours[i]._GradientSegments[s]._EndColour._DiElectric.ToString() + @";
-segStart[" + s + "] = " + _FractalColours[i]._GradientSegments[s]._StartX.ToString() + @";
-segEnd[" + s + "] = " + _FractalColours[i]._GradientSegments[s]._EndX.ToString() + @";
-";
-                }
-
                 frag += @"
+trappos = GetTrapPos(orbitTrap, orbitType" + i.ToString() + @", multiplier" + i.ToString() + @", offset" + i.ToString() + @");
 currS = 0;
-for (int i=0; i<" + _FractalColours[i]._GradientSegments.Count()+ @"; i++)
+for (int i=1; i<segments" + i.ToString() + @"; i++)
 {
- currS = int(max(currS, i * min(1.0, floor(1.0+(trappos.x-segStart[i])) * min(1.0, floor(1.0+(segEnd[i]-trappos.x))))));
+ currS = int(max(currS, i * min(1.0, floor(1.0+(trappos-segStart" + i.ToString() + @"[i])) * min(1.0, floor(1.0+(segEnd" + i.ToString() + @"[i]-trappos))))));
 }
 
-gradX = (trappos.x - segStart[currS]) / (segEnd[currS] - segStart[currS]);
+gradX = (trappos - segStart" + i.ToString() + @"[currS]) / (segEnd" + i.ToString() + @"[currS] - segStart" + i.ToString() + @"[currS]);
+mat.diff+=mix(diffStart" + i.ToString() + @"[currS], diffEnd" + i.ToString() + @"[currS], gradX);
+mat.spec+=mix(specStart" + i.ToString() + @"[currS], specEnd" + i.ToString() + @"[currS], gradX);
+mat.refl+=mix(reflStart" + i.ToString() + @"[currS], reflEnd" + i.ToString() + @"[currS], gradX);
+mat.dlc+=mix(dlcStart" + i.ToString() + @"[currS], dlcEnd" + i.ToString() + @"[currS], gradX);
+mat.roughness+=mix(roughStart" + i.ToString() + @"[currS], roughEnd" + i.ToString() + @"[currS], gradX);
 ";
-                frag += "mat.diff+=mix(diffStart[currS], diffEnd[currS], gradX);\r\n";
-                frag += "mat.spec+=mix(specStart[currS], specEnd[currS], gradX);\r\n";
-                frag += "mat.refl+=mix(reflStart[currS], reflEnd[currS], gradX);\r\n";
-                frag += "mat.dlc+=mix(dlcStart[currS], dlcEnd[currS], gradX);\r\n";
-                frag += "mat.roughness+=mix(roughStart[currS], roughEnd[currS], gradX);\r\n";
             }
 
-            frag += "mat.diff/=" + divisor.ToString() + @";";
-            frag += "mat.spec/=" + divisor.ToString() + @";";
-            frag += "mat.refl/=" + divisor.ToString() + @";";
-            frag += "mat.dlc/=" + divisor.ToString() + @";";
-            frag += "mat.roughness/=" + divisor.ToString() + @";
-}";
+            frag += @"
+mat.diff/=divisor;
+mat.spec/=divisor;
+mat.refl/=divisor;
+mat.dlc/=divisor;
+mat.roughness/=divisor;
+}
+";
         }
+
         public void Compile(ref string frag)
         {
             string frag2 = @"
@@ -219,7 +218,7 @@ void Tetra(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, 
 	scale *= mScale;
 }
 
-void Bulb(in float r, inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in mat3 mRotate1Matrix, in bool juliaEnabled, in vec3 julia)
+void Bulb(in float r, inout vec3 pos, in vec3 origPos, inout float scale, in float mScale, in mat3 mRotate1Matrix, in float juliaEnabled, in vec3 julia)
 {
     float theta, phi;
     
@@ -236,7 +235,7 @@ void Bulb(in float r, inout vec3 pos, in vec3 origPos, inout float scale, in flo
 	pos = zr * vec3(cos(theta)*cos(phi), sin(theta)*cos(phi), sin(phi));
 
     // julia Land?
-    pos += juliaEnabled ? julia : origPos;
+    pos += (juliaEnabled>0.5) ? julia : origPos;
 
 	pos = mRotate1Matrix * pos;
 }
@@ -346,7 +345,7 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
  if (DEMode==2) ret = 0.5*log(r)*r/scale;
  if (DEMode==0) ret = (r - 1) / abs(scale);
  if (DEMode==3) ret = 0.5*abs(pos.z)/scale;
- float bbdist = length(origPos - clamp(origPos, vec3(-" + _RenderOptions._DistanceExtents + "), vec3(" + _RenderOptions._DistanceExtents + @")));
+ float bbdist = length(origPos - clamp(origPos, vec3(-distanceExtents), vec3(distanceExtents)));
  ret = max(ret, bbdist);
  return ret;
 }
@@ -356,7 +355,7 @@ void intersectAABB(in vec3 pos, in vec3 dir, out float tmin, out float tmax)
 {
  float tymin, tymax, tzmin, tzmax;
  vec3 invdir = vec3(1)/(dir);
- vec3 sign = vec3(dir.x>=0?" + _RenderOptions._DistanceExtents + @":-" + _RenderOptions._DistanceExtents + @", dir.y>=0?" + _RenderOptions._DistanceExtents + @":-" + _RenderOptions._DistanceExtents + @", dir.z>=0?" + _RenderOptions._DistanceExtents + @":-" + _RenderOptions._DistanceExtents + @");
+ vec3 sign = vec3(dir.x>=0?distanceExtents:-distanceExtents, dir.y>=0?distanceExtents:-distanceExtents, dir.z>=0?distanceExtents:-distanceExtents);
  tmin = (-sign.x - pos.x) * invdir.x;
  tmax = (sign.x - pos.x) * invdir.x;
  tymin = (-sign.y - pos.y) * invdir.y;
@@ -373,9 +372,9 @@ mat.diff = vec3(1,1,1);
 mat.spec = vec3(0.2,0.2,0.2);
 mat.refl = vec3(0.2,0.2,0.2);
 mat.roughness = 0.01;
-  pos.y -= " + _RenderOptions._DistanceExtents + @";
+  pos.y -= distanceExtents;
   vec3 srcPos = camPos;
-  srcPos.y -= " + _RenderOptions._DistanceExtents + @";
+  srcPos.y -= distanceExtents;
   float minDistance = " + Math.Pow(10, -_RenderOptions._DistanceMinimum).ToString("0.#######") + @";
   
   // clip to AABB
@@ -440,7 +439,7 @@ mat.roughness = 0.01;
     else
         normal /= sqrt(magSq);
 
-    out_pos = dp + normal*(4*minDistance2) + vec3(0," + _RenderOptions._DistanceExtents + @",0);
+    out_pos = dp + normal*(4*minDistance2) + vec3(0,distanceExtents,0);
     dist = length(dp - pos);
     return true;
    }
@@ -450,6 +449,25 @@ mat.roughness = 0.01;
 ";
             frag += frag2;
         }
+
+        public void SetFractalDeclerations(ref ShaderVariables shaderVariables)
+        {
+            for (int i = 0; i < _FractalIterations.Count; i++)
+            {
+                _FractalIterations[i].SetDeclarations(ref shaderVariables);
+            }
+        }
+
+        public void SetColourDeclerations(ref ShaderVariables shaderVariables)
+        {
+            shaderVariables.Add("divisor", _FractalColours.Count);
+
+            for (int i = 0; i < _FractalColours.Count; i++)
+            {
+                _FractalColours[i].SetDeclarations(ref shaderVariables, i);
+            }
+        }
+
         public RenderOptions _RenderOptions;
         public List<FractalGradient> _FractalColours;
         public List<WooFractalIteration> _FractalIterations;
