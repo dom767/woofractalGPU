@@ -46,6 +46,10 @@ namespace WooFractal
             {
                 comboBox2.Items.Add(script._Name);
             }
+
+            comboBox3.Items.Add("Normal Fog");
+            comboBox3.Items.Add("Object Relative Fog");
+            comboBox3.SelectedIndex = (_Parent._FogType == EFogType.Vanilla) ? 0 : 1;
         }
 
         public void RenderSliders()
@@ -92,6 +96,12 @@ namespace WooFractal
         private void checkBox1_Modified(object sender, RoutedEventArgs e)
         {
             GUIUpdate();
+        }
+
+        private void comboBox3_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _Parent._FogType = (comboBox3.SelectedIndex==0) ? EFogType.Vanilla : EFogType.ObjectDistance;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).SetDirty();
         }
     }
 }

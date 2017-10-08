@@ -37,6 +37,15 @@ namespace WooFractal
                 bool.TryParse(attr, out param);
         }
 
+        public static void ReadFogType(XmlReader reader, string name, ref EFogType fogType)
+        {
+            string attr = reader.GetAttribute(name);
+            if (attr != null)
+            {
+                fogType = (EFogType)Enum.Parse(typeof(EFogType), attr);
+            }
+        }
+
         public static void ReadFractalType(XmlReader reader, string name, ref EFractalType fractalType)
         {
             string attr = reader.GetAttribute(name);

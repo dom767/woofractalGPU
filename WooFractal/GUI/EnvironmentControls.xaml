@@ -4,9 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="479" d:DesignWidth="348" Margin="0,10,0,0" xmlns:my="clr-namespace:WooFractal" xmlns:my1="clr-namespace:WooFractal.GUI">
+             d:DesignHeight="509" d:DesignWidth="348" Margin="0,10,0,0" xmlns:my="clr-namespace:WooFractal" xmlns:my1="clr-namespace:WooFractal.GUI">
     <Border BorderBrush="Black" BorderThickness="1">
-        <Grid Width="348" Height="479" Background="White">
+        <Grid Width="348" Height="509" Background="White">
             <Label Background="Black" Content="E N V I R O N M E N T   C O N T R O L S" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="348" />
             <ComboBox Height="25" HorizontalAlignment="Left" Margin="6,64,0,0" Name="comboBox1" VerticalAlignment="Top" Width="166" SelectionChanged="comboBox1_SelectionChanged" />
             <ComboBox Height="25" HorizontalAlignment="Left" Margin="176,64,0,0" Name="comboBox2" VerticalAlignment="Top" Width="164" SelectionChanged="comboBox2_SelectionChanged" />
@@ -24,6 +24,8 @@
                 </Label.RenderTransform>
             </Label>
             <my:ColourSelector HorizontalAlignment="Left" Margin="37,308,0,0" x:Name="colourSelector1" VerticalAlignment="Top" Width="303" Height="108" />
+            <ComboBox Height="25" HorizontalAlignment="Left" Margin="70,476,0,0" Name="comboBox3" VerticalAlignment="Top" Width="270" SelectionChanged="comboBox3_SelectionChanged" />
+            <Label Content="Fog Type" Height="26" HorizontalAlignment="Left" Margin="6,475,0,0" Name="label2" VerticalAlignment="Top" />
         </Grid>
     </Border>
 </UserControl>

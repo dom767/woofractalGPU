@@ -57,6 +57,8 @@ uniform float focusDepth;
 uniform float fogStrength;
 uniform float fogSamples;
 uniform vec3 fogColour;
+uniform float fogType;
+uniform float distanceExtents;
 float randomIndex;
 float pixelIndex;
 float sampleIndex;
@@ -318,6 +320,8 @@ vec3 getSkyColour2(vec3 dir, vec3 pos, float tmin, float tmax)
  return vec3(20*(sumR));
 }
 
+float DE(in vec3 origPos, out vec4 orbitTrap);
+
 vec3 getVolume(vec3 spos, vec3 sdir, float distance, vec3 colour)
 {
  if (fogStrength<0.00001)
@@ -340,6 +344,13 @@ vec3 getVolume(vec3 spos, vec3 sdir, float distance, vec3 colour)
  {
   float val = (i + rand2d(vec3(pixelIndex, sampleIndex++, randomIndex)).x) / fs2;
   vec3 shadowsample = spos + (sdir * distance*val);
+
+  if (fogType==1)
+  {
+   vec4 otrap2;
+   density = (fogStrength*0.1)/max(DE(shadowsample-vec3(0,distanceExtents,0), otrap2),0.0001);
+  }
+
   float outdist=1000;
   vec3 outpos, outnormal;
   material outmat;";

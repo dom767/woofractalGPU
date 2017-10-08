@@ -21,6 +21,12 @@ namespace WooFractal
         public string _Description;
     };
 
+    public enum EFogType
+    {
+        Vanilla = 0,
+        ObjectDistance = 1
+    };
+
     public class RenderOptions
     {
         public double _DistanceMinimum = 2;
@@ -40,6 +46,7 @@ namespace WooFractal
         public double _FogStrength = 0.0;
         public Colour _FogColour = new Colour(0.7, 0.8, 0.9);
         public int _FogSamples = 1;
+        public EFogType _FogType = EFogType.Vanilla;
 
         public RenderOptions GetClone()
         {
@@ -87,7 +94,8 @@ namespace WooFractal
                 new XAttribute("headlightStrength", _HeadLightStrength),
                 new XAttribute("fogStrength", _FogStrength),
                 new XAttribute("fogColour", _FogColour),
-                new XAttribute("fogSamples", _FogSamples));
+                new XAttribute("fogSamples", _FogSamples),
+                new XAttribute("fogType", _FogType));
             parent.Add(ret);
         }
 
@@ -144,6 +152,7 @@ namespace WooFractal
             XMLHelpers.ReadDouble(reader, "fogStrength", ref _FogStrength);
             XMLHelpers.ReadColour(reader, "fogColour", ref _FogColour);
             XMLHelpers.ReadInt(reader, "fogSamples", ref _FogSamples);
+            XMLHelpers.ReadFogType(reader, "fogType", ref _FogType);
         }
     }
 }
