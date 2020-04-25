@@ -4,39 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="212" d:DesignWidth="348" Margin="0,10,0,0">
+             d:DesignHeight="252" d:DesignWidth="348" Margin="0,10,0,0">
     <Border BorderBrush="Black" BorderThickness="1">
-        <Grid Height="212" Background="White" Width="349">
-            <Button Height="58" HorizontalAlignment="Left" Margin="12,50,0,0" Name="button1" VerticalAlignment="Top" Width="58" Click="button1_Click">
+        <Grid Height="252" Background="White" Width="349">
+            <Button Height="58" HorizontalAlignment="Left" Margin="12,40,0,0" Name="button1" VerticalAlignment="Top" Width="58" Click="button1_Click">
                 <StackPanel>
                     <Image Source="/WooFractal;component/Shaders/cuboidthumb.jpg" />
                 </StackPanel>
             </Button>
-            <Button Height="58" HorizontalAlignment="Left" Margin="80,50,0,0" Name="button2" VerticalAlignment="Top" Width="58" Click="button2_Click">
+            <Button Height="58" HorizontalAlignment="Left" Margin="80,40,0,0" Name="button2" VerticalAlignment="Top" Width="58" Click="button2_Click">
                 <StackPanel>
                     <Image Source="/WooFractal;component/Shaders/mengerthumb.jpg" />
                 </StackPanel>
             </Button>
-            <Button Height="58" HorizontalAlignment="Left" Margin="148,50,0,0" Name="button3" VerticalAlignment="Top" Width="58" Click="button3_Click">
+            <Button Height="58" HorizontalAlignment="Left" Margin="148,40,0,0" Name="button3" VerticalAlignment="Top" Width="58" Click="button3_Click">
                 <StackPanel>
                     <Image Source="/WooFractal;component/Shaders/tetrathumb.jpg" />
                 </StackPanel>
             </Button>
-            <Button Height="58" HorizontalAlignment="Left" Margin="12,130,0,0" Name="button4" VerticalAlignment="Top" Width="58" Click="button4_Click">
+            <Button Height="58" HorizontalAlignment="Left" Margin="12,110,0,0" Name="button4" VerticalAlignment="Top" Width="58" Click="button4_Click">
                 <StackPanel>
                     <Image Source="/WooFractal;component/Shaders/mandelbulbthumb.jpg" />
                 </StackPanel>
             </Button>
-            <Button Height="58" HorizontalAlignment="Left" Margin="80,130,0,0" Name="button5" VerticalAlignment="Top" Width="58" Click="button5_Click">
+            <Button Height="58" HorizontalAlignment="Left" Margin="80,110,0,0" Name="button5" VerticalAlignment="Top" Width="58" Click="button5_Click">
                 <StackPanel>
                     <Image Source="/WooFractal;component/Shaders/mandelboxthumb.jpg" />
                 </StackPanel>
             </Button>
-            <Button Height="58" HorizontalAlignment="Left" Margin="148,130,0,0" Name="button6" VerticalAlignment="Top" Width="58" Click="button6_Click">
+            <Button Height="58" HorizontalAlignment="Left" Margin="148,110,0,0" Name="button6" VerticalAlignment="Top" Width="58" Click="button6_Click">
                 <StackPanel>
                     <Image Source="/WooFractal;component/Shaders/kleinianthumb.jpg" />
                 </StackPanel>
-            </Button>            
+            </Button>
+            <Button Height="58" HorizontalAlignment="Left" Margin="12,180,0,0" Name="button7" VerticalAlignment="Top" Width="58" Click="button7_Click">
+                <StackPanel>
+                    <Image Source="/WooFractal;component/Shaders/boxfold.jpg" />
+                </StackPanel>
+            </Button>
             <Label Background="Black" Content="H Y B R I D I S E" FontSize="14" FontWeight="ExtraBold" Foreground="White" Height="30" HorizontalContentAlignment="Right" Margin="0,0" Name="label5" VerticalAlignment="Top" VerticalContentAlignment="Center" />
         </Grid>
     </Border>

@@ -355,6 +355,9 @@
   <ItemGroup>
     <Resource Include="Shaders\kleinianthumb.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Shaders\boxfold.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

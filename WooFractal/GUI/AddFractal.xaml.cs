@@ -59,5 +59,12 @@ namespace WooFractal
             // Add Mandelbox
             ((MainWindow)System.Windows.Application.Current.MainWindow).AddKleinianGroup();
         }
+
+        private void button7_Click(object sender, RoutedEventArgs e)
+        {
+            // Add Boxfold
+            ((MainWindow)System.Windows.Application.Current.MainWindow).AddBoxfold();
+        }
+
     }
 }

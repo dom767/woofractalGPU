@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="WooFractal.GUI.BoxfoldControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="92" Margin="0,10,0,0" d:DesignWidth="351" xmlns:my1="clr-namespace:WooFractal.GUI" xmlns:my="clr-namespace:WooFractal">
+    <Border BorderBrush="Black" BorderThickness="1" Height="92" Width="351">
+        <Grid Width="348" Background="White" Height="92">
+            <Button Content="^" Height="17" HorizontalAlignment="Left" Margin="4,6,0,0" Name="button1" VerticalAlignment="Top" Width="22" Click="button1_Click" />
+            <Button Content="V" Height="18" HorizontalAlignment="Left" Margin="4,65,0,0" Name="button2" VerticalAlignment="Top" Width="22" Click="button2_Click" />
+            <Label Content="B O X    F O L D" Height="30" Margin="30,0,0,0" Name="label5" VerticalAlignment="Top" Background="Black" Foreground="White" FontWeight="ExtraBold" VerticalContentAlignment="Center" FontSize="14" HorizontalContentAlignment="Right" />
+            <Button Content="X" Height="30" HorizontalAlignment="Left" Margin="4,29,0,0" Name="button3" VerticalAlignment="Top" Width="22" Click="button3_Click" />
+            <TextBox Height="23" HorizontalAlignment="Left" Margin="34,4,0,0" Name="textBox1" VerticalAlignment="Top" Width="23" TextChanged="textBox1_TextChanged" />
+            <TextBlock Height="17" HorizontalAlignment="Left" Margin="63,6,0,0" Name="textBlock1" Text="Repeat(s)" VerticalAlignment="Top" Foreground="White" />
+            <my1:VectorEditor HorizontalAlignment="Left" Margin="30,36,0,0" x:Name="vectorEditor1" VerticalAlignment="Top" Width="310" />
+        </Grid>
+    </Border>
+</UserControl>
