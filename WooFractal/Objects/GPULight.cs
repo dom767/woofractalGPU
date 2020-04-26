@@ -79,7 +79,7 @@ void calculateLighting(in vec3 pos, in vec3 normal, in vec3 eye, in vec3 reflect
             if (raytracerOptions._ShadowsEnabled)
             {
                 frag += @"if (trace(pos, wdirection, dist, opos, onor, omat))
-    lightDiff = vec3(0,0,0);
+    lightDiff += vec3(0,0,0);
    else
     ";
             }
