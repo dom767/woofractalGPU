@@ -41,7 +41,8 @@ namespace WooFractal
 
         public void LoadScratch()
         {
-            LoadContext("scratch");
+            string filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes\\scratch.wsd";
+            LoadContext(filename);
         }
 
         public MainWindow()
@@ -107,6 +108,12 @@ namespace WooFractal
         public void AddKleinianGroup()
         {
             _Scene._FractalSettings._FractalIterations.Add(new KleinianGroupIteration(1, new Vector3(1,1,1), new Vector3(0, 0, 0), 1));
+            BuildFractalList();
+        }
+
+        public void AddBoxfold()
+        {
+            _Scene._FractalSettings._FractalIterations.Add(new BoxfoldIteration(new Vector3(1, 1, 1), 1));
             BuildFractalList();
         }
 
@@ -631,10 +638,10 @@ namespace WooFractal
             }
         }
 
-        private void LoadContext(string name)
+        private void LoadContext(string filename)
         {
             Logger.Log("LoadContext() started");
-            string filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes\\" + name + ".wsd";
+//            string filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\WooFractal\\Scenes\\" + name + ".wsd";
             if (System.IO.File.Exists(filename))
             {
                 StreamReader sr = new StreamReader(filename);
@@ -902,8 +909,8 @@ namespace WooFractal
             if (result == true)
             {
                 string filename = dlg.FileName;
-                filename = filename.Substring(0, filename.IndexOf(".wsd"));
-                filename = filename.Substring(filename.LastIndexOf("\\")+1, filename.Length - (filename.LastIndexOf("\\")+1));
+//                filename = filename.Substring(0, filename.IndexOf(".wsd"));
+  //              filename = filename.Substring(filename.LastIndexOf("\\")+1, filename.Length - (filename.LastIndexOf("\\")+1));
                 LoadContext(filename);
             }
         }

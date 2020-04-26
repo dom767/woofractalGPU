@@ -86,6 +86,12 @@ namespace WooFractal
                     fractalIteration.LoadXML(reader);
                     _FractalIterations.Add(fractalIteration);
                 }
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "BOXFOLD")
+                {
+                    BoxfoldIteration fractalIteration = new BoxfoldIteration();
+                    fractalIteration.LoadXML(reader);
+                    _FractalIterations.Add(fractalIteration);
+                }
             }
             reader.Read();
         }
@@ -291,6 +297,12 @@ void Cuboid(inout vec3 pos, in vec3 origPos, inout float scale, in float mScale,
 
 	pos = pos*mScale - mPOffset;
 	scale *= mScale;
+}
+
+void BoxFold(inout vec3 pos, in vec3 origPos, inout float scale, in vec3 fracFoldRadius)
+{
+ pos = clamp(pos, -fracFoldRadius, fracFoldRadius) * 2.0 - pos;
+// scale = scale * 1;
 }";
             for (int i = 0; i < _FractalIterations.Count; i++)
             {
