@@ -119,7 +119,13 @@ namespace WooFractal
             Mouse.Capture(sender as System.Windows.IInputElement);
             _ValueDrag = true;
             _LastPos = e.GetPosition(this);
-            SetValue(_Min + ((_Max - _Min) * _LastPos.X / this.ActualWidth));
+            double newValue = _Min + ((_Max - _Min) * _LastPos.X / this.ActualWidth);
+            double delta = newValue - _Value;
+            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            {
+                delta *= 0.02;
+            }
+            SetValue(_Value + delta);
 
             ValueUpdated(true);
         }
@@ -137,6 +143,10 @@ namespace WooFractal
             {
                 Point _NewPos = e.GetPosition(this);
                 double delta = _NewPos.X - _LastPos.X;
+                if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+                {
+                    delta *= 0.02;
+                }
                 SetValue(_Value + (_Max - _Min) * delta / this.ActualWidth);
                 _LastPos = _NewPos;
                 ValueUpdated(true);
