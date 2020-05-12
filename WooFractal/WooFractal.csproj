@@ -358,6 +358,9 @@
   <ItemGroup>
     <Resource Include="Shaders\boxfold.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TODO.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

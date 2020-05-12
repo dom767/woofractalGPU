@@ -1,0 +1,14 @@
+﻿boxfold diagnostics
+
+spherefold (outer + inner)
+
+colours by gradient
+
+headlight
+
+move and rotate fractal
+
+change background materials
+
+360Deg background
+
