@@ -441,7 +441,7 @@ mat.roughness = 0.01;
     }
 
     OrbitToColour(orbitTrap, mat);
-	vec3 normalTweak=vec3(minDistance2*0.1f,0,0);
+	vec3 normalTweak=vec3(minDistance2*0.5f,0,0);
 	normal = vec3(DE(dp+normalTweak.xyy,orbitTrap) - DE(dp-normalTweak.xyy,orbitTrap),
 		DE(dp+normalTweak.yxy,orbitTrap) - DE(dp-normalTweak.yxy,orbitTrap),
 		DE(dp+normalTweak.yyx,orbitTrap) - DE(dp-normalTweak.yyx,orbitTrap));
