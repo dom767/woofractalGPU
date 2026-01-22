@@ -26,6 +26,7 @@ using SharpGL.SceneGraph.Primitives;
 using SharpGL.SceneGraph;
 using WooFractal.GUI;
 using System.Reflection;
+using SharpGL.WPF;
 
 namespace WooFractal
 {
@@ -917,7 +918,7 @@ namespace WooFractal
 
         ShaderRenderer _ShaderRenderer = new ShaderRenderer();
 
-        private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
+        private void OpenGLControl_OpenGLDraw(object sender, OpenGLRoutedEventArgs args)
         {
             if (!_PreviewRender)
                 return;
@@ -943,7 +944,7 @@ namespace WooFractal
 
         OpenGL _GL;
 
-        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
+        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLRoutedEventArgs args)
         {
             _GL = args.OpenGL;
 
@@ -960,7 +961,7 @@ namespace WooFractal
             _ShaderRenderer.Destroy(_GL);
         }
 
-        private void OpenGLControl_Resized(object sender, OpenGLEventArgs args)
+        private void OpenGLControl_Resized(object sender, OpenGLRoutedEventArgs args)
         {
             //  Get the OpenGL instance.
             var gl = args.OpenGL;
@@ -1118,6 +1119,47 @@ namespace WooFractal
             _Dirty = true;
             UpdateGUI();
         }
+
+        private void Window_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            double Multiplier = 0.1;
+            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            {
+                Multiplier = 0.01;
+            }
+
+            if (e.Delta > 0)
+            {
+                if (!Keyboard.IsKeyDown(Key.LeftCtrl) && !Keyboard.IsKeyDown(Key.RightCtrl))
+                {
+                    _Velocity.z += Multiplier * _Scene._Camera._FocusDepth;
+                    e.Handled = true;
+                    _CameraDirty = true;
+                }
+                else
+                {
+                    _Velocity.y += Multiplier * _Scene._Camera._FocusDepth;
+                    e.Handled = true;
+                    _CameraDirty = true;
+                }
+            }
+            else if (e.Delta<0)
+            {
+                if (!Keyboard.IsKeyDown(Key.LeftCtrl) && !Keyboard.IsKeyDown(Key.RightCtrl))
+                {
+                    _Velocity.z -= Multiplier * _Scene._Camera._FocusDepth;
+                    e.Handled = true;
+                    _CameraDirty = true;
+                }
+                else
+                {
+                    _Velocity.y -= Multiplier * _Scene._Camera._FocusDepth;
+                    e.Handled = true;
+                    _CameraDirty = true;
+                }
+            }
+        }
+
     }
     public class Logger
     {

@@ -10,9 +10,9 @@
         <Button Content="Stop" Height="23" HorizontalAlignment="Left" Margin="89,542,0,0" Name="button2" VerticalAlignment="Top" Width="75" Click="button2_Click" />
         <GroupBox Header="Resolution" Height="138" HorizontalAlignment="Left" Margin="170,540,0,0" Name="groupBox1" VerticalAlignment="Top" Width="115">
             <Grid>
-                <RadioButton Content="480 x 270" GroupName="Resolution" Height="18" HorizontalAlignment="Left" Margin="6,6,0,0" Name="radioButton3" VerticalAlignment="Top" Width="85" />
-                <RadioButton Content="960 x 540" GroupName="Resolution" Height="18" HorizontalAlignment="Left" Margin="6,25,0,0" Name="radioButton4" VerticalAlignment="Top" Width="85" IsChecked="True" />
-                <RadioButton Content="1920 x 1080" GroupName="Resolution" Height="18" HorizontalAlignment="Left" Margin="6,44,0,0" Name="radioButton5" VerticalAlignment="Top" Width="85" />
+                <RadioButton Content="960 x 540" GroupName="Resolution" Height="18" HorizontalAlignment="Left" Margin="6,6,0,0" Name="radioButton3" VerticalAlignment="Top" Width="85" />
+                <RadioButton Content="1920 x 1080" GroupName="Resolution" Height="18" HorizontalAlignment="Left" Margin="6,25,0,0" Name="radioButton4" VerticalAlignment="Top" Width="85" IsChecked="True" />
+                <RadioButton Content="3840 x 2160" GroupName="Resolution" Height="18" HorizontalAlignment="Left" Margin="6,44,0,0" Name="radioButton5" VerticalAlignment="Top" Width="85" />
                 <RadioButton Content="Custom" GroupName="Resolution" Height="18" HorizontalAlignment="Left" Margin="6,63,0,0" Name="radioButton6" VerticalAlignment="Top" Width="85" Checked="radioButton6_Checked" Unchecked="radioButton6_Unchecked" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="6,86,0,0" Name="textBox12" Text="{Binding Path=_ImageWidth}" VerticalAlignment="Top" Width="37" IsEnabled="False" />
                 <TextBox Height="23" Margin="0,86,6,0" Name="textBox13" Text="{Binding Path=_ImageHeight}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40" IsEnabled="False" />

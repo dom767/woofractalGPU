@@ -52,7 +52,7 @@ namespace WooFractal
         public void RenderSliders()
         {
             floatEditor3.Set("Minimum Distance", _Parent._DistanceMinimum, 0, 5, FloatEditorFlags.None, this);
-            floatEditor1.Set("Distance Iterations", _Parent._DistanceIterations, 1, 1024, FloatEditorFlags.Integer, this);
+            floatEditor1.Set("Distance Iterations", _Parent._DistanceIterations, 1, 4096, FloatEditorFlags.Integer, this);
             floatEditor2.Set("Step Size", _Parent._StepSize, 0.01, 1.0, FloatEditorFlags.None, this);
             floatEditor4.Set("Distance Extents", _Parent._DistanceExtents, 0.5, 10.0, FloatEditorFlags.None, this);
             floatEditor5.Set("Fractal Iterations", _Parent._FractalIterationCount, 1, 250, FloatEditorFlags.Integer, this);

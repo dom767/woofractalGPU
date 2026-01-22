@@ -320,36 +320,44 @@ float DE(in vec3 origPos, out vec4 orbitTrap)
   float fracIterations = 0;
   int DEMode = 0;
   orbitTrap = vec4(10000,10000,10000,10000);
-  
-  for (int j=0; j<" + _RenderOptions._FractalIterationCount+@"; j++)
-  {
+    int j=0;";
+
+    int totalIterations = 0, iterationIndex = 0;
+    for (int i = 0; i < _FractalIterations.Count; i++)
+    {
+        totalIterations += _FractalIterations[i]._Repeats;
+    }
+
+    int currentFractal = 0;
+            int modjoffset = 0;
+
+            for (int j = 0; j < _RenderOptions._FractalIterationCount; j++)
+            {
+                frag2 += @"
     r = length(pos);
-    if (r>40.0) continue;
-    if (j<"+_RenderOptions._ColourIterationCount+@") orbitTrap = min(orbitTrap, vec4(abs(pos),r));";
+    //if (r>40.0) continue;
+    if (j<" + _RenderOptions._ColourIterationCount + @") orbitTrap = min(orbitTrap, vec4(abs(pos),r));
+j++;";
+                int modj = j % totalIterations;
+                if (modj==0)
+                {
+                    modjoffset = 0; currentFractal = 0;
+                }
+                if (modj-modjoffset >= _FractalIterations[currentFractal]._Repeats)
+                {
+                    modjoffset += _FractalIterations[currentFractal]._Repeats;
+                    currentFractal++;
+                }
 
-            int totalIterations = 0,iterationIndex=0;
-            for (int i=0; i<_FractalIterations.Count; i++)
-            {
-                totalIterations += _FractalIterations[i]._Repeats;
+                _FractalIterations[currentFractal].Compile(ref frag2, currentFractal);
             }
 
-            frag2+=@"
- int modj = j%"+totalIterations+@";";
 
-            for (int i = 0; i < _FractalIterations.Count; i++)
-            {
-                int repeats = _FractalIterations[i]._Repeats;
-                frag2 += @"
- if (modj>=" + iterationIndex + " && modj<" + (iterationIndex + repeats).ToString() + @")
- {";
-                _FractalIterations[i].Compile(ref frag2, i);
-                frag2 += @"
-}";
-                iterationIndex += repeats;
-            }
+  
+
 
             frag2 += @"
-  }
+  //}
  //r = length(pos);
     float ret=0;
  // DEMode 0=KIFS, 1=BOX, 2=BULB, 3=kleinian

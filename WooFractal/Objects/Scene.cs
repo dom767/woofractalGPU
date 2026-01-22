@@ -550,6 +550,7 @@ float calculateSS( in vec3 ro, in vec3 rd, float mint, float k )
 
 void main(void)
 {
+FragColor = vec4(255,0,0,255);
   vec2 q = texCoord.xy;
   vec3 pos;
   vec3 dir;

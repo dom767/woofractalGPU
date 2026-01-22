@@ -325,7 +325,7 @@ void main()
 //                gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA, (int)viewport[2], (int)viewport[3], 0,
   //                           OpenGL.GL_RGBA, OpenGL.GL_FLOAT, null);
                 gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA32F, _TargetWidth, _TargetHeight, 0,
-                             OpenGL.GL_RGBA, OpenGL.GL_FLOAT, null);
+                             OpenGL.GL_RGBA, OpenGL.GL_FLOAT, (sbyte[])null);
                 CheckForError(gl);
 
                 gl.FramebufferTexture2DEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_COLOR_ATTACHMENT0_EXT, OpenGL.GL_TEXTURE_2D, _RaytracerBuffer[i], 0);
@@ -349,7 +349,7 @@ void main()
                 gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, OpenGL.GL_CLAMP_TO_EDGE);
                 gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_GENERATE_MIPMAP_SGIS, OpenGL.GL_FALSE); // automatic mipmap
                 gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA32F, _TargetWidth, _TargetHeight, 0,
-                             OpenGL.GL_RGBA, OpenGL.GL_FLOAT, null);
+                             OpenGL.GL_RGBA, OpenGL.GL_FLOAT, (sbyte[])null);
                 CheckForError(gl);
 
                 gl.FramebufferTexture2DEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_COLOR_ATTACHMENT0_EXT, OpenGL.GL_TEXTURE_2D, _EffectRaytracerBuffer[i], 0);
@@ -369,7 +369,7 @@ void main()
             gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_S, OpenGL.GL_CLAMP_TO_EDGE);
             gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, OpenGL.GL_CLAMP_TO_EDGE);
             gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_GENERATE_MIPMAP_SGIS, OpenGL.GL_FALSE); // automatic mipmap
-            gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA, _TargetWidth, _TargetHeight, 0, OpenGL.GL_RGBA, OpenGL.GL_UNSIGNED_BYTE, null);
+            gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA, _TargetWidth, _TargetHeight, 0, OpenGL.GL_RGBA, OpenGL.GL_UNSIGNED_BYTE, (sbyte[])null);
             CheckForError(gl);
             gl.FramebufferTexture2DEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_COLOR_ATTACHMENT0_EXT, OpenGL.GL_TEXTURE_2D, _PostprocessBuffer[0], 0);
             gl.FramebufferRenderbufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_DEPTH_ATTACHMENT_EXT, OpenGL.GL_RENDERBUFFER_EXT, 0);
@@ -389,7 +389,7 @@ void main()
             gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_S, OpenGL.GL_CLAMP_TO_EDGE);
             gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_TEXTURE_WRAP_T, OpenGL.GL_CLAMP_TO_EDGE);
             gl.TexParameter(OpenGL.GL_TEXTURE_2D, OpenGL.GL_GENERATE_MIPMAP_SGIS, OpenGL.GL_TRUE);
-            gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA32F, 1, 1, 0, OpenGL.GL_RGBA, OpenGL.GL_FLOAT, null);
+            gl.TexImage2D(OpenGL.GL_TEXTURE_2D, 0, OpenGL.GL_RGBA32F, 1, 1, 0, OpenGL.GL_RGBA, OpenGL.GL_FLOAT, (sbyte[])null);
             gl.FramebufferTexture2DEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_COLOR_ATTACHMENT0_EXT, OpenGL.GL_TEXTURE_2D, _DepthCalcBuffer[0], 0);
             gl.FramebufferRenderbufferEXT(OpenGL.GL_FRAMEBUFFER_EXT, OpenGL.GL_DEPTH_ATTACHMENT_EXT, OpenGL.GL_RENDERBUFFER_EXT, 0);
 

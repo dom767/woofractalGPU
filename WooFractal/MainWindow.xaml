@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="WooFractal (GPU Edition)" Height="621" Width="1170" Closing="Window_Closing_1" Loaded="Window_Loaded" xmlns:my="clr-namespace:WooFractal"
-        xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF" PreviewKeyDown="Window_KeyDown">
+        xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF" PreviewKeyDown="Window_KeyDown" MouseWheel="Window_MouseWheel">
 
     <Window.Resources>
         <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">

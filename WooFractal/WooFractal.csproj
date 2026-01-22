@@ -1,376 +1,58 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7AE08BFD-218F-4EC9-AC2F-0745491D4EA4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WooFractal</RootNamespace>
-    <AssemblyName>WooFractal</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
     <ApplicationIcon>Shaders\favicon.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup>
-    <RunPostBuildEvent>Always</RunPostBuildEvent>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Apex">
-      <HintPath>Libs\Apex.dll</HintPath>
-    </Reference>
-    <Reference Include="GlmNet">
-      <HintPath>Libs\GlmNet.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpGL">
-      <HintPath>Libs\SharpGL.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpGL.SceneGraph">
-      <HintPath>Libs\SharpGL.SceneGraph.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpGL.WPF">
-      <HintPath>Libs\SharpGL.WPF.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <None Remove="GUI\boxfold.jpg" />
+    <None Remove="GUI\cuboidthumb.jpg" />
+    <None Remove="GUI\kleinianthumb.jpg" />
+    <None Remove="GUI\mandelboxthumb.jpg" />
+    <None Remove="GUI\mandelbulbthumb.jpg" />
+    <None Remove="GUI\mengerthumb.jpg" />
+    <None Remove="GUI\tetrathumb.jpg" />
   </ItemGroup>
+
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="GUI\AddColour.xaml.cs">
-      <DependentUpon>AddColour.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\AddFractal.xaml.cs">
-      <DependentUpon>AddFractal.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\BoxFold.xaml.cs">
-      <DependentUpon>BoxFold.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\CameraControls.xaml.cs">
-      <DependentUpon>CameraControls.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\ColourSelector.xaml.cs">
-      <DependentUpon>ColourSelector.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\EnvironmentControls.xaml.cs">
-      <DependentUpon>EnvironmentControls.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\MaterialSelector.xaml.cs">
-      <DependentUpon>MaterialSelector.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Vec3Editor.xaml.cs">
-      <DependentUpon>Vec3Editor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\FinalRender.xaml.cs">
-      <DependentUpon>FinalRender.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\FloatEditor.xaml.cs">
-      <DependentUpon>FloatEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\FractalColourControl.xaml.cs">
-      <DependentUpon>FractalColourControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Vec3Control.xaml.cs">
-      <DependentUpon>Vec3Control.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Objects\BoxfoldIteration.cs" />
-    <Compile Include="Objects\FractalGradient.cs" />
-    <Compile Include="GUI\FractalControl.xaml.cs">
-      <DependentUpon>FractalControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FractalSettings.cs" />
-    <Compile Include="Objects\GPULight.cs" />
-    <Compile Include="Objects\KIFSIteration.cs" />
-    <Compile Include="GUI\KleinianGroupControl.xaml.cs">
-      <DependentUpon>KleinianGroupControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Objects\KleinianGroupIteration.cs" />
-    <Compile Include="GUI\MandelboxControl.xaml.cs">
-      <DependentUpon>MandelboxControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Objects\MandelboxIteration.cs" />
-    <Compile Include="GUI\MandelbulbControl.xaml.cs">
-      <DependentUpon>MandelbulbControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Objects\MandelbulbIteration.cs" />
-    <Compile Include="ManifestResourceLoader.cs" />
-    <Compile Include="GUI\MaterialControl.xaml.cs">
-      <DependentUpon>MaterialControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\MaterialEditor.xaml.cs">
-      <DependentUpon>MaterialEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Maths\Utils.cs" />
-    <Compile Include="Objects\Material.cs" />
-    <Compile Include="Objects\MaterialSelection.cs" />
-    <Compile Include="Objects\PostProcess.cs" />
-    <Compile Include="GUI\OrbitColourControl.xaml.cs">
-      <DependentUpon>OrbitColourControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Objects\OrbitColours.cs" />
-    <Compile Include="GUI\RenderControls.xaml.cs">
-      <DependentUpon>RenderControls.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Objects\Scene.cs" />
-    <Compile Include="Objects\ShaderVariables.cs" />
-    <Compile Include="RenderOptions.cs" />
-    <Compile Include="GUI\RPYEditor.xaml.cs">
-      <DependentUpon>RPYEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Objects\ShaderRenderer.cs" />
-    <Compile Include="Utils\Colour.cs" />
-    <Compile Include="Utils\ColourFunction.cs" />
-    <Compile Include="Objects\WooFractalIteration.cs" />
-    <Compile Include="GUI\WooSlider.xaml.cs">
-      <DependentUpon>WooSlider.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WootracerOptions.cs" />
-    <Compile Include="XMLHelpers.cs" />
-    <Page Include="GUI\AddColour.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\AddFractal.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\BoxFold.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\CameraControls.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\ColourSelector.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\EnvironmentControls.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="GUI\MaterialSelector.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\Vec3Editor.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="GUI\FinalRender.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\FloatEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\FractalColourControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\FractalControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\KleinianGroupControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\Vec3Control.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="GUI\MandelboxControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\MandelbulbControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\MaterialControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\MaterialEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\OrbitColourControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\RenderControls.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\RPYEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\WooSlider.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <Content Include="Shaders\favicon.ico" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Maths\Matrix3.cs" />
-    <Compile Include="Maths\Vector3.cs" />
-    <Compile Include="Objects\Camera.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <AppDesigner Include="Properties\" />
+    <PackageReference Include="GLMNet" Version="0.7.0" />
+    <PackageReference Include="SharpGL" Version="3.1.1" />
+    <PackageReference Include="SharpGL.WPF" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Shaders\boxfold.jpg" />
+    <EmbeddedResource Include="Shaders\cuboidthumb.jpg" />
+    <EmbeddedResource Include="Shaders\favicon.ico" />
+    <EmbeddedResource Include="Shaders\kleinianthumb.jpg" />
+    <EmbeddedResource Include="Shaders\lock.png" />
+    <EmbeddedResource Include="Shaders\mandelboxthumb.jpg" />
+    <EmbeddedResource Include="Shaders\mandelbulbthumb.jpg" />
+    <EmbeddedResource Include="Shaders\mengerthumb.jpg" />
+    <EmbeddedResource Include="Shaders\outerspherefold.jpg" />
     <EmbeddedResource Include="Shaders\RayMarch.frag" />
     <EmbeddedResource Include="Shaders\RayMarch.vert" />
     <EmbeddedResource Include="Shaders\RayMarchProgressive.vert" />
+    <EmbeddedResource Include="Shaders\tetrathumb.jpg" />
   </ItemGroup>
+
   <ItemGroup>
-    <Resource Include="Shaders\favicon.ico" />
+    <Resource Include="GUI\boxfold.jpg" />
+    <Resource Include="GUI\cuboidthumb.jpg" />
+    <Resource Include="GUI\kleinianthumb.jpg" />
+    <Resource Include="GUI\mandelboxthumb.jpg" />
+    <Resource Include="GUI\mandelbulbthumb.jpg" />
+    <Resource Include="GUI\mengerthumb.jpg" />
+    <Resource Include="GUI\tetrathumb.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Shaders\cuboidthumb.jpg" />
-    <Resource Include="Shaders\mengerthumb.jpg" />
-    <Resource Include="Shaders\tetrathumb.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Shaders\lock.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Shaders\mandelboxthumb.jpg" />
-    <Resource Include="Shaders\mandelbulbthumb.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Shaders\kleinianthumb.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Shaders\boxfold.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="TODO.txt" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

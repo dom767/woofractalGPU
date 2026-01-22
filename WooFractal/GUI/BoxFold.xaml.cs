@@ -58,7 +58,7 @@ namespace WooFractal.GUI
 
             int repeats;
             if (int.TryParse(textBox1.Text, out repeats)
-                && repeats >= 1 && repeats < 20
+                && repeats >= 1 && repeats < 100
                 && repeats != _Parent._Repeats)
             {
                 _Parent._Repeats = repeats;

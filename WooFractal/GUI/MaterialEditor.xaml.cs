@@ -15,6 +15,7 @@ using SharpGL.SceneGraph.Core;
 using SharpGL.SceneGraph.Primitives;
 using SharpGL.SceneGraph;
 using WooFractal.Objects;
+using SharpGL.WPF;
 
 namespace WooFractal
 {
@@ -183,7 +184,7 @@ namespace WooFractal
         }
 
 
-        private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
+        private void OpenGLControl_OpenGLDraw(object sender, OpenGLRoutedEventArgs args)
         {
             var gl = args.OpenGL;
             if (_Clean)
@@ -196,7 +197,7 @@ namespace WooFractal
             _ShaderRenderer.Render(gl);
         }
 
-        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
+        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLRoutedEventArgs args)
         {
             _GL = args.OpenGL;
             InitialiseRenderer();
@@ -207,7 +208,7 @@ namespace WooFractal
             _ShaderRenderer.Destroy(_GL);
         }
 
-        private void OpenGLControl_Resized(object sender, OpenGLEventArgs args)
+        private void OpenGLControl_Resized(object sender, OpenGLRoutedEventArgs args)
         {
             _GL = args.OpenGL;
             InitialiseRenderer();

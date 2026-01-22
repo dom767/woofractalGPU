@@ -16,6 +16,7 @@ using SharpGL;
 using SharpGL.SceneGraph.Core;
 using SharpGL.SceneGraph.Primitives;
 using SharpGL.SceneGraph;
+using SharpGL.WPF;
 
 namespace WooFractal
 {
@@ -89,7 +90,7 @@ namespace WooFractal
             _ShaderRenderer.SetPostProcess(_PostProcess);
         }
 
-        private void OpenGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
+        private void OpenGLControl_OpenGLDraw(object sender, OpenGLRoutedEventArgs args)
         {
             var gl = args.OpenGL;
             _ShaderRenderer.Render(gl);
@@ -122,7 +123,7 @@ namespace WooFractal
             _ShaderRenderer.Clean(_GL);
         }
 
-        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
+        private void OpenGLControl_OpenGLInitialized(object sender, OpenGLRoutedEventArgs args)
         {
             _GL = args.OpenGL;
             _PostProcess.Initialise(_GL);
@@ -134,7 +135,7 @@ namespace WooFractal
             _ShaderRenderer.Destroy(_GL);
         }
 
-        private void OpenGLControl_Resized(object sender, OpenGLEventArgs args)
+        private void OpenGLControl_Resized(object sender, OpenGLRoutedEventArgs args)
         {
             //  Get the OpenGL instance.
             _GL = args.OpenGL;
@@ -148,17 +149,17 @@ namespace WooFractal
 
         private void GetWidthHeightSelection(out int width, out int height)
         {
-            width = 960;
-            height = 540;
+            width = 1920;
+            height = 1080;
             if (radioButton3.IsChecked.HasValue && radioButton3.IsChecked.Value)
             {
-                width = 480;
-                height = 270;
+                width = 960;
+                height = 540;
             }
             if (radioButton5.IsChecked.HasValue && radioButton5.IsChecked.Value)
             {
-                width = 1920;
-                height = 1080;
+                width = 3840;
+                height = 2160;
             }
             if (radioButton6.IsChecked.HasValue && radioButton6.IsChecked.Value)
             {
